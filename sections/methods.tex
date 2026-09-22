@@ -1,0 +1,133 @@
+\section{Unified near-electrode model and numerical implementation}
+\label{sec:methods}
+
+\subsection{Resolving the sheath directly, rather than matching or
+homogenizing it}
+\label{sec:methods-strategy}
+
+Section~\ref{sec:intro-electrode} distinguished three published strategies
+for coupling a bulk-plasma closure to the electrode: solving one boundary
+value problem with Poisson's equation over the whole gap
+\cite{Almeida2008}; matching a non-equilibrium bulk solution directly to an
+analytic sheath closure at an interface, valid strictly only for a
+collision-dominated sheath \cite{Benilov2016}; and embedding the
+unresolved sheath as an effective electrical conductivity in the
+boundary-adjacent finite-volume cells of an otherwise quasi-neutral CFD
+solution, $\sigma_{\rm eff} = \left[(1-I_g)/\sigma_{\rm child} +
+I_g/\sigma\right]^{-1}$ with $\sigma_{\rm child}$ a Child-law space-charge-
+limited conductivity \cite{LiangTrelles}. We use a fourth strategy,
+implemented in the \textsc{PlasmeX} code: solve the same drift-diffusion--
+Poisson system, equations~(\ref{eq:continuity})--(\ref{eq:poisson}), in the
+bulk plasma and through the sheath alike, and use block-structured adaptive
+mesh refinement (AMR), built on the AMReX framework, to refine the mesh at
+the electrode down to a fraction of the local Debye length. No separate
+sheath closure, matching condition, or homogenized conductivity is
+introduced; the degree of local non-equilibrium is a property of the
+converged solution, not a modelling choice made in advance. This is closest
+in spirit to the unified modelling of \cite{Almeida2008}, generalized from
+a specialized one-dimensional boundary-value solver to a general-purpose,
+AMR finite-volume PDE code, and it should be contrasted directly with the
+homogenized effective-conductivity shortcut of \cite{LiangTrelles}, which
+is the more practical choice for genuinely three-dimensional geometries
+where literal sub-Debye-length mesh refinement is not affordable.
+
+\subsection{Transport closures}
+\label{sec:methods-transport}
+
+Electron mobility and diffusion coefficients are obtained from a
+pre-tabulated, effectively Maxwellian two-term Boltzmann solution,
+$\mu_eN(T_e)$ and $D_eN(T_e)$. This is verified, not assumed: across the
+full tabulated range the ratio $(D_e/\mu_e)/T_e$ deviates from unity by
+0.10\% rms (worst case 0.50\%), which is exactly the Einstein relation for
+a Maxwellian electron energy distribution, and confirms that at the
+0.9--10\% ionization fractions relevant here ($\nu_{ei}/\nu_{en}$ ranging
+from 12 to 143 over $T_{\rm gas}=1000$--$12\,000$~K) electron--electron and
+electron--ion collisions dominate every inelastic channel strongly enough
+to Maxwellize the bulk electron population, exactly as required by
+Section~\ref{sec:model-scaling}. The electron--ion Coulomb correction,
+equation~(\ref{eq:coulomb}), reduces the neutral-collision-only
+conductivity by one to three orders of magnitude and corrects its
+qualitative trend (neutral-only conductivity rises with temperature only
+because it divides by a falling neutral density; the corrected, Spitzer-like
+conductivity, $\propto T_e^{3/2}/\ln\Lambda$, falls in the $\sim10^3$~S/m
+range expected for LTE argon at 1~atm). A Saha-equilibrium cross-check on
+the arc-core initial condition, $n_e^{\rm Saha} = 9.909\times10^{22}\,
+\mathrm{m^{-3}}$ against the solved $n_e = 9.860\times10^{22}\,
+\mathrm{m^{-3}}$, agrees to 0.5\%, confirming the bulk solution is a genuine
+LTE state without that equilibrium being imposed. Ion transport uses the
+closed-form two-temperature Wannier closure of
+Section~\ref{sec:model-governing}; at the reduced field found at the
+converged electrode cell of the sheath test case below (5976~Td), it gives
+$\mu/\mu_0=0.16$, a factor-of-six reduction from the low-field mobility, and
+recovers $\mu\to\mu_0$ in the low-field bulk.
+
+\subsection{Electrode boundary conditions}
+\label{sec:methods-bc}
+
+At the electrode face, the electron flux is set to the standard kinetic
+wall flux $\Gamma_e = \tfrac14 n_e \bar c_e$ evaluated on the (self-consistently
+depleted) wall density, and the ion flux uses a Hagelaar-type drift-aware
+closure, $\Gamma_i = \tfrac14 n_i\bar c_i + \max(\mu_i n_i E,0)$, that
+reduces to the thermal flux at zero field and adds the outward drift
+contribution when the local field drives ions into the wall. This is
+structurally the same closure used for the counter-diffusing current in the
+NLTE-sheath boundary condition of \cite{Benilov2016} (their $J_{CD}$,
+equation~A.7) and for the back-diffusion current in \cite{LiangTrelles}
+(their $J_{bd}$, equation~11): a Boltzmann-retarded thermal flux evaluated
+at the wall density and local $T_e$. Two implementation choices in the
+present model depart from a fully symmetric, field-aware treatment of both
+species and are noted here as open items (Section~\ref{sec:results} /
+\texttt{todo.txt}): the electron wall flux is currently evaluated with the
+field-independent $\tfrac14 n_e\bar c_e$ form rather than a Hagelaar-type
+field-aware form for electrons as well, and no secondary or thermionic
+electron emission term is included at the electrode, which is normally the
+dominant electron supply at a DC arc cathode and would need to be added
+before any cathode-fall prediction from this model could be considered
+complete.
+
+\subsection{Numerical implementation}
+\label{sec:methods-numerical}
+
+The model is implemented in \textsc{PlasmeX}, a C++17 drift-diffusion
+plasma code built on the AMReX block-structured AMR framework, currently
+configured for a three-species (e$^-$, Ar$^+$, Ar) argon plasma. The
+electrostatic potential is solved with AMReX's geometric multigrid solver
+(MLMG) in general, and with Hypre's structured multigrid solver
+(\texttt{HYPRE\_StructPFMG}) for the anisotropic two-dimensional
+axisymmetric mesh used in production runs, since MLMG's composite
+multigrid cycle was found not to converge on that mesh at any tested
+aspect ratio, bottom solver, or coarsening depth. Species transport uses a
+semi-implicit, operator-split scheme: drift fluxes are upwinded explicitly
+and diffusive fluxes are backward-Euler in an implicit face-coefficient
+form, $1 - \Delta t\,(e/\varepsilon_0)\mu_e n_e$, that removes the explicit
+dielectric-relaxation time-step restriction of a fully explicit electron
+drift treatment and gives roughly a $100\times$ larger stable time step at
+equal accuracy, verified by matching both schemes at matched physical time
+to $\sim10^{-6}$ relative agreement after a long integration from a common
+checkpoint.
+
+In one spatial dimension, both linear solves (the electrostatic Poisson
+solve and the implicit species-diffusion solve) reduce to a tridiagonal
+system on each AMR level, for which a direct solver is both faster and more
+accurate than the general-purpose iterative multigrid solver: instrumented
+at 93\% of a time step for a 512-cell problem, the iterative solver is
+replaced by a direct Thomas-algorithm solve whose matrix entries are
+recovered once, exactly, by probing the discrete operator, giving an
+8.9$\times$ reduction in total time-step cost (65$\times$ and 13$\times$ on
+the potential and species solves individually) with an exact rather than
+iteratively converged linear-algebra answer. This extends, non-trivially,
+to the full composite AMR hierarchy: refluxing at a coarse-fine interface
+exactly cancels the covered coarse cell and replaces it with the fine-level
+flux, and the coarse-to-fine ghost-cell interpolation used in one dimension
+is an exact two-term closure over a single coarse cell,
+$\mathrm{ghost} = \tfrac23 x_C + \tfrac13 x_{f_0}$ at a refinement ratio of
+2 --- together these guarantee that the composite operator over the leaf
+cells of a refined 1D hierarchy is itself exactly tridiagonal, so the same
+direct solve applies unmodified across level boundaries. This direct solver
+is what makes literal AMR refinement to sub-Debye-length cells in the
+sheath computationally practical rather than prohibitively expensive; it is
+restricted to one spatial dimension and a single MPI rank, so the
+production two-dimensional axisymmetric configuration falls back to Hypre
+as noted above.
+
+

@@ -1,0 +1,227 @@
+\section{Physical model and scale analysis}
+\label{sec:model}
+
+\subsection{Governing equations}
+\label{sec:model-governing}
+
+In the electrode region, the plasma interacts with the relatively cold, absorbing electrode surfaces. This interaction introduces strong gradients in the plasma properties, causing the plasma to progressively depart from LTE.  We consider plasma to be composed of electrons, singly-charged ions, and neutral atoms for the model. The presence of multiply charged species is neglected as justified in \cite{almeida2000simulation}. To estimate the characteristic length scales associated with these departures, we consider the adjacent LTE plasma at two representative temperatures, \(T=10{,}000~\mathrm{K}\) and \(T=20{,}000~\mathrm{K}\), which are typical of the anode and cathode regions, respectively, in a high-intensity atmospheric-pressure arc discharge \cite{Lowke2006,Hsu1983,LiangTrelles}.
+
+In an ionized gas, the electron mean free path can be approximated as \(\lambda_e = 1/(n_e\overline{Q}_{ee}+n_a\overline{Q}_{ea})\), where \(n_e\) and \(n_a\) are the electron and neutral-atom number densities, respectively, and \(\overline{Q}_{ee}\) and \(\overline{Q}_{ea}\) are the corresponding momentum-transfer collision cross sections for electron--electron and electron--atom collisions. Electron--electron collisions are Coulomb collisions, for which the averaged momentum-transfer cross section is given by \(\overline{Q}_{ee}=e^4\ln\Lambda/[32\pi\varepsilon_0^2(k_BT_e)^2]\) \cite{mitchner1973partially}. Here, \(\ln\Lambda\) is the Coulomb logarithm, given by \(\ln\Lambda=1.24\times10^7 T_e^{3/2}n_e^{-1/2}\), where \(T_e\) is in K and \(n_e\) is in \(\mathrm{m}^{-3}\).
+
+The average electron--neutral momentum-transfer cross section is of the order \(0.2\times10^{-19}~\mathrm{m}^2\) \cite{lxcat} for the electron temperatures considered. Using the corresponding LTE electron and neutral densities, the resulting electron mean free path is of order \(\lambda_e\sim10^{-6}~\mathrm{m}\) in the electrode regions. The characteristic length scale for electron--heavy-particle energy relaxation, \(\lambda_T\), is approximated as\(\frac{\lambda_e}{\sqrt{2M/m_e}}\sim2\times10^{-4}~\mathrm{m}\), where \(M\) is the mass of the heavy species (argon in this case) and \(m_e\) is the electron mass. Thus, \(\lambda_T\sim10^{-4}~\mathrm{m}\).Lowke and Tanaka \cite{Lowke2006} identified a characteristic diffusion length scale for the electron and ion densities of \(\lambda_d\sim10^{-4}~\mathrm{m}\) in the electrode regions.
+
+At the smallest spatial scale, the Debye length calculated from the LTE number densities is of order \(\lambda_{De}\sim10^{-8}~\mathrm{m}\), which characterizes the spatial extent over which charge separation and space-charge effects become important. The ion mean free path provides another relevant scale and can be estimated as \(\lambda_i=1/(n_a\overline{Q}_{ia})\), where \(\overline{Q}_{ia}\) is the momentum-transfer cross section for ion--atom collisions. For argon, we use the approximate fit \(\overline{Q}_{ia}=2[7\times10^{-10}-0.6\times10^{-10}\ln(2k_BT_h)]\) \cite{benilov1998ionization}, where \(k_B\) is the Boltzmann constant and \(T_h\) is the heavy-particle temperature. Since the heavy particle temperature vary from LTE condtions $\sim 1000 \mathrm{K}$ to $\sim 1000 \mathrm{K}$, to electrode temp and since we are interested in region close to the electrode, we use a  temperature of \(T_h\sim1000~\mathrm{K}\), which gives an ion mean free path of order \(\lambda_i\sim10^{-7}~\mathrm{m}\).
+
+The resulting hierarchy of characteristic length scales in the near-electrode region is therefore \(\lambda_{De}\ll\lambda_i\ll\lambda_e\ll\lambda_d\sim\lambda_T\). These estimates indicate that the near-electrode region over which significant departures from LTE develop extends over a characteristic length scale of order \(10^{-4}~\mathrm{m}\). Other modeling results results and analysis shows the same \cite{Almeida2008,DinulescuPfender1980,benilov1995model,hsu1983analysis}. Consistent with this estimate, Lowke and Tanaka \cite{Lowke2006} showed that excluding a near-electrode region of approximately \(10^{-4}~\mathrm{m}\) is sufficient to model the remaining plasma using an LTE approximation. This separation of scales provides the basis for treating the bulk arc with an LTE model while explicitly resolving the nonequilibrium physics in the near-electrode region with a 1D model due to the small size of the near-electrode region.
+
+
+
+We therefore model the electrode region as a one-dimensional domain, with the electrode surface at one end and the bulk plasma at the other. Within this region, fluid-dynamic effects associated with bulk plasma motion are neglected, since the near-electrode region is typically contained within the hydrodynamic boundary layer adjacent to the electrode. The neutral species are assumed to be stationary and in thermal equilibrium with the electrode surface and with each other. The ions are assumed to remain in thermal equilibrium with the neutrals because their mean free path is small compared with the characteristic length scale of the temperature variation. Accordingly, the heavy-particle temperature is prescribed using an exponential profile that decreases from the bulk plasma temperature to the electrode temperature,
+
+$$
+T_h(x)=T_{\mathrm{bulk}}+\left(T_{\mathrm{wall}}-T_{\mathrm{bulk}}\right)\exp\left(-\frac{x}{L_T}\right),
+$$
+
+where \(L_T\) is a characteristic thermal length scale. This exact ion temperature profile makes a little difference on the model because the coliision frequency if ion-neutral has a weak dependence on collision energy. The electron number density and temperature, and the ion number density, are therefore solved self-consistently, while the heavy-particle temperature is prescribed. The neutral number density is not solved independently but is obtained from the ideal-gas law using the prescribed heavy-particle temperature and the constant system pressure. The system is closed by Poisson's equation for the electric potential, which is solved throughout the entire computational domain.
+
+In addition, inertial effects are neglected, and the frictional, pressure-gradient, and electric-field forces are assumed to balance locally for each charged species. This approximation corresponds to a quasi-steady drift-diffusion description in which the species flux adjusts rapidly to changes in the local plasma conditions. It is valid when the momentum-relaxation time is sufficiently short compared with the characteristic timescale of the macroscopic evolution, or equivalently when the associated momentum-relaxation length is small compared with the characteristic spatial scale of the plasma properties. The validity of this approximation is discussed in Section~\textcolor{red}{fill later}. The resulting quasi-steady flux is then used in the species continuity equations to determine the spatial evolution of the charged-particle densities.
+
+The continuity equation for species \(s\) is given by
+\begin{equation}
+\frac{\partial n_s}{\partial t}+\nabla\cdot\boldsymbol{\Gamma}_s=S_s,
+\qquad
+\boldsymbol{\Gamma}_s=z_s\mu_s n_s\mathbf{E}-D_s\nabla n_s,
+\label{eq:continuity}
+\end{equation}
+where \(z_s=\pm1\) is the signed charge number, \(\mu_s\) is the mobility, \(D_s\) is the diffusion coefficient, and \(S_s\) is the net ionization--recombination source term. For the simple two-body ionization/recombination scheme considered here, the source terms for electrons and ions are equal in magnitude and opposite in sign. The flux \(\boldsymbol{\Gamma}_s\) is the particle flux of species \(s\); its detailed formulation and the calculation of the corresponding transport properties are described in Appendix~\textcolor{red}{fill later}. The ionization and recombination processes are modeled using the formulation of Hoffert and Lien \cite{hoffert1967quasi}.
+
+The electric field is obtained from Poisson's equation,
+\begin{equation}
+\nabla\cdot(\varepsilon_0\mathbf{E})=e(n_i-n_e),
+\label{eq:poisson}
+\end{equation}
+which is solved over the entire computational domain, thereby allowing the transition from the quasi-neutral bulk plasma to the space-charge region to be captured without imposing a priori sheath boundaries.
+
+The electron energy is governed by a separate equation of the same convection--conduction--Joule-heating--energy-exchange form commonly used in two-temperature bulk-arc models \cite{HsuPfender1983b,Freton2012},
+\begin{equation}
+\frac{3}{2}\frac{\partial(n_eT_e)}{\partial t}
++\nabla\cdot\left(\frac{5}{2}T_e\boldsymbol{\Gamma}_e-\kappa_e\nabla T_e\right)
+={\mathbf{E}\cdot\mathbf{J}}-\dot{E}_{eh}-\dot{E}_{\rm inel},
+\label{eq:eenergy}
+\end{equation}
+where the terms on the right-hand side represent Joule heating, elastic electron--heavy-particle energy exchange, and inelastic energy losses, respectively. The elastic energy-exchange term is given by \(\dot{E}_{eh}=n_e\delta\nu_{en}\tfrac{3}{2}k_B(T_e-T_{\rm gas})\), where \(\delta=2m_e/M\), while \(\dot{E}_{\rm inel}\) accounts for energy losses associated with inelastic processes, including ionization. Radiation losses are usually small \cite{DinulescuPfender1980,Almeida2008} and thus not included.
+
+
+
+
+Heavy-particle temperature is either taken as a fixed background gas
+temperature $T_{\rm gas}(x)$ (the regime in which the present
+implementation, Section~\ref{sec:methods}, currently operates) or evolved by
+its own energy equation as in \cite{HsuPfender1983b,Almeida2008} when a
+fully coupled two-temperature heavy-species treatment is required.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{sections/appendix.tex}
+
+
+
+\subsection{Quasi-Maxwellian electrons near the electrode}
+\label{sec:model-scaling}
+
+Even where the heavy species are strongly out of equilibrium, the electron
+population can remain closely Maxwellian provided electron--electron and
+electron--ion collisions are frequent enough to redistribute directed
+(drift) energy into the isotropic thermal spread faster than electron--heavy
+collisions or the imposed field can distort it. Following Dinulescu and
+Pfender's analysis of the anode boundary layer \cite{DinulescuPfender1980},
+two conditions must hold. First, electron--electron/ion thermalization must
+dominate electron--neutral momentum transfer, weighted by the mass ratio
+that makes each electron--neutral collision inefficient at removing energy:
+\begin{equation}
+\sum_h \frac{m_e}{m_h}\,\frac{\bar\nu_{eh}}{\bar\nu_{ee}} \ll 1 .
+\label{eq:maxw1}
+\end{equation}
+Second, the ordered drift energy imparted by the field must remain small
+compared with the electron thermal energy, weighted by the same mass ratio:
+\begin{equation}
+\left(\frac{U_e}{\bar c_e}\right)^2 \ll \frac{m_e}{m_h} .
+\label{eq:maxw2}
+\end{equation}
+For a representative near-anode condition, $T_e\sim1$~eV, $n_e\sim
+5\times10^{22}\,\mathrm{m^{-3}}$, neutral density $N\sim6\times10^{23}\,
+\mathrm{m^{-3}}$, electron--atom momentum-transfer cross section
+$\bar Q_{ea}=2\times10^{-20}\,\mathrm{m^2}$, and mean thermal speed
+$\bar c_e = 7\times10^5\,\mathrm{m/s}$: the electron--ion/electron--electron
+frequency from the NRL formulary (with $\ln\Lambda\approx3$) is
+$\nu_{ee}\sim\nu_{ei}\sim5\times10^{11}\,\mathrm{s^{-1}}$, while the
+electron--neutral frequency is $\nu_{en} = \bar c_e N \bar Q_{ea} \approx
+8\times10^{9}\,\mathrm{s^{-1}}$, i.e.\ $\nu_{en}/\nu_{ee}\sim0.016$; with
+$m_e/M_{\rm Ar}\approx1.4\times10^{-5}$, condition~(\ref{eq:maxw1}) gives
+$\sim2\times10^{-7}\ll1$. For condition~(\ref{eq:maxw2}), the electrical
+conductivity of the layer, $\sigma\approx5000$~S/m, corresponds to an
+electron mobility $\mu_e = \sigma/(n_e e)\approx0.6\,\mathrm{m^2/(V\,s)}$;
+with a representative current density $J\sim10^7\,\mathrm{A/m^2}$, the
+electron drift speed is $U_e = J/(en_e) \approx1.3\times10^3\,\mathrm{m/s}$,
+so $(U_e/\bar c_e)^2\approx3\times10^{-6}$, again well below
+$m_e/M_{\rm Ar}\approx1.4\times10^{-5}$. Both conditions are comfortably
+satisfied, so the electron population is treated as quasi-Maxwellian
+throughout the near-electrode layer, and a single electron temperature
+$T_e$ (rather than a fully kinetic electron energy distribution) is
+retained in equation~(\ref{eq:eenergy}) there as well as in the bulk.
+
+\subsection{Length scales and the thickness of the near-electrode layer}
+\label{sec:model-lengths}
+
+The same parameters fix a hierarchy of length scales that separates the
+space-charge sheath from the broader near-electrode non-equilibrium region
+that must be resolved around it. The electron Debye length,
+\begin{equation}
+\lambda_{De} = \sqrt{\frac{\varepsilon_0 T_e}{n_e e}} \approx 3\times10^{-8}
+\ \mathrm{m} ,
+\label{eq:debye}
+\end{equation}
+sets the scale of the space-charge sheath itself. The electron mean free
+path against the combined electron--neutral and electron--electron/ion
+collision frequency used above,
+\begin{equation}
+\lambda_e = \frac{\bar c_e}{\nu_{en}+\nu_{ee}} \approx 1\times10^{-6}\
+\mathrm{m} ,
+\label{eq:mfp}
+\end{equation}
+is $\sim30$ times $\lambda_{De}$, confirming that the sheath is thin
+compared with a mean free path and can support the non-collisional
+electron kinetics discussed in Section~\ref{sec:model-collisionality}. The
+electron--heavy energy-relaxation length, over which an electron transfers
+its excess thermal energy to the heavy gas through the inefficient
+mass-ratio-weighted elastic channel in equation~(\ref{eq:eenergy}), is
+larger still,
+\begin{equation}
+\lambda_T = \frac{\lambda_e}{\sqrt{2m_e/M}} \approx 2\times10^{-4}\
+\mathrm{m} .
+\label{eq:thermal-length}
+\end{equation}
+Finally, the diffusion length that controls how far the electron/ion density
+profile itself can depart from its local equilibrium value under a given
+field, used directly by Lowke and Tanaka's mesh-sizing rule
+\cite{Lowke2006}, is $\Lambda = (kT_e/e)/E$; with $T_e\approx1$~V and a
+field $E = J/\sigma \approx (10^7\,\mathrm{A/m^2})/(5000\,\mathrm{S/m}) =
+2000$~V/m consistent with the parameters above,
+\begin{equation}
+\Lambda \approx 5\times10^{-4}\ \mathrm{m} .
+\label{eq:diffusion-length}
+\end{equation}
+The four scales satisfy $\lambda_{De} \ll \lambda_e \ll \Lambda \sim
+\lambda_T$, the same ordering (Debye length $\ll$ mean free path $\ll$
+boundary-layer thickness) reported directly in Table~I of
+\cite{DinulescuPfender1980} for the anode boundary layer of a comparable
+arc, $\lambda_{De}\sim(2$--$3)\times10^{-8}$~m,
+$\lambda_e\sim(1$--$2)\times10^{-6}$~m, boundary-layer thickness
+$L\sim0.2$--$0.6$~mm. On this basis we take a near-electrode layer of
+thickness $\delta \approx 0.2$~mm --- comparable to both $\Lambda$ and
+$\lambda_T$, and consistent with the range of $L$ found in
+\cite{DinulescuPfender1980} --- as the region over which the unified,
+non-equilibrium model of Section~\ref{sec:methods} must be applied; outside
+it, the plasma is close enough to collision-dominated equilibrium for the
+LTE bulk treatment of Section  to hold. Note that this
+$\sim$0.2~mm layer is not itself the space-charge sheath: it is the outer,
+thermal/diffusion-dominated non-equilibrium region (corresponding to layers
+2--3 of the four-sublayer structure found by \cite{Almeida2008}) inside
+which a much thinner space-charge sheath, of order $\lambda_{De}$ to a few
+times $\lambda_{De}$, is nested.
+
+\subsection{Is the sheath collisionless?}
+\label{sec:model-collisionality}
+
+A collisionless sheath is the standard simplifying assumption used to close
+the NLTE-sheath and two-temperature ionization-layer-sheath approaches of
+Section~\ref{sec:intro-electrode}, and it is tempting to expect it to hold
+automatically at atmospheric pressure, where collision rates are high.
+Almeida, Benilov and Naidis show this expectation is wrong: computing the
+number of ion collisions actually incurred while crossing the sheath gives
+values from order unity to $10^4$, not $\ll1$, even for atmospheric-pressure
+argon \cite{Almeida2008}. The reason is that the sheath thickness itself
+scales with the \emph{local} Debye length, $\lambda_{De}\propto
+n_e^{-1/2}$, which is set by the arc's own high electron density and
+shrinks faster, as the arc becomes hotter and more strongly ionized, than
+the neutral mean free paths shrink with pressure (the Ramsauer minimum in
+the argon electron--neutral cross section keeps $\lambda_e$ from falling as
+quickly as $\lambda_{De}$). A collisionless sheath at high pressure is
+therefore not evidence of a crude or incomplete model; it is close to the
+generic outcome for a dense atmospheric-pressure arc, and the question that
+actually needs answering species by species and quantity by quantity is
+\emph{how} collisionless, and for what.
+
+We make this quantitative with four Knudsen numbers, each the ratio of the
+relevant mean free path to the resolved sheath width $s$: $\mathrm{Kn}_e =
+\lambda_e/s$ (do electrons collide crossing the sheath at all);
+$\mathrm{Kn}_\varepsilon = \lambda_T/s$ (electron--heavy energy exchange:
+does a local electron energy balance exist inside the sheath);
+$\mathrm{Kn}_{ee} = \lambda_{ee}/s$ (electron--electron thermalization:
+does a well-defined $T_e$, i.e.\ a locally Maxwellian electron energy
+distribution, exist inside the sheath at all -- a distinct and much more
+restrictive question than $\mathrm{Kn}_\varepsilon$, since $\lambda_{ee}$
+and $\lambda_T$ differ by roughly $10^4$); and $\mathrm{Kn}_i =
+\lambda_i/s$ for the ion charge-exchange mean free path. For the converged,
+resolved-sheath operating point of the \textsc{PlasmeX} test case discussed
+in Section~\ref{sec:methods} ($s = 1.65\times10^{-7}$~m $= 5.6\,
+\lambda_{De}$, $T_e\approx0.98$~eV at the wall), these evaluate to
+$\mathrm{Kn}_e\approx63$, $\mathrm{Kn}_\varepsilon\approx1.2\times10^4$,
+$\mathrm{Kn}_{ee}\approx5.3$, and $\mathrm{Kn}_i\approx0.8$--$1.7$: the
+sheath is collisionless for electron momentum and electron--heavy energy
+exchange by a wide margin, only marginally collisionless for electron
+thermalization, and carries of order one ion collision, consistent with the
+lower end of the $10^2$--$10^4$ range quoted by \cite{Almeida2008} for a
+somewhat different case. Despite $\mathrm{Kn}_{ee}\sim5$ being only
+marginal, an electron population entering a purely retarding, elastic
+potential barrier is mapped onto itself by Liouville's theorem: reflection
+by an energy-conserving barrier preserves a Maxwellian at unchanged $T_e$
+while depleting the density by the Boltzmann factor, giving a testable,
+parameter-free reference prediction, $T_e(x) = T_{e,\rm edge} = {\rm
+const}$ across the sheath, against which the local closure used in
+equation~(\ref{eq:eenergy}) can be checked directly (Section~\ref{sec:methods}).
+No such collisionless reference state exists for the ions, which do not see
+a retarding barrier and for which $\mathrm{Kn}_i = O(1)$ rules out both the
+collisionless limit and full collisional equilibrium; ion behaviour in the
+sheath is therefore treated as an explicit target for the resolved
+drift-diffusion solution rather than assumed a priori in either limit.

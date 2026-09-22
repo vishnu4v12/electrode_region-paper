@@ -1,0 +1,29 @@
+\section{Appendix A. Transport Coefficients}
+
+The electron mobility is obtained from a two-term Boltzmann solution of the BOLSIG+-type, assuming a Maxwellian electron energy distribution, and is tabulated in reduced form as \(\mu_eN(T_e)\) and \(D_eN(T_e)\), rather than being evaluated from a closed-form kinetic-theory expression. This treatment is appropriate in the weakly ionized regime, where electron--neutral collisions dominate and the electron energy distribution is close to Maxwellian. The validity of the Maxwellian assumption is discussed in Section~\textcolor{red}{fill later}. However, in the core region of the arc, particularly near the cathode, electron--ion Coulomb collisions can become significant. To provide a continuous description between these regimes, an electron--ion Coulomb correction is incorporated into the BOLSIG+-based transport coefficients.
+
+The electron--neutral collision frequency is obtained from the BOLSIG+-based mobility as \(\nu_{en}=e/(m_e\mu_{en})\), while the electron--ion collision frequency is calculated using the NRL Plasma Formulary as \(\nu_{ei}=2.91\times10^{-12}n_e[\mathrm{m}^{-3}]\ln\Lambda\,T_e[\mathrm{eV}]^{-3/2}~\mathrm{s}^{-1}\). In the weakly ionized limit, where electron--neutral collisions dominate, the electrical conductivity is \(\sigma_{\rm en}=n_ee^2/(m_e\nu_{en})\), whereas for a fully ionized plasma the electron--ion contribution can be written as \(\sigma_{\rm ei}=1.975\,n_ee^2/(m_e\nu_{ei})\) \cite{mitchner1973partially}. Combining these expressions gives the effective electron mobility
+\begin{equation}
+\mu_e=\frac{e}{m_e\left(\nu_{en}+\nu_{ei}/1.975\right)}.
+\end{equation}
+Thus, the BOLSIG+-based electron mobility is corrected by the factor \(\nu_{en}/(\nu_{en}+\nu_{ei}/1.975)\), yielding the effective mobility used in the model. The same correction factor is applied to the electron diffusion coefficient, \(D_e\), to account for the additional momentum loss associated with electron--ion Coulomb collisions. The resulting electrical conductivity is compared with the LTE conductivity in Fig.~\textcolor{red}{fill later}.
+
+The ion--neutral momentum-transfer cross section is obtained from the fitted expression
+\(\overline{Q}_{ia}=2[7\times10^{-10}-0.6\times10^{-10}\ln(2k_BT_h)]\) \cite{benilov1998ionization}. The low-field ion mobility is then calculated using the Mason--Schamp equation \cite{mason1958mobility},
+\begin{equation}
+\mu_i =
+\frac{3e}{16N}
+\sqrt{\frac{2\pi}{\mu k_B T_{\mathrm{gas}}}}
+\frac{1}{\Omega^{(1,1)}(T_{\mathrm{gas}})},
+\end{equation}
+where \(N\) is the neutral number density, \(\mu\) is the reduced mass of the ion--neutral pair, and \(\Omega^{(1,1)}\) is the corresponding collision integral. This expression gives the ion mobility in the low-field limit, where the ion drift velocity is proportional to the applied electric field.
+
+To account for the field dependence of the ion mobility, a closed-form two-temperature Wannier formulation is employed. The drift velocity is expressed as \(v_d=\mu(T_{\rm eff})E\), where
+
+$$
+\mu(T_{\rm eff})=\mu_0\sqrt{\frac{T_{\rm gas}}{T_{\rm eff}}},
+\qquad
+k_BT_{\rm eff}=k_BT_{\rm gas}+\frac{1}{3}Mv_d^2,
+$$
+
+with \(\mu_0\) denoting the low-field mobility and \(M\) the ion mass. Substitution of these relations yields a quadratic equation in \(v_d^2\), which is solved to obtain the field-dependent drift velocity. In the limit \(E\rightarrow0\), the effective temperature approaches the gas temperature, \(T_{\rm eff}\rightarrow T_{\rm gas}\), and the formulation recovers the low-field mobility, \(\mu\rightarrow\mu_0\).

@@ -1,0 +1,147 @@
+TODO — simulations and validations needed for Results (sections/results.tex)
+and Conclusion (sections/conclusion.tex)
+=============================================================================
+Generated 2026-08-30 from PlasmeX/CLAUDE.md, PlasmeX/doc/*.tex, and the
+reference-paper notes in ../notes/. Re-derive/update this list whenever the
+outline or PlasmeX's own CLAUDE.md "Known limitations" / "Open work"
+sections change materially — do not let this drift silently out of date.
+
+PRIORITY 0 — must be fixed before ANY quantitative sheath number is quoted
+-----------------------------------------------------------------------------
+1. Put the dielectric relaxation time tau_diel = eps0/sigma_e into the
+   adaptive dt limiter (ComputeDt, src/PlasmeX.cpp). Currently computed and
+   printed but never applied; the shipped CFL under-resolves it, and the
+   resulting sheath drop is a factor 2.4 too small (0.715 V vs a converged
+   1.702 V), with wall n_e 2x high and wall E 2x low. This is not a
+   modelling improvement, it is the difference between the code solving its
+   own discretized equations correctly or not. Cost: ~10x in wall time; it
+   WILL move both regression baselines in PlasmeX/CLAUDE.md and needs a
+   deliberate, recorded rebaseline.
+2. Once (1) is fixed, redo the mesh/timestep convergence study with
+   Delta z and Delta t varied INDEPENDENTLY (not both tied to a single CFL
+   number), and report both convergence curves explicitly in Results. A
+   study that only varies max_level at fixed CFL is not a valid mesh
+   convergence test (Delta t moves with it) and must not be reported as one.
+3. Report the collisionless ion-impact-energy bound, e*(phi_edge - phi_wall),
+   as a diagnostic alongside the Wannier T_eff-based impact energy at every
+   sheath-resolved run. Currently the local closure gives (3/2)kT_eff =
+   4.92 eV, which EXCEEDS the entire 1.703 V sheath fall — a impossible
+   result, not merely an inaccurate one. Do not publish an ion-impact-energy
+   or electrode-heat-flux number until this is resolved (see item 6 below).
+
+PRIORITY 1 — needed to write section 3 (Results) at all
+-----------------------------------------------------------------------------
+4. Bulk-arc LTE validation run, independent of the electrode/sheath work:
+   reproduce a free-burning-arc case comparable to Hsu/Etemadi/Pfender 1983
+   and Hsu & Pfender 1983 (200 A, ~10 mm gap, argon) away from the
+   electrodes, and compare predicted centerline/radial temperature profile
+   and column voltage drop against their reported T_max ~21,200 K and
+   phi_D ~13.3 V (1T) / their 2T companion values. This establishes that the
+   LTE bulk closure (Section 2) is trustworthy before layering the
+   near-electrode model on top of it.
+5. Anode/cathode-fall benchmark run: with the dt fix (item 1) in place,
+   report the predicted electrode fall voltage and its sign, and compare
+   directly against the three-way convergent negative-anode-fall result:
+     - Dinulescu & Pfender 1980 (theory):      -1.5 to -2.7 V
+     - Sanders & Pfender 1984 (experiment):    -2.1 to -1.4 V
+     - Liang & Trelles (3D non-eq CFD):        up to -4.2 V
+   This is the single most citable, falsifiable validation target available
+   and should be the centerpiece of Results. Note PlasmeX's current 1-D
+   test problem is set up as an electron-repelling (negative-fall-like)
+   sheath already — confirm the sign convention and geometry (ARC_SGN,
+   which electrode is modelled) map onto anode vs cathode consistently
+   before comparing numbers.
+6. Fix or explicitly caveat the ion impact energy before reporting any
+   heat-transfer number. Candidates, in order of effort (see PlasmeX
+   CLAUDE.md "Open work" and doc/sheath/sheath_validity.tex ranked fix
+   list): (a) cap/report against the collisionless bound (item 3, cheap,
+   diagnostic only); (b) revisit whether the two-temperature Wannier
+   closure is being evaluated at a self-consistent T_eff given the
+   actually-resolved field profile, since the failure mode found is not
+   "a bit off" but "exceeds the energy budget," which usually indicates a
+   closure being evaluated well outside its derivation regime rather than
+   a small calibration error.
+7. Add the missing elastic electron-neutral energy-loss term,
+   n_e * delta * nu_en * (3/2) k (T_e - T_gas), to the electron energy
+   equation before extending the simulation domain or relaxing the
+   Dirichlet T_e inflow boundary condition. At wall conditions this omitted
+   term is ~23x the retained Joule heating term; it currently doesn't
+   corrupt the reported solution only because the energy-relaxation length
+   is ~4.5x the current domain size. Any larger-domain or longer-time
+   result MUST include this term first, or the reported T_e will be
+   systematically wrong (biased away from T_gas, i.e. away from LTE).
+8. Produce the per-quantity validity table for the FINAL (post-item-1-7)
+   model, not the diagnostic-run table recorded during development
+   (reproduced in Model/Methods sections from
+   PlasmeX/doc/sheath/sheath_validity.tex). Confirm which entries change
+   once the dt limiter and elastic loss term are fixed — several verdicts
+   (e.g. "electron flux inside sheath: not usable") were diagnosed
+   specifically against the unconverged/incomplete model and may improve.
+
+PRIORITY 2 — strengthens Results, not strictly blocking
+-----------------------------------------------------------------------------
+9. Point-by-point (not just order-of-magnitude) validation of the
+   Coulomb-corrected electron conductivity against Murphy & Arundell
+   (1994) LTE argon conductivity data, across the full T = 9000-14000 K
+   range already tabulated in PlasmeX/doc/coulomb/coulomb_collisions.tex.
+   Currently only an order-of-magnitude/trend check has been done.
+10. 2-D axisymmetric run of the full arc + resolved near-electrode layer
+    (inputs_2d), with plasmex.pot_composite_solve=0 / Hypre as documented,
+    run long enough to reach a current-voltage characteristic, and compare
+    against the CVC data in Almeida 2008 fig. 7 and/or Benilov 2016's
+    worked cathode case (60-200 A W-cathode/Cu-anode Ar arc) for at least
+    the ROBUST integral quantities (near-electrode voltage, total current)
+    that Benilov 2016 found insensitive to sheath-model choice. This is the
+    natural place to test the paper's central claim: that this model
+    reproduces those robust integral results AND gives trustworthy local
+    quantities (species fluxes, ion impact energy) where the
+    matching/homogenization approaches do not.
+11. Sensitivity study: quantify how much the predicted sheath voltage drop,
+    species fluxes and ion impact energy change if the electron wall flux
+    is switched from the current field-independent 1/4 n_e cbar form to a
+    Hagelaar-type field-aware form (matching what is already done for
+    ions). This directly tests whether the "electrode is over-determined
+    under current-driven operation" limitation noted in PlasmeX/CLAUDE.md
+    is a first-order or second-order effect on the reported results.
+12. Evaluate the accuracy cost of NOT having Scharfetter-Gummel
+    discretization (removed from the tree; the current scheme is
+    operator-split upwind-drift + implicit-diffusion). Quantify the excess
+    numerical diffusivity D_num = D_e * psi / 2 (psi = cell Peclet number,
+    measured psi <= 0.48 in the converged case) against the resolved
+    physical D_e, and state explicitly in Results whether this is
+    negligible or needs reinstating Scharfetter-Gummel before the interior
+    (not just wall) sheath flux can be trusted.
+
+PRIORITY 3 — scope decisions for Conclusion / future work, not this paper
+-----------------------------------------------------------------------------
+13. Secondary/thermionic electron emission at the electrode. Absent
+    entirely; for a DC arc cathode this is normally the dominant electron
+    supply, so no cathode-fall number from this model is predictive without
+    it. Explicitly scope this OUT of the current paper (near-electrode
+    species-flux/ion-impact-energy/heat-transfer model) if the target
+    electrode is the anode (consistent with the outline's stated focus and
+    with most of the negative-fall benchmark literature being anode-side),
+    or add it if the paper is reframed to include the cathode.
+14. Comparison against a genuinely kinetic (PIC-MCC or similar) sheath
+    treatment, as an independent check on the fluid-closure assumptions
+    identified as questionable in Section 2 (ion Bohm criterion / no ion
+    inertia; interior electron flux conditioning). Flag as future work
+    rather than attempting inside this paper's scope.
+15. If reviewers ask "why not just use Benilov's NLTE-sheath or
+    ionization-layer-sheath closure instead of full mesh refinement" —
+    have a runtime/cost comparison ready (PlasmeX's direct tridiagonal
+    solver makes 1-D sub-Debye refinement cheap, ~100 us/step at 512
+    cells; the 2-D/3-D cost of the same strategy is the real open
+    question and is exactly why Liang & Trelles chose the homogenized
+    effective-conductivity shortcut instead). Consider adding an explicit
+    cost/accuracy comparison table against the three literature approaches
+    as a Discussion subsection.
+
+OPEN CITATION ITEMS (resolve before submission, see outline_review.md)
+-----------------------------------------------------------------------------
+16. Confirm "Two temp, Hsu Pfender.pdf" is indeed Hsu & Pfender, J. Appl.
+    Phys. 54(8), 4359 (1983) (companion two-temperature cathode/bulk paper
+    to Hsu, Etemadi & Pfender 1983) and not a different Hsu/Pfender paper.
+17. Obtain the final published citation (volume/pages/year) for Liang &
+    Trelles's "Novel Sheath model" paper in Plasma Sources Sci. Technol. —
+    the PDF on file only carries a manuscript ID (PSST-103185.R2).
