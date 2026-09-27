@@ -13,11 +13,8 @@ discharge," targeting *Journal of Physics D: Applied Physics* (IOP
 - `sections/methods.tex` — unified model + PlasmeX numerical implementation
   (done).
 - `sections/results.tex`, `sections/conclusion.tex` — **placeholders only**.
-  Do not draft prose there until the validation runs in `todo.txt` exist.
 - `references.bib` — all citations used so far; two entries flagged `NOTE`
-  need confirmation before submission (see `todo.txt` items 16-17).
-- `todo.txt` — prioritized list of simulations/validations needed to write
-  Results and Conclusion.
+  need confirmation before submission.
 
 ## Compiling
 Requires **`iopart.cls`** and **`iopart-num.bst`**, which IOP distributes

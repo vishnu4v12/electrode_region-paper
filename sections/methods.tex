@@ -64,26 +64,21 @@ recovers $\mu\to\mu_0$ in the low-field bulk.
 \subsection{Electrode boundary conditions}
 \label{sec:methods-bc}
 
-At the electrode face, the electron flux is set to the standard kinetic
-wall flux $\Gamma_e = \tfrac14 n_e \bar c_e$ evaluated on the (self-consistently
-depleted) wall density, and the ion flux uses a Hagelaar-type drift-aware
-closure, $\Gamma_i = \tfrac14 n_i\bar c_i + \max(\mu_i n_i E,0)$, that
-reduces to the thermal flux at zero field and adds the outward drift
-contribution when the local field drives ions into the wall. This is
-structurally the same closure used for the counter-diffusing current in the
-NLTE-sheath boundary condition of \cite{Benilov2016} (their $J_{CD}$,
-equation~A.7) and for the back-diffusion current in \cite{LiangTrelles}
-(their $J_{bd}$, equation~11): a Boltzmann-retarded thermal flux evaluated
-at the wall density and local $T_e$. Two implementation choices in the
-present model depart from a fully symmetric, field-aware treatment of both
-species and are noted here as open items (Section~\ref{sec:results} /
-\texttt{todo.txt}): the electron wall flux is currently evaluated with the
-field-independent $\tfrac14 n_e\bar c_e$ form rather than a Hagelaar-type
-field-aware form for electrons as well, and no secondary or thermionic
-electron emission term is included at the electrode, which is normally the
-dominant electron supply at a DC arc cathode and would need to be added
-before any cathode-fall prediction from this model could be considered
-complete.
+At the electrode face, the electron flux is the kinetic wall flux
+$\tfrac14 n_e\bar c_e$ evaluated on the (self-consistently depleted) wall density,
+less the Richardson--Schottky emission flux~(\ref{eq:bc-emission}) in the cathode
+case, and the ion flux follows equation~(\ref{eq:bc-ion}): the non-diffusive part of
+the ion flux~(\ref{eq:flux-i}) when it is directed into the wall, and the
+thermal-effusion flux $\tfrac14 n_i\bar c_i$ at the wall temperature otherwise. Each
+wall flux, including the electron energy flux~(\ref{eq:bc-electron-energy}), is
+imposed on the implicit diffusion flux as the difference between the prescribed wall
+flux and the explicit part, so that the total wall flux is exactly the prescribed one;
+for the ions, in the drift-dominated case, this makes the density gradient at the wall
+face zero. In the cathode case the wall temperature is re-solved from the heat
+balance~(\ref{eq:bc-heat-balance}) at the start of every time step, from the state at
+that time. Two simplifications remain: the electron wall flux uses the field-independent
+$\tfrac14 n_e\bar c_e$ form rather than a Hagelaar-type field-aware form, and
+secondary electron emission by ion impact is not included.
 
 \subsection{Numerical implementation}
 \label{sec:methods-numerical}
