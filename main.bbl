@@ -44,11 +44,6 @@ K.~C. Hsu, K.~Etemadi, and E.~Pfender.
 \newblock Study of the free-burning high-intensity argon arc.
 \newblock {\em Journal of Applied Physics}, 54(3):1293--1301, 1983.
 
-\bibitem{Lowke2006}
-J.~J. Lowke and M.~Tanaka.
-\newblock {LTE}-diffusion approximation for arc calculations.
-\newblock {\em Journal of Physics D: Applied Physics}, 39:3634--3643, 2006.
-
 \bibitem{HsuPfender1983b}
 K.~C. Hsu and E.~Pfender.
 \newblock Two-temperature modeling of the free-burning, high-intensity arc.
@@ -80,10 +75,45 @@ Tadashi Amakawa, Jir{\'\i} Jenista, Joachim Heberlein, and Emil Pfender.
 \newblock Anode-boundary-layer behaviour in a transferred, high-intensity arc.
 \newblock {\em Journal of Physics D: Applied Physics}, 31(20):2826, 1998.
 
+\bibitem{Lowke2006}
+J.~J. Lowke and M.~Tanaka.
+\newblock {LTE}-diffusion approximation for arc calculations.
+\newblock {\em Journal of Physics D: Applied Physics}, 39:3634--3643, 2006.
+
 \bibitem{Tanaka2007}
 M.~Tanaka and J.~J. Lowke.
 \newblock Predictions of weld pool profiles using plasma physics.
 \newblock {\em Journal of Physics D: Applied Physics}, 40:R1--R23, 2007.
+
+\bibitem{murphy2009computational}
+AB~Murphy, M~Tanaka, S~Tashiro, T~Sato, and JJ~Lowke.
+\newblock A computational investigation of the effectiveness of different shielding gas mixtures for arc welding.
+\newblock {\em Journal of Physics D: Applied Physics}, 42(11):115205, 2009.
+
+\bibitem{DinulescuPfender1980}
+H.~A. Dinulescu and E.~Pfender.
+\newblock Analysis of the anode boundary layer of high intensity arcs.
+\newblock {\em Journal of Applied Physics}, 51(6):3149--3157, 1980.
+
+\bibitem{hsu1983analysis}
+KC~Hsu and E~Pfender.
+\newblock Analysis of the cathode region of a free-burning high intensity argon arc.
+\newblock {\em Journal of Applied Physics}, 54(7):3818--3824, 1983.
+
+\bibitem{schmitz2002analysis}
+H~Schmitz and KU~Riemann.
+\newblock Analysis of the cathodic region of atmospheric pressure discharges.
+\newblock {\em Journal of Physics D: Applied Physics}, 35(14):1727--1735, 2002.
+
+\bibitem{benilov1995model}
+MS~Benilov and A~Marotta.
+\newblock A model of the cathode region of atmospheric pressure arcs.
+\newblock {\em Journal of Physics D: Applied Physics}, 28(9):1869--1882, 1995.
+
+\bibitem{Benilov2016}
+M.~S. Benilov, N.~A. Almeida, M.~Baeva, M.~D. Cunha, L.~G. Benilova, and D.~Uhrlandt.
+\newblock Account of near-cathode sheath in numerical models of high-pressure arc discharges.
+\newblock {\em Journal of Physics D: Applied Physics}, 49:215201, 2016.
 
 \bibitem{Almeida2008}
 N.~A. Almeida, M.~S. Benilov, and G.~V. Naidis.
@@ -94,11 +124,6 @@ N.~A. Almeida, M.~S. Benilov, and G.~V. Naidis.
 NA~Almeida, MS~Benilov, U~Hechtfischer, and GV~Naidis.
 \newblock Investigating near-anode plasma layers of very high-pressure arc discharges.
 \newblock {\em Journal of Physics D: Applied Physics}, 42(4):045210, 2009.
-
-\bibitem{Benilov2016}
-M.~S. Benilov, N.~A. Almeida, M.~Baeva, M.~D. Cunha, L.~G. Benilova, and D.~Uhrlandt.
-\newblock Account of near-cathode sheath in numerical models of high-pressure arc discharges.
-\newblock {\em Journal of Physics D: Applied Physics}, 49:215201, 2016.
 
 \bibitem{SandersPfender1984}
 N.~A. Sanders and E.~Pfender.
@@ -114,11 +139,6 @@ VA~Nemchinsky and Y~Raitses.
 J~Heberlein, J~Mentel, and E~Pfender.
 \newblock The anode region of electric arcs: a survey.
 \newblock {\em Journal of Physics D: Applied Physics}, 43(2):023001, 2010.
-
-\bibitem{almeida2000simulation}
-RMS Almeida, MS~Benilov, and GV~Naidis.
-\newblock Simulation of the layer of non-equilibrium ionization in a high-pressure argon plasma with multiply-charged ions.
-\newblock {\em Journal of Physics D: Applied Physics}, 33(8):960--967, 2000.
 
 \bibitem{LiangTrelles}
 P.~Liang and J.~P. Trelles.
@@ -142,25 +162,20 @@ MS~Benilov and GV~Naidis.
 \newblock Ionization layer at the edge of a fully ionized plasma.
 \newblock {\em Physical Review E}, 57(2):2230, 1998.
 
-\bibitem{DinulescuPfender1980}
-H.~A. Dinulescu and E.~Pfender.
-\newblock Analysis of the anode boundary layer of high intensity arcs.
-\newblock {\em Journal of Applied Physics}, 51(6):3149--3157, 1980.
-
-\bibitem{benilov1995model}
-MS~Benilov and A~Marotta.
-\newblock A model of the cathode region of atmospheric pressure arcs.
-\newblock {\em Journal of Physics D: Applied Physics}, 28(9):1869--1882, 1995.
-
-\bibitem{hsu1983analysis}
-KC~Hsu and E~Pfender.
-\newblock Analysis of the cathode region of a free-burning high intensity argon arc.
-\newblock {\em Journal of Applied Physics}, 54(7):3818--3824, 1983.
+\bibitem{almeida2000simulation}
+RMS Almeida, MS~Benilov, and GV~Naidis.
+\newblock Simulation of the layer of non-equilibrium ionization in a high-pressure argon plasma with multiply-charged ions.
+\newblock {\em Journal of Physics D: Applied Physics}, 33(8):960--967, 2000.
 
 \bibitem{hoffert1967quasi}
 Martin~I Hoffert and Hwachii Lien.
 \newblock Quasi-one-dimensional, nonequilibrium gas dynamics of partially ionized two-temperature argon.
 \newblock {\em The physics of Fluids}, 10(8):1769--1777, 1967.
+
+\bibitem{zhdanov2002transport}
+Viktor~Mikha{\u\i}lovich Zhdanov.
+\newblock Transport processes in multicomponent plasma.
+\newblock {\em Plasma Physics and Controlled Fusion}, 44(10):2283--2283, 2002.
 
 \bibitem{mason1958mobility}
 Edward~A Mason and Homer~W Schamp~Jr.

@@ -1,29 +1,216 @@
 \section{Appendix A. Transport Coefficients}
+\label{app:transport}
 
-The electron mobility is obtained from a two-term Boltzmann solution of the BOLSIG+-type, assuming a Maxwellian electron energy distribution, and is tabulated in reduced form as \(\mu_eN(T_e)\) and \(D_eN(T_e)\), rather than being evaluated from a closed-form kinetic-theory expression. This treatment is appropriate in the weakly ionized regime, where electron--neutral collisions dominate and the electron energy distribution is close to Maxwellian. The validity of the Maxwellian assumption is discussed in Section~\textcolor{red}{fill later}. However, in the core region of the arc, particularly near the cathode, electron--ion Coulomb collisions can become significant. To provide a continuous description between these regimes, an electron--ion Coulomb correction is incorporated into the BOLSIG+-based transport coefficients.
+This appendix gives the transport and exchange coefficients that close the governing equations of Section~\ref{sec:model-governing}: the electron momentum-transfer and energy-exchange collision frequencies, thermal-diffusion coefficients, and thermal conductivity; the ion momentum-transfer frequencies; and the heavy-particle heat capacity and thermal conductivity. Every coefficient is a closed-form or tabulated function of the local state.
 
-The electron--neutral collision frequency is obtained from the BOLSIG+-based mobility as \(\nu_{en}=e/(m_e\mu_{en})\), while the electron--ion collision frequency is calculated using the NRL Plasma Formulary as \(\nu_{ei}=2.91\times10^{-12}n_e[\mathrm{m}^{-3}]\ln\Lambda\,T_e[\mathrm{eV}]^{-3/2}~\mathrm{s}^{-1}\). In the weakly ionized limit, where electron--neutral collisions dominate, the electrical conductivity is \(\sigma_{\rm en}=n_ee^2/(m_e\nu_{en})\), whereas for a fully ionized plasma the electron--ion contribution can be written as \(\sigma_{\rm ei}=1.975\,n_ee^2/(m_e\nu_{ei})\) \cite{mitchner1973partially}. Combining these expressions gives the effective electron mobility
+\subsection{Electron transport: general framework}
+
+The electron current density \(\mathbf{J}_e=-e\boldsymbol{\Gamma}_e\) and heat flux \(\mathbf{q}_e\) obey a linear-response (Onsager) relation with two driving forces. These are the generalized field \(\boldsymbol{\mathcal{E}}=\mathbf{E}+\nabla p_e/(en_e)\) and the temperature gradient:
+\begin{align}
+\mathbf{J}_e &= \sigma\,\boldsymbol{\mathcal{E}}+\varphi\,\nabla T_e,
+\label{eq:onsager-J}\\
+\mathbf{q}_e &= -\frac52\frac{k_BT_e}{e}\mathbf{J}_e-\lambda'\nabla T_e-T_e\varphi\,\boldsymbol{\mathcal{E}}
+=-\lambda\nabla T_e+\psi\,\mathbf{J}_e,
+\label{eq:onsager-q}
+\end{align}
+with
 \begin{equation}
-\mu_e=\frac{e}{m_e\left(\nu_{en}+\nu_{ei}/1.975\right)}.
+\lambda=\lambda'-T_e\frac{\varphi^2}{\sigma},\qquad
+\psi=-\frac52\frac{k_BT_e}{e}-T_e\frac{\varphi}{\sigma}.
+\label{eq:onsager-lambda}
 \end{equation}
-Thus, the BOLSIG+-based electron mobility is corrected by the factor \(\nu_{en}/(\nu_{en}+\nu_{ei}/1.975)\), yielding the effective mobility used in the model. The same correction factor is applied to the electron diffusion coefficient, \(D_e\), to account for the additional momentum loss associated with electron--ion Coulomb collisions. The resulting electrical conductivity is compared with the LTE conductivity in Fig.~\textcolor{red}{fill later}.
-
-The ion--neutral momentum-transfer cross section is obtained from the fitted expression
-\(\overline{Q}_{ia}=2[7\times10^{-10}-0.6\times10^{-10}\ln(2k_BT_h)]\) \cite{benilov1998ionization}. The low-field ion mobility is then calculated using the Mason--Schamp equation \cite{mason1958mobility},
+Here \(\sigma\) is the electrical conductivity, \(\varphi\) the thermal-diffusion coefficient, \(\lambda'\) the thermal conductivity at fixed \(\boldsymbol{\mathcal{E}}\), and \(\lambda\) the ordinary (zero-current) thermal conductivity. Comparing equations~(\ref{eq:onsager-J})--(\ref{eq:onsager-lambda}) with the electron momentum balance~(\ref{eq:mom-e}) and the energy flux~(\ref{eq:heatflux-e}) identifies
 \begin{equation}
-\mu_i =
-\frac{3e}{16N}
-\sqrt{\frac{2\pi}{\mu k_B T_{\mathrm{gas}}}}
-\frac{1}{\Omega^{(1,1)}(T_{\mathrm{gas}})},
+\bar\nu^M_e=\frac{n_ee^2}{m_e\sigma},\qquad
+C_e=\frac{e}{k_B}\frac{\varphi}{\sigma},\qquad
+\kappa_e=\lambda,\qquad
+\frac52+C_e=-\frac{e\psi}{k_BT_e}.
+\label{eq:onsager-map}
 \end{equation}
-where \(N\) is the neutral number density, \(\mu\) is the reduced mass of the ion--neutral pair, and \(\Omega^{(1,1)}\) is the corresponding collision integral. This expression gives the ion mobility in the low-field limit, where the ion drift velocity is proportional to the applied electric field.
+The conductivity entering the energy equation is the zero-current value \(\lambda\), not \(\lambda'\). A temperature gradient alone drives a current \(\varphi\nabla T_e\), and holding \(\mathbf{J}_e=0\) requires a field \(\boldsymbol{\mathcal{E}}=-(\varphi/\sigma)\nabla T_e\). The heat flux carried by this field reduces the apparent conduction from \(\lambda'\) to \(\lambda\). Because equation~(\ref{eq:eenergy}) accounts separately for Joule heating and the enthalpy flux, its conductivity must be the zero-current one. The coefficients \(\sigma\), \(\varphi\), and \(\lambda\) are evaluated in the partially and fully ionized limits and then bridged.
 
-To account for the field dependence of the ion mobility, a closed-form two-temperature Wannier formulation is employed. The drift velocity is expressed as \(v_d=\mu(T_{\rm eff})E\), where
+\subsection{Partially ionized limit: electron--neutral transport}
 
-$$
-\mu(T_{\rm eff})=\mu_0\sqrt{\frac{T_{\rm gas}}{T_{\rm eff}}},
+When electron--neutral collisions dominate, the electrons form a Lorentz gas. The isotropic part of the distribution is a Maxwellian \(f_M(T_e)\), and only the first-order anisotropic correction responds to the field and the temperature gradient. With \(C\) the electron speed, \(x=m_eC^2/(2k_BT_e)\), and \(\nu_{eH}(C)=n_nCQ^{(1)}(\varepsilon)\) the energy-dependent electron--neutral momentum-transfer frequency built from the momentum-transfer cross section \(Q^{(1)}(\varepsilon)\), a two-term solution of the electron Boltzmann equation gives the anisotropic correction
+\begin{equation}
+f^1=\frac{e}{m_e\nu_{eH}}\frac{\partial f_M}{\partial C}\boldsymbol{\mathcal{E}}
+-\frac{C}{\nu_{eH}}f_M\left[\nabla\ln p_e+\left(x-\tfrac52\right)\nabla\ln T_e\right].
+\label{eq:lorentz-f1}
+\end{equation}
+Two different kinds of velocity average appear below, and they are given different notation. The first is the plain average over the Maxwellian, normalized to unity,
+\begin{equation}
+\langle g\rangle_0=\int g\,f_M\,d^3C=4\pi\int_0^\infty g\,C^2f_M\,dC .
+\label{eq:maxw-avg}
+\end{equation}
+The second is the \emph{transport average}. Every current and conduction heat-flux moment of equation~(\ref{eq:lorentz-f1}) carries, besides the Maxwellian, an extra factor \(C^2/\nu_{eH}\), so the transport coefficients are expressed through averages under the weight \(C^4f_M/\nu_{eH}\):
+\begin{equation}
+\langle g\rangle_\nu=\frac{\langle g\,C^2/\nu_{eH}\rangle_0}{\langle C^2/\nu_{eH}\rangle_0}
+=\frac{\int_0^\infty g\,C^4f_M\nu_{eH}^{-1}\,dC}{\int_0^\infty C^4f_M\nu_{eH}^{-1}\,dC} .
+\label{eq:lorentz-avg}
+\end{equation}
+In energy, this weight is \(\varepsilon\,e^{-\varepsilon/k_BT_e}/Q^{(1)}(\varepsilon)\). The transport average is used only for the dimensionless moments \(\langle x\rangle_\nu\) and \(\langle x^2\rangle_\nu\) in equation~(\ref{eq:lorentz-coeffs}) below. It is \emph{not} the average that defines the collision frequencies.
+
+The collision frequencies in the model are Maxwellian averages \(\langle\cdot\rangle_0\) of \(\nu_{eH}(C)\), and two different ones are needed. Both use the same weight, \(C^2f_M\), that is, the Maxwellian weighted by the electron kinetic energy. They differ in whether \(\nu_{eH}\) or \(1/\nu_{eH}\) is averaged. The \emph{momentum-transfer (mobility) average}, denoted by the superscript \(M\), is the harmonic mean of \(\nu_{eH}\) under this weight. It reproduces the mobility and is the frequency used in the force balances~(\ref{eq:mom-e})--(\ref{eq:mom-n}):
+\begin{equation}
+\bar\nu^M_{en}=\frac{\langle C^2\rangle_0}{\langle C^2/\nu_{eH}\rangle_0}
+=n_n\,\frac{3k_BT_e/m_e}{4\pi\int_0^\infty C^3f_M\,[Q^{(1)}]^{-1}\,dC}
+=n_n\sqrt{\frac{2}{m_e}}\;\frac{3\sqrt\pi}{4}\;
+\frac{(k_BT_e)^{5/2}}{\int_0^\infty\varepsilon\,e^{-\varepsilon/k_BT_e}\,[Q^{(1)}(\varepsilon)]^{-1}\,d\varepsilon} .
+\label{eq:nu-M}
+\end{equation}
+The second form follows from \(\nu_{eH}=n_nCQ^{(1)}\) and \(\langle C^2\rangle_0=3k_BT_e/m_e\). The third follows from the change of variable \(\varepsilon=\tfrac12m_eC^2\), with \(f_M=(m_e/2\pi k_BT_e)^{3/2}e^{-\varepsilon/k_BT_e}\). For a constant cross section, it reduces to \(\bar\nu^M_{en}=(9\pi/32)\,\tfrac43n_n\bar c_eQ^{(1)}\approx0.88\times\tfrac43n_n\bar c_eQ^{(1)}\). Equation~(\ref{eq:nu-M}) is identical to defining \(\bar\nu^M_{en}\) through the Lorentz conductivity of \cite{mitchner1973partially} (their equation VIII~2.14a), \(\sigma_{ea}=n_ee^2/(m_e\bar\nu^M_{en})\). This is how it is evaluated in practice.
+The \emph{energy-exchange average}, denoted by the superscript \(E\), is the arithmetic mean of \(\nu_{eH}\) under the same weight:
+\begin{equation}
+\bar\nu^E_{en}=\frac{\langle C^2\nu_{eH}\rangle_0}{\langle C^2\rangle_0}
+=\frac43\,n_n\bar c_e\,\overline{Q}^{(1,1)}_{ea}(T_e),
 \qquad
-k_BT_{\rm eff}=k_BT_{\rm gas}+\frac{1}{3}Mv_d^2,
-$$
+\bar c_e=\sqrt{\frac{8k_BT_e}{\pi m_e}} .
+\label{eq:nu-ea}
+\end{equation}
+Because a harmonic mean never exceeds the arithmetic mean over the same weight, \(\bar\nu^M_{en}\le\bar\nu^E_{en}\), with equality only for an energy-independent \(\nu_{eH}\). The denominator of equation~(\ref{eq:nu-M}) is also the normalizing integral of the transport average~(\ref{eq:lorentz-avg}). With \(\langle C^2\rangle_0=3k_BT_e/m_e\), the Lorentz-gas coefficients are
+\begin{equation}
+\sigma_{ea}=\frac{n_ee^2}{m_e\bar\nu^M_{en}},\qquad
+\left(\frac{\varphi}{\sigma}\right)_{ea}=\frac{k_B}{e}\left(\langle x\rangle_\nu-\frac52\right),\qquad
+\lambda_{ea}=\frac{n_ek_B^2T_e}{m_e\bar\nu^M_{en}}\left[\langle x^2\rangle_\nu-\langle x\rangle_\nu^2\right].
+\label{eq:lorentz-coeffs}
+\end{equation}
+The electron--neutral thermal-diffusion coefficient \((e/k_B)(\varphi/\sigma)_{ea}=\langle x\rangle_\nu-\tfrac52\) vanishes for an energy-independent collision frequency. Its sign and magnitude therefore reflect the energy dependence of \(Q^{(1)}\), which for argon is dominated by the Ramsauer minimum.
 
-with \(\mu_0\) denoting the low-field mobility and \(M\) the ion mass. Substitution of these relations yields a quadratic equation in \(v_d^2\), which is solved to obtain the field-dependent drift velocity. In the limit \(E\rightarrow0\), the effective temperature approaches the gas temperature, \(T_{\rm eff}\rightarrow T_{\rm gas}\), and the formulation recovers the low-field mobility, \(\mu\rightarrow\mu_0\).
+The energy-exchange average~(\ref{eq:nu-ea}) is the one that gives the elastic energy-loss rate of a Maxwellian electron population, \(\tfrac{2m_e}{M}\langle\varepsilon\,\nu_{eH}\rangle_0(1-T_h/T_e)=\tfrac32k_B(T_e-T_h)\tfrac{2m_e}{M}\bar\nu^E_{en}\). For argon between 0.5 and 2~eV, \(\bar\nu^E_{en}\) exceeds \(\bar\nu^M_{en}\) by a factor of 4--4.5, because energy exchange is dominated by fast electrons above the Ramsauer minimum, while the mobility is dominated by slow electrons trapped inside it. Using \(\bar\nu^E_{en}\) in the force balances would therefore overestimate the electron--neutral friction by this factor, and using \(\bar\nu^M_{en}\) in the energy equations would underestimate the elastic loss by the same factor. Equations~(\ref{eq:lorentz-avg})--(\ref{eq:nu-ea}) are evaluated on the argon momentum-transfer cross section \cite{lxcat} and tabulated as functions of \(T_e\), in reduced form per unit neutral density.
+
+\subsection{Fully ionized limit and the Coulomb logarithm}
+
+When electron--ion collisions dominate, the Spitzer--H\"arm solution for a singly charged ion gives \cite{mitchner1973partially}
+\begin{equation}
+\sigma_{ei}=1.975\,\frac{n_ee^2}{m_e\bar\nu^E_{ei}},\qquad
+\lambda_{ei}=3.203\,\frac{n_ek_B^2T_e}{m_e\bar\nu^E_{ei}},\qquad
+\varphi_{ei}=1.389\,\frac{n_eek_B}{m_e\bar\nu^E_{ei}},\qquad
+\psi_{ei}=-3.203\,\frac{k_BT_e}{e}.
+\label{eq:spitzer}
+\end{equation}
+The collision frequency cancels in \((e/k_B)(\varphi/\sigma)_{ei}=1.389/1.975=0.7033\), and the consistency condition of equation~(\ref{eq:onsager-map}), \(-e\psi/(k_BT_e)=3.203=\tfrac52+0.703\), is satisfied. Here \(\bar\nu^E_{ei}\) is the energy-exchange (\(C^2\)-weighted) average of the electron--ion momentum-transfer frequency,
+\begin{equation}
+\bar\nu^E_{ei}=n_i\,\frac{4\sqrt{2\pi}}{3}\left(\frac{m_e}{k_BT_e}\right)^{3/2}
+\left(\frac{e^2}{4\pi\varepsilon_0m_e}\right)^2\ln\Lambda
+=2.906\times10^{-12}\,\frac{n_i[\mathrm{m^{-3}}]\,\ln\Lambda}{T_e[\mathrm{eV}]^{3/2}}\ \mathrm{s^{-1}},
+\label{eq:nu-ei}
+\end{equation}
+with the Coulomb logarithm
+\begin{equation}
+\ln\Lambda=\max\left(2,\ \ln\frac{\lambda_{De}}{b_{90}}\right),\qquad
+\lambda_{De}=\sqrt{\frac{\varepsilon_0T_e[\mathrm{eV}]}{n_ee}},\qquad
+b_{90}=\frac{e}{12\pi\varepsilon_0T_e[\mathrm{eV}]} .
+\label{eq:coulomb-log}
+\end{equation}
+Here \(b_{90}\) is the classical \(90^\circ\)-deflection impact parameter. The logarithm is floored at 2 to keep \(\bar\nu^E_{ei}\) finite when the plasma is not weakly coupled. The rate~(\ref{eq:nu-ei}) is set by the ion density, which is the collision partner, whereas the Debye length uses the electron density. The two coincide only under quasi-neutrality, which does not hold inside the sheath.
+
+\subsection{Bridging the two limits}
+
+At intermediate ionization, the electron--neutral and electron--ion contributions are combined by additive (resistance-type) mixture rules. These rules are exact in both limits and are weighted by the ratio of the energy-exchange averages of the two collision frequencies,
+\begin{equation}
+P=\frac{\bar\nu^E_{en}}{\bar\nu^E_{ei}} .
+\label{eq:P}
+\end{equation}
+
+\emph{Momentum-transfer frequency.} The electron--ion momentum-transfer average is \(\bar\nu^M_{ei}=0.5\,\bar\nu^E_{ei}\), where the factor \(0.5\approx1/1.975\) is the strongly ionized conductivity weight of equation~(\ref{eq:spitzer}). Adding the electron--neutral and electron--ion resistivities is the same as adding the two momentum-transfer frequencies,
+\begin{equation}
+\bar\nu^M_e=\bar\nu^M_{en}+\bar\nu^M_{ei},\qquad
+\sigma=\frac{n_ee^2}{m_e\bar\nu^M_e},
+\label{eq:coulomb}
+\end{equation}
+with \(\bar\nu^M_{en}\) from equation~(\ref{eq:nu-M}). This is the total frequency in the electron flux~(\ref{eq:flux-e}). Relative to the electron--neutral value alone, the electron--ion (Coulomb) contribution reduces the conductivity by the factor \(\bar\nu^M_{en}/\bar\nu^M_e\).
+
+\emph{Thermal-diffusion coefficients.} The two values of \(\varphi/\sigma\) are combined as a weighted mean in \(1/P\):
+\begin{equation}
+\left(\frac{\varphi}{\sigma}\right)_e=\frac{(\varphi/\sigma)_{ei}/P+(\varphi/\sigma)_{ea}}{1+1/P},
+\qquad
+\left(\frac{\varphi}{\sigma}\right)_{ei}=\frac{1.389}{1.975}\frac{k_B}{e},
+\label{eq:phi-bridge}
+\end{equation}
+so that
+\begin{equation}
+C_e=\frac{e}{k_B}\left(\frac{\varphi}{\sigma}\right)_e,\qquad
+C_i=\frac{e}{k_B}\,\frac{(\varphi/\sigma)_{ei}/P}{1+1/P},\qquad
+C_n=C_e-C_i .
+\label{eq:Ce-Ai}
+\end{equation}
+Only electron--ion collisions couple momentum directly between electrons and ions. The ion reaction \(C_i\) is therefore the electron--ion (Coulomb) part of the thermal-diffusion force alone. The electron--neutral part acts on the atoms, giving \(C_n=C_e-C_i\), and the sum rule \(C_i+C_n=C_e\) used in Section~\ref{sec:model-governing} holds identically.
+
+\emph{Thermal conductivity.} The zero-current conductivities combine as parallel thermal resistances,
+\begin{equation}
+\frac{1}{\lambda_e}=\frac{1}{\lambda_{ea}}+\frac{1}{\lambda_{ei}},\qquad
+\kappa_e=\lambda_e\equiv K\,\frac{n_ek_B^2T_e}{m_e\bar\nu^M_e} ,
+\label{eq:kappa_e}
+\end{equation}
+with \(\bar\nu^M_e\) the total momentum-transfer frequency of equation~(\ref{eq:coulomb}). Both \(\lambda_{ea}\) and \(\lambda_{ei}\) scale linearly with \(n_e\), so the dimensionless factor \(K\) is independent of the electron density. It tends to \(\langle x^2\rangle_\nu-\langle x\rangle_\nu^2\) in the electron--neutral limit and to \(3.203\,\bar\nu^M_{ei}/\bar\nu^E_{ei}=3.203/2\approx1.60\) in the fully ionized limit.
+
+\emph{Elastic exchange frequency.} The total elastic energy-exchange frequency in equations~(\ref{eq:eenergy}) and (\ref{eq:henergy}) is the sum of the two energy-exchange averages, not of the momentum-transfer averages \(\bar\nu^M\):
+\begin{equation}
+\bar\nu^E_{eh}=\bar\nu^E_{en}+\bar\nu^E_{ei}.
+\label{eq:nu_ex}
+\end{equation}
+Both terms are, by construction, the elastic energy-loss rate of a near-Maxwellian electron population. The energy lost by the electrons in equation~(\ref{eq:eenergy}) is therefore exactly the energy gained by the heavy gas in equation~(\ref{eq:henergy}).
+
+\subsection{Ion collision frequencies}
+
+The ion--neutral transport is governed by resonant charge exchange. The momentum-transfer cross section is taken from the fit \cite{benilov1998ionization}
+\begin{equation}
+\overline{Q}_{ia}=2\left[7\times10^{-10}-0.6\times10^{-10}\ln\left(\frac{2k_BT_h}{e}\right)\right]^2\ \mathrm{m^2},
+\label{eq:Qia}
+\end{equation}
+with \(2k_BT_h/e\) in eV. The corresponding low-field mobility is
+\begin{equation}
+\mu_i^0=\frac{1.104\times10^{5}}{\overline{Q}_{ia}\sqrt{T_h}\,n_n}\ \ \mathrm{m^2\,V^{-1}\,s^{-1}}
+\qquad(\overline{Q}_{ia}\ \mathrm{in\ m^2},\ T_h\ \mathrm{in\ K},\ n_n\ \mathrm{in\ m^{-3}}).
+\label{eq:mu_i0}
+\end{equation}
+The high reduced fields near the electrode heat the ions. This is accounted for by a closed-form two-temperature Wannier formulation \cite{mason1958mobility}, in which the drift speed \(v_d\) and the effective ion temperature \(T_{\rm eff}\) are determined self-consistently:
+\begin{equation}
+v_d^2=\frac{\sqrt{1+4\mathcal{A}\mathcal{B}}-1}{2\mathcal{B}},\qquad
+\mathcal{A}=\left(\mu_i^0|\mathbf{E}|\right)^2,\qquad
+\mathcal{B}=\frac{M}{3k_BT_h},
+\label{eq:wannier}
+\end{equation}
+\begin{equation}
+T_{\rm eff}=T_h+\frac{Mv_d^2}{3k_B},\qquad
+\mu_{in}=\mu_i^0\sqrt{\frac{T_h}{T_{\rm eff}}} .
+\label{eq:mu-in}
+\end{equation}
+Equation~(\ref{eq:wannier}) is the positive root of the quadratic in \(v_d^2\) obtained by substituting \(\mu_{in}(T_{\rm eff})\) into \(v_d=\mu_{in}|\mathbf{E}|\). In the low-field limit, \(v_d\to\mu_i^0|\mathbf{E}|\), \(T_{\rm eff}\to T_h\), and \(\mu_{in}\to\mu_i^0\). The charge-exchange data are available in this mobility form. They enter the model only through the ion--neutral momentum-transfer frequency
+\begin{equation}
+\bar\nu^M_{in}=\frac{e}{M\mu_{in}} .
+\label{eq:nu-in}
+\end{equation}
+
+The ion--electron frequency follows from momentum conservation, equation~(\ref{eq:newton3}),
+\begin{equation}
+\bar\nu^M_{ie}=\frac{m_en_e}{Mn_i}\,\bar\nu^M_{ei},
+\label{eq:nu-ie}
+\end{equation}
+with \(\bar\nu^M_{ei}=0.5\,\bar\nu^E_{ei}\) as in equation~(\ref{eq:coulomb}). Equations~(\ref{eq:nu-in}) and (\ref{eq:nu-ie}) give the effective ion frequency \(\tilde\nu^M_i=(n_h/n_n)\bar\nu^M_{in}+\bar\nu^M_{ie}\) of equation~(\ref{eq:nu-i-eff}), which sets every ion transport term in equation~(\ref{eq:flux-i}). In the weakly ionized bulk, \(\bar\nu^M_{ie}\ll\bar\nu^M_{in}\) and \(n_i\ll n_n\), so \(\tilde\nu^M_i\to\bar\nu^M_{in}\). As \(n_n\to0\) (near-total ionization), \(\tilde\nu^M_i\) stays finite, because \(\bar\nu^M_{in}\propto n_n\), and is bounded below by the Coulomb-collision value \(\bar\nu^M_{ie}\). The ion--neutral frictional heating~(\ref{eq:Qin}) uses the bare charge-exchange frequency \(\bar\nu^M_{in}\) of equation~(\ref{eq:nu-in}), not \(\tilde\nu^M_i\), which also contains the counter-flow and electron-friction contributions.
+
+\subsection{Heavy-particle heat capacity and thermal conductivity}
+
+The heat capacity per heavy particle in equation~(\ref{eq:henergy}) contains only the translational degrees of freedom, \(c_v=\tfrac32k_B\). The gas is compressible, and the work of expansion appears explicitly as \(-n_hk_BT_h\nabla\cdot\mathbf{u}\). The electron energy is carried separately, and the ionization energy enters as a source in the electron energy equation. The heavy-particle thermal conductivity is the sum of an atom and an ion channel, each given by a first-approximation Chapman--Enskog expression:
+\begin{equation}
+\kappa_h=\kappa_a+\kappa_i,
+\label{eq:kappa-h}
+\end{equation}
+\begin{equation}
+\kappa_a=\frac{75k_B}{64}\sqrt{\frac{\pi k_BT_h}{M}}\,\frac{n_n}{n_n\overline{Q}_{aa}+n_i\overline{Q}_{ia}},
+\qquad
+\kappa_i=\frac{75k_B}{64}\sqrt{\frac{\pi k_BT_h}{M}}\,\frac{n_i}{n_n\overline{Q}_{ia}+n_i\overline{Q}_{ii}},
+\label{eq:kappa-ai}
+\end{equation}
+with the viscosity-type \((2,2)\) cross sections
+\begin{equation}
+\overline{Q}^{(2,2)}_{aa}=1.12\times10^{-18}\,T_h^{-0.2},\qquad
+\overline{Q}^{(2,2)}_{ia}=3.6\times10^{-18}\,T_h^{-0.3},\qquad
+\overline{Q}^{(2,2)}_{ii}=\frac{e^4\ln\Lambda}{36\pi\varepsilon_0^2(k_BT_h)^2},
+\label{eq:Q22}
+\end{equation}
+in \(\mathrm{m^2}\) with \(T_h\) in K. Here \(\ln\Lambda\) is the Coulomb logarithm of equation~(\ref{eq:coulomb-log}). The expression is regular in both limits. As \(n_n\to0\), \(\kappa_i\) tends to the pure ion--ion Coulomb value, and as \(n_i\to0\), \(\kappa_a\) tends to the atom--atom value of the neutral gas.
+
+\subsection{Reaction rate coefficients}
+
+The ionization and three-body recombination rate coefficients \(k_{\rm ion}(T_e)\) and \(k_{\rm rec}(T_e)\) in equation~(\ref{eq:source}) are effective rate coefficients from Hoffert and Lien \cite{hoffert1967quasi}. They are tabulated in \(T_e\) and interpolated log-linearly. The energy charged to the electrons per net ionization event is \(\varepsilon_{\rm ion}=15.76\)~eV.
