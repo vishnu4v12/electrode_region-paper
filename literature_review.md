@@ -278,7 +278,7 @@ with $U_{\rm qs}$ and $q_{w,\rm qs}$ tabulated from steady PlasmeX runs (N4) and
 
 ## Sources
 
-- [Almeida, Benilov & Naidis 2008 — Unified modelling of near-cathode plasma layers](https://nano.pppl.gov/Publications/pubs/Almeida_UnifiedModeling.pdf) (local copy: `validation_fig/Almeida_2008_...pdf`)
+- [Almeida, Benilov & Naidis 2008 — Unified modelling of near-cathode plasma layers](https://nano.pppl.gov/Publications/pubs/Almeida_UnifiedModeling.pdf) (local copy: `References/Almeida_2008_...pdf`)
 - [Semenov, Krivtsun & Reisgen 2016 — Numerical study of the anode boundary layer in atmospheric pressure arc discharges](https://iopscience.iop.org/article/10.1088/0022-3727/49/10/105204)
 - [Benilov et al. 2016 — Account of near-cathode sheath in numerical models of high-pressure arc discharges](https://iopscience.iop.org/article/10.1088/0022-3727/49/21/215201)
 - [Baeva, Benilov, Almeida & Uhrlandt 2016 — Novel non-equilibrium modelling of a DC electric arc in argon](https://iopscience.iop.org/article/10.1088/0022-3727/49/24/245205)

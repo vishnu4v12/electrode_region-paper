@@ -1,0 +1,14 @@
+# LaTeX build intermediates
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+# Python
+__pycache__/
+# Windows download metadata
+*:Zone.Identifier

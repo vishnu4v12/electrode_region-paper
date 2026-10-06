@@ -120,6 +120,16 @@ N.~A. Almeida, M.~S. Benilov, and G.~V. Naidis.
 \newblock Unified modelling of near-cathode plasma layers in high-pressure arc discharges.
 \newblock {\em Journal of Physics D: Applied Physics}, 41:245201, 2008.
 
+\bibitem{sun2022unified}
+Li~Sun, Xian-Pin Sun, Bi-Ying Guo, Wen Zhou, and Zeng-Yao Li.
+\newblock Unified modeling and kinetic analysis of the near-cathode region and hot cathode in atmospheric-pressure arc discharges.
+\newblock {\em Physics of Fluids}, 34(6), 2022.
+
+\bibitem{semenov2016numerical}
+IL~Semenov, IV~Krivtsun, and Uwe Reisgen.
+\newblock Numerical study of the anode boundary layer in atmospheric pressure arc discharges.
+\newblock {\em Journal of Physics D: Applied Physics}, 49(10):105204, 2016.
+
 \bibitem{almeida2009investigating}
 NA~Almeida, MS~Benilov, U~Hechtfischer, and GV~Naidis.
 \newblock Investigating near-anode plasma layers of very high-pressure arc discharges.
@@ -151,17 +161,6 @@ M~Mitchner and CH~Kruger~Jr.
 \newblock Partially ionized gases john wiley \& sons.
 \newblock {\em New York}, 1973.
 
-\bibitem{lxcat}
-{LXCat}.
-\newblock Lxcat: Electron scattering cross section database.
-\newblock \url{https://lxcat.net/}.
-\newblock Accessed September 6, 2026.
-
-\bibitem{benilov1998ionization}
-MS~Benilov and GV~Naidis.
-\newblock Ionization layer at the edge of a fully ionized plasma.
-\newblock {\em Physical Review E}, 57(2):2230, 1998.
-
 \bibitem{almeida2000simulation}
 RMS Almeida, MS~Benilov, and GV~Naidis.
 \newblock Simulation of the layer of non-equilibrium ionization in a high-pressure argon plasma with multiply-charged ions.
@@ -176,6 +175,17 @@ Martin~I Hoffert and Hwachii Lien.
 Viktor~Mikha{\u\i}lovich Zhdanov.
 \newblock Transport processes in multicomponent plasma.
 \newblock {\em Plasma Physics and Controlled Fusion}, 44(10):2283--2283, 2002.
+
+\bibitem{lxcat}
+{LXCat}.
+\newblock Lxcat: Electron scattering cross section database.
+\newblock \url{https://lxcat.net/}.
+\newblock Accessed September 6, 2026.
+
+\bibitem{benilov1998ionization}
+MS~Benilov and GV~Naidis.
+\newblock Ionization layer at the edge of a fully ionized plasma.
+\newblock {\em Physical Review E}, 57(2):2230, 1998.
 
 \bibitem{mason1958mobility}
 Edward~A Mason and Homer~W Schamp~Jr.
