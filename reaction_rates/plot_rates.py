@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """
-Compare the three argon ionization/recombination rate models used for electrode regions:
+Compare the argon ionization/recombination rate models used for electrode regions:
 
   HL   Hoffert & Lien (1967)      PlasmeX: exe/hoff_f.dat, exe/hoff_r.dat (k_i, k_r vs T_e[eV])
   BN   Benilov & Naidis (1998)    Almeida et al. (2008) App. A, Semenov et al. (2016);
                                   implemented in PlasmeX exe/almeida_arc_bc.py (rates, saha)
   HH   Hinnov & Hirschberg (1962) Mitchner & Kruger Ch. IX eqs (4.13), (4.20), (6.8);
                                   used by Dinulescu & Pfender (1980) eq (8)
+  LT   Lowke & Tanaka (2006)      eq (1): div(D_a grad n_e) + gamma (G n_e n_0 - n_e^3) = 0, T_e = T_h = T,
+                                  G = Saha function at T; gamma "of Hoffert and Lien (1967) at low
+                                  temperatures, proportional to 1/T^4.5" (Sec. 6, after Sansonnens et
+                                  al. 2000). The prefactor is not given there; 1.09e-20 T[K]^-4.5 m^6/s
+                                  is assumed, i.e. the Hinnov-Hirschberg value written in kelvin.
 
 All three are written in the common form  n_dot = k_i n_e n_a - k_r n_e^2 n_i.
 For HH:  MK (4.13)  n_dot = alpha [n_1 (n_e^2/n_1)* - n_e^2],  alpha = 5.6e-27 n_e (kT_e)^-4.5 cm^3/s,
@@ -59,6 +64,13 @@ def hh(Te):
     return kr * A.saha(Te), kr
 
 
+def lt(T):
+    """Lowke & Tanaka (2006) eq (1): k_r = gamma = 1.09e-20 T^-4.5 m^6/s (prefactor assumed, see
+    module docstring), k_i = gamma G with G the Saha function at the single temperature T."""
+    kr = 1.09e-20 * T ** -4.5
+    return kr * A.saha(T), kr
+
+
 # ---------------------------------------------------------------- LTE relaxation length
 def lte_lengths(T, model):
     """Ionization-recombination relaxation at the LTE (Saha, 1 atm, T_e = T_h = T) composition.
@@ -93,11 +105,13 @@ def report():
     print(f"HL k_i fit: eps* = {e:.3f} eV, C = {C:.3e} m^2/eV, rms log residual {best[0]:.3e}")
 
     print("\nrate coefficients (beta = 1 for BN)")
-    print("   T[K]   T_e[eV]    k_i HL     k_i BN     k_i HH    | k_r HL     k_r BN     k_r HH   | BN/HL  HH/HL")
+    print("   T[K]   T_e[eV]    k_i HL     k_i BN     k_i HH     k_i LT    | k_r HL     k_r BN     k_r HH"
+          "     k_r LT   | BN/HL  HH/HL  LT/HH")
     for T in (6000, 8000, 10000, 12000, 15000, 20000, 25000):
-        a, b, c = hl(T), bn(T), hh(T)
-        print(f"  {T:6d}  {T / EV_K:6.3f}   {a[0]:.2e}  {b[0]:.2e}  {c[0]:.2e} | "
-              f"{a[1]:.2e}  {b[1]:.2e}  {c[1]:.2e} | {b[0] / a[0]:5.2f}  {c[0] / a[0]:7.1f}")
+        a, b, c, e = hl(T), bn(T), hh(T), lt(T)
+        print(f"  {T:6d}  {T / EV_K:6.3f}   {a[0]:.2e}  {b[0]:.2e}  {c[0]:.2e}  {e[0]:.2e} | "
+              f"{a[1]:.2e}  {b[1]:.2e}  {c[1]:.2e}  {e[1]:.2e} | {b[0] / a[0]:5.2f}  {c[0] / a[0]:7.1f}"
+              f"  {e[1] / c[1]:.4f}")
 
     print("\nBN radiative-escape factor: k_i(n_e)/k_i(beta=1)")
     for T in (8000, 10000, 12000):
@@ -113,7 +127,7 @@ def report():
 
     print("\nLTE relaxation at 1 atm: tau [s], lambda_r [mm]")
     T = np.array([6000., 8000., 10000., 12000., 15000.])
-    rows = {m.__name__: lte_lengths(T, m) for m in (hl, bn, hh)}
+    rows = {m.__name__: lte_lengths(T, m) for m in (hl, bn, hh, lt)}
     print("   T[K]   n_e,Saha    " + "   ".join(f"tau {k:2s}     lam {k:2s} " for k in rows))
     for i, t in enumerate(T):
         print(f"  {t:6.0f}  {rows['hl'][2][i]:.2e}  " +
@@ -121,11 +135,14 @@ def report():
 
 
 # ---------------------------------------------------------------- figure
-# categorical slots 1-3 of the reference palette, fixed per model (identity follows the model)
-COL = {"hl": "#2a78d6", "bn": "#eb6834", "hh": "#1baf7a"}
+# categorical slots 1-4 of the reference palette, fixed per model (identity follows the model)
+COL = {"hl": "#2a78d6", "bn": "#eb6834", "hh": "#1baf7a", "lt": "#eda100"}
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e4e3df"
 LAB = {"hl": "Hoffert & Lien (PlasmeX)", "bn": "Benilov & Naidis (Almeida)",
-       "hh": "Hinnov & Hirschberg (MK / Pfender)"}
+       "hh": "Hinnov & Hirschberg (MK / Pfender)", "lt": r"Lowke & Tanaka, $\gamma\propto T^{-4.5}$"}
+MODELS = (("hl", hl), ("bn", bn), ("hh", hh), ("lt", lt))
+# LT sits on HH (same coefficient, see lt()); dashed so the HH line shows through
+LS = {"lt": (0, (4, 3))}
 
 
 def style(ax):
@@ -150,18 +167,13 @@ def ev_axis(ax):
 
 def plot():
     T = np.linspace(5000, 30000, 600)
-    ne_low = 1e20
     fig, axs = plt.subplots(2, 2, figsize=(10, 7.8), constrained_layout=True)
     (a, b), (c, d) = axs
 
     for ax, j, ylab, title in ((a, 0, r"$k_i$ (m$^3$ s$^{-1}$)", "(a) Ionization"),
                                (b, 1, r"$k_r$ (m$^6$ s$^{-1}$)", "(b) Three-body recombination")):
-        ax.semilogy(T, hl(T)[j], color=COL["hl"], lw=2, label=LAB["hl"])
-        ax.semilogy(T, bn(T)[j], color=COL["bn"], lw=2, label=LAB["bn"] + r", $n_e\gg n_e^{(0)}$")
-        if j == 0:
-            ax.semilogy(T, bn(T, ne_low)[0], color=COL["bn"], lw=2, ls="--",
-                        label=LAB["bn"] + r", $n_e=10^{20}$ m$^{-3}$")
-        ax.semilogy(T, hh(T)[j], color=COL["hh"], lw=2, label=LAB["hh"])
+        for k, m in MODELS:
+            ax.semilogy(T, m(T)[j], color=COL[k], lw=2, ls=LS.get(k, "-"), label=LAB[k])
         ax.set_xlim(5000, 30000)
         ax.set_xlabel(r"$T_e$ (K)")
         ax.set_ylabel(ylab)
@@ -176,17 +188,16 @@ def plot():
     r_bn = bn(T)[0] / hl(T)[0]
     r_hh = hh(T)[0] / hl(T)[0]
     c.semilogy(T, r_bn, color=COL["bn"], lw=2)
-    c.semilogy(T, bn(T, ne_low)[0] / hl(T)[0], color=COL["bn"], lw=2, ls="--")
     c.semilogy(T, r_hh, color=COL["hh"], lw=2)
+    c.semilogy(T, lt(T)[0] / hl(T)[0], color=COL["lt"], lw=2, ls=LS["lt"])
     c.axhline(1.0, color=COL["hl"], lw=2)
     i = np.searchsorted(T, 16000)
     c.text(T[i], 0.85, "Hoffert & Lien", color=INK2, fontsize=8, ha="center", va="top")
-    c.text(T[i], r_bn[i] * 1.15, r"BN, $n_e\gg n_e^{(0)}$", color=INK2, fontsize=8, ha="center", va="bottom")
-    c.text(T[i], bn(T[i], ne_low)[0] / hl(T[i])[0] * 0.8, r"BN, $n_e=10^{20}$ m$^{-3}$", color=INK2,
-           fontsize=8, ha="center", va="top")
-    c.text(T[i], r_hh[i] * 1.3, "Hinnov & Hirschberg", color=INK2, fontsize=8, ha="center", va="bottom")
+    c.text(T[i], r_bn[i] * 1.15, "Benilov & Naidis", color=INK2, fontsize=8, ha="center", va="bottom")
+    c.text(T[i], r_hh[i] * 1.3, "Hinnov & Hirschberg = Lowke & Tanaka", color=INK2, fontsize=8,
+           ha="center", va="bottom")
     c.set_xlim(5000, 30000)
-    c.set_ylim(0.05, 3e3)
+    c.set_ylim(0.5, 3e3)
     c.set_xlabel(r"$T_e$ (K)")
     c.set_ylabel(r"$k/k_{\rm HL}$  (same for $k_i$ and $k_r$)")
     c.set_title("(c) Ratio to the PlasmeX (Hoffert & Lien) rates", loc="left", fontsize=10, color=INK)
@@ -195,8 +206,8 @@ def plot():
 
     # (d) relaxation length at the LTE composition
     TT = np.linspace(6000, 20000, 300)
-    for k, m in (("hl", hl), ("bn", bn), ("hh", hh)):
-        d.semilogy(TT, lte_lengths(TT, m)[1] * 1e3, color=COL[k], lw=2, label=LAB[k])
+    for k, m in MODELS:
+        d.semilogy(TT, lte_lengths(TT, m)[1] * 1e3, color=COL[k], lw=2, ls=LS.get(k, "-"), label=LAB[k])
     d.axhspan(0.1, 1.0, color="#ececea", zorder=0)
     d.text(15500, 0.55, "anode boundary layer, 0.1-1 mm (DP 1980)", color=INK2, fontsize=8,
            ha="center", va="center")

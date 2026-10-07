@@ -156,36 +156,36 @@ P.~Liang and J.~P. Trelles.
 \newblock {\em Plasma Sources Science and Technology}, 2020.
 \newblock NOTE: extracted PDF only shows manuscript ID PSST-103185.R2 (author-submitted/accepted version); confirm final volume/page/year before submission.
 
-\bibitem{mitchner1973partially}
-M~Mitchner and CH~Kruger~Jr.
-\newblock Partially ionized gases john wiley \& sons.
-\newblock {\em New York}, 1973.
-
-\bibitem{almeida2000simulation}
-RMS Almeida, MS~Benilov, and GV~Naidis.
-\newblock Simulation of the layer of non-equilibrium ionization in a high-pressure argon plasma with multiply-charged ions.
-\newblock {\em Journal of Physics D: Applied Physics}, 33(8):960--967, 2000.
+\bibitem{benilov1998ionization}
+MS~Benilov and GV~Naidis.
+\newblock Ionization layer at the edge of a fully ionized plasma.
+\newblock {\em Physical Review E}, 57(2):2230, 1998.
 
 \bibitem{hoffert1967quasi}
 Martin~I Hoffert and Hwachii Lien.
 \newblock Quasi-one-dimensional, nonequilibrium gas dynamics of partially ionized two-temperature argon.
 \newblock {\em The physics of Fluids}, 10(8):1769--1777, 1967.
 
+\bibitem{almeida2000simulation}
+RMS Almeida, MS~Benilov, and GV~Naidis.
+\newblock Simulation of the layer of non-equilibrium ionization in a high-pressure argon plasma with multiply-charged ions.
+\newblock {\em Journal of Physics D: Applied Physics}, 33(8):960--967, 2000.
+
 \bibitem{zhdanov2002transport}
 Viktor~Mikha{\u\i}lovich Zhdanov.
 \newblock Transport processes in multicomponent plasma.
 \newblock {\em Plasma Physics and Controlled Fusion}, 44(10):2283--2283, 2002.
+
+\bibitem{mitchner1973partially}
+M~Mitchner and CH~Kruger~Jr.
+\newblock Partially ionized gases john wiley \& sons.
+\newblock {\em New York}, 1973.
 
 \bibitem{lxcat}
 {LXCat}.
 \newblock Lxcat: Electron scattering cross section database.
 \newblock \url{https://lxcat.net/}.
 \newblock Accessed September 6, 2026.
-
-\bibitem{benilov1998ionization}
-MS~Benilov and GV~Naidis.
-\newblock Ionization layer at the edge of a fully ionized plasma.
-\newblock {\em Physical Review E}, 57(2):2230, 1998.
 
 \bibitem{mason1958mobility}
 Edward~A Mason and Homer~W Schamp~Jr.

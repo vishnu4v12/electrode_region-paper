@@ -4,22 +4,44 @@
 \subsection{Governing equations}
 \label{sec:model-governing}
 
-In the electrode region, the plasma is in contact with a relatively cold, absorbing electrode surface. This interaction produces strong gradients in the plasma properties, and the plasma departs progressively from LTE as the electrode is approached. To this end we however assume that the every species still follows maxwellian distribution see apeendix. To estimate the length scales over which these departures develop, we consider the LTE plasma adjacent to the electrode region at temperatures between \(T=10{,}000~\mathrm{K}\) and \(T=25{,}000~\mathrm{K}\), which are typical of the anode and cathode regions, respectively, of a high-intensity atmospheric-pressure arc discharge \cite{Lowke2006,Hsu1983,LiangTrelles}.
 
-In the bulk plasma the plasma density n is governed by ionization and recombination reactions, the characteristic time scale for the reaction can be obtained by linearizing $\dot n_e=k_in_en_n-k_rn_e^3$ about equilibrium at fixed $p$ and $T$ ($\delta n_n=-2\,\delta n_e$) which gives $ \tau_{rxn}=\frac{1}{2k_rn_e^2+2k_in_e}$. A characterictic lenght scale for the reaction is then \(L_{rxn}=\sqrt{D_a\tau_{rxn}}\), where \(D_a\) is the ambipolar diffusion coefficient. This length scale implies that the plasma out of chemical equilibrium needs a distance of order \(L_{rxn}\) to relax back to equilibrium. Similarly the lenght scale for the energy relaxation between electrons and heavy species can be estimated as $\lambda_T = 1/(\sqrt{2m_e/M} (n_i\overline{Q}_{ei}+n_n\overline{Q}_{en}))$ where \(n_e\) and \(n_n\) are the electron and neutral number densities, and \(\overline{Q}_{ee}\) and \(\overline{Q}_{en}\) are the averaged momentum-transfer cross sections for electron--electron and electron--neutral collisions. Electron--electron collisions are Coulomb collisions, for which the averaged momentum-transfer cross section is \(\overline{Q}_{ee}=e^4\ln\Lambda/[12\sqrt{2}\,\pi\varepsilon_0^2(k_BT_e)^2]\) \cite{mitchner1973partially}. Here, \(k_B\) is the Boltzmann constant and \(\ln\Lambda\) is the Coulomb logarithm, \(\ln\Lambda=\ln\!\left(1.24\times10^7 T_e^{3/2}n_e^{-1/2}\right)\), with \(T_e\) in K and \(n_e\) in \(\mathrm{m}^{-3}\). The energy exchange sclae for ions-neutrals is estimated as \(\lambda_{T_h}=1/(n_i+n_n)\overline{Q}_{in}\) 
- At the smallest scale, the Debye length calculated from the LTE number densities is of order \(\lambda_{De}\sim10^{-8}~\mathrm{m}\). It sets the extent over which charge separation and space-charge effects are important. We also calculate the electron mean free path \(\lambda_e=1/(n_n\overline{Q}_{en}+n_i\overline{Q}_{ei})\).
+In the electrode region, the plasma is in contact with a relatively cold, absorbing electrode surface. This interaction produces strong gradients in the plasma properties, and the plasma departs progressively from LTE as the electrode is approached. We estimate the length scales over which these departures develop by considering the LTE plasma adjacent to the electrode region at temperatures between \(T=12{,}000~\mathrm{K}\) and \(T=22{,}000~\mathrm{K}\), which are typical of the anode and cathode regions, respectively, of a high-intensity atmospheric-pressure arc discharge \cite{Lowke2006,Hsu1983,LiangTrelles}.
 
 
+In the bulk plasma, the electron density \(n_e\) is governed by ionization and recombination reactions. The characteristic time scale of these reactions can be obtained by linearizing \(\dot n_e=k_{\rm ion}n_en_n-k_{\rm rec}n_e^3\) (with \(n_i=n_e\)) about equilibrium at fixed \(p\) and \(T\) (so that \(\delta n_n=-2\,\delta n_e\)), which gives \(\tau_{rxn}=1/(2k_{\rm rec}n_e^2+2k_{\rm ion}n_e)\). A characteristic length scale for the reactions is then \(\lambda_{rxn}=\sqrt{D_a\tau_{rxn}}\), where \(D_a\) is the ambipolar diffusion coefficient. This length scale implies that a plasma out of chemical equilibrium needs a distance of order \(\lambda_{rxn}\) to relax back to equilibrium. Similarly, since an electron loses only a fraction \(2m_e/M\) of its energy in an elastic collision with a heavy particle, the length scale for the energy relaxation between electrons and heavy species can be estimated as \(\lambda_T=1/[\sqrt{2m_e/M}\,(n_i\overline{Q}_{ei}+n_n\overline{Q}_{en})]\), where \(n_i\) and \(n_n\) are the ion and neutral number densities, and \(\overline{Q}_{ei}\) and \(\overline{Q}_{en}\) are the averaged momentum-transfer cross sections for electron--ion and electron--neutral collisions. \(\overline{Q}_{en}\) is the Maxwellian average of the argon momentum-transfer cross section used in Appendix~\ref{app:transport}. Electron--ion collisions are Coulomb collisions, for which the averaged momentum-transfer cross section is \(\overline{Q}_{ei}=e^4\ln\Lambda/[32\pi\varepsilon_0^2(k_BT_e)^2]\) \cite{Almeida2008}. Here, \(k_B\) is the Boltzmann constant and \(\ln\Lambda\) is the Coulomb logarithm, \(\ln\Lambda=\ln\!\left(1.24\times10^7 T_e^{3/2}n_e^{-1/2}\right)\), with \(T_e\) in K and \(n_e\) in \(\mathrm{m}^{-3}\). Ions and atoms have equal masses and exchange energy efficiently the length scale for the equilibration of the heavy-species temperature is \(\lambda_{T_h}=1/[(n_i+n_n)\overline{Q}_{in}]\). Here \(\overline{Q}_{in}=2[7\times10^{-10}-0.6\times10^{-10}\ln(2k_BT_h/e)]^2~\mathrm{m}^2\) is the ion--neutral momentum-transfer cross section \cite{benilov1998ionization}.
 
-% A scale for ion-neutral collisions can be estimated as \(\lambda_i=1/((n_n+n_i)\overline{Q}_{in})\), where \(\overline{Q}_{in}\) is the ion--neutral momentum-transfer cross section. For argon, we use the fit \(\overline{Q}_{in}=2[7\times10^{-10}-0.6\times10^{-10}\ln(2k_BT_h/e)]^2~\mathrm{m}^2\) \cite{benilov1998ionization}, where \(T_h\) is the heavy-particle temperature. This expression gives an ion mean free path of order \(\lambda_i\sim10^{-7}~\mathrm{m}\).
-
-The resulting hierarchy of length scales in the near-electrode region is \(\lambda_{De}\ll\lambda_i\ll\lambda_e\ll\lambda_d\sim\lambda_T\). These estimates indicate that significant departures from LTE develop over a region of thickness of order \(10^{-4}~\mathrm{m}\), in agreement with other modelling results and analyses \cite{Almeida2008,DinulescuPfender1980,benilov1995model,hsu1983analysis}. Consistent with this estimate, Lowke and Tanaka \cite{Lowke2006} showed that excluding a near-electrode region of this thickness is sufficient for the remaining plasma to be modelled as being in LTE. This separation of scales both justifies and requires a treatment of the near-electrode region that is separate from that of the bulk plasma.
-
+At the smallest scale, the Debye length calculated from the LTE number densities, \(\lambda_{De}=\sqrt{\varepsilon_0k_BT_e/(n_ee^2)}\), is of order \(10^{-8}~\mathrm{m}\). It sets the extent over which charge separation and space-charge effects are important. These scales are reported in Table~\ref{tab:scales}, together with electron mean free path \(\lambda_e=1/(n_n\overline{Q}_{en}+n_i\overline{Q}_{ei})\) and ion mean free path \(\lambda_i=1/(n_n\overline{Q}_{in}+n_i\overline{Q}_{ii})\), where \(\overline{Q}_{ii}\).
 
 
-We therefore model the electrode region as a one-dimensional domain of length \(2\times10^{-4}~\mathrm{m}\), with the electrode surface at one end and the bulk plasma at the other. Externally imposed bulk flows, such as the cathode jet, are not represented. The heavy gas is nevertheless not assumed to be at rest, since it can move during the transient stages of the discharge. The plasma is taken to consist of three species: electrons (e), singly charged argon ions (i), and argon atoms (n). Multiply charged ions are neglected in the anode region because of the prevailing low temperatures which are not sufficient for their ionization, in cathode region however they are not negligible but rather have a negligible effect, as justified in \cite{almeida2000simulation}. Ions and atoms exchange momentum and energy rapidly through resonant charge-exchange collisions, whose mean free path \(\lambda_i\) is small compared with the length scale of the temperature variation. They are therefore treated as a heavy-particle mixture with a common temperature, \(T_h=T_i=T_n\). The electrons have a separate temperature \(T_e\); the conditions under which a single electron temperature is adequate are examined in Section~\ref{sec:model-scaling}.
+\begin{table}
+\caption{Characteristic scales of LTE argon at atmospheric pressure (\(T_e=T_h=T\), Saha equilibrium), ordered from left to right by increasing size (\(\lambda_i\approx\lambda_e\), and \(\lambda_{rxn}\approx\lambda_T\) at \(12\,000\) and \(14\,000\)~K). The reaction scales use the rate coefficients of Hoffert and Lien \cite{hoffert1967quasi}.}
+\label{tab:scales}
+\centering
+\small
+\begin{tabular}{ccccccc|c}
+\hline
+\(T\) & \(\lambda_{De}\) & \(\lambda_i\) & \(\lambda_e\) & \(\lambda_{T_h}\) & \(\lambda_{rxn}\) & \(\lambda_T\) & \(\tau_{rxn}\) \\
+(K) & (m) & (m) & (m) & (m) & (m) & (m) & (s) \\
+\hline
+12\,000 & \(3.0\times10^{-8}\) & \(8.1\times10^{-7}\) & \(1.2\times10^{-6}\) & \(2.1\times10^{-6}\) & \(2.3\times10^{-4}\) & \(2.3\times10^{-4}\) & \(1.2\times10^{-5}\) \\
+14\,000 & \(2.1\times10^{-8}\) & \(6.6\times10^{-7}\) & \(7.5\times10^{-7}\) & \(3.2\times10^{-6}\) & \(1.5\times10^{-4}\) & \(1.4\times10^{-4}\) & \(3.0\times10^{-6}\) \\
+18\,000 & \(2.1\times10^{-8}\) & \(8.8\times10^{-7}\) & \(8.9\times10^{-7}\) & \(5.9\times10^{-6}\) & \(8.8\times10^{-5}\) & \(1.7\times10^{-4}\) & \(5.1\times10^{-7}\) \\
+20\,000 & \(2.3\times10^{-8}\) & \(1.1\times10^{-6}\) & \(1.1\times10^{-6}\) & \(6.9\times10^{-6}\) & \(6.9\times10^{-5}\) & \(2.2\times10^{-4}\) & \(2.5\times10^{-7}\) \\
+22\,000 & \(2.5\times10^{-8}\) & \(1.4\times10^{-6}\) & \(1.4\times10^{-6}\) & \(7.8\times10^{-6}\) & \(5.6\times10^{-5}\) & \(2.8\times10^{-4}\) & \(1.4\times10^{-7}\) \\
+\hline
+\end{tabular}
+\end{table}
 
-The unknowns are thus the species number densities, the electron and heavy-particle temperatures, the heavy-gas velocity, and the electric potential. The partial pressures are \(p_e=n_ek_BT_e\), \(p_i=n_ik_BT_h\), and \(p_n=n_nk_BT_h\), and \(p=p_e+p_i+p_n\) is the total pressure. The heavy-particle number and mass densities are \(n_h=n_i+n_n\) and \(\rho=Mn_h\), where \(M\) is the argon mass. The mean velocity of species \(s\) is \(\mathbf{u}_s\), and \(\boldsymbol{\Gamma}_s=n_s\mathbf{u}_s\) is its particle flux. The heavy-gas velocity \(\mathbf{u}\) is the mass-averaged velocity of the heavy particles, \(\rho\mathbf{u}=M(n_i\mathbf{u}_i+n_n\mathbf{u}_n)\); the electron mass is neglected in \(\rho\). All transport coefficients introduced below are functions of the local state \((n_e,n_i,n_n,T_e,T_h,|\mathbf{E}|)\) and are given in Appendix~\ref{app:transport}.
+
+
+The resulting hierarchy of length scales is \(\lambda_{De}\ll\lambda_i\sim\lambda_e\sim\lambda_{T_h}<\lambda_{\mathrm{rxn}}\sim\lambda_T\). These scale estimates indicate that a continuum description remains valid to a first approximation in the quasi-neutral plasma and is reasonably applicable within the sheath. Furthermore, the gas temperature near the anode varies over a fluid boundary-layer thickness of order \(\sim\mathrm{mm}\), which is much larger than \(\lambda_{T_h}\). Thus, the heavy species, consisting of ions and neutrals, can reasonably be described using a single temperature. These scales also
+indicate that the effect of electrodes is felt over a region of thickness of order \(10^{-4}~\mathrm{m}\) by plasma, in agreement with other modelling results and analyses \cite{Almeida2008,DinulescuPfender1980,benilov1995model,hsu1983analysis}. Consistent with this estimate, Lowke and Tanaka \cite{Lowke2006} showed that excluding a near-electrode region of this thickness is sufficient for the remaining plasma to be modelled as being in LTE. This separation of scales necessitates treating the near-electrode region separately from the bulk plasma.
+
+
+We therefore model the electrode region as a one-dimensional domain of length \(5\times10^{-4}~\mathrm{m}\), with the electrode surface at one end and the bulk plasma at the other. Externally imposed bulk flows, such as the cathode jet, are not represented. The heavy gas is nevertheless not assumed to be at rest, since it can move during the transient stages of the discharge. The plasma is taken to consist of three species: electrons (e), singly charged argon ions (i), and argon atoms (n). Multiply charged ions are neglected in the anode region because of the prevailing low temperatures which are not sufficient for their ionization, in cathode region however they are not negligible but rather have a negligible effect, as justified in \cite{almeida2000simulation}. Each species is assumed to follow a Maxwellian velocity distribution (see Appendix~\ref{app:transport}).
+
+
+The solutions are soughted for the species number densities, the electron and heavy-particle temperatures, and the electric field. The folloowing governing equations are thus solved in the electrode region.
 
 The number densities of the three species obey
 \begin{equation}
@@ -30,14 +52,14 @@ The number densities of the three species obey
 \frac{\partial n_n}{\partial t}+\nabla\cdot\boldsymbol{\Gamma}_n=-S,
 \label{eq:continuity}
 \end{equation}
-with the net ionization rate
-\begin{equation}
-S=k_{\rm ion}(T_e)\,n_en_n-k_{\rm rec}(T_e)\,n_e^2n_i .
-\label{eq:source}
-\end{equation}
-Here \(k_{\rm ion}\) and \(k_{\rm rec}\) are the rate coefficients for electron-impact ionization and for its inverse, three-body recombination with an electron as the third body, taken from Hoffert and Lien \cite{hoffert1967quasi}. These are the only reactions retained. Each ionization event creates one electron and one ion and removes one atom, so the source is the same for the electrons and ions and has the opposite sign for the atoms.
 
-The species fluxes follow from the species momentum equations. For species \(s\), \(m_sn_s\,D_s\mathbf{u}_s/Dt=\mathbf{F}_s+\mathbf{R}_s\), where \(\mathbf{F}_s\) is the electric and pressure force on the species and \(\mathbf{R}_s\) is the momentum it receives in collisions with the other species. We neglect the inertia of each species relative to the heavy gas, \(D_s\mathbf{u}_s/Dt\simeq D\mathbf{u}/Dt\), so that every species shares the acceleration of the heavy gas and there is no relative acceleration between species. This acceleration is given by the heavy-gas momentum equation~(\ref{eq:heavy-momentum}), \(\rho\,D\mathbf{u}/Dt=\mathbf{F}\), where \(\mathbf{F}\) is the net force per unit volume on the plasma, defined in equation~(\ref{eq:bulk-balance}) below. The inertia of species \(s\) is therefore \(Y_s\mathbf{F}\), where \(Y_s=m_sn_s/\rho\) is its mass fraction: \(Y_i=n_i/n_h\), \(Y_n=n_n/n_h\), and \(Y_e=m_en_e/(Mn_h)\), so that \(Y_i+Y_n=1\) and \(Y_e\) is of order \(m_e/M\). The momentum equations then reduce to the local force balances \cite{zhdanov2002transport}
+
+Different authors have evaluated the net ionization rate \(S\) in different ways \cite{Almeida2008,DinulescuPfender1980,Lowke2006,LiangTrelles}. In this work we use the reaction rates as proposed by Almeida et al. \cite{Almeida2008}, where ionization is limited by the excitation of the first excited level, and accounts for the radiative escape of resonance radiation when \(n_e\lesssim10^{21}~\mathrm{m^{-3}}\).
+
+
+
+
+The momentum equation for the plasma as whole is given by \(\rho\,D\mathbf{u}/Dt = \mathbf{F} \), where \(\mathbf{F}\) is the net force on the plasma. For each species \(s\), the corresponding momentum equation is \(m_sn_s\,D_s\mathbf{u}_s/Dt=\mathbf{F}_s\), where \(\mathbf{F}_s\) is the net force on the species. We neglect the inertia of each species relative to the heavy gas, \(D_s\mathbf{u}_s/Dt\simeq D\mathbf{u}/Dt\), so that every species shares the acceleration of the heavy gas and there is no relative acceleration between species. The inertia of species \(s\) is therefore \(Y_s\mathbf{F}\), where \(Y_s=m_sn_s/\rho\) is its mass fraction. The momentum equations then reduce to the local force balances \cite{zhdanov2002transport}
 \begin{align}
 0 &= -en_e\mathbf{E}-\nabla p_e
  - m_en_e\bar\nu^M_{en}(\mathbf{u}_e-\mathbf{u}_n)
@@ -58,28 +80,29 @@ The species fluxes follow from the species momentum equations. For species \(s\)
  - Y_n\mathbf{F} .
 \label{eq:mom-n}
 \end{align}
-The frequencies \(\bar\nu^M_{en}\), \(\bar\nu^M_{ei}\), \(\bar\nu^M_{in}\), \(\bar\nu^M_{ie}\), \(\bar\nu^M_{ni}\), and \(\bar\nu^M_{ne}\) are \emph{averaged momentum-transfer collision frequencies}. The superscript \(M\) denotes the average over the velocity distribution that reproduces the mobility (equivalently, the electrical conductivity) of the species. It differs from the energy-exchange average \(\bar\nu^E\), which enters the elastic energy transfer in equations~(\ref{eq:eenergy}) and (\ref{eq:henergy}). \(C_e\) is the electron thermal-diffusion coefficient, and \(C_i\) and \(C_n\) are its reactions on the ions and atoms. Momentum conservation in each collision pair relates the frequencies,
+The frequencies \(\bar\nu^M_{en}\), \(\bar\nu^M_{ei}\), \(\bar\nu^M_{in}\), \(\bar\nu^M_{ie}\), \(\bar\nu^M_{ni}\), and \(\bar\nu^M_{ne}\) are \emph{averaged momentum-transfer collision frequencies} and are calculated as shown in Appendix~\ref{app:transport}. \(C_e\) is the electron thermal-diffusion coefficient, and \(C_i\) and \(C_n\) are its reactions on the ions and atoms. Momentum conservation in each collision pair relates the frequencies and the thermal-diffusion forces sum to zero.
 \begin{equation}
 m_en_e\bar\nu^M_{en}=Mn_n\bar\nu^M_{ne},\qquad
 m_en_e\bar\nu^M_{ei}=Mn_i\bar\nu^M_{ie},\qquad
-n_i\bar\nu^M_{in}=n_n\bar\nu^M_{ni},
+n_i\bar\nu^M_{in}=n_n\bar\nu^M_{ni},\qquad
+C_i+C_n=C_e
 \label{eq:newton3}
 \end{equation}
-and the thermal-diffusion forces sum to zero, \(C_i+C_n=C_e\): the force exerted on the electrons by the electron temperature gradient is balanced exactly by its reaction on the two heavy species.
 
-Adding equations~(\ref{eq:mom-e})--(\ref{eq:mom-n}) and using equation~(\ref{eq:newton3}) removes every collisional and thermal-diffusion term. The species' own electric and pressure forces then add up to the net force on the plasma,
+
+Adding equations~(\ref{eq:mom-e})--(\ref{eq:mom-n}) and using equation~(\ref{eq:newton3}) results in the total momentum equation.
 \begin{equation}
-\sum_s\mathbf{F}_s=\mathbf{F}\equiv e(n_i-n_e)\mathbf{E}-\nabla p .
+\rho\,D\mathbf{u}/Dt = e(n_i-n_e)\mathbf{E}-\nabla p .
 \label{eq:bulk-balance}
 \end{equation}
-Since \(Y_i+Y_n=1\) and \(Y_e\) is negligible, the \(Y_s\mathbf{F}\) terms also add up to \(\mathbf{F}\), and the sum of the three balances reduces to the identity \(0=0\). The \(Y_s\mathbf{F}\) terms are thus what make the species balances consistent with a heavy gas that accelerates under the net force~(\ref{eq:bulk-balance}). Because their sum is an identity, equations~(\ref{eq:mom-e})--(\ref{eq:mom-n}) contain only two independent relations. The third relation is the definition of the heavy-gas velocity, with the electron mass neglected,
+In practice we solve equation~(\ref{eq:mom-e}), (\ref{eq:mom-i}), and (\ref{eq:bulk-balance}) instead of (\ref{eq:mom-n}). We need a fourth equation to determine all four velocities, (\(\mathbf{u}_e\), \(\mathbf{u}_i\), \(\mathbf{u}_n\), and \(\mathbf{u}\)). This is provided by the definition of the heavy-gas velocity \(\mathbf{u}\) as the mass-weighted average of the ion and neutral velocities,
 \begin{equation}
 \mathbf{u}= \frac{n_i\mathbf{u}_i+n_n\mathbf{u}_n}{n_i+n_n} .
 \label{eq:frame}
 \end{equation}
-The electron and ion balances then determine the electron and ion velocities, and equation~(\ref{eq:frame}) determines the neutral velocity once \(\mathbf{u}\) is known from the heavy-gas momentum equation~(\ref{eq:heavy-momentum}).
 
-Solving the electron balance~(\ref{eq:mom-e}) for \(\mathbf{u}_e\), with \(\bar\nu^M_e=\bar\nu^M_{en}+\bar\nu^M_{ei}\) the total electron momentum-transfer frequency and \(\nabla p_e=k_BT_e\nabla n_e+n_ek_B\nabla T_e\), gives the electron flux
+
+The electron balance~(\ref{eq:mom-e}) is solved for electron flux, with \(\bar\nu^M_e=\bar\nu^M_{en}+\bar\nu^M_{ei}\) the total electron momentum-transfer frequency and \(\nabla p_e=k_BT_e\nabla n_e+n_ek_B\nabla T_e\), gives the electron flux
 \begin{equation}
 \boldsymbol{\Gamma}_e=-\frac{en_e}{m_e\bar\nu^M_e}\mathbf{E}
 -\frac{k_BT_e}{m_e\bar\nu^M_e}\nabla n_e
@@ -87,7 +110,7 @@ Solving the electron balance~(\ref{eq:mom-e}) for \(\mathbf{u}_e\), with \(\bar\
 +\frac{n_e}{\bar\nu^M_e}\Big(\bar\nu^M_{en}\mathbf{u}_n+\bar\nu^M_{ei}\mathbf{u}_i\Big),
 \label{eq:flux-e}
 \end{equation}
-where the negligible term \(Y_e\mathbf{F}\) has been dropped. The first two terms are drift and diffusion. Their coefficients, \(e/(m_e\bar\nu^M_e)\) and \(k_BT_e/(m_e\bar\nu^M_e)\), are the magnitudes of the electron mobility and diffusivity; because both are set by the same frequency, they satisfy the Einstein relation identically. The third term combines the temperature-gradient part of the electron pressure force with the thermal-diffusion (Soret) force \(C_e\). The last term is the collisional drag exerted on the electrons by the moving heavy species.
+where the negligible term \(Y_e\mathbf{F}\) has been dropped. The first two terms are the conventional drift and diffusion. Their coefficients, \(e/(m_e\bar\nu^M_e)\) and \(k_BT_e/(m_e\bar\nu^M_e)\), are the magnitudes of the electron mobility and diffusivity; because both are set by the same frequency, they satisfy the Einstein relation identically. The third term combines the temperature-gradient part of the electron pressure force with the thermal-diffusion (Soret) force \(C_e\). The last term is the collisional drag exerted on the electrons by the moving heavy species.
 
 The ion flux follows from the ion balance~(\ref{eq:mom-i}) in the same way. With \(\bar\nu^M_i=\bar\nu^M_{in}+\bar\nu^M_{ie}\) the total ion momentum-transfer frequency and \(\nabla p_i=k_BT_h\nabla n_i+n_ik_B\nabla T_h\),
 \begin{equation}
@@ -99,16 +122,9 @@ The ion flux follows from the ion balance~(\ref{eq:mom-i}) in the same way. With
 +\frac{n_i}{\bar\nu^M_i}\Big(\bar\nu^M_{in}\mathbf{u}_n+\bar\nu^M_{ie}\mathbf{u}_e\Big).
 \label{eq:flux-i}
 \end{equation}
-The first three terms are ion drift, diffusion, and diffusion driven by the heavy-particle temperature gradient, with mobility \(e/(M\bar\nu^M_i)\) and diffusivity \(k_BT_h/(M\bar\nu^M_i)\). In the weakly ionized bulk, \(\bar\nu^M_{ie}\ll\bar\nu^M_{in}\) and \(\bar\nu^M_i\approx\bar\nu^M_{in}\); as \(n_n\to0\), \(\bar\nu^M_{in}\propto n_n\) vanishes and \(\bar\nu^M_i\to\bar\nu^M_{ie}\). The fourth term is the reaction of the ions to the electron thermal-diffusion force. The fifth term is the ions' share, \(Y_i\mathbf{F}\), of the net force on the plasma. This share accelerates the ions together with the rest of the heavy gas and so does not drive them relative to it. Relative to the ion's own driving force, it is of order the ionization degree \(n_i/n_h\). In the fully ionized limit (\(n_n\to0\), \(Y_i\to1\)), it cancels the ion's own electric and pressure forces, leaving \(en_e\mathbf{E}+\nabla p_e\), the reaction to the force on the electrons. The ion motion relative to the heavy gas is then set entirely by electron--ion friction, as momentum conservation requires. The last term is the collisional drag exerted on the ions by the atoms and electrons.
+The first three terms are ion drift, diffusion, and diffusion driven by the heavy-particle temperature gradient, with mobility \(e/(M\bar\nu^M_i)\) and diffusivity \(k_BT_h/(M\bar\nu^M_i)\). The fourth term is the reaction of the ions to the electron thermal-diffusion force. The fifth term is the ions' share, \(Y_i\mathbf{F}\), of the net force on the plasma. This share accelerates the ions together with the rest of the heavy gas. The last term is the collisional drag exerted on the ions by the atoms and electrons.
 
-The velocities in the drag terms of equations~(\ref{eq:flux-e}) and (\ref{eq:flux-i}) are those of the other species, so the two fluxes are coupled. The neutral velocity is also not independent of the ion flux: by equation~(\ref{eq:frame}), \(n_n\mathbf{u}_n=n_h\mathbf{u}-\boldsymbol{\Gamma}_i\). Multiplying equation~(\ref{eq:frame}) by \(n_h\) likewise gives the neutral flux directly,
-\begin{equation}
-\boldsymbol{\Gamma}_n=n_h\mathbf{u}-\boldsymbol{\Gamma}_i ,
-\label{eq:flux-n}
-\end{equation}
-so no independent neutral transport coefficient is required. The neutral balance~(\ref{eq:mom-n}) is not needed separately, since it follows from the other two balances and the identity obtained by summing all three. In the absence of heavy-gas motion, \(\boldsymbol{\Gamma}_n=-\boldsymbol{\Gamma}_i\): every ion carried towards the electrode returns as a neutral atom.
-
-If the drag, thermal-diffusion, and mixture-acceleration terms are removed (\(C_e=C_i=0\), \(Y_i\mathbf{F}=0\), and \(\mathbf{u}_s=\mathbf{u}=0\) in the drag terms), equations~(\ref{eq:flux-e}) and (\ref{eq:flux-i}) reduce to the classical drift--diffusion fluxes, with mobilities \(e/(m_e\bar\nu^M_e)\) and \(e/(M\bar\nu^M_i)\). Unlike the classical fluxes, however, they retain the full pressure-gradient force of each species in a non-isothermal plasma.
+The velocities in the drag terms of equations~(\ref{eq:flux-e}) and (\ref{eq:flux-i}) are those of the other species, so the two fluxes are coupled. If the drag, thermal-diffusion, and mixture-acceleration terms are removed (\(C_e=C_i=0\), \(Y_i\mathbf{F}=0\), and \(\mathbf{u}_s=\mathbf{u}=0\) in the drag terms), equations~(\ref{eq:flux-e}) and (\ref{eq:flux-i}) reduce to the classical drift--diffusion fluxes, with mobilities \(e/(m_e\bar\nu^M_e)\) and \(e/(M\bar\nu^M_i)\). Unlike the classical fluxes, however, they retain the full pressure-gradient force of each species in a non-isothermal plasma.
 
 The electric field is obtained from Poisson's equation,
 \begin{equation}
@@ -134,7 +150,7 @@ with the electron energy flux
 +k_BT_e\,n_e\Big[C_i(\mathbf{u}_e-\mathbf{u}_i)+C_n(\mathbf{u}_e-\mathbf{u}_n)\Big].
 \label{eq:heatflux-e}
 \end{equation}
-The terms on the right-hand side of equation~(\ref{eq:eenergy}) are Joule heating by the field, elastic energy transfer to the heavy species, and the ionization-energy sink. In the elastic term, \(\bar\nu^E_{eh}=\bar\nu^E_{en}+\bar\nu^E_{ei}\), where the superscript \(E\) denotes the energy-exchange average over the electron distribution (Appendix~\ref{app:transport}). The ionization sink is the net ionization rate multiplied by \(\varepsilon_{\rm ion}=15.76\)~eV, the first ionization potential of argon. The energy flux~(\ref{eq:heatflux-e}) is the sum of the enthalpy flux at \(\tfrac52k_BT_e\) per electron, Fourier conduction with the zero-current electron thermal conductivity \(\kappa_e\), and a thermal-diffusion heat flux. The last of these is the Onsager reciprocal of the thermal-diffusion forces in equations~(\ref{eq:mom-i})--(\ref{eq:mom-n}) and carries the same coefficients \(C_i\) and \(C_n\) \cite{mitchner1973partially}. Radiation losses are usually small \cite{DinulescuPfender1980,Almeida2008} and are not included.
+The terms on the right-hand side of equation~(\ref{eq:eenergy}) are Joule heating by the field, elastic energy transfer to the heavy species, and the ionization-energy sink. In the elastic term, \(\bar\nu^E_{eh}=\bar\nu^E_{en}+\bar\nu^E_{ei}\), where the superscript \(E\) denotes the energy-exchange average of collision frequencies (Appendix~\ref{app:transport}). The ionization sink is the net ionization rate multiplied by \(\varepsilon_{\rm ion}=15.76\)~eV, the first ionization potential of argon. The energy flux~(\ref{eq:heatflux-e}) is the sum of the enthalpy flux at \(\tfrac52k_BT_e\) per electron, Fourier conduction with the zero-current electron, thermal conductivity \(\kappa_e\), and a thermal-diffusion heat flux \cite{mitchner1973partially}. 
 
 The common heavy-particle temperature is governed by
 \begin{equation}

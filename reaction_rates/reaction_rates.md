@@ -1,12 +1,13 @@
 # Ionization and recombination rates for the electrode region
 
-Three argon rate models appear in the electrode-region work:
+Four argon rate models appear in the electrode-region work:
 
 | Used by | Model | Source in this repo |
 |---|---|---|
 | PlasmeX (this paper) | Hoffert & Lien (1967), "HL" | `~/work/PlasmeX/exe/hoff_f.dat`, `hoff_r.dat`; cited as `hoffert1967quasi` |
 | Almeida et al. (2008), Semenov et al. (2016) | Benilov & Naidis (1998), "BN" | Almeida App. A; coded in `~/work/PlasmeX/exe/almeida_arc_bc.py` |
 | Dinulescu & Pfender (1980) | Hinnov & Hirschberg (1962) via Mitchner & Kruger Ch. IX, "HH" | `References/Chapt_9_Ionizational_Nonequilibrium.pdf` eqs (4.13), (4.20), (6.8) |
+| Lowke & Tanaka (2006), after Sansonnens et al. (2000) | three-body $\gamma\propto T^{-4.5}$ "of Hoffert & Lien at low temperatures", "LT" | `References/2006_Lowke_Tanaka_LTE_diff_approx_arcs_model.pdf` eq (1), Sec. 6 |
 
 (The PlasmeX tables are named `hoff_*`, but the source is Hoffert & Lien, not "Hoffmann".)
 
@@ -18,7 +19,7 @@ The figure is `rates_comparison.pdf` / `.png`. Run `python3 plot_rates.py` to re
 
 ## 1. One common form
 
-All three models keep only electron-impact ionization and its inverse, three-body recombination with an electron as the third body:
+All four models keep only electron-impact ionization and its inverse, three-body recombination with an electron as the third body:
 
 $$
 \dot n_e = k_i\, n_e n_a - k_r\, n_e^2 n_i ,
@@ -90,11 +91,25 @@ HH is a **hydrogenic, purely collisional** model (MK pp. 461–463):
 - It assumes a "critical" level $q$ where collisional up- and down-rates balance, $N_q^2 \simeq 13.6/kT_e$, and requires $N_q\gg1$.
 - It uses Thomson ionization cross sections for the levels near $q$.
 
+### 1.4 Lowke & Tanaka 2006
+
+Lowke & Tanaka solve the ambipolar electron continuity equation at a single temperature, $T_e=T_h=T$ (their eq. 1):
+
+$$
+\nabla\cdot(D_a\nabla n_e) + \gamma\,(G\,n_e n_0 - n_e^3) = 0,\qquad G = \frac{n_e^{*2}}{n_0^*}(T),
+$$
+
+so $k_r = \gamma$ and $k_i = \gamma G$, with $G$ the Saha function at $T$. For $\gamma$ they say only (Sec. 6): "As in the computation of Sansonnens et al (2000), we have used the recombination coefficients of Hoffert and Lien (1967) at low temperatures, which are proportional to $1/T^{4.5}$." **They give no prefactor**, and neither Sansonnens et al. nor Hoffert & Lien is in `References/`.
+
+- The script assumes $\gamma = 1.09\times10^{-20}\,T^{-4.5}$ m⁶/s ($T$ in K). This is the HH coefficient of §1.3 written in kelvin ($5.6\times10^{-39}\times11604.5^{4.5} = 1.096\times10^{-20}$), so LT lies on HH to 0.4 % in the figure. **Check this prefactor against Sansonnens et al. (2000) before quoting it.**
+- It is not the $T\to$ low limit of the PlasmeX HL table: $k_r^{\rm HL}=k_i^{\rm HL}/S$ grows like $e^{(I-\varepsilon^*)/kT}$ at low $T$, not as a power law (local slope $d\ln k_r/d\ln T$ = −4.7 at 1.07 eV, −43 at 0.08 eV).
+- Since $T_e=T_h$, "$T_e$" on the figure axes is simply $T$ for LT.
+
 ---
 
 ## 2. How the three compare (figure)
 
-**(a), (b): rates.** The table below gives BN at $\beta = 1$. HH/HL and BN/HL are the same for $k_i$ and $k_r$.
+**(a), (b): rates.** BN is drawn and tabulated at $\beta = 1$, the $n_e\gg n_e^{(0)}$ limit that holds over almost all of the PlasmeX anode layer (§5: $n_e<10^{21}$ m⁻³ only within 0.2 µm of the wall). LT coincides with HH (§1.4) and is drawn dashed over it. HH/HL and BN/HL are the same for $k_i$ and $k_r$.
 
 | $T_e$ (K) | $kT_e$ (eV) | $k_i$ HL (m³/s) | $k_i$ BN | $k_i$ HH | BN/HL | HH/HL |
 |---|---|---|---|---|---|---|
@@ -106,8 +121,8 @@ HH is a **hydrogenic, purely collisional** model (MK pp. 461–463):
 | 25 000 | 2.15 | 4.9e-17 | 9.8e-17 | 1.4e-14 | 2.00 | 278 |
 
 - **HL and BN agree within a factor 1.5–2.** That is expected, since both are rate-limited by electron-impact excitation of the first excited level and both use detailed balance with Saha at $T_e$. BN is higher because its $k_1$ fit is larger and it adds a small direct-ionization term.
-- **BN at low $n_e$** (dashed line, $10^{20}$ m⁻³) falls up to about 7× below HL in $k_i$ at 5–10 kK and converges toward HL at high $T_e$. Its $k_r$ does not change.
-- **HH is 130–540× faster than HL** over the arc range. It is not a small correction.
+- **BN at low $n_e$** (not drawn): at $10^{20}$ m⁻³, $k_i$ falls up to about 7× below HL at 5–10 kK and converges toward HL at high $T_e$. Its $k_r$ does not change.
+- **HH (and LT with the assumed prefactor) is 130–540× faster than HL** over the arc range. It is not a small correction.
 
 **(c): ratio to the PlasmeX rates.** The small ripples below 6 kK come from the log-linear interpolation of the PlasmeX tables between nodes.
 
@@ -127,7 +142,7 @@ becomes comparable to the gradient length. $\tau_r$ is the linearization of $k_i
 | 15 000 | 1.8e23 | 0.16 | 0.12 | 0.007 |
 
 - With HL or BN, $\lambda_r$ is 0.1–1 mm, the same size as the anode boundary layer that DP measure (0.1–1 mm dark space, their Fig. 2 and Table II). The layer is therefore really in ionization nonequilibrium.
-- With HH, $\lambda_r$ is about 20× shorter ($\sqrt{500}$). The plasma would track Saha almost to the wall, and the nonequilibrium layer would shrink to tens of µm. **The choice of rates changes the structure of the electrode layer, not just a number.**
+- With HH or LT, $\lambda_r$ is about 20× shorter ($\sqrt{500}$). The plasma would track Saha almost to the wall, and the nonequilibrium layer would shrink to tens of µm. **The choice of rates changes the structure of the electrode layer, not just a number.**
 - Where $n_e < 10^{21}$ m⁻³ (below about 8 kK), BN gives a longer $\lambda_r$ than HL because of $\beta$.
 
 **Check against Dinulescu & Pfender's own numbers.** Their Table I lists $\alpha$ ≈ 2.6–2.7e-17 m³/s. Here is $\alpha = k_r n_e$ from each model at the $(T_e, n_e)$ in that table:
