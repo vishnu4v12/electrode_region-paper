@@ -179,3 +179,64 @@ The appendix mobility (eq. 50, $\bar\nu_{in}\propto n_n$) is correct as written,
 * **Nearly fully ionized (20 000 K, 98 %).** With $n_n$ alone, the ions would feel only 2 % of the gas as obstacles, and $D_a\to\infty$ as $n_n\to0$. But for the plasma to shift, the few remaining neutrals must stream through the dense ions at $u_n=-49\,u_i$, and they collide with ions at the rate $n_i\overline Q_{in}\bar c$. The bottleneck is the neutrals pushing through the ions, and that is controlled by $n_i$, which dominates $n_h$. Using $n_n$ would overestimate $D_a$ by 49× and $\sqrt{D_a\tau_{chem}}$ by 7×: $4.8\times10^{-4}$ m instead of $6.9\times10^{-5}$ m.
 
 **In the limit** $n_n\to0$ there is nothing left to diffuse relative to. The "plasma" *is* the whole gas, and a gas at rest has no internal diffusion. The $n_h$ form handles this correctly: it describes neutrals diffusing through ions, so it stays finite. The $n_n$ form wrongly diverges.
+
+---
+
+## Question (2026-10-08): reference for the two-temperature ion formulation in Appendix A (Ions), and is it okay to use?
+
+## Response (Claude, 2026-10-08)
+
+### What the appendix (and `PlasmeX/src/aider.H`) does
+
+$$
+T_{\rm eff}=T_h+\frac{Mv_d^2}{3k_B},\qquad
+\mu_{in}(E)=\mu_i^0(T_h)\sqrt{\frac{T_h}{T_{\rm eff}}},\qquad
+v_d=\mu_{in}|\mathbf E|
+\;\Rightarrow\;
+\mathcal B v_d^4+v_d^2-\mathcal A=0 .
+$$
+
+The algebra is correct: the positive root is eq. (wannier), and the code matches the paper line for line (`aider.H` around lines 160–184).
+
+### The citation is wrong
+
+The text cites **Mason & Schamp (1958)** for the two-temperature formulation. That paper covers only the **weak-field** mobility. It is the right source for $\mu_i^0$ in eq. (mu_i0), but not for $T_{\rm eff}$. The formulation has two ingredients, and each has its own standard source:
+
+| Ingredient | Standard reference |
+|---|---|
+| Ion energy balance $\tfrac32k_BT_{\rm eff}=\tfrac32k_BT+\tfrac12Mv_d^2$ (Wannier formula, $M$ = **gas** mass) | G. H. Wannier, "Motion of gaseous ions in strong electric fields," *Bell Syst. Tech. J.* **32**, 170–254 (1953) |
+| $K(E/N,T)\approx K_0(T_{\rm eff})$: field-dependent mobility = zero-field mobility evaluated at $T_{\rm eff}$ (two-temperature theory) | L. A. Viehland & E. A. Mason, "Gaseous ion mobility in electric fields of arbitrary strength," *Ann. Phys.* **91**, 499–533 (1975); and "Gaseous ion mobility and diffusion in electric fields of arbitrary strength," *Ann. Phys.* **110**, 287–328 (1978) |
+| Textbook form of both | E. A. Mason & E. W. McDaniel, *Transport Properties of Ions in Gases*, Wiley (1988), ch. 5–6 |
+| Constant-mean-free-path high-field drift, used as a check below | M. A. Lieberman & A. J. Lichtenberg, *Principles of Plasma Discharges and Materials Processing*, 2nd ed. (2005), §3.? ($u=\sqrt{2e\lambda E/\pi M}$); also B. M. Smirnov, *Physics of Ionized Gases* (2001) |
+
+I suggest the sentence read: "…by the two-temperature theory \cite{wannier1953, viehland1975, mason1988transport}, in which…". Keep `mason1958mobility` on eq. (mu_i0). Please check the volume and page numbers against the journals before adding the bib entries. I confirmed *Ann. Phys.* 91, 499 (1975) and 110, 287 (1978) from a citation index. For Wannier I confirmed the title and year (BSTJ 1953). I quoted the volume and pages from memory. The Lieberman section number is left as "§3.?" because I did not check it.
+
+Note: for Ar$^+$ in Ar the ion and gas masses are equal, so the paper's $M$ is unambiguous. In general, Wannier's $M$ in $T_{\rm eff}$ is the **neutral** mass.
+
+### Is it okay to use? Yes, with two caveats to state
+
+**1. It reproduces the correct high-field limit.** At high field ($4\mathcal{AB}\gg1$), $v_d^4\to\mathcal A/\mathcal B$. With the Mason–Schamp $\mu_i^0=\tfrac{3e}{8N\bar Q}\sqrt{\pi/(Mk_BT)}$, this gives
+
+$$
+v_d\to\left(\tfrac{27\pi}{64}\right)^{1/4}\sqrt{\frac{eE}{MN\bar Q_{in}}}=1.07\sqrt{\frac{eE}{MN\bar Q_{in}}} .
+$$
+
+The kinetic result for pure charge exchange with constant mean free path $\lambda=1/(N\sigma_{ce})$ is $v_d=\sqrt{2eE\lambda/(\pi M)}$, with $\bar Q_{in}=2\sigma_{ce}$ as in eq. (Qia). The two agree within about 6 % at $E/N\gtrsim10^4$ Td. The table below uses $N=10^{24}$ m$^{-3}$ and $T_h=3000$ K. It also shows that the $\sqrt{T_h/T_{\rm eff}}$ factor correctly turns the low-field $v_d\propto E$ into the charge-exchange $v_d\propto\sqrt E$:
+
+| $E/N$ (Td) | $v_d$ paper (m/s) | $T_{\rm eff}$ (K) | $v_d$, $\bar Q_{in}(T_{\rm eff})$ | constant-$\lambda$ kinetic |
+|---:|---:|---:|---:|---:|
+| 300 | 517 | 3 430 | 528 (+2 %) | 918 |
+| 1 000 | 1 324 | 5 810 | 1 438 (+9 %) | 1 677 |
+| 3 000 | 2 586 | 13 700 | 3 080 (+19 %) | 2 904 |
+| 10 000 | 4 929 | 41 900 | 6 734 (+37 %) | 5 302 |
+
+The constant-$\lambda$ column is a cold-gas, high-field formula, so it is meaningful only in the last rows.
+
+**2. Caveat A: $\bar Q_{in}$ is held at $T_h$, not at $T_{\rm eff}$.** Strict two-temperature theory evaluates **all** of $K_0$, including the cross section, at $T_{\rm eff}$. The paper keeps $\bar Q_{in}(T_h)$, and that is what makes the result closed-form. Because $\bar Q_{in}$ depends only logarithmically on energy, the effect is small below about $10^3$ Td. Above that it reaches tens of percent (column 4). Either say this explicitly ("the weak, logarithmic energy dependence of $\bar Q_{in}$ is evaluated at $T_h$, which makes the closure explicit") or evaluate $\bar Q_{in}$ at $T_{\rm eff}$ and iterate. The fixed-point iteration converges in a few steps.
+
+**3. Caveat B: validity range.** Two-temperature theory assumes the ions are in local equilibrium with the field, i.e. the field changes slowly over an ion mean free path. It is also known to be least accurate for resonant charge transfer. The ion distribution is then strongly anisotropic, with $T_\parallel\gg T_\perp$, which is what motivated the three-temperature theory of Lin, Viehland & Mason, *Chem. Phys.* **37**, 411 (1979). In a 1-atm space-charge sheath, $\lambda_{ce}=1/(N\sigma_{ce})\sim1\ \mu$m, which is larger than or comparable to the sheath thickness. There the ions are close to collisionless, and **any** local mobility closure is an approximation. This is a limitation of the drift-diffusion ion momentum equation itself, not of the Wannier correction. The correction moves the result toward the right ($\sqrt E$) behaviour. One sentence acknowledging this is enough.
+
+**Minor (no change needed unless you want it):**
+* The diffusivity uses $k_BT_h$, not the generalized Einstein relation $D\approx k_BT_{\rm eff}K/e$. The code comment explains why (consistency with the ion pressure $n_ik_BT_h$). In the sheath, ion diffusion is negligible next to drift, so this choice is harmless.
+* Typo in appendix: "obatained" → "obtained".
+* The Mason–Schamp constant, evaluated from $\tfrac{3e}{8}\sqrt{\pi/(Mk_B)}$, gives $1.113\times10^5$ against the $1.104\times10^5$ used. The 0.8 % difference likely comes from rounding or the higher-order correction factor, so it is not a concern.

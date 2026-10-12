@@ -1,0 +1,68 @@
+\subsection{Boundary conditions}
+\label{sec:model-bc}
+
+The system is closed by conditions at the two ends of the domain: the electrode surface, \(x=0\), and the edge of the near-electrode layer, \(x=L\), where the solution is matched to the adjacent LTE bulk plasma. The potential is referenced to zero at the electrode, \(\phi(0)=0\). Electrons reaching the surface are absorbed; they are assumed to have a Maxwellian distribution at their local temperature \(T_e\). At the cathode, thermionic emission of electrons, \(\Gamma_{\rm em}\), with a Maxwellian distribution at the wall temperature \(T_{\rm wall}\), is also included. The electron flux into the surface is
+\begin{equation}
+\boldsymbol{\Gamma}_e\cdot\hat{\mathbf{n}}=\tfrac14n_e\bar c_e-\Gamma_{\rm em},
+\qquad
+\bar c_e=\sqrt{\frac{8k_BT_e}{\pi m_e}} .
+\label{eq:bc-electron}
+\end{equation}
+The emitted flux is given by the Richardson--Dushman law with Schottky lowering of the work function \(W\) by the field at the surface,
+\begin{equation}
+\Gamma_{\rm em}=\frac{A_RT_{\rm wall}^2}{e}\exp\!\left(-\frac{W-\Delta W}{k_BT_{\rm wall}}\right),
+\qquad
+\Delta W=\sqrt{\frac{e^3E_w}{4\pi\varepsilon_0}},
+\qquad
+E_w=\max(\mathbf{E}\cdot\hat{\mathbf{n}},0),
+\label{eq:bc-emission}
+\end{equation}
+where \(A_R\) is the Richardson constant. Each absorbed electron removes a mean energy \(2k_BT_e\) from the plasma, and each emitted electron brings in \(2k_BT_{\rm wall}\), so the boundary condition for the electron energy equation~(\ref{eq:eenergy}) is
+\begin{equation}
+\mathbf{h}_e\cdot\hat{\mathbf{n}}=2k_BT_e\,\tfrac14n_e\bar c_e-2k_BT_{\rm wall}\,\Gamma_{\rm em} .
+\label{eq:bc-electron-energy}
+\end{equation}
+
+Let \(\boldsymbol{\Gamma}_i^{d}\) denote the ion flux~(\ref{eq:flux-i}) without its density-diffusion term, \(\boldsymbol{\Gamma}_i^{d}=\boldsymbol{\Gamma}_i+[k_BT_h/(M\bar\nu^M_i)]\nabla n_i\), which contains the field drift and the thermal, thermal-diffusion, mixture-force, and drag contributions. Ions are absorbed at their thermal-effusion flux, plus this directed flux where it points into the wall,
+\begin{equation}
+\boldsymbol{\Gamma}_i\cdot\hat{\mathbf{n}}=
+\tfrac14n_i\bar c_i+\max\!\left(\boldsymbol{\Gamma}_i^{d}\cdot\hat{\mathbf{n}},0\right),
+\qquad
+\bar c_i=\sqrt{\frac{8k_BT_{\rm wall}}{\pi M}} ,
+\label{eq:bc-ion}
+\end{equation}
+which is similar to the form of Hagelaar et al.\ \cite{hagelaar2000boundary}. Where the sheath field drives the ions into the electrode, the directed term dominates. Elsewhere, the thermal-effusion flux ensures that ions reaching the wall are still absorbed where transport alone does not carry them into it.
+
+The wall is impermeable to the heavy gas, \(\mathbf{u}\cdot\hat{\mathbf{n}}=0\), which is the boundary condition for the heavy-gas momentum equation~(\ref{eq:heavy-momentum}), and the pressure at the electrode surface is taken to be atmospheric pressure. Equation~(\ref{eq:flux-n}) then gives
+\begin{equation}
+\boldsymbol{\Gamma}_n\cdot\hat{\mathbf{n}}=-\boldsymbol{\Gamma}_i\cdot\hat{\mathbf{n}} :
+\label{eq:bc-neutral}
+\end{equation}
+every ion neutralized at the surface re-enters the plasma as an atom. Secondary electron emission by ion impact is not included.
+
+The heavy-particle temperature at the surface equals the electrode temperature, \(T_h(0)=T_{\rm wall}\). Unless it is prescribed, \(T_{\rm wall}\) is obtained at every time step by balancing the heat flux delivered by the plasma against steady conduction through the electrode body,
+\begin{equation}
+q_w=\frac{k_w}{L_w}\left(T_{\rm wall}-T_0\right),
+\label{eq:bc-heat-balance}
+\end{equation}
+where \(k_w\) is the thermal conductivity of the electrode, \(L_w\) its length, and \(T_0\) the temperature of its cooled base. The heat flux into the surface is
+\begin{equation}
+q_w=\left(2k_BT_e+W\right)\tfrac14n_e\bar c_e
+-\left(2k_BT_{\rm wall}+W\right)\Gamma_{\rm em}
++\left(\varepsilon_{\rm ion}-W\right)\boldsymbol{\Gamma}_i\cdot\hat{\mathbf{n}}
+-\kappa_h\nabla T_h\cdot\hat{\mathbf{n}} .
+\label{eq:bc-qwall}
+\end{equation}
+The first term is the energy delivered by absorbed electrons, their kinetic energy plus the work function released on entering the metal. The second is emission cooling: each emitted electron removes the work function and its kinetic energy. The third is the energy released when an ion recombines at the surface, \(\varepsilon_{\rm ion}\), less the work function spent to extract the neutralizing electron. The last is heat conduction from the heavy gas. At the anode, \(\Gamma_{\rm em}=0\) and the emission term vanishes. The heat flux \(q_w\) decreases as \(T_{\rm wall}\) increases, steeply through emission cooling at the cathode and through the gas conduction at both electrodes, apart from the weak \(T_{\rm wall}^{1/2}\) dependence of the ion effusion flux. The right-hand side of equation~(\ref{eq:bc-heat-balance}) rises linearly, so the balance has a single root, which is found by bisection.
+
+\emph{Bulk-plasma edge, \(x=L\).} The electron and ion densities and both temperatures are set to Dirichlet values from the adjacent LTE bulk plasma: \(n_e=n_e^{\rm bulk}\), \(n_i=n_i^{\rm bulk}\), and \(T_e=T_h=T_{\rm bulk}\); the last of these is the boundary condition for both energy equations. This bulk state, together with the applied current density \(J_{\rm app}\), also fixes the radial-loss coefficient \(\Lambda\) through equation~(\ref{eq:radial-calibration}), so that the imposed values are consistent with the energy balance of the column. The neutral density follows from Dalton's law at the background pressure \(p_0\),
+\begin{equation}
+n_n=\frac{p_0-n_ek_BT_e}{k_BT_h}-n_i .
+\label{eq:bc-neutral-density}
+\end{equation}
+This edge is open to the heavy gas: the heavy-gas momentum equation~(\ref{eq:heavy-momentum}) sees the bulk state, and hence the pressure \(p_0\), outside the boundary, and the heavy-gas velocity is given a zero normal gradient. The arc current is imposed through the electric field in Poisson's equation~(\ref{eq:poisson}): the total current density at the boundary, conduction plus displacement, is held equal to the applied current density \(J_{\rm app}\),
+\begin{equation}
+e\left(\boldsymbol{\Gamma}_i-\boldsymbol{\Gamma}_e\right)+\varepsilon_0\frac{\partial E}{\partial t}=J_{\rm app},
+\label{eq:bc-current}
+\end{equation}
+which is integrated in time as an evolution equation for the boundary field. The initial field enters only as the initial condition of this equation.
