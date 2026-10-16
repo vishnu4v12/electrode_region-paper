@@ -33,7 +33,9 @@ there hold the FACE value while n is the cell value.
 MEAN FREE PATHS as in table tab:scales (reaction_rates/scale_table.py), with the local state:
   lambda_e = 1/(n_n Qbar_en(T_e) + n_i Qbar_ei(T_e, n_e)),
   lambda_i = 1/(n_n Qbar_in(T_h) + n_i Qbar_ii),  Qbar_ii = Qbar_ei at T_h,
-  lambda_in = 1/(n_n Qbar_in(T_h)), the ion-atom part alone (the ion friction),
+  lambda_in = 1/(n_n Qbar_in(T_h)), the ion-atom part alone (the ion friction; report only),
+  lambda_Th = 1/((n_i + n_n) Qbar_in(T_h)), the heavy-particle energy-exchange length of tab:scales,
+  L_Th = T_h/|dT_h/dx|, the length over which T_h changes (single heavy temperature: lambda_Th << L_Th),
   lambda_De = sqrt(eps0 k T_e/(n_e e^2)).
 N = int_0^x_s dx/lambda is the number of mean free paths across the sheath.
 
@@ -119,6 +121,9 @@ def load(pf):
     t["lam_e"] = 1.0 / (nn * qen + ni * qei)
     t["lam_i"] = 1.0 / (nn * qin + ni * qii)
     t["lam_in"] = 1.0 / (nn * qin)
+    t["lam_Th"] = 1.0 / ((ni + nn) * qin)
+    t["L_Th"] = Th / np.maximum(np.abs(grad(x, Th)), 1e-300)
+    t["Teff"] = b.ion_transport(Th, nn, np.abs(Ex))[0]
     t["lam_D"] = np.sqrt(EPS0 * KB * Te / (ne * E * E))
 
     # Bohm velocity and the ion Mach number
@@ -171,16 +176,28 @@ def report(tag, t):
             print(f"    |inertia|/|drag| > {lim}: within {w.max() if w.size else 0:.2e} m;"
                   f" max {rat.max():.2f} at {dist[np.argmax(rat)]:.2e} m")
     # mean free paths
-    for k in ("lam_e", "lam_i", "lam_in", "lam_D"):
+    for k in ("lam_e", "lam_i", "lam_in", "lam_Th", "L_Th", "lam_D"):
         v = t[k]
         print(f"  {k:7s} wall-adjacent {v[0]:.2e}  at x_s {v[i_s]:.2e}  at 10 um "
               f"{v[np.argmin(np.abs(dist - 1e-5))]:.2e}  at 100 um {v[np.argmin(np.abs(dist - 1e-4))]:.2e}")
-    for k in ("lam_e", "lam_i", "lam_in"):
+    for k in ("lam_e", "lam_i", "lam_in", "lam_Th"):
         m = dist <= x_s
         n = np.trapezoid(1.0 / t[k][m], dist[m]) + dist[m][0] / t[k][m][0]
         print(f"  mean free paths across the sheath, {k}: N = {n:.2f}")
     # where lambda = distance
-    for k in ("lam_e", "lam_i", "lam_in"):
+    kn = t["lam_Th"] / t["L_Th"]
+    for xq in (2e-9, 1e-8, 1e-7, x_s, 1e-6, 1e-5, 1e-4, 3e-4):
+        k = int(np.argmin(np.abs(dist - xq)))
+        print(f"    x={dist[k]:.2e}: lam_Th {t['lam_Th'][k]:.2e}  L_Th {t['L_Th'][k]:.2e}  Kn_Th {kn[k]:.2e}"
+              f"  T_h {t['Th'][k]:.0f}  T_eff {t['Teff'][k]:.0f}  (T_eff-T_h)/T_h {(t['Teff'][k]-t['Th'][k])/t['Th'][k]:.3f}")
+    for lim in (1.0, 0.1, 0.01):
+        w = dist[kn > lim]
+        print(f"    lam_Th/L_Th > {lim}: within {w.max() if w.size else 0:.2e} m; max {kn.max():.2e} at {dist[np.argmax(kn)]:.2e} m")
+    rt = (t["Teff"] - t["Th"]) / t["Th"]
+    for lim in (1.0, 0.1):
+        w = dist[rt > lim]
+        print(f"    (T_eff - T_h)/T_h > {lim}: within {w.max() if w.size else 0:.2e} m")
+    for k in ("lam_e", "lam_i", "lam_in", "lam_Th"):
         w = dist[t[k] > dist]
         print(f"  {k} > x within {w.max() if w.size else 0:.2e} m")
     # Boltzmann
@@ -288,7 +305,7 @@ def fig_sheath(runs, stem):
         ax = axs[0, c]
         ax.plot(d, t["lam_e"], color=C_E, lw=1.4, label=r"$\lambda_e$")
         ax.plot(d, t["lam_i"], color=C_I, lw=1.4, label=r"$\lambda_i$")
-        ax.plot(d, t["lam_in"], color=C_I, lw=1.0, ls="--", label=r"$\lambda_{in}$ (ion–atom)")
+        ax.plot(d, t["lam_Th"], color=C_I, lw=1.0, ls="--", label=r"$\lambda_{T_h}$")
         ax.plot(d, t["lam_D"], color=C_N, lw=1.4, ls="-.", label=r"$\lambda_{De}$")
         ax.plot(XLIM, XLIM, color="#8a8a8a", lw=0.7, ls=":", label=r"$x$")
         ax.set_yscale("log")

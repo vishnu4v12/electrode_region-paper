@@ -4,8 +4,8 @@ Four argon rate models appear in the electrode-region work:
 
 | Used by | Model | Source in this repo |
 |---|---|---|
-| PlasmeX (this paper) | Hoffert & Lien (1967), "HL" | `~/work/PlasmeX/exe/hoff_f.dat`, `hoff_r.dat`; cited as `hoffert1967quasi` |
-| Almeida et al. (2008), Semenov et al. (2016) | Benilov & Naidis (1998), "BN" | Almeida App. A; coded in `~/work/PlasmeX/exe/almeida_arc_bc.py` |
+| PlasmeX code default (`prob.rxn_rates = hoffert_lien`); NOT the paper's runs, which use BN (`almeida`) | Hoffert & Lien (1967), "HL" | `~/work/PlasmeX/exe/hoff_f.dat`, `hoff_r.dat`; cited as `hoffert1967quasi` |
+| Almeida et al. (2008), Semenov et al. (2016), and this paper's runs | Benilov & Naidis (1998), "BN" | Almeida App. A; coded in `~/work/PlasmeX/exe/almeida_arc_bc.py` |
 | Dinulescu & Pfender (1980) | Hinnov & Hirschberg (1962) via Mitchner & Kruger Ch. IX, "HH" | `References/Chapt_9_Ionizational_Nonequilibrium.pdf` eqs (4.13), (4.20), (6.8) |
 | Lowke & Tanaka (2006), after Sansonnens et al. (2000) | three-body $\gamma\propto T^{-4.5}$ "of Hoffert & Lien at low temperatures", "LT" | `References/2006_Lowke_Tanaka_LTE_diff_approx_arcs_model.pdf` eq (1), Sec. 6 |
 

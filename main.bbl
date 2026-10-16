@@ -1,11 +1,9 @@
 \begin{thebibliography}{10}
 
-\bibitem{murphy2023handbook}
-Anthony~B Murphy.
-\newblock Handbook of thermal plasmas, mi boulos, pl fauchais and e. pfender
-  (eds). springer nature (cham, 2023) hardcover, 1975 pages, isbn:
-  978-3-030-84934-4, ebook: Isbn 978-3-030-84935-1, living reference work: Isbn
-  978-3-030-84936-8, 2023.
+\bibitem{boulos2023handbook}
+Maher~I. Boulos, Pierre~L. Fauchais, and Emil Pfender, editors.
+\newblock {\em Handbook of Thermal Plasmas}.
+\newblock Springer, Cham, 2023.
 
 \bibitem{aghayee2024plasma}
 Rasoul Aghayee, Mohammadreza Khani, Farzaneh Ostovarpour, Mohammad
@@ -22,6 +20,14 @@ Hongqiang Zhang, Guisheng Zou, Lei Liu, Hao Tong, Yong Li, Hailin Bai, and
 \newblock Synthesis of silver nanoparticles using large-area arc discharge and
   its application in electronic packaging.
 \newblock {\em Journal of Materials Science}, 52(6):3375--3387, 2017.
+
+\bibitem{mohanta2026electrical}
+Ram~Krushna Mohanta, Gabriela De~Los Reyes~Castillo, Sai~Vishnu Korsipati, Yuri
+  Korobeinikov, Hariswaran Sitaraman, Laxminarayan Raja, Noemi Leick, and
+  Seetharaman Sridhar.
+\newblock Electrical and spectroscopic diagnostics as real-time metallization
+  indicators during hydrogen plasma smelting reduction.
+\newblock {\em Advanced Sustainable Systems}, 10(1):e01578, 2026.
 
 \bibitem{pokrzywka1996spectroscopic}
 B~Pokrzywka, K~Musiol, Stephane Pellerin, E~Pawelec, and J~Chapelle.
@@ -58,12 +64,28 @@ K.~C. Hsu, K.~Etemadi, and E.~Pfender.
 \newblock Study of the free-burning high-intensity argon arc.
 \newblock {\em Journal of Applied Physics}, 54(3):1293--1301, 1983.
 
+\bibitem{Almeida2008}
+N.~A. Almeida, M.~S. Benilov, and G.~V. Naidis.
+\newblock Unified modelling of near-cathode plasma layers in high-pressure arc
+  discharges.
+\newblock {\em Journal of Physics D: Applied Physics}, 41:245201, 2008.
+
+\bibitem{almeida2009investigating}
+NA~Almeida, MS~Benilov, U~Hechtfischer, and GV~Naidis.
+\newblock Investigating near-anode plasma layers of very high-pressure arc
+  discharges.
+\newblock {\em Journal of Physics D: Applied Physics}, 42(4):045210, 2009.
+
+\bibitem{semenov2016numerical}
+IL~Semenov, IV~Krivtsun, and Uwe Reisgen.
+\newblock Numerical study of the anode boundary layer in atmospheric pressure
+  arc discharges.
+\newblock {\em Journal of Physics D: Applied Physics}, 49(10):105204, 2016.
+
 \bibitem{HsuPfender1983b}
 K.~C. Hsu and E.~Pfender.
 \newblock Two-temperature modeling of the free-burning, high-intensity arc.
 \newblock {\em Journal of Applied Physics}, 54(8):4359--4366, 1983.
-\newblock NOTE: DOI inferred by pattern, please verify. File on disk: "Two
-  temp, Hsu Pfender.pdf".
 
 \bibitem{Rat2008}
 V.~Rat, A.~B. Murphy, J.~Aubreton, M.~F. Elchinger, and P.~Fauchais.
@@ -75,6 +97,16 @@ P.~Freton, J.~J. Gonzalez, Z.~Ranarijaona, and J.~Mougenot.
 \newblock Energy equation formulations for two-temperature modelling of
   `thermal' plasmas.
 \newblock {\em Journal of Physics D: Applied Physics}, 45:465206, 2012.
+
+\bibitem{benilov1995model}
+MS~Benilov and A~Marotta.
+\newblock A model of the cathode region of atmospheric pressure arcs.
+\newblock {\em Journal of Physics D: Applied Physics}, 28(9):1869--1882, 1995.
+
+\bibitem{schmitz2002analysis}
+H~Schmitz and KU~Riemann.
+\newblock Analysis of the cathodic region of atmospheric pressure discharges.
+\newblock {\em Journal of Physics D: Applied Physics}, 35(14):1727--1735, 2002.
 
 \bibitem{haidar1999non}
 J~Haidar.
@@ -92,21 +124,10 @@ Tadashi Amakawa, Jir{\'\i} Jenista, Joachim Heberlein, and Emil Pfender.
 \newblock Anode-boundary-layer behaviour in a transferred, high-intensity arc.
 \newblock {\em Journal of Physics D: Applied Physics}, 31(20):2826, 1998.
 
-\bibitem{Lowke2006}
-J.~J. Lowke and M.~Tanaka.
-\newblock {LTE}-diffusion approximation for arc calculations.
-\newblock {\em Journal of Physics D: Applied Physics}, 39:3634--3643, 2006.
-
-\bibitem{Tanaka2007}
-M.~Tanaka and J.~J. Lowke.
-\newblock Predictions of weld pool profiles using plasma physics.
-\newblock {\em Journal of Physics D: Applied Physics}, 40:R1--R23, 2007.
-
-\bibitem{murphy2009computational}
-AB~Murphy, M~Tanaka, S~Tashiro, T~Sato, and JJ~Lowke.
-\newblock A computational investigation of the effectiveness of different
-  shielding gas mixtures for arc welding.
-\newblock {\em Journal of Physics D: Applied Physics}, 42(11):115205, 2009.
+\bibitem{baeva2016novel}
+M~Baeva, MS~Benilov, NA~Almeida, and D~Uhrlandt.
+\newblock Novel non-equilibrium modelling of a dc electric arc in argon.
+\newblock {\em Journal of Physics D: Applied Physics}, 49(24):245205, 2016.
 
 \bibitem{DinulescuPfender1980}
 H.~A. Dinulescu and E.~Pfender.
@@ -119,15 +140,11 @@ KC~Hsu and E~Pfender.
   arc.
 \newblock {\em Journal of Applied Physics}, 54(7):3818--3824, 1983.
 
-\bibitem{schmitz2002analysis}
-H~Schmitz and KU~Riemann.
-\newblock Analysis of the cathodic region of atmospheric pressure discharges.
-\newblock {\em Journal of Physics D: Applied Physics}, 35(14):1727--1735, 2002.
-
-\bibitem{benilov1995model}
-MS~Benilov and A~Marotta.
-\newblock A model of the cathode region of atmospheric pressure arcs.
-\newblock {\em Journal of Physics D: Applied Physics}, 28(9):1869--1882, 1995.
+\bibitem{sun2022unified}
+Li~Sun, Xian-Pin Sun, Bi-Ying Guo, Wen Zhou, and Zeng-Yao Li.
+\newblock Unified modeling and kinetic analysis of the near-cathode region and
+  hot cathode in atmospheric-pressure arc discharges.
+\newblock {\em Physics of Fluids}, 34(6):067120, 2022.
 
 \bibitem{Benilov2016}
 M.~S. Benilov, N.~A. Almeida, M.~Baeva, M.~D. Cunha, L.~G. Benilova, and
@@ -136,29 +153,12 @@ M.~S. Benilov, N.~A. Almeida, M.~Baeva, M.~D. Cunha, L.~G. Benilova, and
   arc discharges.
 \newblock {\em Journal of Physics D: Applied Physics}, 49:215201, 2016.
 
-\bibitem{Almeida2008}
-N.~A. Almeida, M.~S. Benilov, and G.~V. Naidis.
-\newblock Unified modelling of near-cathode plasma layers in high-pressure arc
-  discharges.
-\newblock {\em Journal of Physics D: Applied Physics}, 41:245201, 2008.
-
-\bibitem{sun2022unified}
-Li~Sun, Xian-Pin Sun, Bi-Ying Guo, Wen Zhou, and Zeng-Yao Li.
-\newblock Unified modeling and kinetic analysis of the near-cathode region and
-  hot cathode in atmospheric-pressure arc discharges.
-\newblock {\em Physics of Fluids}, 34(6), 2022.
-
-\bibitem{semenov2016numerical}
-IL~Semenov, IV~Krivtsun, and Uwe Reisgen.
-\newblock Numerical study of the anode boundary layer in atmospheric pressure
-  arc discharges.
-\newblock {\em Journal of Physics D: Applied Physics}, 49(10):105204, 2016.
-
-\bibitem{almeida2009investigating}
-NA~Almeida, MS~Benilov, U~Hechtfischer, and GV~Naidis.
-\newblock Investigating near-anode plasma layers of very high-pressure arc
-  discharges.
-\newblock {\em Journal of Physics D: Applied Physics}, 42(4):045210, 2009.
+\bibitem{sitaraman2026elucidating}
+Hariswaran Sitaraman, Vishnu~Korsipati Sai, Ram~Krushna Mohanta, Noemi Leick,
+  Yuri Korobeinikov, Anjana Kannan, Laxminarayan Raja, and Seetharaman Sridhar.
+\newblock Elucidating key reducing species beyond ions in hydrogen plasma
+  smelting reduction of iron ore.
+\newblock {\em Chemical Engineering Science}, page 124377, 2026.
 
 \bibitem{SandersPfender1984}
 N.~A. Sanders and E.~Pfender.
@@ -177,6 +177,40 @@ J~Heberlein, J~Mentel, and E~Pfender.
 \newblock The anode region of electric arcs: a survey.
 \newblock {\em Journal of Physics D: Applied Physics}, 43(2):023001, 2010.
 
+\bibitem{krivtsun2025model}
+IV~Krivtsun, AI~Momot, IB~Denysenko, U~Reisgen, O~Mokrov, and R~Sharma.
+\newblock Model of the anode boundary layer in welding arcs.
+\newblock {\em The Paton Welding Journal 08}, page~44, 2025.
+
+\bibitem{korsipati2026fast}
+Sai~Vishnu Korsipati, Hariswaran Sitaraman, and Laxminarayan Raja.
+\newblock A fast and accurate reduced-order model for high-intensity
+  transferred arc discharges.
+\newblock {\em Journal of Applied Physics}, 140(2), 2026.
+
+\bibitem{haddad1984temperature}
+GN~Haddad and AJD Farmer.
+\newblock Temperature determinations in a free-burning arc. i. experimental
+  techniques and results in argon.
+\newblock {\em Journal of Physics D: Applied Physics}, 17(6):1189--1196, 1984.
+
+\bibitem{tashiro2010numerical}
+Shinichi Tashiro, Manabu Tanaka, and Anthony~B Murphy.
+\newblock Numerical analysis of non-equilibrium plasma property in anode
+  boundary layer of argon gas tungsten arc.
+\newblock {\em Surface and Coatings Technology}, 205:S115--S119, 2010.
+
+\bibitem{Lowke2006}
+J.~J. Lowke and M.~Tanaka.
+\newblock {LTE}-diffusion approximation for arc calculations.
+\newblock {\em Journal of Physics D: Applied Physics}, 39:3634--3643, 2006.
+
+\bibitem{almeida2000simulation}
+RMS Almeida, MS~Benilov, and GV~Naidis.
+\newblock Simulation of the layer of non-equilibrium ionization in a
+  high-pressure argon plasma with multiply-charged ions.
+\newblock {\em Journal of Physics D: Applied Physics}, 33(8):960--967, 2000.
+
 \bibitem{LiangTrelles}
 P.~Liang and J.~P. Trelles.
 \newblock {3D} numerical investigation of a free-burning argon arc with metal
@@ -191,18 +225,6 @@ MS~Benilov and GV~Naidis.
 \newblock Ionization layer at the edge of a fully ionized plasma.
 \newblock {\em Physical Review E}, 57(2):2230, 1998.
 
-\bibitem{hoffert1967quasi}
-Martin~I Hoffert and Hwachii Lien.
-\newblock Quasi-one-dimensional, nonequilibrium gas dynamics of partially
-  ionized two-temperature argon.
-\newblock {\em The physics of Fluids}, 10(8):1769--1777, 1967.
-
-\bibitem{almeida2000simulation}
-RMS Almeida, MS~Benilov, and GV~Naidis.
-\newblock Simulation of the layer of non-equilibrium ionization in a
-  high-pressure argon plasma with multiply-charged ions.
-\newblock {\em Journal of Physics D: Applied Physics}, 33(8):960--967, 2000.
-
 \bibitem{zhdanov2002transport}
 Viktor~Mikha{\u\i}lovich Zhdanov.
 \newblock Transport processes in multicomponent plasma.
@@ -213,28 +235,34 @@ W~Elenbaas.
 \newblock {\"A}hnlichkeitsgesetze der hochdruckentladung.
 \newblock {\em Physica}, 2(1-12):169--182, 1935.
 
-\bibitem{scoggins2020mutation}
-James~B. Scoggins, Vincent Leroy, Georgios Bellas-Chatzigeorgis, Bruno Dias,
-  and Thierry~E. Magin.
-\newblock Mutation++: {MUlticomponent} {Thermodynamic} {And} {Transport}
-  properties for {IONized} gases in {C++}.
-\newblock {\em SoftwareX}, 12:100575, 2020.
+\bibitem{amrex2019}
+W.~Zhang, A.~Almgren, V.~Beckner, J.~Bell, J.~Blaschke, C.~Chan, M.~Day,
+  B.~Friesen, K.~Gott, D.~Graves, M.~P. Katz, A.~Myers, T.~Nguyen, A.~Nonaka,
+  M.~Rosso, S.~Williams, and M.~Zingale.
+\newblock {AMReX}: a framework for block-structured adaptive mesh refinement.
+\newblock {\em Journal of Open Source Software}, 4(37):1370, 2019.
 
-\bibitem{hagelaar2000boundary}
-G.~J.~M. Hagelaar, F.~J. de~Hoog, and G.~M.~W. Kroesen.
-\newblock Boundary conditions in fluid models of gas discharges.
-\newblock {\em Physical Review E}, 62(1):1452--1454, 2000.
+\bibitem{scharfetter1969}
+D.~L. Scharfetter and H.~K. Gummel.
+\newblock Large-signal analysis of a silicon {Read} diode oscillator.
+\newblock {\em IEEE Transactions on Electron Devices}, 16(1):64--77, 1969.
 
-\bibitem{mitchner1973partially}
-M~Mitchner and CH~Kruger~Jr.
-\newblock Partially ionized gases john wiley \& sons.
-\newblock {\em New York}, 1973.
+\bibitem{roe1981}
+P.~L. Roe.
+\newblock Approximate {Riemann} solvers, parameter vectors, and difference
+  schemes.
+\newblock {\em Journal of Computational Physics}, 43(2):357--372, 1981.
 
 \bibitem{lxcat}
 {LXCat}.
 \newblock Lxcat: Electron scattering cross section database.
 \newblock \url{https://lxcat.net/}.
 \newblock Accessed September 6, 2026.
+
+\bibitem{mitchner1973partially}
+M~Mitchner and CH~Kruger~Jr.
+\newblock Partially ionized gases john wiley \& sons.
+\newblock {\em New York}, 1973.
 
 \bibitem{mason1958mobility}
 Edward~A Mason and Homer~W Schamp~Jr.
@@ -260,9 +288,11 @@ Larry~A Viehland and EA~Mason.
   {Ar} gas.
 \newblock {\em Science of Sintering}, 58(3):409--417, 2026.
 
-\bibitem{boulos2023handbook}
-Maher~I. Boulos, Pierre~L. Fauchais, and Emil Pfender, editors.
-\newblock {\em Handbook of Thermal Plasmas}.
-\newblock Springer, Cham, 2023.
+\bibitem{scoggins2020mutation}
+James~B. Scoggins, Vincent Leroy, Georgios Bellas-Chatzigeorgis, Bruno Dias,
+  and Thierry~E. Magin.
+\newblock Mutation++: {MUlticomponent} {Thermodynamic} {And} {Transport}
+  properties for {IONized} gases in {C++}.
+\newblock {\em SoftwareX}, 12:100575, 2020.
 
 \end{thebibliography}

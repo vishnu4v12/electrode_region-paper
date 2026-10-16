@@ -6,8 +6,8 @@ Results-section sweep figures: the electrode quantities of the base cases as the
 
 Runs (PlasmeX runs/base_sweep/<electrode>/<case>, launched by runs/base_sweep/launch.sh, plus the
 two base cases): the last plotfile of each run directory is read. Writes, each as .pdf and .png:
-    base_sweep_T   quantities against T_bulk (anode at 9e6 A/m^2, cathode at 1.2e8 A/m^2)
-    base_sweep_J   quantities against |J_app| (anode at 12 400 K, cathode at 21 000 K)
+    base_sweep_T   quantities against T_bulk (anode at 1e7 A/m^2, cathode at 1e8 A/m^2)
+    base_sweep_J   quantities against |J_app| (anode at 14 000 K, cathode at 21 000 K)
 cathode in the left column, anode in the right (the paper's two-case convention), rows:
     q_w                 net heat flux into the electrode, eq (24) (plasmex_info q_wall.total)
     j_i/j               ion fraction of the current at the surface, + = ions into the electrode
@@ -32,15 +32,20 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from base_case import HERE, K_B, E_CH, C_E, C_X, load, rc, sheath_edge, style
+from base_case import HERE, K_B, E_CH, C_E, C_X, load, rc, sci_tex, sheath_edge, style
 
 RUNS = os.path.join(os.environ.get("PLASMEX_ROOT", os.path.expanduser("~/work/PlasmeX")), "runs")
-BASE = {"Cathode": (21000.0, 1.2e8, "base_case_cathode"), "Anode": (12400.0, 9e6, "base_case_anode")}
+# Reference states: cathode 21 000 K / 1e8 (user, 15 Oct 2026), anode 14 000 K / 1e7 (user, 16 Oct 2026).
+# Sweeps through them: anode T at 1e7 and J at 14 kK in runs/sweep_anode14 (copper W = 4.65 eV in every run);
+# cathode T at 1e8 in runs/sweep_ref; cathode J at 21 kK in runs/base_sweep
+# (8e7, 9e7, 1e8, the old 1.2e8 base case, and the ladder rungs up to 1.5e8).
+BASE = {"Cathode": (21000.0, 1e8, "base_sweep/cathode/J1e8"), "Anode": (14000.0, 1e7, "sweep_anode14/T14000_J1e7")}
 CASES = {   # electrode -> [(T_bulk [K], |J_app| [A/m^2], run directory under RUNS)]
-    "Anode":   [(T, 9e6, f"base_sweep/anode/T{T}") for T in (11000, 12000, 13000, 14000)]
-             + [(12400.0, J, f"base_sweep/anode/J{J:.0e}".replace("e+0", "e")) for J in (7e6, 8e6, 1e7, 2e7)],
-    "Cathode": [(T, 1.2e8, f"base_sweep/cathode/T{T}_scratch") for T in (19000, 20000, 22000, 23000)]
-             + [(21000.0, J, f"base_sweep/cathode/J{J:.0e}".replace("e+0", "e")) for J in (8e7, 9e7, 1e8)],
+    "Anode":   [(T, 1e7, f"sweep_anode14/T{T}_J1e7") for T in (11000, 12000, 13000)]
+             + [(14000.0, J, f"sweep_anode14/T14000_J{J:.0e}".replace("e+0", "e")) for J in (7e6, 8e6, 9e6, 2e7)],
+    "Cathode": [(T, 1e8, f"sweep_ref/cathode/T{T}_scratch") for T in (19000, 20000, 22000, 23000)]
+             + [(21000.0, J, f"base_sweep/cathode/J{J:.0e}".replace("e+0", "e")) for J in (8e7, 9e7)]
+             + [(21000.0, 1.2e8, "base_case_cathode")],
 }
 # Cathode J > 1.2e8: the rungs of the 4 % current ladder (runs/base_sweep/ladder4_J2e8.sh) and the
 # 1.48e8 / 1.5e8 restarts (tighten_and_1p5.sh), each a steady state of the same model
@@ -143,9 +148,9 @@ def fig_sweep(rows, var, stem):
             ax.text(0.0, 1.03, f"({tags[2 * r_i + c]})", transform=ax.transAxes, ha="left",
                     va="bottom", fontsize=8.5)
         if var == "T_bulk":
-            axs[0, c].set_title(f"{el}, $|J_{{\\rm app}}|={Jb / 1e6:g}$" + r"$\times10^{6}$ A m$^{-2}$"
+            axs[0, c].set_title(f"{el}, $|J_{{\\rm app}}|={sci_tex(Jb)}$ A m$^{{-2}}$"
                                 if el == "Anode" else
-                                f"{el}, $J_{{\\rm app}}={Jb / 1e8:g}$" + r"$\times10^{8}$ A m$^{-2}$", fontsize=9, pad=14)
+                                f"{el}, $J_{{\\rm app}}={sci_tex(Jb)}$ A m$^{{-2}}$", fontsize=9, pad=14)
             axs[-1, c].set_xlabel(r"$T_{\rm bulk}$ (10$^3$ K)")
         else:
             axs[0, c].set_title(f"{el}, $T_{{\\rm bulk}}={Tb:.0f}$ K", fontsize=9, pad=14)

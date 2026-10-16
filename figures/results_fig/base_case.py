@@ -88,6 +88,13 @@ def _inv(u):
     return X_C * np.real(lambertw(np.exp(v) / X_C))
 
 
+def sci_tex(v):
+    """Mathtext for a positive value: 10^{n} when the mantissa is 1, else m\\times10^{n} (9e6, 1.5e8)."""
+    e = int(np.floor(np.log10(v) + 1e-12))
+    m = v / 10.0 ** e
+    return rf"10^{{{e}}}" if abs(m - 1) < 1e-9 else rf"{m:g}\times10^{{{e}}}"
+
+
 def _um_label(x, _pos=None):
     um = x * 1e6
     if um < 1.0:
@@ -185,6 +192,25 @@ def sheath_edge(d, ne, ni, phi):
     return d[i] + f * (d[i + 1] - d[i]), phi[i] + f * (phi[i + 1] - phi[i]), i
 
 
+P0 = 101325.0   # [Pa], prob.pres
+
+
+def n_eq_Th(Th, p=P0):
+    """Equilibrium charged-particle density n_eq(T_h) of the model's OWN reactions (prob.rxn_rates =
+    almeida, eq S: k_ion n_e n_n = k_rec n_e^2 n_i) at T_e = T_h = T, with quasi-neutrality and Dalton's
+    law p = (2 n + n_n) k T: exactly the function that writes exe/ar_eq.dat (gen_arc_eq_table.n_eq), i.e.
+    the arc-face density at x = L. Below ~3 kK n_eq is below any plotted density; NaN where the root
+    finder's bracket (n >= 1e-30 p/kT) holds no root."""
+    g = exe_module("gen_arc_eq_table")
+    out = np.full(np.shape(Th), np.nan)
+    for k, T in enumerate(np.asarray(Th, float)):
+        try:
+            out[k] = g.n_eq(float(T), p, None, None, "almeida")
+        except ValueError:
+            pass
+    return out
+
+
 def fig_profiles(runs, stem):
     rc()
     fig, axs = plt.subplots(4, 2, figsize=(7.0, 7.6), sharex="col",
@@ -195,10 +221,11 @@ def fig_profiles(runs, stem):
         ax = axs[0, col]
         ax.plot(d, s["ne"], color=C_E, lw=1.4, label=r"$n_e$")
         ax.plot(d, s["ni"], color=C_I, lw=1.4, ls=(0, (4, 2)), label=r"$n_i$")
-        ax.plot(d, s["nn"], color=C_N, lw=1.4, label=r"$n_n$")
+        neq = n_eq_Th(s["Th"])
+        ax.plot(d, neq, color=C_N, lw=1.2, ls="-.", label=r"$n_{\rm eq}(T_h)$")
         ax.set_yscale("log")
-        lo = max(1e18, 0.3 * min(s["ne"].min(), s["ni"].min(), s["nn"].min()))
-        ax.set_ylim(lo, 3 * max(s["nn"].max(), s["ne"].max()))
+        lo = 0.3 * min(s["ne"].min(), s["ni"].min())
+        ax.set_ylim(lo, 3 * max(np.nanmax(neq), s["ne"].max()))
         ax.set_ylabel(r"Number density (m$^{-3}$)")
         ax.set_title(tag, fontsize=9, pad=10)
         ax.legend(frameon=False, loc="best", handlelength=2.2)
@@ -206,11 +233,7 @@ def fig_profiles(runs, stem):
         ax = axs[1, col]
         ax.plot(d, s["Te"] / 1e3, color=C_E, lw=1.4, label=r"$T_e$")
         ax.plot(d, s["Th"] / 1e3, color=C_I, lw=1.4, label=r"$T_h$")
-        # the ion-atom Wannier closure: shown only where atoms dominate (n_n > n_i)
-        teff = np.where(s["nn"] > s["ni"], s["Teff"], np.nan)
-        ax.plot(d, teff / 1e3, color=C_I, lw=1.0, ls=":", label=r"$T_{\rm eff}$ (ions)")
-        top = max(s["Te"].max(), np.nanmax(teff))
-        ax.set_ylim(0, 1.08 * top / 1e3)
+        ax.set_ylim(0, 1.08 * max(s["Te"].max(), s["Th"].max()) / 1e3)
         ax.set_ylabel(r"Temperature (10$^3$ K)")
         ax.legend(frameon=False, loc="best", handlelength=2.2)
 

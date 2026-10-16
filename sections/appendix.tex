@@ -1,8 +1,27 @@
+\section{Quantities used in the scale estimates}
+\label{app:scales}
+
+
+The scales of table~\ref{tab:scales} are evaluated in LTE at atmospheric pressure, \(T_e=T_h=T\), with the composition given by the Saha equation (internal partition functions summed over the low-lying levels of Ar and Ar\(^+\)), quasi-neutrality and Dalton's law. Following Almeida et al.\ \cite{Almeida2008}, the averaged electron--atom and electron--ion momentum-transfer cross sections are
+\begin{equation}
+\overline{Q}_{en}=\frac12\int_0^\infty x^2e^{-x}\,Q^{(1)}(x\,k_BT_e)\,dx,\qquad
+\overline{Q}_{ei}=\frac{e^4\ln\Lambda}{32\pi\varepsilon_0^2(k_BT_e)^2},
+\label{eq:Qbar-e}
+\end{equation}
+where \(Q^{(1)}\) is the argon momentum-transfer cross section of the LXCat database \cite{lxcat}, \(x=\varepsilon/(k_BT_e)\) is the electron energy \(\varepsilon\) reduced by \(k_BT_e\), and \(\ln\Lambda\) is the Coulomb logarithm, equation~(\ref{eq:coulomb-log}). The ion--ion cross section \(\overline{Q}_{ii}\) is \(\overline{Q}_{ei}\) evaluated at \(T_h\), and the ion--atom cross section \(\overline{Q}_{in}\) is given by equation~(\ref{eq:Qia}). The ambipolar diffusion coefficient is
+\begin{equation}
+D_a=\left(1+\frac{T_e}{T_h}\right)D_{in},\qquad
+D_{in}=\frac{3\pi}{32}\,\frac{\bar C_{in}}{(n_i+n_n)\,\overline{Q}_{in}},\qquad
+\bar C_{in}=\sqrt{\frac{8k_BT_h}{\pi\,m_{in}}},
+\label{eq:Da}
+\end{equation}
+where \(D_{in}\) is the ion--atom diffusion coefficient \cite{Almeida2008} and \(m_{in}=M/2\) is the ion--atom reduced mass. The reaction time \(\tau_{\rm rxn}\) uses the rate coefficients of Almeida et al.\ \cite{Almeida2008}, from Benilov and Naidis \cite{benilov1998ionization}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Transport coefficients}
 \label{app:transport}
 
-
-This appendix describes how the transport and energy-exchange coefficients that close the model are calculated.
+This appendix describes how the transport and energy-exchange coefficients that close the model of Section~\ref{sec:model-governing} are calculated, and compares the resulting conductivities with the transport properties of argon in LTE.
 
 
 \subsection{Electrons}
@@ -141,6 +160,10 @@ C_n=\frac{C_{en}\bar\nu^E_{en}}{\bar\nu^E_{en}+\bar\nu^E_{ei}} ,
 \end{equation}
 and equations~(\ref{eq:Ci}) and (\ref{eq:Cn}) satisfy \(C_i+C_n=C_e\), as required by equation~(\ref{eq:newton3}). The heavy-particle thermal conductivity \(\kappa_h=\kappa_n+\kappa_i\), the sum of the atom and ion contributions, is calculated as in Almeida et al.\ \cite{Almeida2008}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Comparison with LTE transport properties}
+\label{app:lte-check}
+
 The electrical conductivity \(\sigma=n_ee^2/(m_e\bar\nu^M_e)\) and the thermal conductivity obtained with these coefficients are compared with the transport properties of argon in local thermodynamic equilibrium (LTE) in figure~\ref{fig:lte-check}. The coefficients are evaluated with \(T_e=T_h=T\) and the Saha composition at atmospheric pressure, and compared with the data tabulated by Boulos et al.\ \cite{boulos2023handbook}. Along the axis, the model has no reactive thermal conductivity: the energy carried by the diffusion of ion pairs and released on recombination appears through the ambipolar flux and the ionization source (\(\kappa_R\) enters only the radial loss~(\ref{eq:radial-loss})). For the comparison, the reactive conductivity \(\kappa_R\) computed with Mutation++ \cite{scoggins2020mutation} is therefore added to \(\kappa_e+\kappa_h\).
 
 The electrical conductivity agrees well with the LTE data over most of the temperature range, with only minor deviations in the low-temperature regime where electron--neutral collisions dominate. At intermediate temperatures, however, the additive rule for the collision frequencies overestimates the conductivity. This discrepancy arises because, in argon, the slow electrons associated with the Ramsauer minimum contribute substantially to the current in the electron--neutral limit, while these same electrons are strongly scattered by ions. Simply adding the averaged electron--neutral and electron--ion collision frequencies therefore fails to capture the correlation between the two collision processes. The thermal conductivity also shows good agreement with the reference data in the high-temperature regime, with a modest overprediction at intermediate temperatures.
@@ -153,4 +176,3 @@ The electrical conductivity agrees well with the LTE data over most of the tempe
 \caption{Transport coefficients of argon in LTE at atmospheric pressure, computed with the rules of equation~(\ref{eq:bridge}) (lines), compared with the LTE data of Boulos et al.\ \cite{boulos2023handbook} (symbols). Left: electrical conductivity \(\sigma=n_ee^2/(m_e\bar\nu^M_e)\), with the electron--neutral and electron--ion limits shown separately. Right: thermal conductivity, the sum of the electron conductivity \(\kappa_e\), the heavy-particle conductivity \(\kappa_h\) \cite{Almeida2008}, and the reactive conductivity \(\kappa_R\) computed with Mutation++ \cite{scoggins2020mutation}.}
 \label{fig:lte-check}
 \end{figure}
-

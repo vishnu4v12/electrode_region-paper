@@ -37,17 +37,21 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
-from base_case import HERE, C_E, C_I, rc, style
+from base_case import HERE, C_E, C_I, rc, sci_tex, style
 
 TS = os.path.join(os.environ.get("PLASMEX_ROOT", os.path.expanduser("~/work/PlasmeX")), "runs",
                   "base_timescales")
 sys.path.insert(0, TS)
 import analyse  # noqa: E402
 
-BASE = {"cathode": (21000.0, 1.2e8, 5e-4), "anode": (12400.0, 9e6, 5e-4)}
+# reference states (cathode 21 kK / 1e8 since 15 Oct 2026, anode 14 kK / 1e7 since 16 Oct) and their run directories
+BASE = {"cathode": (21000.0, 1e8, 5e-4), "anode": (14000.0, 1e7, 5e-4)}
+REF = {"cathode": "C_J1e8", "anode": "A14_J1e7"}
 OBS = (("J_i", r"$j_i$", C_E, "o"), ("q_wall", r"$q_w$", C_I, "s"))
 # records used, in order of preference; e1e-4_tt1e-4 is e1e-4 at imp_ttol 1e-4
-REC = {"cathode": ("e1e-4", "e1e-4_tt1e-4"), "anode": ("e1",)}
+# anode: e1_W465 = q_wall with the copper work function 4.65 eV (the decks have 2.63; W enters only q_wall there:
+# the 14 kK / 1e7 state is bit-identical at 2.63 and 4.65). Only the runs/sweep_anode14 cases have this record.
+REC = {"cathode": ("e1e-4", "e1e-4_tt1e-4"), "anode": ("e1_W465",)}
 GREY = "#8a8a8a"
 
 
@@ -80,7 +84,7 @@ def pick(rs, el, var):
 
 
 def response(ax, el):
-    cd = os.path.join(TS, el, ("C" if el == "cathode" else "A") + "_base")
+    cd = os.path.join(TS, el, REF[el])
     h = analyse.load(os.path.join(cd, REC[el][0]))
     t = h["t"][1:]
     for k, olab, col, _ in OBS:
@@ -133,8 +137,8 @@ def main(argv=None):
                              ha="left", va="bottom", fontsize=8.5)
         Tb, Jb, _ = BASE[el]
         axs[0, c].set_title(f"{el.capitalize()}, $T_{{\\rm bulk}}={Tb:.0f}$ K, "
-                            + (f"$J_{{\\rm app}}={Jb / 1e8:g}$" + r"$\times10^{8}$ A m$^{-2}$" if el == "cathode"
-                               else f"$|J_{{\\rm app}}|={Jb / 1e6:g}$" + r"$\times10^{6}$ A m$^{-2}$"),
+                            + (f"$J_{{\\rm app}}={sci_tex(Jb)}$ A m$^{{-2}}$" if el == "cathode"
+                               else f"$|J_{{\\rm app}}|={sci_tex(Jb)}$ A m$^{{-2}}$"),
                             fontsize=9, pad=14)
     h = [Line2D([], [], color=col, marker=mk, ms=3.8, mfc="white", mec=col, mew=0.9, lw=1.0, label=olab)
          for _, olab, col, mk in OBS]
@@ -147,7 +151,7 @@ def main(argv=None):
                 f" tau {r['J_i_tau'] * 1e6:.3f}/{r['q_wall_tau'] * 1e6:.3f} us ({r['rec']})"
                 for r in pick(rs, el, var)))
     for el in ("cathode", "anode"):
-        cd = os.path.join(TS, el, ("C" if el == "cathode" else "A") + "_base")
+        cd = os.path.join(TS, el, REF[el])
         h = analyse.load(os.path.join(cd, REC[el][0]))
         for k, *_ in OBS:
             q = h[analyse.OBS[k]]

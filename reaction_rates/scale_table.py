@@ -13,8 +13,11 @@ summed over the low-lying levels below (NIST ASD energies, no lowering of the io
                                                           Qbar_in: Benilov & Naidis resonant charge exchange
   lambda_i   = 1/(n_n Qbar_in + n_i Qbar_ii)              ion mean free path; Qbar_ii = (47) at T_h
   lambda_De  = sqrt(eps0 k T/(n_e e^2))
-Rates are Hoffert & Lien (exe/hoff_f.dat, hoff_r.dat), as in the model. Everything is loaded from
-the live PlasmeX tree through figures/validation_fig/plasmex.py.
+Rates are those of the model runs (prob.rxn_rates = almeida): Almeida et al. (2008) Appendix A from
+Benilov & Naidis (1998), k_ion = k_dir + beta k_step, beta = n_e/(n_e + 1e21 m^-3),
+k_rec = (k_dir + k_step)/S(T_e) (exe/almeida_arc_bc.py::rates/saha). `--hl` uses the Hoffert & Lien
+tables (exe/hoff_f.dat, hoff_r.dat) instead. Everything is loaded from the live PlasmeX tree through
+figures/validation_fig/plasmex.py.
 """
 import os
 import sys
@@ -62,11 +65,21 @@ def hl(T):
             np.exp(np.interp(x, _r[:, 0], np.log(_r[:, 1]))))
 
 
+def bn(T, ne):
+    """Almeida (2008) App. A / Benilov & Naidis (1998), as exe/chemistry.H argon_ion (almeida)"""
+    k_dir, _, k_step = A.rates(T)
+    beta = ne / (ne + A.NE0)
+    return k_dir + beta * k_step, (k_dir + k_step) / A.saha(T)
+
+
+RATES = hl if "--hl" in sys.argv else None
+
+
 def scales(T):
     ne, nn = composition(T)
     ni = ne
     nh = nn + ni
-    ki, kr = hl(T)
+    ki, kr = hl(T) if RATES is hl else bn(T, ne)
     tau = 1.0 / (2 * kr * ne**2 + 2 * ki * ne)
     Da = 2 * A.nD(T, M / 2, A.qbar_ia(T)) / nh
     Qen = A.qbar_ea(T)[0]
@@ -85,6 +98,6 @@ if __name__ == "__main__":
     keys = ["T", "ne", "nn", "lnL", "bal", "Da",
             "lDe", "le", "li", "lTh", "lrxn", "lT", "tau"]
     print(" ".join(f"{k:>9s}" for k in keys))
-    for T in (12e3, 14e3, 18e3, 20e3, 22e3):
+    for T in (11e3, 12e3, 14e3, 18e3, 20e3, 22e3, 23e3):
         s = scales(T)
         print(" ".join(f"{s[k]:9.3g}" for k in keys))
