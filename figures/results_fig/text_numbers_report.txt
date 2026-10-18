@@ -1,80 +1,80 @@
 
-===== Anode: /home/vishnu/work/PlasmeX/runs/sweep_anode14/T14000_J1e7/plt00500
-x_s 7.957e-07  phi_s 0.601  phi(L) 3.431  T_wall 1000
-surface cell: n_e 5.674e+20 n_i 6.677e+20 (n_e/n_i-1 -0.150, n_i/n_e 1.18)  n_n 7.333e+24  T_e 5088  T_h 1000  T_eff 1353  E_face 1.490e+06
-max n_i/n_e in sheath 1.24
-  x=1.00e-07: phi 0.136  n_e 7.724e+20  n_n 7.192e+24  T_e 5096  T_h 1020  T_e-T_h 4076  E 1.221e+06  j_i/j -0.0070
-  x=1.00e-06: phi 0.673  n_e 2.633e+21  n_n 6.173e+24  T_e 5188  T_h 1186  T_e-T_h 4001  E 3.179e+05  j_i/j -0.0070
-  x=7.96e-07: phi 0.602  n_e 2.240e+21  n_n 6.370e+24  T_e 5168  T_h 1150  T_e-T_h 4018  E 3.872e+05  j_i/j -0.0070
-  x=1.00e-05: phi 1.429  n_e 1.269e+22  n_n 3.049e+24  T_e 5903  T_h 2372  T_e-T_h 3530  E 3.224e+04  j_i/j -0.0073
-  x=1.40e-05: phi 1.538  n_e 1.529e+22  n_n 2.595e+24  T_e 6165  T_h 2775  T_e-T_h 3389  E 2.316e+04  j_i/j -0.0075
-  x=1.00e-04: phi 2.268  n_e 4.165e+22  n_n 8.755e+23  T_e 9140  T_h 7588  T_e-T_h 1553  E 4.732e+03  j_i/j -0.0131
-  x=3.00e-04: phi 2.980  n_e 9.402e+22  n_n 4.222e+23  T_e 12176  T_h 11999  T_e-T_h 177  E 2.895e+03  j_i/j -0.0290
-  x=5.00e-04: phi 3.431  n_e 1.506e+23  n_n 2.231e+23  T_e 14003  T_h 13996  T_e-T_h 7  E 1.268e+03  j_i/j -0.0383
-  bulk n_e 1.506e+23; bulk/surface n_e 265;  T_e range 5088-14003
-  column field at L (last 10 um mean) 1.593e+03 V/m
-  Gamma_em 1.177e+06 -> j_em 1.886e-13 A/m^2 = 0.000 J;  Gamma_abs 6.285e+25;  Gamma_i 4.393e+23
-  j_i/j surface -0.0070
-  int JOULE  : domain    -34.79  sheath     -6.05  x<10um    -14.39  x<100um    -22.86  x>100um    -11.93  MW/m^2
-  int ELASTIC: domain     -6.72  sheath     -0.00  x<10um     -0.06  x<100um     -2.19  x>100um     -4.53  MW/m^2
-  int ION    : domain     +4.93  sheath     +0.00  x<10um     +0.04  x<100um     +0.96  x>100um     +3.96  MW/m^2
-  int RAD    : domain     -0.70  sheath     -0.00  x<10um     -0.00  x<100um     -0.00  x>100um     -0.70  MW/m^2
-  int RADL   : domain     -2.15  sheath     -0.00  x<10um     -0.00  x<100um     -0.06  x>100um     -2.08  MW/m^2
-  Joule peak -1.497e+13 W/m^3 at 1.91e-09
-  h_e at the wall face (q_wall eeng) +8.83 MW/m^2
-  h_e at x=9.92e-08: TOT    +10.19  ENTH    +11.06  COND     +1.89  TD     -2.75  MW/m^2 (towards electrode)
-  h_e at x=7.93e-07: TOT    +14.89  ENTH    +11.21  COND     +4.43  TD     -0.76  MW/m^2 (towards electrode)
-  h_e at x=9.77e-07: TOT    +15.54  ENTH    +11.25  COND     +4.72  TD     -0.43  MW/m^2 (towards electrode)
-  h_e at x=1.00e-05: TOT    +23.25  ENTH    +12.81  COND     +7.89  TD     +2.55  MW/m^2 (towards electrode)
-  h_e at x=1.00e-04: TOT    +32.98  ENTH    +19.95  COND     +8.08  TD     +4.95  MW/m^2 (towards electrode)
-  h_e at x=4.99e-04: TOT    +48.23  ENTH    +31.31  COND     +8.68  TD     +8.23  MW/m^2 (towards electrode)
+===== Anode: /home/vishnu/work/PlasmeX/runs/Tedge1000/anode_T15000_J4e6_L0.5mm_R3.5mm/plt01900
+x_s 1.008e-06  phi_s 1.368  phi(L) 5.207  T_wall 1000
+surface cell: n_e 2.114e+20 n_i 6.170e+20 (n_e/n_i-1 -0.657, n_i/n_e 2.92)  n_n 7.338e+24  T_e 6094  T_h 1000  T_eff 2268  E_face 3.669e+06
+max n_i/n_e in sheath 2.93
+  x=1.00e-07: phi 0.327  n_e 3.896e+20  n_n 7.171e+24  T_e 6113  T_h 1023  T_e-T_h 5089  E 2.859e+06  j_i/j -0.0267
+  x=1.00e-06: phi 1.364  n_e 2.759e+21  n_n 6.012e+24  T_e 6220  T_h 1217  T_e-T_h 5003  E 4.785e+05  j_i/j -0.0267
+  x=1.01e-06: phi 1.368  n_e 2.780e+21  n_n 6.004e+24  T_e 6221  T_h 1219  T_e-T_h 5002  E 4.742e+05  j_i/j -0.0267
+  x=1.00e-05: phi 2.359  n_e 1.590e+22  n_n 2.817e+24  T_e 6703  T_h 2553  T_e-T_h 4151  E 3.880e+04  j_i/j -0.0270
+  x=1.40e-05: phi 2.488  n_e 1.933e+22  n_n 2.383e+24  T_e 6880  T_h 2999  T_e-T_h 3881  E 2.740e+04  j_i/j -0.0274
+  x=1.00e-04: phi 3.421  n_e 5.285e+22  n_n 7.821e+23  T_e 9500  T_h 8188  T_e-T_h 1312  E 7.030e+03  j_i/j -0.0477
+  x=3.00e-04: phi 4.526  n_e 1.206e+23  n_n 3.327e+23  T_e 12867  T_h 12768  T_e-T_h 100  E 4.396e+03  j_i/j -0.1080
+  x=5.00e-04: phi 5.207  n_e 1.827e+23  n_n 1.240e+23  T_e 15002  T_h 14995  T_e-T_h 7  E 2.159e+03  j_i/j -0.1304
+  bulk n_e 1.827e+23; bulk/surface n_e 864;  T_e range 6094-15002
+  column field at L (last 10 um mean) 2.558e+03 V/m
+  Gamma_em 1.599e+06 -> j_em 2.561e-13 A/m^2 = 0.000 J;  Gamma_abs 2.563e+25;  Gamma_i 6.655e+23
+  j_i/j surface -0.0267
+  int JOULE  : domain    -21.89  sheath     -5.67  x<10um     -9.69  x<100um    -14.08  x>100um     -7.81  MW/m^2
+  int ELASTIC: domain     -7.55  sheath     -0.00  x<10um     -0.09  x<100um     -3.08  x>100um     -4.48  MW/m^2
+  int ION    : domain     +6.54  sheath     +0.00  x<10um     +0.02  x<100um     +1.33  x>100um     +5.21  MW/m^2
+  int RAD    : domain     -1.29  sheath     -0.00  x<10um     -0.00  x<100um     -0.00  x>100um     -1.29  MW/m^2
+  int RADL   : domain     -2.44  sheath     -0.00  x<10um     -0.00  x<100um     -0.07  x>100um     -2.37  MW/m^2
+  Joule peak -1.501e+13 W/m^3 at 1.91e-09
+  h_e at the wall face (q_wall eeng) +4.31 MW/m^2
+  h_e at x=9.92e-08: TOT     +5.64  ENTH     +5.41  COND     +2.25  TD     -2.01  MW/m^2 (towards electrode)
+  h_e at x=1.04e-06: TOT     +9.99  ENTH     +5.51  COND     +5.20  TD     -0.71  MW/m^2 (towards electrode)
+  h_e at x=9.77e-07: TOT     +9.87  ENTH     +5.50  COND     +5.15  TD     -0.78  MW/m^2 (towards electrode)
+  h_e at x=1.00e-05: TOT    +14.07  ENTH     +5.93  COND     +7.03  TD     +1.11  MW/m^2 (towards electrode)
+  h_e at x=1.00e-04: TOT    +20.22  ENTH     +8.58  COND     +9.54  TD     +2.10  MW/m^2 (towards electrode)
+  h_e at x=4.99e-04: TOT    +30.92  ENTH    +14.61  COND    +12.74  TD     +3.56  MW/m^2 (towards electrode)
   COND sign changes at x = 
-  ION term > 0 (recombination heating) at x in [1.91e-09, 4.95e-04]  fraction of cells 0.99
-  q_wall.electron_kinetic             8.831
-  q_wall.electron_work_function      46.827
+  ION term > 0 (recombination heating) at x in [1.91e-09, 4.80e-04]  fraction of cells 0.98
+  q_wall.electron_kinetic             4.313
+  q_wall.electron_work_function      19.096
   q_wall.emission_kinetic             0.000
   q_wall.emission_work_function       0.000
-  q_wall.ion_recombination            0.782
-  q_wall.gas_conduction               9.244
-  q_wall.total                       65.683
-  heating 65.7  cooling 0.0  absorbed electrons 55.7  ion share of heating 0.012  electron share of q_w 0.847
+  q_wall.ion_recombination            1.185
+  q_wall.gas_conduction              10.960
+  q_wall.total                       35.553
+  heating 35.6  cooling 0.0  absorbed electrons 23.4  ion share of heating 0.033  electron share of q_w 0.658
 
-===== Cathode: /home/vishnu/work/PlasmeX/runs/base_sweep/cathode/J1e8/tight/plt00900
-x_s 5.815e-07  phi_s 3.592  phi(L) 12.520  T_wall 3671
-surface cell: n_e 2.109e+21 n_i 6.548e+21 (n_e/n_i-1 -0.678, n_i/n_e 3.11)  n_n 2.010e+24  T_e 18179  T_h 3672  T_eff 39598  E_face 1.832e+07
+===== Cathode: /home/vishnu/work/PlasmeX/runs/Tedge1000/cathode_T21000_J1e8_R0.5mm/plt02400
+x_s 5.816e-07  phi_s 3.595  phi(L) 12.526  T_wall 3670
+surface cell: n_e 2.106e+21 n_i 6.549e+21 (n_e/n_i-1 -0.678, n_i/n_e 3.11)  n_n 2.011e+24  T_e 18185  T_h 3672  T_eff 39633  E_face 1.834e+07
 max n_i/n_e in sheath 3.11
-  x=1.00e-07: phi 1.450  n_e 5.158e+21  n_n 1.937e+24  T_e 18320  T_h 3743  T_e-T_h 14577  E 1.106e+07  j_i/j +0.0537
-  x=1.00e-06: phi 4.176  n_e 2.831e+22  n_n 1.575e+24  T_e 18473  T_h 4250  T_e-T_h 14223  E 1.065e+06  j_i/j +0.0532
-  x=5.81e-07: phi 3.592  n_e 1.974e+22  n_n 1.710e+24  T_e 18435  T_h 4031  T_e-T_h 14404  E 1.888e+06  j_i/j +0.0535
-  x=1.00e-05: phi 6.493  n_e 1.108e+23  n_n 6.005e+23  T_e 18633  T_h 7415  T_e-T_h 11218  E 8.431e+04  j_i/j +0.0427
-  x=1.40e-05: phi 6.763  n_e 1.273e+23  n_n 4.585e+23  T_e 18631  T_h 8479  T_e-T_h 10151  E 5.426e+04  j_i/j +0.0382
-  x=1.00e-04: phi 8.308  n_e 1.777e+23  n_n 3.771e+22  T_e 19065  T_h 18334  T_e-T_h 731  E 1.284e+04  j_i/j +0.0074
-  x=3.00e-04: phi 10.541  n_e 1.787e+23  n_n 3.594e+21  T_e 20363  T_h 20298  T_e-T_h 64  E 1.018e+04  j_i/j +0.0002
-  x=5.00e-04: phi 12.520  n_e 1.737e+23  n_n 2.089e+21  T_e 20999  T_h 20996  T_e-T_h 3  E 9.523e+03  j_i/j +0.0000
-  bulk n_e 1.737e+23; bulk/surface n_e 82;  T_e range 18179-20999
-  column field at L (last 10 um mean) 9.680e+03 V/m
-  Gamma_em 1.032e+27 -> j_em 1.654e+08 A/m^2 = 1.654 J;  Gamma_abs 4.416e+26;  Gamma_i 3.349e+25
+  x=1.00e-07: phi 1.452  n_e 5.156e+21  n_n 1.938e+24  T_e 18326  T_h 3742  T_e-T_h 14584  E 1.107e+07  j_i/j +0.0537
+  x=1.00e-06: phi 4.180  n_e 2.832e+22  n_n 1.575e+24  T_e 18479  T_h 4250  T_e-T_h 14229  E 1.065e+06  j_i/j +0.0533
+  x=5.82e-07: phi 3.596  n_e 1.974e+22  n_n 1.710e+24  T_e 18442  T_h 4031  T_e-T_h 14410  E 1.889e+06  j_i/j +0.0535
+  x=1.00e-05: phi 6.497  n_e 1.108e+23  n_n 6.003e+23  T_e 18637  T_h 7416  T_e-T_h 11221  E 8.428e+04  j_i/j +0.0427
+  x=1.40e-05: phi 6.767  n_e 1.273e+23  n_n 4.583e+23  T_e 18634  T_h 8481  T_e-T_h 10154  E 5.423e+04  j_i/j +0.0382
+  x=1.00e-04: phi 8.311  n_e 1.778e+23  n_n 3.775e+22  T_e 19061  T_h 18330  T_e-T_h 731  E 1.284e+04  j_i/j +0.0074
+  x=3.00e-04: phi 10.545  n_e 1.788e+23  n_n 3.628e+21  T_e 20346  T_h 20281  T_e-T_h 64  E 1.019e+04  j_i/j +0.0002
+  x=5.00e-04: phi 12.525  n_e 1.737e+23  n_n 2.090e+21  T_e 20999  T_h 20996  T_e-T_h 3  E 9.532e+03  j_i/j +0.0000
+  bulk n_e 1.737e+23; bulk/surface n_e 82;  T_e range 18185-20999
+  column field at L (last 10 um mean) 9.701e+03 V/m
+  Gamma_em 1.032e+27 -> j_em 1.653e+08 A/m^2 = 1.653 J;  Gamma_abs 4.412e+26;  Gamma_i 3.352e+25
   j_i/j surface 0.0537
-  int JOULE  : domain  +1213.58  sheath   +339.61  x<10um   +615.37  x<100um   +792.58  x>100um   +421.00  MW/m^2
-  int ELASTIC: domain    -40.21  sheath     -0.01  x<10um     -3.15  x<100um    -36.06  x>100um     -4.14  MW/m^2
-  int ION    : domain    -84.50  sheath     -0.28  x<10um    -17.36  x<100um    -72.97  x>100um    -11.53  MW/m^2
-  int RAD    : domain    -40.82  sheath     -0.03  x<10um     -0.52  x<100um     -5.44  x>100um    -35.38  MW/m^2
-  int RADL   : domain   -362.27  sheath     -0.12  x<10um     -4.66  x<100um    -58.99  x>100um   -303.28  MW/m^2
-  Joule peak 1.719e+15 W/m^3 at 1.91e-09
-  h_e at the wall face (q_wall eeng) +117.05 MW/m^2
-  h_e at x=9.92e-08: TOT    -19.26  ENTH   -373.48  COND   +227.83  TD   +126.39  MW/m^2 (towards electrode)
-  h_e at x=5.80e-07: TOT   -222.10  ENTH   -375.92  COND   +100.34  TD    +53.48  MW/m^2 (towards electrode)
-  h_e at x=9.77e-07: TOT   -274.62  ENTH   -376.75  COND    +81.37  TD    +20.76  MW/m^2 (towards electrode)
-  h_e at x=1.00e-05: TOT   -472.63  ENTH   -384.30  COND     +2.01  TD    -90.35  MW/m^2 (towards electrode)
-  h_e at x=1.00e-04: TOT   -502.06  ENTH   -407.73  COND    +20.13  TD   -114.47  MW/m^2 (towards electrode)
-  h_e at x=4.99e-04: TOT   -568.73  ENTH   -452.33  COND    +10.76  TD   -127.16  MW/m^2 (towards electrode)
-  COND sign changes at x = 1.10e-05, 3.03e-05
+  int JOULE  : domain  +1214.12  sheath   +339.93  x<10um   +615.72  x<100um   +792.82  x>100um   +421.30  MW/m^2
+  int ELASTIC: domain    -40.22  sheath     -0.01  x<10um     -3.16  x<100um    -36.06  x>100um     -4.15  MW/m^2
+  int ION    : domain    -84.55  sheath     -0.28  x<10um    -17.40  x<100um    -73.04  x>100um    -11.51  MW/m^2
+  int RAD    : domain    -40.69  sheath     -0.03  x<10um     -0.52  x<100um     -5.44  x>100um    -35.25  MW/m^2
+  int RADL   : domain   -363.83  sheath     -0.12  x<10um     -4.67  x<100um    -59.18  x>100um   -304.65  MW/m^2
+  Joule peak 1.721e+15 W/m^3 at 1.91e-09
+  h_e at the wall face (q_wall eeng) +116.97 MW/m^2
+  h_e at x=9.92e-08: TOT    -19.49  ENTH   -373.60  COND   +227.62  TD   +126.49  MW/m^2 (towards electrode)
+  h_e at x=5.80e-07: TOT   -222.50  ENTH   -376.03  COND    +99.98  TD    +53.54  MW/m^2 (towards electrode)
+  h_e at x=9.77e-07: TOT   -275.04  ENTH   -376.86  COND    +81.01  TD    +20.80  MW/m^2 (towards electrode)
+  h_e at x=1.00e-05: TOT   -473.00  ENTH   -384.38  COND     +1.74  TD    -90.36  MW/m^2 (towards electrode)
+  h_e at x=1.00e-04: TOT   -502.13  ENTH   -407.63  COND    +19.95  TD   -114.44  MW/m^2 (towards electrode)
+  h_e at x=4.99e-04: TOT   -567.87  ENTH   -452.32  COND    +11.62  TD   -127.16  MW/m^2 (towards electrode)
+  COND sign changes at x = 1.07e-05, 3.08e-05
   ION term > 0 (recombination heating) at x in [nan, nan]  fraction of cells 0.00
-  q_wall.electron_kinetic           221.677
-  q_wall.electron_work_function     186.083
-  q_wall.emission_kinetic          -104.625
-  q_wall.emission_work_function    -434.970
-  q_wall.ion_recombination           70.459
-  q_wall.gas_conduction              88.082
-  q_wall.total                       26.707
-  heating 566.3  cooling -539.6  absorbed electrons 407.8  ion share of heating 0.124  electron share of q_w 15.268
+  q_wall.electron_kinetic           221.539
+  q_wall.electron_work_function     185.902
+  q_wall.emission_kinetic          -104.572
+  q_wall.emission_work_function    -434.780
+  q_wall.ion_recombination           70.503
+  q_wall.gas_conduction              88.150
+  q_wall.total                       26.744
+  heating 566.1  cooling -539.4  absorbed electrons 407.4  ion share of heating 0.125  electron share of q_w 15.235

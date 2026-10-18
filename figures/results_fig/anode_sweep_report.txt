@@ -1,0 +1,22 @@
+  T=  15000 J=4.00e+06  Tedge1000/anode_T15000_J4e6_L0.5mm_R3.5mm/plt01900  t=1.348e-03  steady 1.5e-03  j spread 5.3e-12
+  T=  13000 J=4.00e+06  Tedge1000/anode_sweep_R3.5mm/T13000_J4e6/plt02800  t=1.807e-03  steady 1.6e-03  j spread 3.4e-12
+  T=  14000 J=4.00e+06  Tedge1000/anode_sweep_R3.5mm/T14000_J4e6/plt02800  t=1.826e-03  steady 1.6e-03  j spread 3.9e-12
+  T=  16000 J=4.00e+06  Tedge1000/anode_sweep_R3.5mm/T16000_J4e6/plt03200  t=1.852e-03  steady 1.4e-03  j spread 6.4e-12
+  T=  17000 J=4.00e+06  Tedge1000/anode_sweep_R3.5mm/T17000_J4e6/plt03600  t=1.847e-03  steady 1.3e-03  j spread 6.9e-12
+  T=  15000 J=2.00e+06  Tedge1000/anode_sweep_R3.5mm/T15000_J2e6/plt03900  t=1.737e-03  steady 1.6e-03  j spread 1.1e-08
+  T=  15000 J=6.00e+06  Tedge1000/anode_sweep_R3.5mm/T15000_J6e6/plt02400  t=1.815e-03  steady 1.4e-03  j spread 3.1e-12
+  T=  15000 J=8.00e+06  Tedge1000/anode_sweep_R3.5mm/T15000_J8e6/plt02400  t=1.815e-03  steady 1.3e-03  j spread 5.4e-10
+  T=  15000 J=1.00e+07  Tedge1000/anode_sweep_R3.5mm/T15000_J1e7/plt02500  t=1.845e-03  steady 1.2e-03  j spread 2.9e-10
+
+   T_bulk     J_app       q_w      ji_j     phi_s       x_s     phi_L      Te_w      ne_w      ni_w       E_w      ne_L    Te_300
+  1.5e+04     2e+06     25.77  -0.06418     2.142 1.164e-06     6.229      7240 1.005e+20 6.109e+20 5.344e+06 1.827e+23 1.293e+04
+    13000     4e+06     29.45 -0.009176    0.7982  1.13e-06     4.037      5015 2.291e+20 3.373e+20 1.587e+06 1.077e+23 1.108e+04
+    14000     4e+06     32.24  -0.01625     1.075  1.07e-06     4.678      5538 2.195e+20 4.597e+20 2.533e+06 1.506e+23   1.2e+04
+  1.5e+04     4e+06     35.55  -0.02666     1.368 1.008e-06     5.207      6094 2.114e+20  6.17e+20 3.669e+06 1.827e+23 1.287e+04
+    16000     4e+06     39.01  -0.03941     1.637 9.555e-07      5.61      6598 2.057e+20 7.891e+20 4.837e+06 1.984e+23 1.362e+04
+    17000     4e+06     42.41  -0.05348     1.874  9.13e-07     5.916      7032 2.019e+20 9.624e+20 5.952e+06  2.01e+23 1.429e+04
+  1.5e+04     6e+06     46.07   -0.0165     1.024 9.059e-07     4.626      5573 3.283e+20 6.567e+20 2.842e+06 1.827e+23 1.287e+04
+  1.5e+04     8e+06     57.09  -0.01239    0.8476 8.304e-07     4.215      5354 4.448e+20   7.2e+20 2.402e+06 1.827e+23 1.291e+04
+  1.5e+04     1e+07     68.52  -0.01044    0.7516 7.734e-07     3.887      5294 5.581e+20 8.007e+20 2.173e+06 1.827e+23 1.299e+04
+
+wrote anode_sweep (.pdf/.png) and anode_sweep.csv in /home/vishnu/work/electrode_region-paper/figures/results_fig

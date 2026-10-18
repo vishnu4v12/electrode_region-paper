@@ -6,57 +6,43 @@ Maher~I. Boulos, Pierre~L. Fauchais, and Emil Pfender, editors.
 \newblock Springer, Cham, 2023.
 
 \bibitem{aghayee2024plasma}
-Rasoul Aghayee, Mohammadreza Khani, Farzaneh Ostovarpour, Mohammad
-  Sadegh~Abbassi Shanbehbazari, Mojtaba Shafiei, Mahtab Gharibi, Babak
-  Mohammadhosseini, and Babak Shokri.
-\newblock Plasma pyrolysis feasibility study of spent caustic waste to hydrogen
-  production.
-\newblock {\em Journal of Environmental Health Science and Engineering},
-  22(1):197--208, 2024.
+Rasoul Aghayee, Mohammadreza Khani, Farzaneh Ostovarpour, Mohammad Sadegh~Abbassi Shanbehbazari, Mojtaba Shafiei, Mahtab Gharibi, Babak Mohammadhosseini, and Babak Shokri.
+\newblock Plasma pyrolysis feasibility study of spent caustic waste to hydrogen production.
+\newblock {\em Journal of Environmental Health Science and Engineering}, 22(1):197--208, 2024.
 
 \bibitem{zhang2017synthesis}
-Hongqiang Zhang, Guisheng Zou, Lei Liu, Hao Tong, Yong Li, Hailin Bai, and
-  Aiping Wu.
-\newblock Synthesis of silver nanoparticles using large-area arc discharge and
-  its application in electronic packaging.
+Hongqiang Zhang, Guisheng Zou, Lei Liu, Hao Tong, Yong Li, Hailin Bai, and Aiping Wu.
+\newblock Synthesis of silver nanoparticles using large-area arc discharge and its application in electronic packaging.
 \newblock {\em Journal of Materials Science}, 52(6):3375--3387, 2017.
 
 \bibitem{mohanta2026electrical}
-Ram~Krushna Mohanta, Gabriela De~Los Reyes~Castillo, Sai~Vishnu Korsipati, Yuri
-  Korobeinikov, Hariswaran Sitaraman, Laxminarayan Raja, Noemi Leick, and
-  Seetharaman Sridhar.
-\newblock Electrical and spectroscopic diagnostics as real-time metallization
-  indicators during hydrogen plasma smelting reduction.
+Ram~Krushna Mohanta, Gabriela De~Los Reyes~Castillo, Sai~Vishnu Korsipati, Yuri Korobeinikov, Hariswaran Sitaraman, Laxminarayan Raja, Noemi Leick, and Seetharaman Sridhar.
+\newblock Electrical and spectroscopic diagnostics as real-time metallization indicators during hydrogen plasma smelting reduction.
 \newblock {\em Advanced Sustainable Systems}, 10(1):e01578, 2026.
 
 \bibitem{pokrzywka1996spectroscopic}
 B~Pokrzywka, K~Musiol, Stephane Pellerin, E~Pawelec, and J~Chapelle.
-\newblock Spectroscopic investigation of the equilibrium state in the electric
-  arc cathode region.
+\newblock Spectroscopic investigation of the equilibrium state in the electric arc cathode region.
 \newblock {\em Journal of Physics D: Applied Physics}, 29(10):2644--2649, 1996.
 
 \bibitem{murphy1992laser}
 AB~Murphy, AJD Farmer, and J~Haidar.
-\newblock Laser-scattering measurement of temperature profiles of a
-  free-burning arc.
+\newblock Laser-scattering measurement of temperature profiles of a free-burning arc.
 \newblock {\em Applied physics letters}, 60(11):1304--1306, 1992.
 
 \bibitem{tanaka1999plasma}
 Manabu Tanaka and Masao Ushio.
-\newblock Plasma state in free-burning argon arc and its effect on anode heat
-  transfer.
+\newblock Plasma state in free-burning argon arc and its effect on anode heat transfer.
 \newblock {\em Journal of Physics D: Applied Physics}, 32(10):1153--1162, 1999.
 
 \bibitem{lago2004numerical}
 F~Lago, JJ~Gonzalez, P~Freton, and A~Gleizes.
-\newblock A numerical modelling of an electric arc and its interaction with the
-  anode: Part i. the two-dimensional model.
+\newblock A numerical modelling of an electric arc and its interaction with the anode: Part i. the two-dimensional model.
 \newblock {\em Journal of Physics D: Applied Physics}, 37(6):883--897, 2004.
 
 \bibitem{freton2000comparison}
 P~Freton, JJ~Gonzalez, and A~Gleizes.
-\newblock Comparison between a two-and a three-dimensional arc plasma
-  configuration.
+\newblock Comparison between a two-and a three-dimensional arc plasma configuration.
 \newblock {\em Journal of Physics D: Applied Physics}, 33(19):2442--2452, 2000.
 
 \bibitem{Hsu1983}
@@ -66,20 +52,17 @@ K.~C. Hsu, K.~Etemadi, and E.~Pfender.
 
 \bibitem{Almeida2008}
 N.~A. Almeida, M.~S. Benilov, and G.~V. Naidis.
-\newblock Unified modelling of near-cathode plasma layers in high-pressure arc
-  discharges.
+\newblock Unified modelling of near-cathode plasma layers in high-pressure arc discharges.
 \newblock {\em Journal of Physics D: Applied Physics}, 41:245201, 2008.
 
 \bibitem{almeida2009investigating}
 NA~Almeida, MS~Benilov, U~Hechtfischer, and GV~Naidis.
-\newblock Investigating near-anode plasma layers of very high-pressure arc
-  discharges.
+\newblock Investigating near-anode plasma layers of very high-pressure arc discharges.
 \newblock {\em Journal of Physics D: Applied Physics}, 42(4):045210, 2009.
 
 \bibitem{semenov2016numerical}
 IL~Semenov, IV~Krivtsun, and Uwe Reisgen.
-\newblock Numerical study of the anode boundary layer in atmospheric pressure
-  arc discharges.
+\newblock Numerical study of the anode boundary layer in atmospheric pressure arc discharges.
 \newblock {\em Journal of Physics D: Applied Physics}, 49(10):105204, 2016.
 
 \bibitem{HsuPfender1983b}
@@ -94,8 +77,7 @@ V.~Rat, A.~B. Murphy, J.~Aubreton, M.~F. Elchinger, and P.~Fauchais.
 
 \bibitem{Freton2012}
 P.~Freton, J.~J. Gonzalez, Z.~Ranarijaona, and J.~Mougenot.
-\newblock Energy equation formulations for two-temperature modelling of
-  `thermal' plasmas.
+\newblock Energy equation formulations for two-temperature modelling of `thermal' plasmas.
 \newblock {\em Journal of Physics D: Applied Physics}, 45:465206, 2012.
 
 \bibitem{benilov1995model}
@@ -115,8 +97,7 @@ J~Haidar.
 
 \bibitem{gonzalez2000decay}
 JJ~Gonzalez, R~Girard, and A~Gleizes.
-\newblock Decay and post-arc phases of a sf6 arc plasma: a thermal and chemical
-  non-equilibrium model.
+\newblock Decay and post-arc phases of a sf6 arc plasma: a thermal and chemical non-equilibrium model.
 \newblock {\em Journal of Physics D: Applied Physics}, 33(21):2759--2768, 2000.
 
 \bibitem{amakawa1998anode}
@@ -136,40 +117,32 @@ H.~A. Dinulescu and E.~Pfender.
 
 \bibitem{hsu1983analysis}
 KC~Hsu and E~Pfender.
-\newblock Analysis of the cathode region of a free-burning high intensity argon
-  arc.
+\newblock Analysis of the cathode region of a free-burning high intensity argon arc.
 \newblock {\em Journal of Applied Physics}, 54(7):3818--3824, 1983.
 
 \bibitem{sun2022unified}
 Li~Sun, Xian-Pin Sun, Bi-Ying Guo, Wen Zhou, and Zeng-Yao Li.
-\newblock Unified modeling and kinetic analysis of the near-cathode region and
-  hot cathode in atmospheric-pressure arc discharges.
+\newblock Unified modeling and kinetic analysis of the near-cathode region and hot cathode in atmospheric-pressure arc discharges.
 \newblock {\em Physics of Fluids}, 34(6):067120, 2022.
 
 \bibitem{Benilov2016}
-M.~S. Benilov, N.~A. Almeida, M.~Baeva, M.~D. Cunha, L.~G. Benilova, and
-  D.~Uhrlandt.
-\newblock Account of near-cathode sheath in numerical models of high-pressure
-  arc discharges.
+M.~S. Benilov, N.~A. Almeida, M.~Baeva, M.~D. Cunha, L.~G. Benilova, and D.~Uhrlandt.
+\newblock Account of near-cathode sheath in numerical models of high-pressure arc discharges.
 \newblock {\em Journal of Physics D: Applied Physics}, 49:215201, 2016.
 
 \bibitem{sitaraman2026elucidating}
-Hariswaran Sitaraman, Vishnu~Korsipati Sai, Ram~Krushna Mohanta, Noemi Leick,
-  Yuri Korobeinikov, Anjana Kannan, Laxminarayan Raja, and Seetharaman Sridhar.
-\newblock Elucidating key reducing species beyond ions in hydrogen plasma
-  smelting reduction of iron ore.
+Hariswaran Sitaraman, Vishnu~Korsipati Sai, Ram~Krushna Mohanta, Noemi Leick, Yuri Korobeinikov, Anjana Kannan, Laxminarayan Raja, and Seetharaman Sridhar.
+\newblock Elucidating key reducing species beyond ions in hydrogen plasma smelting reduction of iron ore.
 \newblock {\em Chemical Engineering Science}, page 124377, 2026.
 
 \bibitem{SandersPfender1984}
 N.~A. Sanders and E.~Pfender.
-\newblock Measurement of anode falls and anode heat transfer in atmospheric
-  pressure high intensity arcs.
+\newblock Measurement of anode falls and anode heat transfer in atmospheric pressure high intensity arcs.
 \newblock {\em Journal of Applied Physics}, 55(3):714--722, 1984.
 
 \bibitem{nemchinsky2016anode}
 VA~Nemchinsky and Y~Raitses.
-\newblock Anode sheath transition in an anodic arc for synthesis of
-  nanomaterials.
+\newblock Anode sheath transition in an anodic arc for synthesis of nanomaterials.
 \newblock {\em Plasma Sources Science and Technology}, 25(3):035003, 2016.
 
 \bibitem{heberlein2010anode}
@@ -184,20 +157,17 @@ IV~Krivtsun, AI~Momot, IB~Denysenko, U~Reisgen, O~Mokrov, and R~Sharma.
 
 \bibitem{korsipati2026fast}
 Sai~Vishnu Korsipati, Hariswaran Sitaraman, and Laxminarayan Raja.
-\newblock A fast and accurate reduced-order model for high-intensity
-  transferred arc discharges.
+\newblock A fast and accurate reduced-order model for high-intensity transferred arc discharges.
 \newblock {\em Journal of Applied Physics}, 140(2), 2026.
 
 \bibitem{haddad1984temperature}
 GN~Haddad and AJD Farmer.
-\newblock Temperature determinations in a free-burning arc. i. experimental
-  techniques and results in argon.
+\newblock Temperature determinations in a free-burning arc. i. experimental techniques and results in argon.
 \newblock {\em Journal of Physics D: Applied Physics}, 17(6):1189--1196, 1984.
 
 \bibitem{tashiro2010numerical}
 Shinichi Tashiro, Manabu Tanaka, and Anthony~B Murphy.
-\newblock Numerical analysis of non-equilibrium plasma property in anode
-  boundary layer of argon gas tungsten arc.
+\newblock Numerical analysis of non-equilibrium plasma property in anode boundary layer of argon gas tungsten arc.
 \newblock {\em Surface and Coatings Technology}, 205:S115--S119, 2010.
 
 \bibitem{Lowke2006}
@@ -207,18 +177,14 @@ J.~J. Lowke and M.~Tanaka.
 
 \bibitem{almeida2000simulation}
 RMS Almeida, MS~Benilov, and GV~Naidis.
-\newblock Simulation of the layer of non-equilibrium ionization in a
-  high-pressure argon plasma with multiply-charged ions.
+\newblock Simulation of the layer of non-equilibrium ionization in a high-pressure argon plasma with multiply-charged ions.
 \newblock {\em Journal of Physics D: Applied Physics}, 33(8):960--967, 2000.
 
 \bibitem{LiangTrelles}
 P.~Liang and J.~P. Trelles.
-\newblock {3D} numerical investigation of a free-burning argon arc with metal
-  electrodes using a novel sheath coupling procedure.
+\newblock {3D} numerical investigation of a free-burning argon arc with metal electrodes using a novel sheath coupling procedure.
 \newblock {\em Plasma Sources Science and Technology}, 2020.
-\newblock NOTE: extracted PDF only shows manuscript ID PSST-103185.R2
-  (author-submitted/accepted version); confirm final volume/page/year before
-  submission.
+\newblock NOTE: extracted PDF only shows manuscript ID PSST-103185.R2 (author-submitted/accepted version); confirm final volume/page/year before submission.
 
 \bibitem{benilov1998ionization}
 MS~Benilov and GV~Naidis.
@@ -236,9 +202,7 @@ W~Elenbaas.
 \newblock {\em Physica}, 2(1-12):169--182, 1935.
 
 \bibitem{amrex2019}
-W.~Zhang, A.~Almgren, V.~Beckner, J.~Bell, J.~Blaschke, C.~Chan, M.~Day,
-  B.~Friesen, K.~Gott, D.~Graves, M.~P. Katz, A.~Myers, T.~Nguyen, A.~Nonaka,
-  M.~Rosso, S.~Williams, and M.~Zingale.
+W.~Zhang, A.~Almgren, V.~Beckner, J.~Bell, J.~Blaschke, C.~Chan, M.~Day, B.~Friesen, K.~Gott, D.~Graves, M.~P. Katz, A.~Myers, T.~Nguyen, A.~Nonaka, M.~Rosso, S.~Williams, and M.~Zingale.
 \newblock {AMReX}: a framework for block-structured adaptive mesh refinement.
 \newblock {\em Journal of Open Source Software}, 4(37):1370, 2019.
 
@@ -249,8 +213,7 @@ D.~L. Scharfetter and H.~K. Gummel.
 
 \bibitem{roe1981}
 P.~L. Roe.
-\newblock Approximate {Riemann} solvers, parameter vectors, and difference
-  schemes.
+\newblock Approximate {Riemann} solvers, parameter vectors, and difference schemes.
 \newblock {\em Journal of Computational Physics}, 43(2):357--372, 1981.
 
 \bibitem{lxcat}
@@ -270,29 +233,23 @@ Edward~A Mason and Homer~W Schamp~Jr.
 \newblock {\em Annals of physics}, 4(3):233--270, 1958.
 
 \bibitem{mancinelli2018modelling}
-B~Mancinelli, Leandro Prevosto, JC~Chamorro, Fernando~Oscar Minotti, and
-  H~Kelly.
-\newblock Modelling of the plasma--sheath boundary region in wall-stabilized
-  arc plasmas: Unipolar discharge properties.
+B~Mancinelli, Leandro Prevosto, JC~Chamorro, Fernando~Oscar Minotti, and H~Kelly.
+\newblock Modelling of the plasma--sheath boundary region in wall-stabilized arc plasmas: Unipolar discharge properties.
 \newblock {\em Plasma Chemistry and Plasma Processing}, 38(1):147--176, 2018.
 
 \bibitem{viehland1978gaseous}
 Larry~A Viehland and EA~Mason.
-\newblock Gaseous ion mobility and diffusion in electric fields of arbitrary
-  strength.
+\newblock Gaseous ion mobility and diffusion in electric fields of arbitrary strength.
 \newblock {\em Annals of Physics}, 110(2):287--328, 1978.
 
 \bibitem{nikitovic2026cross}
 {\v{Z}}eljka Nikitovi{\'c} and Zoran Raspopovi{\'c}.
-\newblock Cross sections set and transport coefficients for {Ar}$^+$ ions in
-  {Ar} gas.
+\newblock Cross sections set and transport coefficients for {Ar}$^+$ ions in {Ar} gas.
 \newblock {\em Science of Sintering}, 58(3):409--417, 2026.
 
 \bibitem{scoggins2020mutation}
-James~B. Scoggins, Vincent Leroy, Georgios Bellas-Chatzigeorgis, Bruno Dias,
-  and Thierry~E. Magin.
-\newblock Mutation++: {MUlticomponent} {Thermodynamic} {And} {Transport}
-  properties for {IONized} gases in {C++}.
+James~B. Scoggins, Vincent Leroy, Georgios Bellas-Chatzigeorgis, Bruno Dias, and Thierry~E. Magin.
+\newblock Mutation++: {MUlticomponent} {Thermodynamic} {And} {Transport} properties for {IONized} gases in {C++}.
 \newblock {\em SoftwareX}, 12:100575, 2020.
 
 \end{thebibliography}

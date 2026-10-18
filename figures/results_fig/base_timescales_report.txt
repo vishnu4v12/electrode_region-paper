@@ -1,9 +1,15 @@
-cathode J     8e+07: t99 2.11/2.56 us, tau 0.544/0.547 us (e1e-4)  9e+07: t99 1.71/2.12 us, tau 0.463/0.477 us (e1e-4)  1e+08: t99 1.40/1.78 us, tau 0.393/0.407 us (e1e-4)  1.2e+08: t99 0.98/1.29 us, tau 0.294/0.305 us (e1e-4)  1.25e+08: t99 0.90/1.20 us, tau 0.276/0.286 us (e1e-4)  1.3e+08: t99 0.83/1.12 us, tau 0.259/0.269 us (e1e-4)  1.35e+08: t99 0.76/1.04 us, tau 0.243/0.253 us (e1e-4)  1.4e+08: t99 0.71/0.97 us, tau 0.227/0.237 us (e1e-4)  1.46e+08: t99 0.65/0.91 us, tau 0.214/0.224 us (e1e-4)  1.48e+08: t99 0.64/0.90 us, tau 0.210/0.222 us (e1e-4)  1.5e+08: t99 0.62/0.89 us, tau 0.208/0.223 us (e1e-4)
-cathode T_arc 1.9e+04: t99 1.51/1.96 us, tau 0.467/0.475 us (e1e-4)  2e+04: t99 1.44/1.85 us, tau 0.421/0.433 us (e1e-4)  2.1e+04: t99 1.40/1.78 us, tau 0.393/0.407 us (e1e-4)  2.2e+04: t99 1.38/1.74 us, tau 0.375/0.391 us (e1e-4)  2.3e+04: t99 1.37/1.71 us, tau 0.363/0.381 us (e1e-4)
-anode   J     7e+06: t99 45.53/9.34 us, tau 9.384/9.386 us (e1_W465)  8e+06: t99 42.79/11.69 us, tau 9.363/9.364 us (e1_W465)  9e+06: t99 41.70/13.20 us, tau 9.332/9.334 us (e1_W465)  1e+07: t99 41.08/14.18 us, tau 9.295/9.297 us (e1_W465)  2e+07: t99 40.52/15.52 us, tau 8.835/8.841 us (e1_W465)
-anode   T_arc 1.1e+04: t99 77.12/11.31 us, tau 16.928/16.961 us (e1_W465)  1.2e+04: t99 54.41/15.26 us, tau 12.366/12.375 us (e1_W465)  1.3e+04: t99 44.51/15.01 us, tau 10.240/10.243 us (e1_W465)  1.4e+04: t99 41.08/14.18 us, tau 9.295/9.297 us (e1_W465)
-cathode base J_i    response 1e-11:0.137 1e-09:0.140 1e-08:0.290 1e-07:0.618 1e-06:0.972 1e-05:1.000 5e-05:1.000
-cathode base q_wall response 1e-11:-1.984 1e-09:-1.425 1e-08:-0.748 1e-07:0.010 1e-06:0.926 1e-05:1.000 5e-05:1.000
-anode   base J_i    response 1e-11:-1.572 1e-09:-0.695 1e-08:-0.196 1e-07:0.058 1e-06:0.260 1e-05:0.718 5e-05:0.996
-anode   base q_wall response 1e-11:0.918 1e-09:0.921 1e-08:0.935 1e-07:0.950 1e-06:0.957 1e-05:0.984 5e-05:1.000
+cathode C_J1e8       T 21000 J 1e+08 t_end 6.0 us | J_i: net +4.920% t_s 1.76 us tau 0.361 us A -2.1116%  q_wall: net +16.021% t_s 2.60 us tau 0.364 us A -17.6653%
+anode   A15_J1e7     T 15000 J 1e+07 t_end 300.0 us | J_i: net +0.726% t_s 31.40 us tau 8.824 us A -0.7042%  q_wall: net +1.697% t_s 11.90 us tau 8.826 us A -0.0768%
+anode   A15_J2e6     T 15000 J 2e+06 t_end 300.0 us | J_i: net -0.521% t_s 25.04 us tau 8.734 us A +0.3479%  q_wall: net +0.716% t_s 14.84 us tau 8.740 us A +0.1084%
+anode   A15_J4e6     T 15000 J 4e+06 t_end 300.0 us | J_i: net -0.476% t_s 20.46 us tau 8.879 us A +0.1980%  q_wall: net +1.151% t_s 6.26 us tau 8.879 us A +0.0408%
+anode   A15_J6e6     T 15000 J 6e+06 t_end 300.0 us | J_i: net -0.178% t_s 10.41 us tau 9.033 us A -0.0627%  q_wall: net +1.407% t_s 0.00 us tau nan us A -0.0098%
+anode   A15_J8e6     T 15000 J 8e+06 t_end 300.0 us | J_i: net +0.255% t_s 26.07 us tau 8.913 us A -0.3731%  q_wall: net +1.576% t_s 7.78 us tau 8.914 us A -0.0475%
+anode   A4e6_T13000  T 13000 J 4e+06 t_end 300.0 us | J_i: net -0.239% t_s 0.74 us tau nan us A -0.0136%  q_wall: net +1.451% t_s 0.00 us tau nan us A -0.0018%
+anode   A4e6_T14000  T 14000 J 4e+06 t_end 300.0 us | J_i: net -0.424% t_s 17.51 us tau 9.341 us A +0.1292%  q_wall: net +1.296% t_s 1.87 us tau 9.308 us A +0.0218%
+anode   A4e6_T16000  T 16000 J 4e+06 t_end 300.0 us | J_i: net -0.470% t_s 20.21 us tau 8.435 us A +0.2192%  q_wall: net +1.032% t_s 8.31 us tau 8.441 us A +0.0530%
+anode   A4e6_T17000  T 17000 J 4e+06 t_end 300.0 us | J_i: net -0.443% t_s 18.97 us tau 7.921 us A +0.2185%  q_wall: net +0.937% t_s 8.67 us tau 7.921 us A +0.0599%
+cathode base J_i    (f/f0-1)/step 1e-11:+0.338 1e-10:+0.280 1e-09:+0.346 1e-08:+0.715 1e-07:+1.522 1e-06:+2.390 3e-06:+2.459 1e-05:+2.460 3e-05:+2.460 1e-04:+2.460
+cathode base q_wall (f/f0-1)/step 1e-11:-15.950 1e-10:-15.020 1e-09:-11.457 1e-08:-6.022 1e-07:+0.081 1e-06:+7.416 3e-06:+8.007 1e-05:+8.011 3e-05:+8.011 1e-04:+8.011
+anode   base J_i    (f/f0-1)/step 1e-11:-0.267 1e-10:-0.349 1e-09:-0.257 1e-08:-0.200 1e-07:-0.144 1e-06:-0.137 3e-06:-0.164 1e-05:-0.206 3e-05:-0.235 1e-04:-0.238
+anode   base q_wall (f/f0-1)/step 1e-11:+0.566 1e-10:+0.615 1e-09:+0.612 1e-08:+0.603 1e-07:+0.601 1e-06:+0.596 3e-06:+0.591 1e-05:+0.582 3e-05:+0.576 1e-04:+0.576
 wrote base_timescales (.pdf/.png) and base_timescales.csv in /home/vishnu/work/electrode_region-paper/figures/results_fig

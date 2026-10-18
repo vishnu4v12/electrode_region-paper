@@ -1,50 +1,50 @@
-  Anode   T=  14000 J=1.00e+07  sweep_anode14/T14000_J1e7/plt00500  t=4.721e-04  steady 1.2e-03  j spread 9.1e-12
-  Anode   T=  11000 J=1.00e+07  sweep_anode14/T11000_J1e7/plt00600  t=5.733e-04  steady 8.8e-04  j spread 1.7e-12
-  Anode   T=  12000 J=1.00e+07  sweep_anode14/T12000_J1e7/plt00500  t=4.731e-04  steady 1.1e-03  j spread 1.9e-12
-  Anode   T=  13000 J=1.00e+07  sweep_anode14/T13000_J1e7/plt00500  t=4.720e-04  steady 1.2e-03  j spread 2.0e-12
-  Anode   T=  14000 J=7.00e+06  sweep_anode14/T14000_J7e6/plt00500  t=4.594e-04  steady 1.4e-03  j spread 2.8e-12
-  Anode   T=  14000 J=8.00e+06  sweep_anode14/T14000_J8e6/plt00500  t=4.655e-04  steady 1.3e-03  j spread 1.8e-12
-  Anode   T=  14000 J=9.00e+06  sweep_anode14/T14000_J9e6/plt00500  t=4.718e-04  steady 1.2e-03  j spread 2.0e-12
-  Anode   T=  14000 J=2.00e+07  sweep_anode14/T14000_J2e7/plt00500  t=4.568e-04  steady 9.3e-04  j spread 1.4e-12
-  Cathode T=  21000 J=1.00e+08  base_sweep/cathode/J1e8/plt00900  t=7.492e-04  steady 9.8e-04  j spread 7.3e-09
-  Cathode T=  19000 J=1.00e+08  sweep_ref/cathode/T19000_scratch/plt02000  t=1.405e-03  steady 9.9e-04  j spread 1.3e-08
-  Cathode T=  20000 J=1.00e+08  sweep_ref/cathode/T20000_scratch/plt02100  t=1.476e-03  steady 9.8e-04  j spread 7.0e-09
-  Cathode T=  22000 J=1.00e+08  sweep_ref/cathode/T22000_scratch/plt02100  t=1.467e-03  steady 9.8e-04  j spread 7.5e-09
-  Cathode T=  23000 J=1.00e+08  sweep_ref/cathode/T23000_scratch/plt02100  t=1.483e-03  steady 9.9e-04  j spread 1.0e-08
-  Cathode T=  21000 J=8.00e+07  base_sweep/cathode/J8e7/plt00900  t=7.236e-04  steady 8.6e-04  j spread 2.9e-08
-  Cathode T=  21000 J=9.00e+07  base_sweep/cathode/J9e7/plt01000  t=8.132e-04  steady 9.2e-04  j spread 1.1e-08
-  Cathode T=  21000 J=1.20e+08  base_case_cathode/plt01584  t=1.000e-03  steady 1.1e-03  j spread 4.5e-09
-  Cathode T=  21000 J=1.25e+08  base_sweep/cathode/J2e8_ladder/J1.248e+08/plt01300  t=1.129e-03  steady 1.1e-03  j spread 7.9e-10
-  Cathode T=  21000 J=1.30e+08  base_sweep/cathode/J2e8_ladder/J1.29792e+08/plt01800  t=1.517e-03  steady 1.2e-03  j spread 8.1e-09
-  Cathode T=  21000 J=1.35e+08  base_sweep/cathode/J2e8_ladder/J1.34984e+08/plt02300  t=1.906e-03  steady 1.2e-03  j spread 6.7e-09
-  Cathode T=  21000 J=1.40e+08  base_sweep/cathode/J2e8_ladder/J1.40383e+08/plt02800  t=2.263e-03  steady 1.2e-03  j spread 6.9e-09
-  Cathode T=  21000 J=1.46e+08  base_sweep/cathode/J2e8_ladder/J1.45998e+08/plt03300  t=2.633e-03  steady 1.3e-03  j spread 5.5e-09
-  Cathode T=  21000 J=1.48e+08  base_sweep/cathode/J2e8_ladder/J1.48e+08/plt03800  t=3.020e-03  steady 1.3e-03  j spread 1.3e-08
-  Cathode T=  21000 J=1.50e+08  base_sweep/cathode/J2e8_ladder/J1.5e+08/plt03800  t=3.007e-03  steady 1.3e-03  j spread 2.1e-08
+  Anode   T=  14000 J=1.00e+07  fixedR/anode_T14000_J1e7/plt00900  t=8.531e-04  steady 1.2e-03  j spread 1.7e-12
+  Anode   T=  11000 J=1.00e+07  fixedR/anode_T11000_J1e7/plt01200  t=1.151e-03  steady 1.0e-03  j spread 1.9e-12
+  Anode   T=  12000 J=1.00e+07  fixedR/anode_T12000_J1e7/plt01000  t=9.517e-04  steady 1.1e-03  j spread 1.7e-12
+  Anode   T=  13000 J=1.00e+07  fixedR/anode_T13000_J1e7/plt01000  t=9.522e-04  steady 1.2e-03  j spread 6.1e-12
+  Anode   T=  14000 J=7.00e+06  fixedR/anode_T14000_J7e6/plt01000  t=9.362e-04  steady 1.4e-03  j spread 3.2e-12
+  Anode   T=  14000 J=8.00e+06  fixedR/anode_T14000_J8e6/plt01000  t=9.440e-04  steady 1.3e-03  j spread 2.7e-12
+  Anode   T=  14000 J=9.00e+06  fixedR/anode_T14000_J9e6/plt01000  t=9.523e-04  steady 1.2e-03  j spread 1.9e-12
+  Anode   T=  14000 J=2.00e+07  fixedR/anode_T14000_J2e7/plt01000  t=9.338e-04  steady 9.3e-04  j spread 1.3e-12
+  Cathode T=  21000 J=1.00e+08  fixedR/cathode_T21000_J1e8/plt01700  t=1.516e-03  steady 9.8e-04  j spread 1.3e-08
+  Cathode T=  19000 J=1.00e+08  fixedR/cathode_T19000_J1e8/plt03200  t=2.512e-03  steady 9.8e-04  j spread 7.1e-09
+  Cathode T=  20000 J=1.00e+08  fixedR/cathode_T20000_J1e8/plt03200  t=2.510e-03  steady 9.8e-04  j spread 1.3e-08
+  Cathode T=  22000 J=1.00e+08  fixedR/cathode_T22000_J1e8/plt03300  t=2.487e-03  steady 9.8e-04  j spread 1.1e-08
+  Cathode T=  23000 J=1.00e+08  fixedR/cathode_T23000_J1e8/plt03600  t=2.542e-03  steady 9.8e-04  j spread 8.6e-09
+  Cathode T=  21000 J=8.00e+07  fixedR/cathode_T21000_J8e7/plt02400  t=1.977e-03  steady 8.4e-04  j spread 1.5e-08
+  Cathode T=  21000 J=9.00e+07  fixedR/cathode_T21000_J9e7/plt02200  t=1.900e-03  steady 9.1e-04  j spread 1.2e-08
+  Cathode T=  21000 J=1.20e+08  fixedR/cathode_T21000_J1.2e8/plt04000  t=3.525e-03  steady 1.1e-03  j spread 9.6e-09
+  Cathode T=  21000 J=1.25e+08  fixedR/cathode_T21000_J1.248e+08/plt05700  t=4.980e-03  steady 1.1e-03  j spread 7.1e-09
+  Cathode T=  21000 J=1.30e+08  fixedR/cathode_T21000_J1.29792e+08/plt09000  t=7.555e-03  steady 1.2e-03  j spread 8.3e-09
+  Cathode T=  21000 J=1.35e+08  fixedR/cathode_T21000_J1.34984e+08/plt07900  t=6.697e-03  steady 1.2e-03  j spread 6.7e-09
+  Cathode T=  21000 J=1.40e+08  fixedR/cathode_T21000_J1.40383e+08/plt09000  t=7.582e-03  steady 1.2e-03  j spread 6.2e-09
+  Cathode T=  21000 J=1.46e+08  fixedR/cathode_T21000_J1.45998e+08/plt10500  t=8.652e-03  steady 1.2e-03  j spread 5.8e-08
+  Cathode T=  21000 J=1.48e+08  fixedR/cathode_T21000_J1.48e+08/plt11200  t=9.195e-03  steady 1.2e-03  j spread 9.5e-08
+  Cathode T=  21000 J=1.50e+08  fixedR/cathode_T21000_J1.5e+08/plt12000  t=9.835e-03  steady 1.4e-03  j spread 1.0e-07
 
 electrode    T_bulk     J_app       q_w      ji_j     phi_s       x_s     phi_L      Te_w    T_wall     jem_j       E_w      ne_w
-    Anode   1.4e+04     7e+06     48.84 -0.009438    0.7466  8.99e-07     3.952      5136      1000 2.858e-20 1.834e+06 3.962e+20
-    Anode   1.4e+04     8e+06     54.37  -0.00834    0.6829 8.596e-07     3.761      5087      1000 2.438e-20 1.681e+06 4.545e+20
-    Anode   1.4e+04     9e+06     59.99 -0.007579    0.6361 8.248e-07     3.589      5075      1000 2.126e-20  1.57e+06 5.116e+20
-    Anode     11000     1e+07     60.42 -0.001822    0.2294  7.16e-07     1.428      5333      1000 1.369e-20 2.426e+05 5.513e+20
-    Anode     12000     1e+07     61.58 -0.002974    0.3488 7.945e-07     2.169      5054      1000 1.529e-20 5.531e+05  5.67e+20
-    Anode     13000     1e+07     63.25 -0.004541    0.4611 8.061e-07     2.844      4981      1000 1.686e-20 9.336e+05  5.72e+20
-    Anode   1.4e+04     1e+07     65.68 -0.007038    0.6014 7.957e-07     3.431      5088      1000 1.886e-20  1.49e+06 5.674e+20
-    Anode   1.4e+04     2e+07     125.5 -0.005486    0.4978 6.266e-07     2.215      5698      1000 9.172e-21 1.339e+06 1.071e+21
-  Cathode   2.1e+04     8e+07     26.33   0.05045     3.071 5.992e-07     11.37 1.674e+04      3633     1.771 1.475e+07 2.041e+21
-  Cathode   2.1e+04     9e+07     26.53   0.05202     3.329 5.898e-07     11.94 1.747e+04      3653     1.709  1.65e+07 2.083e+21
-  Cathode     19000     1e+08     26.36   0.05795      4.08 5.949e-07      13.1 1.893e+04      3637     1.562 2.083e+07 1.812e+21
-  Cathode     20000     1e+08     26.54   0.05565      3.82 5.881e-07     12.79 1.854e+04      3654      1.61 1.949e+07 1.963e+21
-  Cathode   2.1e+04     1e+08     26.71   0.05366     3.592 5.815e-07     12.52 1.818e+04      3671     1.654 1.832e+07 2.109e+21
-  Cathode     22000     1e+08     26.85   0.05199     3.395 5.749e-07     12.29 1.785e+04      3685     1.694 1.732e+07 2.245e+21
-  Cathode     23000     1e+08     26.97   0.05059     3.226 5.686e-07     12.09 1.755e+04      3698     1.731 1.646e+07  2.37e+21
-  Cathode   2.1e+04   1.2e+08     26.96   0.05706     4.128 5.674e-07     13.68 1.952e+04      3698     1.558 2.212e+07 2.124e+21
-  Cathode   2.1e+04 1.248e+08     27.03   0.05789     4.259 5.645e-07     13.96 1.983e+04      3703     1.538 2.307e+07 2.121e+21
-  Cathode   2.1e+04 1.298e+08     27.11   0.05875     4.396 5.615e-07     14.25 2.015e+04      3708     1.517 2.406e+07 2.117e+21
-  Cathode   2.1e+04  1.35e+08     27.16   0.05963     4.539 5.586e-07     14.55 2.047e+04      3714     1.497  2.51e+07  2.11e+21
-  Cathode   2.1e+04 1.404e+08     27.21   0.06053     4.688 5.558e-07     14.87  2.08e+04      3718     1.476 2.619e+07   2.1e+21
-  Cathode   2.1e+04  1.46e+08     27.25   0.06147     4.844  5.53e-07      15.2 2.115e+04      3723     1.456 2.734e+07 2.089e+21
-  Cathode   2.1e+04  1.48e+08     27.25   0.06179     4.899 5.521e-07     15.32 2.127e+04      3725     1.449 2.774e+07 2.084e+21
-  Cathode   2.1e+04   1.5e+08     27.28   0.06212     4.955 5.511e-07     15.44 2.139e+04      3726     1.442 2.816e+07 2.079e+21
+    Anode   1.4e+04     7e+06     48.46 -0.008904    0.7192 9.005e-07     3.929      5075      1000 2.811e-20 1.734e+06 3.984e+20
+    Anode   1.4e+04     8e+06     54.11 -0.008024    0.6658 8.601e-07     3.747      5050      1000 2.412e-20 1.618e+06  4.56e+20
+    Anode   1.4e+04     9e+06     59.86 -0.007443    0.6284 8.249e-07     3.582      5059      1000 2.115e-20 1.541e+06 5.123e+20
+    Anode     11000     1e+07      61.5 -0.002246    0.3058 8.026e-07     1.552      5524      1000  1.45e-20 3.886e+05 5.419e+20
+    Anode     12000     1e+07     62.22 -0.003353    0.3915 8.161e-07     2.228      5141      1000 1.577e-20 6.625e+05 5.624e+20
+    Anode     13000     1e+07     63.58 -0.004799    0.4816 8.098e-07     2.867      5021      1000 1.711e-20 9.991e+05 5.699e+20
+    Anode   1.4e+04     1e+07      65.7 -0.007059    0.6026 7.957e-07     3.432      5090      1000 1.888e-20 1.495e+06 5.672e+20
+    Anode   1.4e+04     2e+07     127.9 -0.007016    0.5883 6.286e-07     2.317      5779      1000 9.897e-21 1.769e+06 1.065e+21
+  Cathode   2.1e+04     8e+07     25.91   0.05495     3.599 6.197e-07     12.02 1.765e+04      3594     1.652 1.725e+07 1.711e+21
+  Cathode   2.1e+04     9e+07     26.31   0.05427     3.592 5.989e-07     12.28 1.791e+04      3634     1.654  1.78e+07 1.913e+21
+  Cathode     19000     1e+08     26.71   0.05404     3.634 5.828e-07     12.51 1.825e+04      3667     1.646 1.854e+07 2.081e+21
+  Cathode     20000     1e+08      26.7   0.05402     3.633 5.827e-07     12.54 1.825e+04      3668     1.646 1.853e+07 2.082e+21
+  Cathode   2.1e+04     1e+08     26.65   0.05399      3.63 5.827e-07     12.57 1.824e+04      3668     1.646 1.852e+07 2.083e+21
+  Cathode     22000     1e+08     26.65   0.05398     3.629 5.826e-07      12.6 1.824e+04      3668     1.646 1.851e+07 2.084e+21
+  Cathode     23000     1e+08     26.64   0.05397     3.627 5.826e-07     12.62 1.824e+04      3668     1.647  1.85e+07 2.085e+21
+  Cathode   2.1e+04   1.2e+08     27.24   0.05405     3.778 5.587e-07     13.18 1.898e+04      3722      1.62 2.023e+07 2.359e+21
+  Cathode   2.1e+04 1.248e+08     27.37   0.05414     3.821 5.541e-07     13.32 1.916e+04      3733     1.613 2.067e+07 2.415e+21
+  Cathode   2.1e+04 1.298e+08     27.42   0.05422     3.867 5.496e-07     13.47 1.935e+04      3744     1.605 2.112e+07 2.472e+21
+  Cathode   2.1e+04  1.35e+08     27.58   0.05435     3.918 5.453e-07     13.63 1.956e+04      3755     1.597 2.162e+07 2.526e+21
+  Cathode   2.1e+04 1.404e+08     27.68   0.05448     3.972 5.411e-07     13.79 1.976e+04      3766     1.588 2.213e+07  2.58e+21
+  Cathode   2.1e+04  1.46e+08     27.78   0.05462     4.029 5.372e-07     13.95 1.998e+04      3777      1.58 2.268e+07 2.633e+21
+  Cathode   2.1e+04  1.48e+08     27.83   0.05468      4.05 5.358e-07     14.01 2.006e+04      3780     1.577 2.287e+07 2.651e+21
+  Cathode   2.1e+04   1.5e+08     27.87   0.05474     4.071 5.345e-07     14.07 2.014e+04      3784     1.574 2.307e+07 2.669e+21
 
 wrote base_sweep_T, base_sweep_J (.pdf/.png) and base_sweep.csv in /home/vishnu/work/electrode_region-paper/figures/results_fig

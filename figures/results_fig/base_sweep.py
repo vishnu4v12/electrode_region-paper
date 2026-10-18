@@ -36,23 +36,19 @@ from base_case import HERE, K_B, E_CH, C_E, C_X, load, rc, sci_tex, sheath_edge,
 
 RUNS = os.path.join(os.environ.get("PLASMEX_ROOT", os.path.expanduser("~/work/PlasmeX")), "runs")
 # Reference states: cathode 21 000 K / 1e8 (user, 15 Oct 2026), anode 14 000 K / 1e7 (user, 16 Oct 2026).
-# Sweeps through them: anode T at 1e7 and J at 14 kK in runs/sweep_anode14 (copper W = 4.65 eV in every run);
-# cathode T at 1e8 in runs/sweep_ref; cathode J at 21 kK in runs/base_sweep
-# (8e7, 9e7, 1e8, the old 1.2e8 base case, and the ladder rungs up to 1.5e8).
-BASE = {"Cathode": (21000.0, 1e8, "base_sweep/cathode/J1e8"), "Anode": (14000.0, 1e7, "sweep_anode14/T14000_J1e7")}
+# Since 16 Oct 2026 (user) the column radius is ASSUMED, R = 0.5 mm at the cathode and 3.5 mm at the anode, in
+# every case: runs/fixedR (run_case.sh, ladder.sh there), each restarted from the calibrated-R steady state of the
+# same conditions. Cathode J >= 1.2e8 by a ladder in Lambda from the calibrated value (<case>/ladder/).
+# Before: anode runs/sweep_anode14, cathode T runs/sweep_ref, cathode J runs/base_sweep (calibrated R).
+BASE = {"Cathode": (21000.0, 1e8, "fixedR/cathode_T21000_J1e8"), "Anode": (14000.0, 1e7, "fixedR/anode_T14000_J1e7")}
 CASES = {   # electrode -> [(T_bulk [K], |J_app| [A/m^2], run directory under RUNS)]
-    "Anode":   [(T, 1e7, f"sweep_anode14/T{T}_J1e7") for T in (11000, 12000, 13000)]
-             + [(14000.0, J, f"sweep_anode14/T14000_J{J:.0e}".replace("e+0", "e")) for J in (7e6, 8e6, 9e6, 2e7)],
-    "Cathode": [(T, 1e8, f"sweep_ref/cathode/T{T}_scratch") for T in (19000, 20000, 22000, 23000)]
-             + [(21000.0, J, f"base_sweep/cathode/J{J:.0e}".replace("e+0", "e")) for J in (8e7, 9e7)]
-             + [(21000.0, 1.2e8, "base_case_cathode")],
+    "Anode":   [(T, 1e7, f"fixedR/anode_T{T}_J1e7") for T in (11000, 12000, 13000)]
+             + [(14000.0, float(J), f"fixedR/anode_T14000_J{J}") for J in ("7e6", "8e6", "9e6", "2e7")],
+    "Cathode": [(T, 1e8, f"fixedR/cathode_T{T}_J1e8") for T in (19000, 20000, 22000, 23000)]
+             + [(21000.0, float(J), f"fixedR/cathode_T21000_J{J}")
+                for J in ("8e7", "9e7", "1.2e8", "1.248e+08", "1.29792e+08", "1.34984e+08", "1.40383e+08",
+                          "1.45998e+08", "1.48e+08", "1.5e+08")],
 }
-# Cathode J > 1.2e8: the rungs of the 4 % current ladder (runs/base_sweep/ladder4_J2e8.sh) and the
-# 1.48e8 / 1.5e8 restarts (tighten_and_1p5.sh), each a steady state of the same model
-# (prob.wall_temp_tau only changes the path to it). The sweep ends at 1.5e8: above ~1.5e8 no route
-# reached a steady state (runs/base_sweep/failed_attempts/).
-for _d in sorted(glob.glob(os.path.join(RUNS, "base_sweep/cathode/J2e8_ladder/J*e+08"))):
-    CASES["Cathode"].append((21000.0, float(os.path.basename(_d)[1:]), os.path.relpath(_d, RUNS)))
 
 
 def last_plotfile(d):
@@ -139,6 +135,12 @@ def fig_sweep(rows, var, stem):
                 ax.plot(x, y, "o", ms=3.8, mfc="white", mec=col, mew=0.9)
                 b = np.array([r["base"] for r in sel])
                 ax.plot(x[b], y[b], "o", ms=3.8, color=col)
+            # A nearly constant quantity (the cathode against T_bulk) is drawn on a span of at least 10 % of its
+            # value, so that autoscaling does not turn a 0.03 % change into a full-height trend.
+            ys = np.concatenate([np.array([r[k] for r in sel]) / KSCALE.get(k, 1.0) for k in keys])
+            span, mid = 0.1 * np.max(np.abs(ys)), 0.5 * (ys.max() + ys.min())
+            if ys.max() - ys.min() < span:
+                ax.set_ylim(mid - 0.6 * span, mid + 0.6 * span)
             if len(keys) > 1:
                 ax.legend(loc="best", frameon=False, handlelength=1.6)
             if r_i == 1:

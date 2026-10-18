@@ -163,12 +163,12 @@ Q_h=\Lambda\,\kappa_h\,(T_h-T_{\rm edge}),
 \Lambda=\frac{4}{R^2},
 \label{eq:radial-loss}
 \end{equation}
-where \(T_{\rm edge}\) is the temperature at the edge of the column. Ion pairs also diffuse radially out of the hot core and recombine near the cold edge, releasing their ionization energy there. This heat loss is represented by the reactive thermal conductivity \(\kappa_R\) (Appendix~\ref{app:lte-check}), which is attributed to the electrons \cite{Freton2012}. The radius is not prescribed; instead, \(\Lambda\) is chosen so that the bulk-plasma state imposed at \(x=L\) (Section~\ref{sec:model-bc}) is a uniform solution of the column, in which Joule heating balances radiation and radial conduction,
+where \(T_{\rm edge}\) is the temperature at the edge of the column. Ion pairs also diffuse radially out of the hot core and recombine near the cold edge, releasing their ionization energy there. This heat loss is represented by the reactive thermal conductivity \(\kappa_R\) (Appendix~\ref{app:lte-check}), which is attributed to the electrons \cite{Freton2012}. The radius \(R\) is a parameter of the model, assumed from the size of the arc attachment. Since the loss scales as \(\kappa T/R^2\), it is most important where the plasma is hot and the attachment is small, as in the cathode spot; the radius is therefore assumed separately for the cathode and the anode (Section~\ref{sec:results}). The bulk-plasma state imposed at \(x=L\) (Section~\ref{sec:model-bc}) is a uniform solution of the column only if Joule heating balances radiation and radial conduction there,
 \begin{equation}
 \frac{J_{\rm app}^2}{\sigma}=w_{\rm rad}+\Lambda\,(\kappa_e+\kappa_R+\kappa_h)\,(T_{\rm bulk}-T_{\rm edge}),
-\label{eq:radial-calibration}
+\label{eq:column-balance}
 \end{equation}
-with all quantities evaluated at the bulk state and \(\sigma\) the electrical conductivity of the plasma. Closer to the electrode, the axial gradients develop over \(10^{-6}\)--\(10^{-4}\)~m, while \(R\) is of order \(10^{-3}\)~m, so the radial losses are negligible there in comparison.
+with all quantities evaluated at the bulk state and \(\sigma\) the electrical conductivity of the plasma. With an assumed radius this balance holds only approximately, and its mismatch for each case is given in Section~\ref{sec:results}. Closer to the electrode, the axial gradients develop over \(10^{-6}\)--\(10^{-4}\)~m, while \(R\) is of order \(10^{-3}\)~m, so the radial losses are negligible there in comparison.
 
 The common heavy-particle temperature is governed by
 \begin{equation}
