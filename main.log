@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.26)  17 OCT 2026 20:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.26)  25 OCT 2026 17:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -259,24 +259,24 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count286
@@ -296,110 +296,111 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 6.
+Package hyperref Info: Link coloring ON on input line 9.
  (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--8
+Underfull \hbox (badness 10000) in paragraph at lines 11--11
 
  []
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <18> not available
-(Font)              size <17.28> substituted on input line 11.
+(Font)              size <17.28> substituted on input line 13.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <18> not available
-(Font)              size <17.28> substituted on input line 11.
+(Font)              size <17.28> substituted on input line 13.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 15.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 15.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (./sections/intro.tex [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-]
-<figures/schematic/arc_schematic.pdf, id=186, 390.08664pt x 240.61888pt>
+] [2]
+
+pdfTeX warning: pdflatex (file ./figures/schematic/arc_schematic.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<figures/schematic/arc_schematic.pdf, id=205, 911.405pt x 603.25375pt>
 File: figures/schematic/arc_schematic.pdf Graphic file (type pdf)
 <use figures/schematic/arc_schematic.pdf>
 Package pdftex.def Info: figures/schematic/arc_schematic.pdf  used on input line 21.
-(pdftex.def)             Requested size: 435.32716pt x 268.54037pt.
-) (./sections/model.tex [2] [3 <./figures/schematic/arc_schematic.pdf>] [4] [5]) (./sections/bc.tex [6]) (./sections/numerics.tex [7]) (./sections/validation.tex [8]
-<figures/validation_fig/almeida_J1e7/compareJ1e7_plt00800.pdf, id=461, 263.68513pt x 414.3759pt>
-File: figures/validation_fig/almeida_J1e7/compareJ1e7_plt00800.pdf Graphic file (type pdf)
-<use figures/validation_fig/almeida_J1e7/compareJ1e7_plt00800.pdf>
-Package pdftex.def Info: figures/validation_fig/almeida_J1e7/compareJ1e7_plt00800.pdf  used on input line 12.
+(pdftex.def)             Requested size: 435.32716pt x 288.14095pt.
+) (./sections/model.tex [3 <./figures/schematic/arc_schematic.pdf>] [4] [5]) (./sections/bc.tex [6] [7]) (./sections/numerics.tex) (./sections/validation.tex [8]
+<figures/validation_fig/almeida_J1e7/compareJ1e7_plt00940.pdf, id=402, 263.68513pt x 414.3759pt>
+File: figures/validation_fig/almeida_J1e7/compareJ1e7_plt00940.pdf Graphic file (type pdf)
+<use figures/validation_fig/almeida_J1e7/compareJ1e7_plt00940.pdf>
+Package pdftex.def Info: figures/validation_fig/almeida_J1e7/compareJ1e7_plt00940.pdf  used on input line 12.
 (pdftex.def)             Requested size: 190.12271pt x 298.75394pt.
-<figures/validation_fig/semenov_J1.5e7/compareJ1.5e7_plt00340.pdf, id=464, 284.73251pt x 414.3759pt>
-File: figures/validation_fig/semenov_J1.5e7/compareJ1.5e7_plt00340.pdf Graphic file (type pdf)
-<use figures/validation_fig/semenov_J1.5e7/compareJ1.5e7_plt00340.pdf>
-Package pdftex.def Info: figures/validation_fig/semenov_J1.5e7/compareJ1.5e7_plt00340.pdf  used on input line 18.
-(pdftex.def)             Requested size: 205.29834pt x 298.75394pt.
- [9 <./figures/validation_fig/almeida_J1e7/compareJ1e7_plt00800.pdf> <./figures/validation_fig/semenov_J1.5e7/compareJ1.5e7_plt00340.pdf>]) (./sections/results.tex [10]
-<figures/results_fig/base_profiles.pdf, id=673, 446.16687pt x 477.16731pt>
+<figures/validation_fig/semenov_J1.5e7/compareJ1.5e7_plt00450.pdf, id=405, 279.22758pt x 414.3759pt>
+File: figures/validation_fig/semenov_J1.5e7/compareJ1.5e7_plt00450.pdf Graphic file (type pdf)
+<use figures/validation_fig/semenov_J1.5e7/compareJ1.5e7_plt00450.pdf>
+Package pdftex.def Info: figures/validation_fig/semenov_J1.5e7/compareJ1.5e7_plt00450.pdf  used on input line 18.
+(pdftex.def)             Requested size: 201.32916pt x 298.75394pt.
+ [9 <./figures/validation_fig/almeida_J1e7/compareJ1e7_plt00940.pdf> <./figures/validation_fig/semenov_J1.5e7/compareJ1.5e7_plt00450.pdf>]) (./sections/results.tex [10]
+<figures/results_fig/base_profiles.pdf, id=610, 459.7175pt x 399.26025pt>
 File: figures/results_fig/base_profiles.pdf Graphic file (type pdf)
 <use figures/results_fig/base_profiles.pdf>
-Package pdftex.def Info: figures/results_fig/base_profiles.pdf  used on input line 51.
-(pdftex.def)             Requested size: 400.50018pt x 428.33263pt.
-<figures/results_fig/base_een_budget.pdf, id=687, 452.18938pt x 278.09557pt>
+Package pdftex.def Info: figures/results_fig/base_profiles.pdf  used on input line 67.
+(pdftex.def)             Requested size: 400.50018pt x 347.84708pt.
+ [11] [12 <./figures/results_fig/base_profiles.pdf>]
+<figures/results_fig/base_een_budget.pdf, id=714, 452.18938pt x 278.09557pt>
 File: figures/results_fig/base_een_budget.pdf Graphic file (type pdf)
 <use figures/results_fig/base_een_budget.pdf>
-Package pdftex.def Info: figures/results_fig/base_een_budget.pdf  used on input line 66.
+Package pdftex.def Info: figures/results_fig/base_een_budget.pdf  used on input line 82.
 (pdftex.def)             Requested size: 435.32716pt x 267.72403pt.
- [11] [12 <./figures/results_fig/base_profiles.pdf>] [13 <./figures/results_fig/base_een_budget.pdf>]
-<figures/results_fig/base_momentum.pdf, id=888, 444.15938pt x 400.43991pt>
+ [13 <./figures/results_fig/base_een_budget.pdf>]
+<figures/results_fig/base_momentum.pdf, id=821, 452.18938pt x 400.43991pt>
 File: figures/results_fig/base_momentum.pdf Graphic file (type pdf)
 <use figures/results_fig/base_momentum.pdf>
-Package pdftex.def Info: figures/results_fig/base_momentum.pdf  used on input line 88.
-(pdftex.def)             Requested size: 435.32716pt x 392.47733pt.
-<figures/results_fig/base_sheath.pdf, id=897, 439.14063pt x 466.03775pt>
+Package pdftex.def Info: figures/results_fig/base_momentum.pdf  used on input line 104.
+(pdftex.def)             Requested size: 435.32716pt x 385.50557pt.
+<figures/results_fig/base_sheath.pdf, id=826, 471.7625pt x 466.03775pt>
 File: figures/results_fig/base_sheath.pdf Graphic file (type pdf)
 <use figures/results_fig/base_sheath.pdf>
-Package pdftex.def Info: figures/results_fig/base_sheath.pdf  used on input line 95.
-(pdftex.def)             Requested size: 400.50018pt x 425.04079pt.
- [14 <./figures/results_fig/base_momentum.pdf>] [15 <./figures/results_fig/base_sheath.pdf>] [16]
-<figures/results_fig/base_qwall.pdf, id=1086, 481.29813pt x 191.41826pt>
+Package pdftex.def Info: figures/results_fig/base_sheath.pdf  used on input line 111.
+(pdftex.def)             Requested size: 400.50018pt x 395.64328pt.
+ [14 <./figures/results_fig/base_momentum.pdf>] [15 <./figures/results_fig/base_sheath.pdf>]
+<figures/results_fig/base_qwall.pdf, id=1016, 481.29813pt x 191.41826pt>
 File: figures/results_fig/base_qwall.pdf Graphic file (type pdf)
 <use figures/results_fig/base_qwall.pdf>
-Package pdftex.def Info: figures/results_fig/base_qwall.pdf  used on input line 118.
+Package pdftex.def Info: figures/results_fig/base_qwall.pdf  used on input line 131.
 (pdftex.def)             Requested size: 435.32716pt x 173.13939pt.
- [17 <./figures/results_fig/base_qwall.pdf>]
-<figures/results_fig/anode_sweep.pdf, id=1187, 441.63432pt x 457.43608pt>
+ [16] [17 <./figures/results_fig/base_qwall.pdf>]
+<figures/results_fig/anode_sweep.pdf, id=1121, 446.16687pt x 577.85399pt>
 File: figures/results_fig/anode_sweep.pdf Graphic file (type pdf)
 <use figures/results_fig/anode_sweep.pdf>
-Package pdftex.def Info: figures/results_fig/anode_sweep.pdf  used on input line 148.
-(pdftex.def)             Requested size: 400.50018pt x 414.83661pt.
+Package pdftex.def Info: figures/results_fig/anode_sweep.pdf  used on input line 179.
+(pdftex.def)             Requested size: 400.50018pt x 518.71472pt.
  [18] [19 <./figures/results_fig/anode_sweep.pdf>]
-<figures/results_fig/base_timescales.pdf, id=1305, 435.61182pt x 358.99231pt>
+<figures/results_fig/base_timescales.pdf, id=1249, 442.15187pt x 219.00533pt>
 File: figures/results_fig/base_timescales.pdf Graphic file (type pdf)
 <use figures/results_fig/base_timescales.pdf>
-Package pdftex.def Info: figures/results_fig/base_timescales.pdf  used on input line 175.
-(pdftex.def)             Requested size: 400.50018pt x 330.06877pt.
- [20 <./figures/results_fig/base_timescales.pdf>] [21]) (./sections/conclusion.tex) [22
-
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (./sections/appendix.tex [23] [24]
-<figures/ion_mobility/mobility_Ar.pdf, id=1477, 241.75757pt x 187.78464pt>
+Package pdftex.def Info: figures/results_fig/base_timescales.pdf  used on input line 284.
+(pdftex.def)             Requested size: 400.50018pt x 198.38284pt.
+ [20 <./figures/results_fig/base_timescales.pdf>]) (./sections/conclusion.tex [21{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]) (./sections/appendix.tex [22] [23]
+<figures/ion_mobility/mobility_Ar.pdf, id=1406, 241.75757pt x 187.78464pt>
 File: figures/ion_mobility/mobility_Ar.pdf Graphic file (type pdf)
 <use figures/ion_mobility/mobility_Ar.pdf>
-Package pdftex.def Info: figures/ion_mobility/mobility_Ar.pdf  used on input line 130.
+Package pdftex.def Info: figures/ion_mobility/mobility_Ar.pdf  used on input line 137.
 (pdftex.def)             Requested size: 208.95517pt x 162.30824pt.
- [25 <./figures/ion_mobility/mobility_Ar.pdf>]
-<figures/lte_check/sigma_LTE.pdf, id=1574, 236.50357pt x 186.65541pt>
+ [24 <./figures/ion_mobility/mobility_Ar.pdf>]
+<figures/lte_check/sigma_LTE.pdf, id=1506, 236.50357pt x 186.65541pt>
 File: figures/lte_check/sigma_LTE.pdf Graphic file (type pdf)
 <use figures/lte_check/sigma_LTE.pdf>
-Package pdftex.def Info: figures/lte_check/sigma_LTE.pdf  used on input line 174.
+Package pdftex.def Info: figures/lte_check/sigma_LTE.pdf  used on input line 181.
 (pdftex.def)             Requested size: 208.95517pt x 164.91516pt.
-<figures/lte_check/kappa_LTE.pdf, id=1575, 234.22945pt x 186.52994pt>
+<figures/lte_check/kappa_LTE.pdf, id=1507, 234.22945pt x 186.52994pt>
 File: figures/lte_check/kappa_LTE.pdf Graphic file (type pdf)
 <use figures/lte_check/kappa_LTE.pdf>
-Package pdftex.def Info: figures/lte_check/kappa_LTE.pdf  used on input line 175.
+Package pdftex.def Info: figures/lte_check/kappa_LTE.pdf  used on input line 182.
 (pdftex.def)             Requested size: 208.95517pt x 166.40959pt.
-) (./main.bbl [26 <./figures/lte_check/sigma_LTE.pdf> <./figures/lte_check/kappa_LTE.pdf>] [27] [28]) [29] (./main.aux)
+) (./main.bbl [25 <./figures/lte_check/sigma_LTE.pdf> <./figures/lte_check/kappa_LTE.pdf>] [26] [27]) [28] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -410,21 +411,21 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.72pt have occurred.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 80DCF6CC22CF0608B683B092A98B5F58;4047.
+(rerunfilecheck)             Checksum: 783F3B85D832D2605E9C1F833C78F4B2;4205.
  ) 
 Here is how much of TeX's memory you used:
- 10777 strings out of 474222
- 165505 string characters out of 5748733
- 1952975 words of memory out of 5000000
- 32692 multiletter control sequences out of 15000+600000
+ 10788 strings out of 474222
+ 165674 string characters out of 5748733
+ 1951975 words of memory out of 5000000
+ 32700 multiletter control sequences out of 15000+600000
  571640 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,14n,93p,3449b,572s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (29 pages, 866821 bytes).
+ 90i,14n,93p,3003b,572s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on main.pdf (28 pages, 1037853 bytes).
 PDF statistics:
- 1859 PDF objects out of 2073 (max. 8388607)
- 955 compressed objects within 10 object streams
- 169 named destinations out of 1000 (max. 500000)
+ 1790 PDF objects out of 2073 (max. 8388607)
+ 956 compressed objects within 10 object streams
+ 172 named destinations out of 1000 (max. 500000)
  250 words of extra memory for PDF output out of 10000 (max. 10000000)
 

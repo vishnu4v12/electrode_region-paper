@@ -6,8 +6,12 @@ Results-section figures for the two base cases (PlasmeX runs/base_case_anode, ba
 Writes, each as .pdf and .png:
     base_qwall        the terms of the electrode heat flux q_w, main.tex eq (24) (eq:bc-qwall),
                       the code's own values from each plotfile's plasmex_info
-    base_profiles     n_e, n_i, n_n / T_e, T_h, T_eff / phi / j_i/j against the distance from
-                      the electrode, cathode (left column) and anode (right column)
+    base_profiles     n_e, n_i, n_eq(T_h) / T_e, T_h / j_i/j and -E (the field component towards the
+                      electrode, EFLDX, on a right axis sharing j_i/j's zero, as panel (c) of the
+                      validation figures) against the distance from the electrode, cathode (left
+                      column) and anode (right column); j_i is the ion
+                      current density INTO the electrode (positive towards it, both electrodes) and
+                      j = |J_app| (21 Oct 2026, user), i.e. JIX / |JEX + JIX| (the electrode is x_hi)
     base_een_budget   every steady term of the electron energy equation, main.tex eq (11)
                       (eq:eenergy), against the distance from the electrode: the divergence of
                       the whole electron energy flux h_e, eq (12), Joule heating, elastic
@@ -167,13 +171,13 @@ def load(pf):
     parts = {k: np.asarray(bud[k], dtype=float)
              for k in ("NDIVH", "JOULE", "ELASTIC", "ION", "RAD", "RADL", "DEDT")}
 
-    t_eff = b.ion_transport(d["TGAS"], d["AR"], np.abs(d["EFLDX"]))[0]
+    t_eff = b.ion_transport_run(d, knobs)[0]      # the run's plasmex.wannier_drift
     dist = d["hi"] - d["x"]
     o = np.argsort(dist)
     j = d["JEX"] + d["JIX"]
     s = {"d": dist[o], "ne": d["NE"][o], "ni": d["ARP"][o], "nn": d["AR"][o],
          "Te": d["ETEMP"][o], "Th": d["TGAS"][o], "Teff": t_eff[o], "phi": d["PHI"][o],
-         "E": d["EFLDX"][o], "ji_j": (d["JIX"] / j)[o], "j": j[o], "dxc": d["dxc"][o],
+         "E": d["EFLDX"][o], "ji_j": (d["JIX"] / np.abs(j))[o], "j": j[o], "dxc": d["dxc"][o],
          "budget": {k: v[o] for k, v in parts.items()}, "rxn_err": bud["RXN_ERR"],
          "info": b.read_run_info(pf), "t": float(d["ds"].current_time),
          "L": d["hi"] - d["lo"], "name": os.path.basename(os.path.abspath(pf))}
@@ -211,11 +215,19 @@ def n_eq_Th(Th, p=P0):
     return out
 
 
+E_UNIT = {"Cathode": 1e7, "Anode": 1e6}      # -E axis unit per column [V/m]
+# (x [m], fraction of the axis height) of the j_i/j and -E labels; "left" is screen-left, so on the
+# mirrored anode axis a label's text runs towards larger x
+PROFILE_LABELS = {"Cathode": ((4.5e-5, 0.62), (3.5e-7, 0.62)),
+                  "Anode": ((1.1e-4, 0.62), (6e-6, 0.6))}
+
+
 def fig_profiles(runs, stem):
     rc()
-    fig, axs = plt.subplots(4, 2, figsize=(7.0, 7.6), sharex="col",
-                            gridspec_kw=dict(height_ratios=[1.15, 1, 0.9, 0.9],
-                                             hspace=0.17, wspace=0.28))
+    fig, axs = plt.subplots(3, 2, figsize=(7.0, 6.2), sharex="col",
+                            gridspec_kw=dict(height_ratios=[1.15, 1, 1],
+                                             hspace=0.17, wspace=0.42))
+    twins = {}
     for col, (tag, s) in enumerate(runs):
         d = s["d"]
         ax = axs[0, col]
@@ -237,21 +249,43 @@ def fig_profiles(runs, stem):
         ax.set_ylabel(r"Temperature (10$^3$ K)")
         ax.legend(frameon=False, loc="best", handlelength=2.2)
 
+        # j_i/j (left axis) and -E, the field component towards the electrode (right axis), with one
+        # shared zero line, as panel (c) of the validation figures
         ax = axs[2, col]
         ax.axhline(0, color="#b0b0b0", lw=0.5)
-        ax.plot(d, s["phi"], color=C_X, lw=1.4)
-        ax.set_ylabel(r"$\phi$ (V)")
-
-        ax = axs[3, col]
-        ax.axhline(0, color="#b0b0b0", lw=0.5)
         ax.plot(d, s["ji_j"], color=C_X, lw=1.4)
+        ji_hi = 1.12 * s["ji_j"].max()
+        ji_lo = min(-0.06 * ji_hi, 1.1 * s["ji_j"].min())
+        ax.set_ylim(ji_lo, ji_hi)
         ax.set_ylabel(r"$j_i/j$")
         ax.set_xlabel(xlabel(tag))
+        u = E_UNIT[tag]
+        fx = ax.twinx()
+        fx.plot(d, s["E"] / u, color=C_N, lw=1.4)
+        e_hi = 1.12 * s["E"].max() / u
+        fx.set_ylim(e_hi * ji_lo / ji_hi, e_hi)
+        fx.set_ylabel(rf"$-E$ (10$^{{{int(round(np.log10(u)))}}}$ V m$^{{-1}}$)", color=C_N)
+        # curve labels beside each curve, (x [m], fraction of the axis height)
+        (xj, yj), (xe, ye) = PROFILE_LABELS[tag]
+        ax.text(xj, ji_lo + yj * (ji_hi - ji_lo), r"$j_i/j$", color=C_X, fontsize=9, ha="left", va="center")
+        fx.text(xe, ji_lo / ji_hi * e_hi + ye * (e_hi - ji_lo / ji_hi * e_hi), r"$-E$", color=C_N,
+                fontsize=9, ha="left", va="center")
+        twins[col] = fx
     for (r, c), ax in np.ndenumerate(axs):
         style(ax)
         # tags just above each frame, so they never sit on a curve or a legend
         tag = runs[c][0]
-        mark_electrode(ax, side(tag), label=tag.lower() if r == 0 else None)
+        tw = (twins[c],) if r == 2 else ()
+        if tw:                                    # before mark_electrode: the anode's right spine is its frame
+            fx = tw[0]
+            ax.tick_params(which="both", right=False)
+            fx.tick_params(which="both", direction="in", colors=C_N)
+            fx.tick_params(which="major", length=3.5, width=0.6)
+            fx.tick_params(which="minor", length=2.0, width=0.5)
+            for sp in fx.spines.values():
+                sp.set_linewidth(0.6)
+            fx.spines["right"].set_color(C_N)
+        mark_electrode(ax, side(tag), label=tag.lower() if r == 0 else None, spine_axes=tw)
         ax.text(0.0 if away(tag) == "left" else 1.0, 1.015, f"({'abcdefgh'[2 * r + c]})",
                 transform=ax.transAxes, fontsize=9, va="bottom", ha=away(tag))
     for col, (tag, _) in enumerate(runs):
@@ -386,6 +420,13 @@ def report(tag, s):
     eps_s = (1.5 * K_B * s["Teff"][i_s] + 0.5 * M_AR * v_d2) / E_CH
     print(f"  ion mean energy at the sheath edge {eps_s:.2f} eV;  max impact energy"
           f" {eps_s + phi_s:.2f} eV;  x ion flux -> {(eps_s + phi_s) * E_CH * g('q_wall.ion_flux') / 1e6:.1f} MW/m^2")
+    # Ion impact energy as quoted in the paper: the directed energy 1/2 M v_d^2 of the ion drift at the
+    # surface, v_d = Gamma_i/n_i (face flux over the wall-cell density; the heavy gas is at rest).
+    v_w = g("q_wall.ion_flux") / s["ni"][0]
+    eps_w = 0.5 * M_AR * v_w**2 / E_CH
+    u_bw = np.sqrt(K_B * (s["Te"][0] + s["Th"][0]) / M_AR)    # local Bohm velocity, wall cell
+    print(f"  ion drift at the surface v_d {v_w:.0f} m/s = {v_w / u_bw:.3f} u_B (u_B {u_bw:.0f} m/s);"
+          f"  1/2 M v_d^2 {eps_w:.3f} eV;  x ion flux -> {eps_w * E_CH * g('q_wall.ion_flux') / 1e6:.3f} MW/m^2")
     print(f"  j_i/j at wall {s['ji_j'][0]:.4f};  min {s['ji_j'].min():.4f}  max {s['ji_j'].max():.4f}")
     for k in ("electron_kinetic", "electron_work_function", "emission_kinetic",
               "emission_work_function", "ion_recombination", "gas_conduction", "total"):

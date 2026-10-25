@@ -7,10 +7,12 @@ of the two base cases (PlasmeX runs/base_case_cathode, base_case_anode).
 Writes, each as .pdf and .png, and prints the numbers quoted in the text (base_sheath_report.txt):
     base_momentum   every term of the electron and ion momentum balances, main.tex eqs (2), (3)
                     (eq:mom-e, eq:mom-i), against the distance from the electrode: electric force,
-                    pressure gradient, the two collisional drags combined, the thermal (Soret) force,
+                    pressure gradient, the two collisional drags combined ("drag"), the thermal (Soret) force,
                     and the species inertia that the model neglects, evaluated a posteriori
     base_sheath     (a, b) mean free paths against the distance from the electrode;
-                    (c, d) the electron Boltzmann relation; (e, f) the ion Mach number u_i/u_B
+                    (c, d) the electron Boltzmann relation, with the ion Mach number u_i/u_B on the
+                    right axis; (e, f) T_h and the Wannier ion temperature T_eff, with n_i and n_n
+                    on the right axis
 
 TERMS (per unit volume, x-component, positive = towards the electrode), on the AMR leaf cells
 (bohm.sample), with the solver's own coefficients (bohm.electron_transport, ion_transport,
@@ -28,10 +30,10 @@ electron_thermal_coeffs; src/aider.H CalcTransportCoeffs / CalcExtraVelocities):
              inertia   -M n_i u_i du_i/dx                       (not in the model)
 u_i = JIX/(e n_i), u_e = -JEX/(e n_e), u_n = UNX. The sum of the retained terms is printed as a check
 of the reconstruction (cell-centred here, face-based in the solver). The wall cell is dropped: JIX/JEX
-there hold the FACE value while n is the cell value.
+there hold the FACE value while n is the cell value. So is the arc cell, whose gradients are one-sided.
 
 MEAN FREE PATHS as in table tab:scales (reaction_rates/scale_table.py), with the local state:
-  lambda_e = 1/(n_n Qbar_en(T_e) + n_i Qbar_ei(T_e, n_e)),
+  lambda_e = 1/(n_n Qbar_en(T_e) + n_i Qbar_ei(T_e, n_e) + n_e Qbar_ee),  Qbar_ee = Qbar_ei,
   lambda_i = 1/(n_n Qbar_in(T_h) + n_i Qbar_ii),  Qbar_ii = Qbar_ei at T_h,
   lambda_in = 1/(n_n Qbar_in(T_h)), the ion-atom part alone (the ion friction; report only),
   lambda_Th = 1/((n_i + n_n) Qbar_in(T_h)), the heavy-particle energy-exchange length of tab:scales,
@@ -52,9 +54,10 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.ticker import FixedLocator, FuncFormatter, NullFormatter, SymmetricalLogLocator
+from matplotlib.ticker import SymmetricalLogLocator
 
-from base_case import HERE, C_E, C_I, C_N, C_X, rc, orient, side, away, _um_label, sheath_edge
+from base_case import HERE, C_E, C_I, C_N, C_X, rc, orient, side, away, sheath_edge, split_axis
+from base_case import XLIM
 sys.path.insert(0, os.path.join(HERE, "..", "validation_fig"))
 from plasmex import EXE, exe_module  # noqa: E402
 from electrode_mark import mark_electrode  # noqa: E402
@@ -63,13 +66,12 @@ b = exe_module("bohm")
 A = exe_module("almeida_arc_bc")
 E, KB, M, ME, EPS0 = b.ECHARGE, b.K_B, b.ARMASS, b.EMASS, b.EPS0
 FIELDS = ("NE", "ARP", "AR", "PHI", "ETEMP", "TGAS", "EFLDX", "JEX", "JIX", "UNX", "HVELX")
-XLIM = (3e-9, 1e-4)          # near-electrode window [m]; the first interior cell is at 5.7 nm
 
 # force terms: key -> (label, colour, line style, width); the neglected inertia in black
 TERMS = [
     ("E",   "electric force",           "#2a78d6", "-",  1.4),
     ("p",   "pressure gradient",        "#eb6834", "-",  1.4),
-    ("dr",  "drag (both partners)",     "#1baf7a", "-",  1.4),
+    ("dr",  "drag",                     "#1baf7a", "-",  1.4),
     ("T",   "thermal force",            "#eda100", "--", 1.3),
     ("in",  "inertia (neglected)",      "#2b2b2b", ":",  1.6),
 ]
@@ -92,7 +94,9 @@ def load(pf):
 
     et = b.electron_transport(Te, nn, ne, ni, exe_dir=EXE)
     mu_e, cf = et["mu"], et["fac"]
-    _, mu_in, _ = b.ion_transport(Th, nn, np.abs(Ex))
+    # the run's own Wannier drift: mu_in E (plasmex.wannier_drift = 0) or |u_i - u_n| (= 1)
+    v_rel = (np.abs(ui - un) if int(b.read_run_info(pf).get("plasmex.wannier_drift", 0)) == 1 else None)
+    _, mu_in, _ = b.ion_transport(Th, nn, np.abs(Ex), v_rel=v_rel)
     r = (1.0 - cf) * mu_in * ne / (np.abs(mu_e) * ni)
     c_e, a_i, _ = b.electron_thermal_coeffs(ni, ne, et["te_ev"], nn, et["D"], True, 1, EXE)
     dTe = grad(x, Te)
@@ -118,20 +122,21 @@ def load(pf):
     qei = A.qbar_ei(Te, ne)
     qin = A.qbar_ia(Th)
     qii = A.qbar_ei(Th, ne)
-    t["lam_e"] = 1.0 / (nn * qen + ni * qei)
+    t["lam_e"] = 1.0 / (nn * qen + ni * qei + ne * qei)
     t["lam_i"] = 1.0 / (nn * qin + ni * qii)
     t["lam_in"] = 1.0 / (nn * qin)
     t["lam_Th"] = 1.0 / ((ni + nn) * qin)
     t["L_Th"] = Th / np.maximum(np.abs(grad(x, Th)), 1e-300)
-    t["Teff"] = b.ion_transport(Th, nn, np.abs(Ex))[0]
+    t["Teff"] = b.ion_transport(Th, nn, np.abs(Ex), v_rel=v_rel)[0]
     t["lam_D"] = np.sqrt(EPS0 * KB * Te / (ne * E * E))
 
     # Bohm velocity and the ion Mach number
     t["uB"] = np.sqrt(KB * (Te + Th) / M)
     t["uB0"] = np.sqrt(KB * Te / M)
 
-    # drop the wall cell (face-valued J against cell-valued n), order by distance
-    keep = np.argsort(t["d"])[1:]
+    # drop the wall cell (face-valued J against cell-valued n) and the arc cell (its cell-centred
+    # gradients are one-sided against the arc-face ghost), order by distance
+    keep = np.argsort(t["d"])[1:-1]
     for k in list(t):
         if isinstance(t[k], np.ndarray):
             t[k] = t[k][keep]
@@ -163,7 +168,7 @@ def report(tag, t):
         tot = F["E"] + F["p"] + F["dr"] + F["T"] + (F.get("mix", 0.0))
         big = np.max(np.abs(np.vstack([F[k] for k in ("E", "p", "dr", "T")])), axis=0)
         print(f"  {nm}: |sum of retained terms| / max|term|: median {np.median(np.abs(tot) / big):.1e}, "
-              f"max within {XLIM[1]:.0e} m {np.max((np.abs(tot) / big)[dist <= XLIM[1]]):.1e}")
+              f"max {np.max(np.abs(tot) / big):.1e} (wall and arc cells excluded)")
         if sp == "i":
             print(f"  ion mixture term max |Y_i F|/max|term| = {np.max(np.abs(F['mix']) / big):.1e}")
         for xq in (2e-9, 1e-8, 1e-7, 3e-7, x_s, 1e-6, 3e-6, 1e-5, 3e-5, 1e-4):
@@ -221,12 +226,8 @@ def report(tag, t):
 
 
 def near_axis(ax):
-    ax.set_xscale("log")
-    ax.set_xlim(*XLIM)
-    ax.xaxis.set_major_locator(FixedLocator(10.0 ** np.arange(-9, -3.5)))
-    ax.xaxis.set_minor_locator(FixedLocator([m * 10.0 ** e for e in range(-9, -4) for m in range(2, 10)]))
-    ax.xaxis.set_major_formatter(FuncFormatter(_um_label))
-    ax.xaxis.set_minor_formatter(NullFormatter())
+    """The log-linear distance axis of base_profiles / base_een_budget (ln x + x/X_C, 1 nm - L)."""
+    split_axis(ax)
 
 
 def style(ax):
@@ -299,51 +300,84 @@ def fig_momentum(runs, stem):
 def fig_sheath(runs, stem):
     rc()
     fig, axs = plt.subplots(3, 2, figsize=(7.0, 7.4), sharex="col",
-                            gridspec_kw=dict(height_ratios=[1.2, 1, 0.9], hspace=0.16, wspace=0.28))
+                            gridspec_kw=dict(height_ratios=[1.2, 1, 1], hspace=0.16, wspace=0.42))
+    C_M = "#eda100"                          # ion Mach number (right axis of the density row)
+    twins = {}
     for c, (tag, t) in enumerate(runs):
         d = t["d"]
+        near = d <= XLIM[1]
         ax = axs[0, c]
         ax.plot(d, t["lam_e"], color=C_E, lw=1.4, label=r"$\lambda_e$")
         ax.plot(d, t["lam_i"], color=C_I, lw=1.4, label=r"$\lambda_i$")
         ax.plot(d, t["lam_Th"], color=C_I, lw=1.0, ls="--", label=r"$\lambda_{T_h}$")
         ax.plot(d, t["lam_D"], color=C_N, lw=1.4, ls="-.", label=r"$\lambda_{De}$")
-        ax.plot(XLIM, XLIM, color="#8a8a8a", lw=0.7, ls=":", label=r"$x$")
+        xs = np.geomspace(*XLIM, 400)           # dense: x = x is curved on the log-linear axis
+        ax.plot(xs, xs, color="#8a8a8a", lw=0.7, ls=":", label=r"$x$")
         ax.set_yscale("log")
         ax.set_ylim(3e-10, 3e-5)
         ax.set_ylabel("Length (m)")
         ax.set_title(tag, fontsize=9, pad=10)
 
+        # densities and the Boltzmann relation (left), ion Mach number u_i/u_B (right)
         ax = axs[1, c]
         ax.plot(d, t["ne"], color=C_E, lw=1.4, label=r"$n_e$")
-        ax.plot(d, t["nB"], color=C_X, lw=1.1, ls="--", label=r"Boltzmann relation, $n_B$")
+        ax.plot(d, t["nB"], color=C_X, lw=1.1, ls="--", label=r"$n_B$ (Boltzmann)")
         ax.plot(d, t["ni"], color=C_I, lw=1.0, ls=(0, (4, 2)), label=r"$n_i$")
         ax.set_yscale("log")
-        lo = 0.5 * min(t["ne"].min(), t["nB"][d < XLIM[1]].min())
-        hi = 2.0 * max(t["ne"][d < XLIM[1]].max(), t["ni"][d < XLIM[1]].max())
+        lo = 0.5 * min(t["ne"].min(), t["nB"][near].min())
+        hi = 2.0 * max(t["ne"][near].max(), t["ni"][near].max())
         ax.set_ylim(lo, hi)
         ax.set_ylabel(r"Number density (m$^{-3}$)")
+        tw = ax.twinx()
+        tw.axhline(1.0, color=C_M, lw=0.6, ls=":")
+        tw.plot(d, t["ui"] / t["uB"], color=C_M, lw=1.4, label=r"$u_i/u_B$ (right)")
+        tw.set_yscale("log")
+        tw.set_ylim(min(3e-3, 0.5 * np.min(t["ui"] / t["uB"])), 6.0)   # the cathode u_i -> 0 towards L
+        tw.set_ylabel(r"Ion Mach number $u_i/u_B$")
+        twins[1, c] = tw
 
+        # heavy-particle and Wannier ion temperatures (left), ion and atom densities (right)
         ax = axs[2, c]
-        ax.axhline(1.0, color="#8a8a8a", lw=0.6)
-        ax.plot(d, t["ui"] / t["uB"], color=C_I, lw=1.4, label=r"$u_i/u_B$")
-        ax.set_yscale("log")
-        ax.set_ylim(3e-3, 6.0)
-        ax.set_ylabel(r"Ion Mach number $u_i/u_B$")
+        ax.plot(d, 1e-3 * t["Th"], color=C_X, lw=1.4, label=r"$T_h$")
+        ax.plot(d, 1e-3 * t["Teff"], color=C_X, lw=1.4, ls="-.", label=r"$T_{\rm eff}$")   # same colour as T_h (user, 22 Oct 2026)
+        ax.set_ylim(0.0, 1.08e-3 * t["Teff"][near].max())
+        ax.set_ylabel("Temperature (kK)")
         ax.set_xlabel(xlabel(tag))
-        ax.text(0.5, 0.95, r"$u_B=\sqrt{k_B(T_e+T_h)/M}$",
-                transform=ax.transAxes, ha="center", va="top", fontsize=7.5, color="#3a3a3a")
+        tw = ax.twinx()
+        tw.plot(d, t["ni"], color=C_I, lw=1.0, ls=(0, (4, 2)), label=r"$n_i$ (right)")
+        tw.plot(d, t["nn"], color=C_N, lw=1.0, ls=(0, (4, 2)), label=r"$n_n$ (right)")
+        tw.set_yscale("log")
+        nlo = min(t["ni"][near].min(), t["nn"][near].min())
+        nhi = max(t["ni"][near].max(), t["nn"][near].max())
+        tw.set_ylim(0.5 * nlo, 2.0 * nhi)
+        tw.set_ylabel(r"Number density (m$^{-3}$)")
+        twins[2, c] = tw
+
         for r in range(3):
             near_axis(axs[r, c])
             style(axs[r, c])
+            if (r, c) in twins:
+                axs[r, c].tick_params(which="both", right=False)
+                style(twins[r, c])
+                twins[r, c].tick_params(which="both", left=False, top=False)
             mark_sheath_edge(axs[r, c], t)
             mark_electrode(axs[r, c], side(tag), label=tag.lower() if r == 0 else None)
             axs[r, c].text(0.0 if away(tag) == "left" else 1.0, 1.015, f"({'abcdef'[2 * r + c]})",
                            transform=axs[r, c].transAxes, fontsize=9, va="bottom", ha=away(tag))
         orient(axs[0, c], tag)
-    for r in range(2):
-        axs[r, 0].legend(frameon=False, loc="lower right", handlelength=2.4, fontsize=7)
+    # each legend in an empty part of a panel: (a) lower right, (c) lower middle, under the
+    # Mach number, (f) the gap between n_n and the temperatures on the anode side of x_s
+    for r, c, kw in ((0, 0, dict(loc="lower right")),
+                     (1, 0, dict(loc="lower center", bbox_to_anchor=(0.5, 0.0), handlelength=1.6)),
+                     (2, 1, dict(loc="center right", bbox_to_anchor=(0.95, 0.55)))):
+        h, l = axs[r, c].get_legend_handles_labels()
+        if (r, c) in twins:
+            h2, l2 = twins[r, c].get_legend_handles_labels()
+            h, l = h + h2, l + l2
+        twins.get((r, c), axs[r, c]).legend(h, l, frameon=False, fontsize=7, **{"handlelength": 2.0, **kw})
     for c in range(2):
         fig.align_ylabels(axs[:, c])
+        fig.align_ylabels([twins[1, c], twins[2, c]])
     for ext in ("pdf", "png"):
         fig.savefig(f"{stem}.{ext}", dpi=400, bbox_inches="tight")
     plt.close(fig)

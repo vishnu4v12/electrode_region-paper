@@ -20,7 +20,8 @@ as the paper's phi is.
 
 The paper curves are read from paper_data/fig5b_extracted.csv and fig6b_extracted.csv
 (written by paper_data/extract.py). The simulation is read off the AMR leaf cells by
-bohm.sample, loaded from the live PlasmeX tree (../plasmex.py); j_i/j = JIX / (JEX + JIX). The
+bohm.sample, loaded from the live PlasmeX tree (../plasmex.py); j_i/j = JIX / |JEX + JIX|, the ion
+current density INTO the cathode over |J_app| (the manuscript's convention since 21 Oct 2026). The
 boundary cell holds the FACE value of JEX/JIX, so the wall j_i/j is the flux the solver applied.
 """
 import argparse
@@ -85,7 +86,7 @@ def load_sim(plt_file):
     o = np.argsort(dist)
     j = d["JEX"] + d["JIX"]
     return {"d": dist[o], "ne": d["NE"][o], "ni": d["ARP"][o], "Te": d["ETEMP"][o],
-            "Th": d["TGAS"][o], "ji_j": (d["JIX"] / j)[o], "j": j[o],
+            "Th": d["TGAS"][o], "ji_j": (d["JIX"] / np.abs(j))[o], "j": j[o],
             "E": -d["EFLDX"][o], "phi": d["PHI"][o],           # paper orientation
             "L": d["hi"] - d["lo"], "t": float(d["ds"].current_time)}
 

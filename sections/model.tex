@@ -4,48 +4,46 @@
 \subsection{Spatial scale analysis}
 \label{sec:scales involved}
 
+In the electrode regions the bulk plasma is perturbed by the presence of relatively cold and absorbing nature of electrode surfaces resulting in steep gradients in plasma properties. The bulk plasma therefore progressively deviates from the LTE conditions as the electrode is approached. We estimate the length scales over which these departures develop in a high-intensity atmospheric pressure arc considering LTE plasma adjacent to the electrodes at temperatures from \(23\,000\)~K, typical of the cathode region, down to \(11\,000\)~K, typical of the anode region \cite{Hsu1983,haddad1984temperature}.
 
-In the electrode region, the plasma is in contact with a relatively cold, absorbing electrode surface. The resulting strong gradients drive the plasma progressively further from LTE as the electrode is approached. We estimate the length scales over which these departures develop in a high-intensity atmospheric-pressure arc by considering the LTE plasma adjacent to the electrode region, at temperatures from \(23\,000\)~K, typical of the cathode region, down to \(11\,000\)~K, typical of the anode region \cite{Hsu1983,haddad1984temperature}.
+In the bulk plasma, the electron number density \(n_e\) is governed by ionization and recombination. Let \(n_n\) be the number density of argon atoms, \(n_i=n_e\) that of the ions, and \(k_{\rm ion}\) and \(k_{\rm rec}\) the rate coefficients of electron-impact ionization and of three-body recombination. The electron density then evolves as \(\dot n_e=k_{\rm ion}n_en_n-k_{\rm rec}n_e^3\) (equation~(\ref{eq:S})). Linearizing this rate about equilibrium at fixed pressure \(p\) and temperature \(T\), where Dalton's law gives \(\delta n_n=-2\,\delta n_e\), yields the reaction time \(\tau_{\rm rxn}=1/(2k_{\rm rec}n_e^2+2k_{\rm ion}n_e)\). During this time, the charged particles diffuse ambipolarly over the reaction length \(\lambda_{\rm rxn}=\sqrt{D_a\tau_{\rm rxn}}\), where \(D_a\) is the ambipolar diffusion coefficient, equation~(\ref{eq:Da}). A plasma displaced from ionization equilibrium therefore travels a distance of order \(\lambda_{\rm rxn}\) before reaching ionization equilibrium.
 
-In the bulk plasma, the electron number density \(n_e\) is governed by ionization and recombination. Let \(n_n\) be the number density of argon atoms, \(n_i=n_e\) that of the ions, and \(k_{\rm ion}\) and \(k_{\rm rec}\) the rate coefficients of electron-impact ionization and of three-body recombination, for which we use those of Almeida et al.\ \cite{Almeida2008} (equation~(\ref{eq:S})). The electron density then evolves as \(\dot n_e=k_{\rm ion}n_en_n-k_{\rm rec}n_e^3\). Linearizing this rate about equilibrium at fixed pressure \(p\) and temperature \(T\), for which Dalton's law gives \(\delta n_n=-2\,\delta n_e\), yields the reaction time \(\tau_{\rm rxn}=1/(2k_{\rm rec}n_e^2+2k_{\rm ion}n_e)\). Over this time, the charged particles diffuse ambipolarly over the reaction length \(\lambda_{\rm rxn}=\sqrt{D_a\tau_{\rm rxn}}\), where \(D_a\) is the ambipolar diffusion coefficient (Appendix~\ref{app:scales}). A plasma displaced from ionization equilibrium therefore returns to it over a distance of order \(\lambda_{\rm rxn}\).
+The electron and heavy-particle (ions and neutrals) temperatures in a plasma equilibrate through elastic collisions. In an elastic collision with a heavy particle, an electron loses only a fraction \(2m_e/M\) of its energy, where \(m_e\) and \(M\) are the electron and argon masses. Its energy therefore relaxes only after about \(M/(2m_e)\) collisions, during which it random-walks over a distance \(\lambda_T=\lambda_{eh}/\sqrt{2m_e/M}\), which is the length scale of energy relaxation between the electrons and the heavy particles. Here \(\lambda_{eh}=1/(n_n\overline{Q}_{en}+n_i\overline{Q}_{ei})\) is the electron mean free path for heavy-particle collisions, and \(\overline{Q}_{en}\) and \(\overline{Q}_{ei}\) are the \rev{average} momentum-transfer cross sections \rev{of} electron--atom and electron--ion collisions over the electron energy distribution (Appendix~\ref{app:cross}). Ions and atoms, by contrast, have nearly equal masses and exchange energy efficiently, so their temperatures equalize over \(\lambda_{T_h}=1/[(n_i+n_n)\overline{Q}_{in}]\), where \(\overline{Q}_{in}\) is the \rev{average} ion--atom momentum-transfer cross section \rev{over} the ion energy distribution, dominated by resonant charge exchange (equation~(\ref{eq:Qia})).
 
-The electron and heavy-particle temperatures, in turn, equilibrate through elastic collisions. In an elastic collision with a heavy particle, an electron loses only a fraction \(2m_e/M\) of its energy, where \(m_e\) and \(M\) are the electron and argon masses. Its energy therefore relaxes only after about \(M/(2m_e)\) collisions, over which it random-walks a distance \(\lambda_T=\lambda_e/\sqrt{2m_e/M}\); this is the length scale of energy relaxation between the electrons and the heavy particles. Here \(\lambda_e=1/(n_n\overline{Q}_{en}+n_i\overline{Q}_{ei})\) is the electron mean free path, and \(\overline{Q}_{en}\) and \(\overline{Q}_{ei}\) are the averaged momentum-transfer cross sections for electron--atom and electron--ion collisions (Appendix~\ref{app:scales}): \(\overline{Q}_{en}\) is the Maxwellian average of the argon momentum-transfer cross section at \(T_e\), and \(\overline{Q}_{ei}\) is the Coulomb cross section. Ions and atoms, by contrast, have nearly equal masses and exchange energy efficiently, so their temperatures equalize over \(\lambda_{T_h}=1/[(n_i+n_n)\overline{Q}_{in}]\), where \(\overline{Q}_{in}\) is the ion--atom momentum-transfer cross section, dominated by resonant charge exchange (equation~(\ref{eq:Qia})).
-
-At the smallest scale, the electron Debye length \(\lambda_{De}=\sqrt{\varepsilon_0k_BT_e/(n_ee^2)}\) is of order \(10^{-8}\)~m; it sets the extent of charge separation and space-charge effects. Here \(\varepsilon_0\) is the vacuum permittivity, \(k_B\) the Boltzmann constant and \(e\) the elementary charge. These scales are listed in table~\ref{tab:scales}, together with the electron mean free path \(\lambda_e\) and the ion mean free path \(\lambda_i=1/(n_n\overline{Q}_{in}+n_i\overline{Q}_{ii})\), where \(\overline{Q}_{ii}\) is the Coulomb cross section \(\overline{Q}_{ei}\) evaluated at \(T_h\).
+The smallest scale is the electron Debye length \(\lambda_{De}=\sqrt{\varepsilon_0k_BT_e/(n_ee^2)}\), which is of order \(10^{-8}\)~m and governs the extent of charge separation. Here \(\varepsilon_0\) is the vacuum permittivity, \(k_B\) the Boltzmann constant and \(e\) the elementary charge. These scales are calculated for the temperatures representative of the cathode and anode regions and are listed in table~\ref{tab:scales}, together with the electron mean free path \(\lambda_e=1/(n_n\overline{Q}_{en}+n_i\overline{Q}_{ei}+n_e\overline{Q}_{ee})\) and the ion mean free path \(\lambda_i=1/(n_n\overline{Q}_{in}+n_i\overline{Q}_{ii})\), where \(\overline{Q}_{ee}=\overline{Q}_{ei}\) and \(\overline{Q}_{ii}\) is the \rev{average} Coulomb cross section \(\overline{Q}_{ei}\) evaluated at \(T_h\).
 
 
 \begin{table}
-\caption{Characteristic length scales of LTE argon at atmospheric pressure (\(T_e=T_h=T\), Saha equilibrium), ordered from left to right by increasing size; \(\lambda_i\approx\lambda_e\), and \(\lambda_{\rm rxn}\) and \(\lambda_T\) are comparable from \(11\,000\) to \(14\,000\)~K. The reaction scales use the rate coefficients of Almeida et al.\ \cite{Almeida2008}.}
+\caption{Characteristic length scales associated with the near-electrode regions of an high-intensity atmospheric pressure arc discharge.}
 \label{tab:scales}
 \centering
 \small
 \begin{tabular}{ccccccc}
 \hline
-\(T\) & \(\lambda_{De}\) & \(\lambda_i\) & \(\lambda_e\) & \(\lambda_{T_h}\) & \(\lambda_{\rm rxn}\) & \(\lambda_T\) \\
+\(T\) & \(\lambda_{De}\) & \(\lambda_e\) & \(\lambda_i\) & \(\lambda_{T_h}\) & \(\lambda_{\rm rxn}\) & \(\lambda_T\) \\
 (K) & (m) & (m) & (m) & (m) & (m) & (m) \\
 \hline
-11\,000 & \(3.9\times10^{-8}\) & \(9.5\times10^{-7}\) & \(1.8\times10^{-6}\) & \(1.8\times10^{-6}\) & \(2.6\times10^{-4}\) & \(3.4\times10^{-4}\) \\
-12\,000 & \(3.0\times10^{-8}\) & \(8.1\times10^{-7}\) & \(1.2\times10^{-6}\) & \(2.1\times10^{-6}\) & \(1.8\times10^{-4}\) & \(2.3\times10^{-4}\) \\
-14\,000 & \(2.1\times10^{-8}\) & \(6.6\times10^{-7}\) & \(7.5\times10^{-7}\) & \(3.2\times10^{-6}\) & \(1.1\times10^{-4}\) & \(1.4\times10^{-4}\) \\
-18\,000 & \(2.1\times10^{-8}\) & \(8.8\times10^{-7}\) & \(8.9\times10^{-7}\) & \(5.9\times10^{-6}\) & \(6.6\times10^{-5}\) & \(1.7\times10^{-4}\) \\
-20\,000 & \(2.3\times10^{-8}\) & \(1.1\times10^{-6}\) & \(1.1\times10^{-6}\) & \(6.9\times10^{-6}\) & \(5.1\times10^{-5}\) & \(2.2\times10^{-4}\) \\
-22\,000 & \(2.5\times10^{-8}\) & \(1.4\times10^{-6}\) & \(1.4\times10^{-6}\) & \(7.8\times10^{-6}\) & \(4.0\times10^{-5}\) & \(2.8\times10^{-4}\) \\
-23\,000 & \(2.6\times10^{-8}\) & \(1.6\times10^{-6}\) & \(1.6\times10^{-6}\) & \(8.2\times10^{-6}\) & \(3.7\times10^{-5}\) & \(3.1\times10^{-4}\) \\
+11\,000 & \(3.9\times10^{-8}\) & \(9.2\times10^{-7}\) & \(9.5\times10^{-7}\) & \(1.8\times10^{-6}\) & \(2.6\times10^{-4}\) & \(3.4\times10^{-4}\) \\
+12\,000 & \(3.0\times10^{-8}\) & \(6.0\times10^{-7}\) & \(8.1\times10^{-7}\) & \(2.1\times10^{-6}\) & \(1.8\times10^{-4}\) & \(2.3\times10^{-4}\) \\
+14\,000 & \(2.1\times10^{-8}\) & \(3.8\times10^{-7}\) & \(6.6\times10^{-7}\) & \(3.2\times10^{-6}\) & \(1.1\times10^{-4}\) & \(1.4\times10^{-4}\) \\
+18\,000 & \(2.1\times10^{-8}\) & \(4.5\times10^{-7}\) & \(8.8\times10^{-7}\) & \(5.9\times10^{-6}\) & \(6.6\times10^{-5}\) & \(1.7\times10^{-4}\) \\
+20\,000 & \(2.3\times10^{-8}\) & \(5.7\times10^{-7}\) & \(1.1\times10^{-6}\) & \(6.9\times10^{-6}\) & \(5.1\times10^{-5}\) & \(2.2\times10^{-4}\) \\
+22\,000 & \(2.5\times10^{-8}\) & \(7.2\times10^{-7}\) & \(1.4\times10^{-6}\) & \(7.8\times10^{-6}\) & \(4.0\times10^{-5}\) & \(2.8\times10^{-4}\) \\
+23\,000 & \(2.6\times10^{-8}\) & \(8.1\times10^{-7}\) & \(1.6\times10^{-6}\) & \(8.2\times10^{-6}\) & \(3.7\times10^{-5}\) & \(3.1\times10^{-4}\) \\
 \hline
 \end{tabular}
 \end{table}
 
 
 
-The resulting hierarchy of length scales is \(\lambda_{De}\ll\lambda_i\approx\lambda_e\lesssim\lambda_{T_h}\ll\lambda_{\rm rxn}\approx\lambda_T\). The largest scales, \(\lambda_{\rm rxn}\) and \(\lambda_T\), indicate that the electrode affects the plasma over a region of thickness of order \(10^{-4}\)~m. Other models and analyses \cite{Almeida2008,DinulescuPfender1980,benilov1995model,hsu1983analysis,tashiro2010numerical,semenov2016numerical} arrive at similar estimates. Consistently with these estimates, Lowke and Tanaka \cite{Lowke2006} found that departures from LTE are confined to within about 0.1~mm of the electrodes of a 200~A atmospheric-pressure argon arc, and suggested that the rest of the plasma can be modeled as being in LTE. Because \(\lambda_e\) and \(\lambda_i\) are small compared with this region, a continuum description with Maxwellian velocity distributions is reasonable over most of it; because \(\lambda_{T_h}\) is small as well, ions and atoms can be described by a single temperature \(T_h\). The validity of both assumptions close to the electrodes is examined a posteriori in Section~\ref{sec:res-momentum}.
+The resulting hierarchy of length scales is \(\lambda_{De}\ll\lambda_e\lesssim\lambda_i\lesssim\lambda_{T_h}\ll\lambda_{\rm rxn}\approx\lambda_T\). The largest scales, \(\lambda_{\rm rxn}\) and \(\lambda_T\), indicate that the electrode affects the plasma over a region of thickness of order \(10^{-4}\)~m. Other models and analyses \cite{Almeida2008,DinulescuPfender1980,benilov1995model,hsu1983analysis,tashiro2010numerical,semenov2016numerical} arrive at similar estimates. Consistent with them, Lowke and Tanaka \cite{Lowke2006} found that departures from LTE are confined to within about 0.1~mm of the electrodes of a 200~A atmospheric-pressure argon arc, and suggested that the rest of the plasma can be modeled as being in LTE. Because \(\lambda_e\) and \(\lambda_i\) are small compared with this region, a continuum description with collision dominated transport is reasonable over the arc end of the near-electrode region, and because \(\lambda_{T_h}\) is small as well a single temperature \(T_h\) can be used to describe the heavy species. The validity of both assumptions close to the electrodes is examined a posteriori in Section~\ref{sec:res-momentum}.
 
 % In this study we model the near-electrode region of a high-intensity atmospheric-pressure arc, with the electrode surface at one end of the domain and the bulk plasma at the other. The temperature and current density at the plasma end are taken as typical values from experiments and LTE models \cite{Lowke2006,Hsu1983,LiangTrelles,lago2004numerical,freton2000comparison,korsipati2026fast,haddad1984temperature}. For these conditions, LTE assumption from a length of \(5\times10^{-4}~\mathrm{m}\) from the electrodes is a reasonable choice based on scales estimates  and previous studies \cite{Almeida2008,DinulescuPfender1980,benilov1995model,hsu1983analysis,tashiro2010numerical,semenov2016numerical}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Governing equations}
 \label{sec:model-governing}
-Externally imposed bulk flows, such as the cathode jet, are not modeled in the electrode region. The heavy gas is nevertheless not assumed to be at rest, since it can move during the transient stages of the discharge. The plasma is taken to consist of three species: electrons (e), singly charged argon ions (i), and argon atoms (n). Multiply charged ions are neglected: in the anode region the temperature is too low to produce them, and in the cathode region they are present but have a negligible effect \cite{almeida2000simulation}. Each species is assumed to follow a Maxwellian velocity distribution (Appendix~\ref{app:transport}). The unknowns are the species number densities, the electron and heavy-particle temperatures, the heavy-gas velocity and the electric field, which are governed by the following equations.
-
+\rev{This section describes the governing equations of the plasma in the electrode region.} Externally imposed bulk flows, such as the cathode jet, are not modeled in the electrode region. The heavy gas is nevertheless not assumed to be at rest, since it can move during transients. The plasma is taken to consist of three species, namely electrons (e), singly charged argon ions (i), and argon atoms (n). Multiply charged ions are neglected, because the temperature in the anode region is too low for thier production, and in the cathode region even though they are present, they are shown to have a negligible effect \cite{almeida2000simulation}. 
 The number densities of the three species obey
 \begin{equation}
 \frac{\partial n_e}{\partial t}+\nabla\cdot\boldsymbol{\Gamma}_e=S,
@@ -60,7 +58,7 @@ where \(\boldsymbol{\Gamma}_s=n_s\mathbf{u}_s\) is the flux of species \(s\) and
 S=k_{\rm ion}\,n_en_n-k_{\rm rec}\,n_e^2n_i .
 \label{eq:S}
 \end{equation}
-Different authors have evaluated the rate coefficients \(k_{\rm ion}\) and \(k_{\rm rec}\) in different ways \cite{Almeida2008,DinulescuPfender1980,Lowke2006,LiangTrelles}. In this work we use those of Almeida et al.\ \cite{Almeida2008}, taken from Benilov and Naidis \cite{benilov1998ionization}. In this model, ionization proceeds mainly stepwise, through the first excited level; the escape of resonance radiation, which reduces the ionization rate, is accounted for when \(n_e\lesssim10^{21}~\mathrm{m^{-3}}\); and \(k_{\rm rec}\) follows from \(k_{\rm ion}\) by detailed balance with Saha equilibrium at \(T_e\).
+The rate coefficients \(k_{\rm ion}\) and \(k_{\rm rec}\) have been evaluated in different ways by different authors \cite{Almeida2008,DinulescuPfender1980,Lowke2006,LiangTrelles}. In this work we use those of Almeida et al.\ \cite{Almeida2008}, taken from Benilov and Naidis \cite{benilov1998ionization}. In their model, ionization proceeds mainly stepwise, through the first excited level. The escape of resonance radiation, which reduces the ionization rate, is accounted for when \(n_e\lesssim10^{21}~\mathrm{m^{-3}}\), and \(k_{\rm rec}\) follows from \(k_{\rm ion}\) by detailed balance with Saha equilibrium at \(T_e\).
 
 The momentum equation for the plasma as a whole is \(\rho\,D\mathbf{u}/Dt=\mathbf{F}\), where \(\mathbf{F}\) is the net force on the plasma. For each species \(s\), the corresponding equation is \(m_sn_s\,D_s\mathbf{u}_s/Dt=\mathbf{F}_s\), where \(\mathbf{F}_s\) is the net force on that species. We neglect the inertia of each species relative to the heavy gas, \(D_s\mathbf{u}_s/Dt\simeq D\mathbf{u}/Dt\), so that every species shares the acceleration of the heavy gas and there is no relative acceleration between species. The inertia of species \(s\) is then \(Y_s\mathbf{F}\), where \(Y_s=m_sn_s/\rho\) is its mass fraction, and the species momentum equations reduce to the local force balances \cite{zhdanov2002transport}
 \begin{align}
@@ -83,7 +81,7 @@ The momentum equation for the plasma as a whole is \(\rho\,D\mathbf{u}/Dt=\mathb
  - Y_n\mathbf{F} .
 \label{eq:mom-n}
 \end{align}
-The frequencies \(\bar\nu^M_{en}\), \(\bar\nu^M_{ei}\), \(\bar\nu^M_{in}\), \(\bar\nu^M_{ie}\), \(\bar\nu^M_{ni}\), and \(\bar\nu^M_{ne}\) are \emph{averaged momentum-transfer collision frequencies}, \(C_e\) is the electron thermal-force coefficient, and \(C_i\) and \(C_n\) are its reactions on the ions and atoms; their calculation is described in Appendix~\ref{app:transport}. Momentum conservation in each collision pair relates the frequencies, and the thermal forces sum to zero:
+The frequencies \(\bar\nu^M_{en}\), \(\bar\nu^M_{ei}\), \(\bar\nu^M_{in}\), \(\bar\nu^M_{ie}\), \(\bar\nu^M_{ni}\), and \(\bar\nu^M_{ne}\) are \emph{averaged momentum-transfer collision frequencies} within the collision pairs, the superscript \(m\) has been used to distinguish them from the \emph{averaged energy-transfer collision frequencies} \(\bar\nu^E_{ab}\), \(C_e\) is the electron thermal-force coefficient, and \(C_i\) and \(C_n\) are its reactions on the ions and atoms. Their calculation is described in Appendix~\ref{app:transport}. Momentum conservation in each collision pair relates the frequencies, and the thermal forces sum to zero,
 \begin{equation}
 m_en_e\bar\nu^M_{en}=Mn_n\bar\nu^M_{ne},\qquad
 m_en_e\bar\nu^M_{ei}=Mn_i\bar\nu^M_{ie},\qquad
@@ -110,9 +108,9 @@ Solving the electron balance~(\ref{eq:mom-e}) for the electron flux, with \(\bar
 +\frac{n_e}{\bar\nu^M_e}\Big(\bar\nu^M_{en}\mathbf{u}_n+\bar\nu^M_{ei}\mathbf{u}_i\Big),
 \label{eq:flux-e}
 \end{equation}
-where the negligible term \(Y_e\mathbf{F}\) has been dropped. The first two terms are the conventional drift and diffusion. Their coefficients, \(e/(m_e\bar\nu^M_e)\) and \(k_BT_e/(m_e\bar\nu^M_e)\), are the magnitudes of the electron mobility and diffusivity; because both are set by the same frequency, they satisfy the Einstein relation identically. The third term combines the temperature-gradient part of the electron pressure force with the thermal force. The last term is the collisional drag exerted on the electrons by the moving heavy species.
+where the negligible term \(Y_e\mathbf{F}\) has been dropped. The first two terms are the drift and diffusion fluxes. Their coefficients, \(e/(m_e\bar\nu^M_e)\) and \(k_BT_e/(m_e\bar\nu^M_e)\), are the magnitudes of the electron mobility and diffusivity. Because both are set by the same frequency, they satisfy the Einstein relation identically. The third term combines the temperature-gradient part of the electron pressure force with the thermal force. The last term is the collisional drag exerted on the electrons by the moving heavy species.
 
-The ion flux follows from the ion balance~(\ref{eq:mom-i}) in the same way. With \(\bar\nu^M_i=\bar\nu^M_{in}+\bar\nu^M_{ie}\) the total ion momentum-transfer frequency and \(\nabla p_i=k_BT_h\nabla n_i+n_ik_B\nabla T_h\),
+The ion flux follows from the ion balance~(\ref{eq:mom-i}) in a similar way,
 \begin{equation}
 \boldsymbol{\Gamma}_i=\frac{en_i}{M\bar\nu^M_i}\mathbf{E}
 -\frac{k_BT_h}{M\bar\nu^M_i}\nabla n_i
@@ -122,9 +120,7 @@ The ion flux follows from the ion balance~(\ref{eq:mom-i}) in the same way. With
 +\frac{n_i}{\bar\nu^M_i}\Big(\bar\nu^M_{in}\mathbf{u}_n+\bar\nu^M_{ie}\mathbf{u}_e\Big).
 \label{eq:flux-i}
 \end{equation}
-The first three terms are ion drift, diffusion, and diffusion driven by the heavy-particle temperature gradient, with mobility \(e/(M\bar\nu^M_i)\) and diffusivity \(k_BT_h/(M\bar\nu^M_i)\). The fourth term is the reaction of the ions to the electron thermal force. The fifth term is the ions' share, \(Y_i\mathbf{F}\), of the net force on the plasma, which accelerates the ions together with the rest of the heavy gas. The last term is the collisional drag exerted on the ions by the atoms and electrons.
-
-The velocities in the drag terms of equations~(\ref{eq:flux-e}) and (\ref{eq:flux-i}) are those of the other species, so the two fluxes are coupled. If the drag, thermal-force, and mixture-acceleration terms are removed (\(C_e=C_i=0\), \(Y_i\mathbf{F}=0\), and \(\mathbf{u}_s=\mathbf{u}=0\) in the drag terms), equations~(\ref{eq:flux-e}) and (\ref{eq:flux-i}) reduce to the classical drift--diffusion fluxes, with mobilities \(e/(m_e\bar\nu^M_e)\) and \(e/(M\bar\nu^M_i)\). Unlike the classical fluxes, however, they retain the full pressure-gradient force of each species in a non-isothermal plasma.
+The first three terms are ion drift, diffusion, and diffusion driven by the heavy-particle temperature gradient, with mobility \(e/(M\bar\nu^M_i)\) and diffusivity \(k_BT_h/(M\bar\nu^M_i)\). The fourth term is the reaction of the ions to the electron thermal force. The fifth term is the ions' share, \(Y_i\mathbf{F}\), of the net force on the plasma, which accelerates them together with the rest of the heavy gas. The last term is the collisional drag exerted on the ions by the atoms and electrons. The velocities in the drag terms of equations~(\ref{eq:flux-e}) and (\ref{eq:flux-i}) are those of the other species, so the two fluxes are coupled. If the drag, thermal-force and mixture-acceleration terms are removed (\(C_e=C_i=0\), \(Y_i\mathbf{F}=0\), and \(\mathbf{u}_s=\mathbf{u}=0\) in the drag terms), equations~(\ref{eq:flux-e}) and (\ref{eq:flux-i}) reduce to the conventional drift diffusion equations. Unlike the classical fluxes, however, they retain the full pressure-gradient force of each species in a non-isothermal plasma.
 
 The electric field is obtained from Poisson's equation,
 \begin{equation}
@@ -133,7 +129,7 @@ The electric field is obtained from Poisson's equation,
 \mathbf{E}=-\nabla\phi,
 \label{eq:poisson}
 \end{equation}
-which is solved over the entire computational domain. The transition from the quasi-neutral bulk plasma to the space-charge region is thereby captured without imposing the sheath boundaries a priori.
+which is solved over the entire computational domain, so that the transition from the quasi-neutral bulk plasma to the space-charge region is captured without imposing the sheath boundaries a priori.
 
 The electron thermal energy density \(\mathcal{E}=\tfrac32n_ek_BT_e\) obeys
 \begin{equation}
@@ -152,9 +148,9 @@ with the electron energy flux
 +k_BT_e\,n_e\Big[C_i(\mathbf{u}_e-\mathbf{u}_i)+C_n(\mathbf{u}_e-\mathbf{u}_n)\Big].
 \label{eq:heatflux-e}
 \end{equation}
-The terms on the right-hand side of equation~(\ref{eq:eenergy}) are Joule heating by the field, elastic energy transfer to the heavy species, the ionization-energy sink, the net radiative loss, and the radial heat loss of the electrons. In the elastic term, \(\bar\nu^E_{eh}=\bar\nu^E_{en}+\bar\nu^E_{ei}\), where the superscript \(E\) denotes the energy-exchange average of collision frequencies (Appendix~\ref{app:transport}). The ionization sink is the net ionization rate multiplied by \(\varepsilon_{\rm ion}=15.76\)~eV, the first ionization potential of argon. The energy flux~(\ref{eq:heatflux-e}) is the sum of the enthalpy flux at \(\tfrac52k_BT_e\) per electron, Fourier conduction with the zero-current electron thermal conductivity \(\kappa_e\), and a thermal-diffusion heat flux \cite{zhdanov2002transport}. The net radiative loss \(w_{\rm rad}\) is that of Almeida et al.\ \cite{Almeida2008}, taken from Benilov and Naidis \cite{benilov1998ionization}.
+The terms on the right-hand side of equation~(\ref{eq:eenergy}) are Joule heating by the field, elastic energy transfer to the heavy species, the ionization-energy sink, the net radiative loss, and the radial heat loss of the electrons. In the elastic term, \(\bar\nu^E_{eh}=\bar\nu^E_{en}+\bar\nu^E_{ei}\), where the superscript \(E\) denotes the \emph{averaged energy-transfer collision frequencies} (Appendix~\ref{app:transport}). The ionization sink is the net ionization rate multiplied by \(\varepsilon_{\rm ion}=15.76\)~eV, the first ionization potential of argon. The energy flux~(\ref{eq:heatflux-e}) is the sum of the enthalpy flux at \(\tfrac52k_BT_e\) per electron, Fourier conduction with the zero-current electron thermal conductivity \(\kappa_e\), and a thermal-diffusion heat flux \cite{zhdanov2002transport}. The net radiative loss \(w_{\rm rad}\) is that of Almeida et al.\ \cite{Almeida2008}, taken from Benilov and Naidis \cite{benilov1998ionization}.
 
-A one-dimensional domain has no lateral boundary, so the Joule heat generated away from the electrode can leave only by radiation and by conduction through the two ends of the domain. In a real arc, by contrast, the bulk plasma loses most of its Joule heat radially, by conduction \cite{elenbaas1935ahnlichkeitsgesetze}. Without a lateral sink, the one-dimensional column overheats, and its temperature depends linearly on the length of the domain. We therefore represent the radial conduction of a column of radius \(R\) by a volumetric loss for each energy channel \cite{elenbaas1935ahnlichkeitsgesetze},
+A one-dimensional domain has no lateral boundary, so the Joule heat generated away from the electrode can leave only by radiation and by conduction through the two ends of the domain. In a real arc, by contrast, the bulk plasma can lose heat radially, by conduction \cite{elenbaas1935ahnlichkeitsgesetze}. We therefore represent the radial conduction of a column of radius \(R\) by a volumetric loss for each energy channel \cite{elenbaas1935ahnlichkeitsgesetze},
 \begin{equation}
 Q_e=\Lambda\,(\kappa_e+\kappa_R)\,(T_e-T_{\rm edge}),
 \qquad
@@ -163,12 +159,7 @@ Q_h=\Lambda\,\kappa_h\,(T_h-T_{\rm edge}),
 \Lambda=\frac{4}{R^2},
 \label{eq:radial-loss}
 \end{equation}
-where \(T_{\rm edge}\) is the temperature at the edge of the column. Ion pairs also diffuse radially out of the hot core and recombine near the cold edge, releasing their ionization energy there. This heat loss is represented by the reactive thermal conductivity \(\kappa_R\) (Appendix~\ref{app:lte-check}), which is attributed to the electrons \cite{Freton2012}. The radius \(R\) is a parameter of the model, assumed from the size of the arc attachment. Since the loss scales as \(\kappa T/R^2\), it is most important where the plasma is hot and the attachment is small, as in the cathode spot; the radius is therefore assumed separately for the cathode and the anode (Section~\ref{sec:results}). The bulk-plasma state imposed at \(x=L\) (Section~\ref{sec:model-bc}) is a uniform solution of the column only if Joule heating balances radiation and radial conduction there,
-\begin{equation}
-\frac{J_{\rm app}^2}{\sigma}=w_{\rm rad}+\Lambda\,(\kappa_e+\kappa_R+\kappa_h)\,(T_{\rm bulk}-T_{\rm edge}),
-\label{eq:column-balance}
-\end{equation}
-with all quantities evaluated at the bulk state and \(\sigma\) the electrical conductivity of the plasma. With an assumed radius this balance holds only approximately, and its mismatch for each case is given in Section~\ref{sec:results}. Closer to the electrode, the axial gradients develop over \(10^{-6}\)--\(10^{-4}\)~m, while \(R\) is of order \(10^{-3}\)~m, so the radial losses are negligible there in comparison.
+where \(T_{\rm edge}\) is the temperature at the edge of the column. Ion pairs also diffuse radially out of the hot core and recombine near the cold edge, releasing their ionization energy there. This heat loss is represented by the reactive thermal conductivity \(\kappa_R\) (Appendix~\ref{app:lte-check}), which is assigned to the electron channel \cite{Freton2012}. \rev{The radius \(R\) is a parameter of the model. We take it as the radius of a uniform column that carries the arc current \(I\) at the applied current density, \(I=\pi R^2J_{\rm app}\), so that \(R=\sqrt{I/(\pi J_{\rm app})}\).} Since the loss scales as \(\kappa T/R^2\), it is most important where the plasma is hot and the attachment is small, as in the cathode spot. \rev{The radius therefore differs between the cathode and the anode, and it changes with the current density (Section~\ref{sec:results}).} Closer to the electrodes, the axial gradients develop over \(10^{-6}\)--\(10^{-4}\)~m, whereas \(R\) is of order \(10^{-3}\)~m, so the radial losses are comparatively negligible there.
 
 The common heavy-particle temperature is governed by
 \begin{equation}
@@ -180,14 +171,14 @@ n_hc_v\left(\frac{\partial T_h}{\partial t}+\mathbf{u}\cdot\nabla T_h\right)
 -n_hk_BT_h\,\nabla\cdot\mathbf{u},
 \label{eq:henergy}
 \end{equation}
-where \(c_v=\tfrac32k_B\) is the translational heat capacity per heavy particle and \(\kappa_h\) is the heavy-particle thermal conductivity (Appendix~\ref{app:transport}). The elastic-exchange term is the same as in the electron energy equation~(\ref{eq:eenergy}), but with the opposite sign. The ionization energy and the radiative loss are charged entirely to the electrons and do not appear here. The term \(Q_h\) is the radial heat loss of the heavy particles, equation~(\ref{eq:radial-loss}), and the ion--neutral frictional heating is
+where \(c_v=\tfrac32k_B\) is the translational heat capacity per heavy particle and \(\kappa_h\) is the heavy-particle thermal conductivity (Appendix~\ref{app:transport}). The elastic-exchange term is the same as in the electron energy equation~(\ref{eq:eenergy}), but with the opposite sign. The ionization energy and the radiative loss are assigned entirely to the electrons and do not appear here. The term \(Q_h\) is the radial heat loss of the heavy particles, equation~(\ref{eq:radial-loss}), and the ion--neutral frictional heating is
 \begin{equation}
 Q_{in}=Mn_i\,\bar\nu^M_{in}\,|\mathbf{u}_i-\mathbf{u}_n|^2 ,
 \label{eq:Qin}
 \end{equation}
 which is positive definite and reduces to the Joule dissipation of the ion drift when the neutral gas is at rest. The last term in equation~(\ref{eq:henergy}) is the compression work of the heavy gas.
 
-The velocity of the heavy gas as a whole is advanced by an inviscid single-fluid momentum equation,
+The velocity of the heavy gas as a whole is governed by an inviscid single-fluid momentum equation,
 \begin{equation}
 \frac{\partial(\rho\mathbf{u})}{\partial t}+\nabla\cdot(\rho\mathbf{u}\mathbf{u})
 =-\nabla p+e(n_i-n_e)\mathbf{E},
@@ -196,7 +187,7 @@ p=n_ek_BT_e+n_hk_BT_h .
 \label{eq:heavy-momentum}
 \end{equation}
 
-The state advanced in time is therefore \(\{  n_e, n_i, n_n, \mathcal{E}, T_h, \rho u, \phi  \}\). It is governed by the continuity equations~(\ref{eq:continuity}) with the fluxes~(\ref{eq:flux-e}), (\ref{eq:flux-i}) and (\ref{eq:flux-n}), Poisson's equation~(\ref{eq:poisson}), the electron and heavy-particle energy equations~(\ref{eq:eenergy}) and (\ref{eq:henergy}), and the heavy-gas momentum equation~(\ref{eq:heavy-momentum}).
+We therefore solve for following qunatities, \(\{n_e, n_i, n_n, \mathcal{E}, T_h, \rho u, \phi\}\). They are governed by the continuity equations~(\ref{eq:continuity}) with the fluxes~(\ref{eq:flux-e}), (\ref{eq:flux-i}) and (\ref{eq:flux-n}), Poisson's equation~(\ref{eq:poisson}), the electron and heavy-particle energy equations~(\ref{eq:eenergy}) and (\ref{eq:henergy}), and the heavy-gas momentum equation~(\ref{eq:heavy-momentum}).
 
 
 

@@ -1,30 +1,45 @@
-\section{Quantities used in the scale estimates}
-\label{app:scales}
+\section{Transport coefficients}
+\label{app:transport}
+
+This appendix gives the collision cross sections, describes how the transport and energy-exchange coefficients that close the model of Section~\ref{sec:model-governing} are calculated from them, and compares the resulting conductivities with the transport properties of argon in LTE.
 
 
-The scales of table~\ref{tab:scales} are evaluated in LTE at atmospheric pressure, \(T_e=T_h=T\), with the composition given by the Saha equation (internal partition functions summed over the low-lying levels of Ar and Ar\(^+\)), quasi-neutrality and Dalton's law. Following Almeida et al.\ \cite{Almeida2008}, the averaged electron--atom and electron--ion momentum-transfer cross sections are
+\subsection{Collision cross sections}
+\label{app:cross}
+The electron--atom collisions are described by the energy-dependent momentum-transfer cross section \(Q^{(1)}(\varepsilon)\) of argon from the LXCat database \cite{lxcat}, where \(\varepsilon\) is the electron energy. The \rev{average} cross sections, denoted by an overbar, are averages over the Maxwellian energy distribution of the colliding particles. Following Almeida et al.\ \cite{Almeida2008}, the \rev{average} electron--atom and electron--ion \rev{momentum-transfer} cross sections \rev{over} the electron energy distribution are
 \begin{equation}
 \overline{Q}_{en}=\frac12\int_0^\infty x^2e^{-x}\,Q^{(1)}(x\,k_BT_e)\,dx,\qquad
 \overline{Q}_{ei}=\frac{e^4\ln\Lambda}{32\pi\varepsilon_0^2(k_BT_e)^2},
 \label{eq:Qbar-e}
 \end{equation}
-where \(Q^{(1)}\) is the argon momentum-transfer cross section of the LXCat database \cite{lxcat}, \(x=\varepsilon/(k_BT_e)\) is the electron energy \(\varepsilon\) reduced by \(k_BT_e\), and \(\ln\Lambda\) is the Coulomb logarithm, equation~(\ref{eq:coulomb-log}). The ion--ion cross section \(\overline{Q}_{ii}\) is \(\overline{Q}_{ei}\) evaluated at \(T_h\), and the ion--atom cross section \(\overline{Q}_{in}\) is given by equation~(\ref{eq:Qia}). The ambipolar diffusion coefficient is
+where \(x=\varepsilon/(k_BT_e)\) is the reduced electron energy. The second expression is the same average of the Coulomb momentum-transfer cross section. They are related to the energy-exchange frequencies by \(\bar\nu^E_{en}=\tfrac43n_n\bar C_e\overline{Q}_{en}\) and \(\bar\nu^E_{ei}=\tfrac43n_i\bar C_e\overline{Q}_{ei}\), equations~(\ref{eq:nu-E}) and (\ref{eq:nu-ei}), with \(\bar C_e=\sqrt{8k_BT_e/(\pi m_e)}\) the mean electron speed. Here \(\ln\Lambda\) is the Coulomb logarithm,
+\begin{equation}
+\ln\Lambda=\ln\frac{\lambda_{De}}{b_{90}},\qquad
+\lambda_{De}=\sqrt{\frac{\varepsilon_0k_BT_e}{n_ee^2}},\qquad
+b_{90}=\frac{e^2}{12\pi\varepsilon_0k_BT_e} ,
+\label{eq:coulomb-log}
+\end{equation}
+where \(\lambda_{De}\) is the electron Debye length and \(b_{90}\) is the \(90^\circ\)-deflection impact parameter. 
+
+The ion--atom collisions are governed by resonant charge exchange. Their \rev{average} momentum-transfer cross section \rev{over} the energy distribution at the heavy-particle temperature is taken from the fit \cite{benilov1998ionization}
+\begin{equation}
+\overline{Q}_{in}=2\left[7\times10^{-10}-0.6\times10^{-10}\ln\left(\frac{2k_BT_h}{e}\right)\right]^2\ \mathrm{m^2},
+\label{eq:Qia}
+\end{equation}
+with \(2k_BT_h/e\) in eV. The \rev{average} electron--electron cross section \(\overline{Q}_{ee}\) is \(\overline{Q}_{ei}\), and the \rev{average} ion--ion cross section \(\overline{Q}_{ii}\) is \(\overline{Q}_{ei}\) evaluated at \(T_h\).
+
+The scales of table~\ref{tab:scales} are evaluated with these cross sections in LTE at atmospheric pressure, \(T_e=T_h=T\), with the composition given by the Saha equation, quasi-neutrality and Dalton's law. The reaction length \(\lambda_{\rm rxn}\) uses the ambipolar diffusion coefficient
 \begin{equation}
 D_a=\left(1+\frac{T_e}{T_h}\right)D_{in},\qquad
 D_{in}=\frac{3\pi}{32}\,\frac{\bar C_{in}}{(n_i+n_n)\,\overline{Q}_{in}},\qquad
 \bar C_{in}=\sqrt{\frac{8k_BT_h}{\pi\,m_{in}}},
 \label{eq:Da}
 \end{equation}
-where \(D_{in}\) is the ion--atom diffusion coefficient \cite{Almeida2008} and \(m_{in}=M/2\) is the ion--atom reduced mass. The reaction time \(\tau_{\rm rxn}\) uses the rate coefficients of Almeida et al.\ \cite{Almeida2008}, from Benilov and Naidis \cite{benilov1998ionization}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Transport coefficients}
-\label{app:transport}
-
-This appendix describes how the transport and energy-exchange coefficients that close the model of Section~\ref{sec:model-governing} are calculated, and compares the resulting conductivities with the transport properties of argon in LTE.
+where \(D_{in}\) is the ion--atom diffusion coefficient \cite{Almeida2008} and \(m_{in}=M/2\) is the ion--atom reduced mass, and the reaction time \(\tau_{\rm rxn}\) uses the rate coefficients of Almeida et al.\ \cite{Almeida2008}, from Benilov and Naidis \cite{benilov1998ionization}.
 
 
 \subsection{Electrons}
+\label{app:electrons}
 Following Mitchner and Kruger \cite{mitchner1973partially}, the electron current density \(\mathbf{J}_e=-e\boldsymbol{\Gamma}_e\) and the electron heat flux \(\mathbf{q}_e\) are written as
 \begin{align}
 \mathbf{J}_e &= \sigma\,(\mathbf{E}+\nabla p_e/(en_e))+\varphi\,\nabla T_e,
@@ -42,14 +57,14 @@ C_e=\frac{e}{k_B}\frac{\varphi}{\sigma},\qquad
 \end{equation}
 Mitchner and Kruger \cite{mitchner1973partially} give \(\sigma\), \(\varphi\), and \(\lambda\) in the weakly and fully ionized limits. Substituting them into equation~(\ref{eq:mk-map}) gives the collision frequencies and thermal-diffusion coefficients in each limit.
 
-\emph{Weakly ionized limit.} Electron--neutral collisions dominate, and the electrons behave as a Lorentz gas whose distribution function has a Maxwellian isotropic part \(f_M(T_e)\). Let \(C\) be the electron speed, \(\varepsilon=\tfrac12m_eC^2\) the electron energy, \(x=\varepsilon/(k_BT_e)\) the reduced energy, and \(\nu_{en}=n_nCQ^{(1)}(\varepsilon)\) the energy-dependent momentum-transfer frequency, where \(Q^{(1)}\) is the momentum-transfer cross section. A two-term solution of the electron Boltzmann equation then gives
+\emph{Weakly ionized limit.} Electron--neutral collisions dominate, and the electrons behave as a Lorentz gas whose distribution function has a Maxwellian isotropic part \(f_M(T_e)\). Let \(C\) be the electron speed, \(\varepsilon=\tfrac12m_eC^2\) the electron energy, \(x=\varepsilon/(k_BT_e)\) the reduced energy, and \(\nu_{en}=n_nCQ^{(1)}(\varepsilon)\) the energy-dependent momentum-transfer frequency, where \(Q^{(1)}\) is the electron--atom momentum-transfer cross section (Appendix~\ref{app:cross}). A two-term solution of the electron Boltzmann equation then gives
 \begin{equation}
 \bar\nu^M_{en}=\frac{\langle C^2\rangle_0}{\langle C^2/\nu_{en}\rangle_0},\qquad
 C_{en}=\langle x\rangle_\nu-\frac52,\qquad
 \lambda_{en}=\frac{n_ek_B^2T_e}{m_e\bar\nu^M_{en}}\left[\langle x^2\rangle_\nu-\langle x\rangle_\nu^2\right],
 \label{eq:nu-M}
 \end{equation}
-where \(\bar\nu^M_{en}\) is the momentum-transfer average of \(\nu_{en}\), \(\langle\cdot\rangle_0\) is the Maxwellian average, and \(\langle\cdot\rangle_\nu\) is the transport average with the weight \(C^4f_M/\nu_{en}\):
+where \(\bar\nu^M_{en}\) is the momentum-transfer average of \(\nu_{en}\), \(\langle\cdot\rangle_0\) is the Maxwellian average, and \(\langle\cdot\rangle_\nu\) is the transport average with the weight \(C^4f_M/\nu_{en}\),
 \begin{equation}
 \langle g\rangle_0=4\pi\int_0^\infty g\,C^2f_M\,dC,\qquad
 \langle g\rangle_\nu=\frac{\langle g\,C^2/\nu_{en}\rangle_0}{\langle C^2/\nu_{en}\rangle_0} .
@@ -60,7 +75,6 @@ The elastic energy exchange in equations~(\ref{eq:eenergy}) and (\ref{eq:henergy
 \bar\nu^E_{en}=\frac{\langle C^2\nu_{en}\rangle_0}{\langle C^2\rangle_0} .
 \label{eq:nu-E}
 \end{equation}
-All averages are computed from the argon momentum-transfer cross section \(Q^{(1)}\) of the LXCat database \cite{lxcat}.
 
 \emph{Fully ionized limit.} For singly charged ions, the Spitzer--H\"arm solution gives \cite{mitchner1973partially}
 \begin{equation}
@@ -75,16 +89,9 @@ where \(\bar\nu^E_{ei}\) is the energy-exchange average~(\ref{eq:nu-E}) of the C
 \left(\frac{e^2}{4\pi\varepsilon_0m_e}\right)^2\ln\Lambda ,
 \label{eq:nu-ei}
 \end{equation}
-and \(\ln\Lambda\) is the Coulomb logarithm,
-\begin{equation}
-\ln\Lambda=\max\left(2,\ \ln\frac{\lambda_{De}}{b_{90}}\right),\qquad
-\lambda_{De}=\sqrt{\frac{\varepsilon_0k_BT_e}{n_ee^2}},\qquad
-b_{90}=\frac{e^2}{12\pi\varepsilon_0k_BT_e} .
-\label{eq:coulomb-log}
-\end{equation}
-Here \(\lambda_{De}\) is the electron Debye length and \(b_{90}\) is the \(90^\circ\)-deflection impact parameter. The floor at 2 keeps \(\ln\Lambda\), and hence \(\bar\nu^E_{ei}\), positive when the plasma is not weakly coupled.
+and \(\ln\Lambda\) is the Coulomb logarithm, equation~(\ref{eq:coulomb-log}).
 
-At intermediate ionization, the two limits are combined. The momentum-transfer frequencies are added, the thermal conductivities are combined in series (their thermal resistances add), and the thermal-diffusion coefficient is the mean of the two limits weighted by the energy-exchange frequencies:
+At intermediate ionization, the two limits are combined. The momentum-transfer frequencies are added, the thermal conductivities are combined in series (their thermal resistances add), and the thermal-diffusion coefficient is the mean of the two limits weighted by the energy-exchange frequencies,
 \begin{equation}
 \bar\nu^M_e=\bar\nu^M_{en}+\bar\nu^M_{ei},\qquad
 \frac{1}{\kappa_e}=\frac{1}{\lambda_{en}}+\frac{1}{\lambda_{ei}},\qquad
@@ -94,41 +101,41 @@ C_e=\frac{C_{en}\bar\nu^E_{en}+C_{ei}\bar\nu^E_{ei}}{\bar\nu^E_{en}+\bar\nu^E_{e
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ions}
 
-The ion--neutral transport is governed by resonant charge exchange. The momentum-transfer cross section is taken from the fit \cite{benilov1998ionization}
-\begin{equation}
-\overline{Q}_{in}=2\left[7\times10^{-10}-0.6\times10^{-10}\ln\left(\frac{2k_BT_h}{e}\right)\right]^2\ \mathrm{m^2},
-\label{eq:Qia}
-\end{equation}
-with \(2k_BT_h/e\) in eV. The corresponding low-field mobility is obtained from the Mason--Schamp equation \cite{mason1958mobility},
+The ion--neutral transport is governed by resonant charge exchange. The low-field mobility is obtained from the ion--atom cross section~(\ref{eq:Qia}) with the Mason--Schamp equation \cite{mason1958mobility},
 \begin{equation}
 \mu_i^0=\frac{1.104\times10^{5}}{\overline{Q}_{in}\sqrt{T_h}\,n_n}\ \ \mathrm{m^2\,V^{-1}\,s^{-1}}
 \qquad(\overline{Q}_{in}\ \mathrm{in\ m^2},\ T_h\ \mathrm{in\ K},\ n_n\ \mathrm{in\ m^{-3}}).
 \label{eq:mu_i0}
 \end{equation}
-To account for the effect of strong electric fields on the ion mobility, a closed-form two-temperature Wannier formulation \cite{mancinelli2018modelling,viehland1978gaseous} is used, in which the drift speed \(v_d\) and the effective ion temperature \(T_{\rm eff}\) are determined self-consistently:
-\begin{equation}
-v_d^2=\frac{\sqrt{1+4\mathcal{A}\mathcal{B}}-1}{2\mathcal{B}},\qquad
-\mathcal{A}=\left(\mu_i^0|\mathbf{E}|\right)^2,\qquad
-\mathcal{B}=\frac{M}{3k_BT_h},
-\label{eq:wannier}
-\end{equation}
+In strong fields the ions are heated by their drift through the atoms. This is accounted for by the two-temperature theory of Wannier \cite{mancinelli2018modelling,viehland1978gaseous}, in which the drift of the ions relative to the atoms, \(v_d=|\mathbf{u}_i-\mathbf{u}_n|\), raises their random energy to an effective temperature \(T_{\rm eff}\), which sets the ion--atom mobility,
 \begin{equation}
 T_{\rm eff}=T_h+\frac{Mv_d^2}{3k_B},\qquad
 \mu_{in}=\mu_i^0\sqrt{\frac{T_h}{T_{\rm eff}}} .
 \label{eq:mu-in}
 \end{equation}
-The ion--neutral momentum-transfer frequency is then obtained from the mobility as
+In the ion momentum balance~(\ref{eq:mom-i}), the friction with the atoms, \(Mn_i\bar\nu^M_{in}(\mathbf{u}_i-\mathbf{u}_n)\), balances the remaining forces on the ions, a force \(eF_{in}\) per ion with
+\begin{equation*}
+F_{in}=\frac{1}{en_i}\left|en_i\mathbf{E}-\nabla p_i-Mn_i\bar\nu^M_{ie}(\mathbf{u}_i-\mathbf{u}_e)+C_in_ek_B\nabla T_e-Y_i\mathbf{F}\right| .
+\end{equation*}
+Hence \(v_d=\mu_{in}F_{in}\), and with equation~(\ref{eq:mu-in}) the drift speed follows in closed form,
+\begin{equation}
+v_d^2=\frac{\sqrt{1+4\mathcal{A}\mathcal{B}}-1}{2\mathcal{B}},\qquad
+\mathcal{A}=\left(\mu_i^0F_{in}\right)^2,\qquad
+\mathcal{B}=\frac{M}{3k_BT_h}.
+\label{eq:wannier}
+\end{equation}
+For ions drifting in a uniform field through a gas at rest, \(F_{in}=|\mathbf{E}|\), and equations~(\ref{eq:mu-in}) and (\ref{eq:wannier}) take the form in which the closure is usually written, with \(v_d=\mu_{in}|\mathbf{E}|\) \cite{mancinelli2018modelling}. The ion--neutral momentum-transfer frequency is then obtained from the mobility as
 \begin{equation}
 \bar\nu^M_{in}=\frac{e}{M\mu_{in}} .
 \label{eq:nu-in}
 \end{equation}
 
-Figure~\ref{fig:mobility} compares the reduced mobility \(K_0=\mu n_n/N_0\) (with \(N_0=2.687\times10^{25}\ \mathrm{m^{-3}}\)) of the single-temperature mobility \(\mu_i^0\), equation~(\ref{eq:mu_i0}), and the two-temperature mobility \(\mu_{in}\), equation~(\ref{eq:mu-in}), with the Monte Carlo results of Nikitovi\'c and Raspopovi\'c \cite{nikitovic2026cross} for Ar\(^+\) in Ar at 300~K. These Monte Carlo results agree with the measured drift-tube mobilities \cite{nikitovic2026cross}. At \(T_h\) fixed, \(K_0\) depends only on \(E/N\). At low field, both formulations give \(K_0=1.54\ \mathrm{cm^2\,V^{-1}\,s^{-1}}\), 2\,\% below the Monte Carlo value. Above about 30~Td, the single-temperature mobility stays constant and overestimates \(K_0\) by a factor of 1.6 at 300~Td and 4 at 3000~Td. The two-temperature mobility reproduces the decrease of \(K_0\) with \(E/N\), and lies 15\,\% below the Monte Carlo value at 300~Td and 26\,\% below at 3000~Td. Most of this remaining difference comes from evaluating \(\overline{Q}_{in}\) at \(T_h\) instead of \(T_{\rm eff}\). Evaluating it at \(T_{\rm eff}\) brings the two-temperature mobility within 7\,\% of the Monte Carlo values from 1 to 7000~Td, but then \(T_{\rm eff}\) has to be found iteratively instead of in closed form.
+Figure~\ref{fig:mobility} compares the reduced mobility \(K_0=\mu n_n/N_0\) (with \(N_0=2.687\times10^{25}\ \mathrm{m^{-3}}\)) of the single-temperature mobility \(\mu_i^0\), equation~(\ref{eq:mu_i0}), and the two-temperature mobility \(\mu_{in}\), equations~(\ref{eq:mu-in}) and (\ref{eq:wannier}) with \(F_{in}=|\mathbf{E}|\), with the Monte Carlo results of Nikitovi\'c and Raspopovi\'c \cite{nikitovic2026cross} for Ar\(^+\) in Ar at 300~K. The two-temperature mobility reproduces the decrease of \(K_0\) with \(E/N\) and lies 15\,\% below the Monte Carlo value at 300~Td and 26\,\% below at 3000~Td.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.48\textwidth]{figures/ion_mobility/mobility_Ar.pdf}
-\caption{Reduced mobility of Ar\(^+\) in Ar at 300~K as a function of the reduced field \(E/N\). The single-temperature mobility \(\mu_i^0\), equation~(\ref{eq:mu_i0}) (dashed), and the two-temperature mobility \(\mu_{in}\), equation~(\ref{eq:mu-in}) (solid blue), are compared with the Monte Carlo results of Nikitovi\'c and Raspopovi\'c \cite{nikitovic2026cross} (black), digitized from their figure~7.}
+\caption{Reduced mobility of Ar\(^+\) in Ar at 300~K: single-temperature \(\mu_i^0\)~(\ref{eq:mu_i0}) (dashed), two-temperature \(\mu_{in}\)~(\ref{eq:mu-in}), (\ref{eq:wannier}) with \(F_{in}=|\mathbf{E}|\) (solid blue), and the Monte Carlo results of Nikitovi\'c and Raspopovi\'c \cite{nikitovic2026cross}.}
 \label{fig:mobility}
 \end{figure}
 
@@ -164,15 +171,15 @@ and equations~(\ref{eq:Ci}) and (\ref{eq:Cn}) satisfy \(C_i+C_n=C_e\), as requir
 \subsection{Comparison with LTE transport properties}
 \label{app:lte-check}
 
-The electrical conductivity \(\sigma=n_ee^2/(m_e\bar\nu^M_e)\) and the thermal conductivity obtained with these coefficients are compared with the transport properties of argon in local thermodynamic equilibrium (LTE) in figure~\ref{fig:lte-check}. The coefficients are evaluated with \(T_e=T_h=T\) and the Saha composition at atmospheric pressure, and compared with the data tabulated by Boulos et al.\ \cite{boulos2023handbook}. Along the axis, the model has no reactive thermal conductivity: the energy carried by the diffusion of ion pairs and released on recombination appears through the ambipolar flux and the ionization source (\(\kappa_R\) enters only the radial loss~(\ref{eq:radial-loss})). For the comparison, the reactive conductivity \(\kappa_R\) computed with Mutation++ \cite{scoggins2020mutation} is therefore added to \(\kappa_e+\kappa_h\).
+The electrical conductivity \(\sigma=n_ee^2/(m_e\bar\nu^M_e)\) and the thermal conductivity obtained with these coefficients are compared with the transport properties of argon in local thermodynamic equilibrium (LTE) in figure~\ref{fig:lte-check}. The coefficients are evaluated with \(T_e=T_h=T\) and the Saha composition at atmospheric pressure, and compared with the data tabulated by Boulos et al.\ \cite{boulos2023handbook}. The reactive conductivity \(\kappa_R\) in our model resides in the ionization term and therefore for the comparison, the reactive conductivity computed with Mutation++ \cite{scoggins2020mutation} is added to \(\kappa_e+\kappa_h\).
 
-The electrical conductivity agrees well with the LTE data over most of the temperature range, with only minor deviations in the low-temperature regime where electron--neutral collisions dominate. At intermediate temperatures, however, the additive rule for the collision frequencies overestimates the conductivity. This discrepancy arises because, in argon, the slow electrons associated with the Ramsauer minimum contribute substantially to the current in the electron--neutral limit, while these same electrons are strongly scattered by ions. Simply adding the averaged electron--neutral and electron--ion collision frequencies therefore fails to capture the correlation between the two collision processes. The thermal conductivity also shows good agreement with the reference data in the high-temperature regime, with a modest overprediction at intermediate temperatures.
+The electrical conductivity agrees well with the LTE data over most of the temperature range, with only minor deviations at low temperatures, where electron--neutral collisions dominate. At intermediate temperatures, however, the additive rule for the collision frequencies overestimates the conductivity. In argon, the slow electrons near the Ramsauer minimum carry a substantial part of the current in the electron--neutral limit, but these same electrons are strongly scattered by the ions, and adding the averaged electron--neutral and electron--ion collision frequencies does not capture this correlation between the two collision processes. The thermal conductivity also agrees well with the reference data at high temperatures, and is moderately overpredicted at intermediate temperatures.
 
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.48\textwidth]{figures/lte_check/sigma_LTE.pdf}\hfill
 \includegraphics[width=0.48\textwidth]{figures/lte_check/kappa_LTE.pdf}
-\caption{Transport coefficients of argon in LTE at atmospheric pressure, computed with the rules of equation~(\ref{eq:bridge}) (lines), compared with the LTE data of Boulos et al.\ \cite{boulos2023handbook} (symbols). Left: electrical conductivity \(\sigma=n_ee^2/(m_e\bar\nu^M_e)\), with the electron--neutral and electron--ion limits shown separately. Right: thermal conductivity, the sum of the electron conductivity \(\kappa_e\), the heavy-particle conductivity \(\kappa_h\) \cite{Almeida2008}, and the reactive conductivity \(\kappa_R\) computed with Mutation++ \cite{scoggins2020mutation}.}
+\caption{Transport coefficients of argon in LTE at atmospheric pressure from equation~(\ref{eq:bridge}) (lines) and from Boulos et al.\ \cite{boulos2023handbook} (symbols). Left: electrical conductivity, with its electron--neutral and electron--ion limits. Right: thermal conductivity \(\kappa_e+\kappa_h+\kappa_R\), with \(\kappa_h\) from \cite{Almeida2008} and \(\kappa_R\) from Mutation++ \cite{scoggins2020mutation}.}
 \label{fig:lte-check}
 \end{figure}

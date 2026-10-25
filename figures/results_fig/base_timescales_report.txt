@@ -1,15 +1,33 @@
-cathode C_J1e8       T 21000 J 1e+08 t_end 6.0 us | J_i: net +4.920% t_s 1.76 us tau 0.361 us A -2.1116%  q_wall: net +16.021% t_s 2.60 us tau 0.364 us A -17.6653%
-anode   A15_J1e7     T 15000 J 1e+07 t_end 300.0 us | J_i: net +0.726% t_s 31.40 us tau 8.824 us A -0.7042%  q_wall: net +1.697% t_s 11.90 us tau 8.826 us A -0.0768%
-anode   A15_J2e6     T 15000 J 2e+06 t_end 300.0 us | J_i: net -0.521% t_s 25.04 us tau 8.734 us A +0.3479%  q_wall: net +0.716% t_s 14.84 us tau 8.740 us A +0.1084%
-anode   A15_J4e6     T 15000 J 4e+06 t_end 300.0 us | J_i: net -0.476% t_s 20.46 us tau 8.879 us A +0.1980%  q_wall: net +1.151% t_s 6.26 us tau 8.879 us A +0.0408%
-anode   A15_J6e6     T 15000 J 6e+06 t_end 300.0 us | J_i: net -0.178% t_s 10.41 us tau 9.033 us A -0.0627%  q_wall: net +1.407% t_s 0.00 us tau nan us A -0.0098%
-anode   A15_J8e6     T 15000 J 8e+06 t_end 300.0 us | J_i: net +0.255% t_s 26.07 us tau 8.913 us A -0.3731%  q_wall: net +1.576% t_s 7.78 us tau 8.914 us A -0.0475%
-anode   A4e6_T13000  T 13000 J 4e+06 t_end 300.0 us | J_i: net -0.239% t_s 0.74 us tau nan us A -0.0136%  q_wall: net +1.451% t_s 0.00 us tau nan us A -0.0018%
-anode   A4e6_T14000  T 14000 J 4e+06 t_end 300.0 us | J_i: net -0.424% t_s 17.51 us tau 9.341 us A +0.1292%  q_wall: net +1.296% t_s 1.87 us tau 9.308 us A +0.0218%
-anode   A4e6_T16000  T 16000 J 4e+06 t_end 300.0 us | J_i: net -0.470% t_s 20.21 us tau 8.435 us A +0.2192%  q_wall: net +1.032% t_s 8.31 us tau 8.441 us A +0.0530%
-anode   A4e6_T17000  T 17000 J 4e+06 t_end 300.0 us | J_i: net -0.443% t_s 18.97 us tau 7.921 us A +0.2185%  q_wall: net +0.937% t_s 8.67 us tau 7.921 us A +0.0599%
-cathode base J_i    (f/f0-1)/step 1e-11:+0.338 1e-10:+0.280 1e-09:+0.346 1e-08:+0.715 1e-07:+1.522 1e-06:+2.390 3e-06:+2.459 1e-05:+2.460 3e-05:+2.460 1e-04:+2.460
-cathode base q_wall (f/f0-1)/step 1e-11:-15.950 1e-10:-15.020 1e-09:-11.457 1e-08:-6.022 1e-07:+0.081 1e-06:+7.416 3e-06:+8.007 1e-05:+8.011 3e-05:+8.011 1e-04:+8.011
-anode   base J_i    (f/f0-1)/step 1e-11:-0.267 1e-10:-0.349 1e-09:-0.257 1e-08:-0.200 1e-07:-0.144 1e-06:-0.137 3e-06:-0.164 1e-05:-0.206 3e-05:-0.235 1e-04:-0.238
-anode   base q_wall (f/f0-1)/step 1e-11:+0.566 1e-10:+0.615 1e-09:+0.612 1e-08:+0.603 1e-07:+0.601 1e-06:+0.596 3e-06:+0.591 1e-05:+0.582 3e-05:+0.576 1e-04:+0.576
+cathode C_J1e8       J-step T 21000 J 1e+08 t_end 6.0 us | J_i: net +4.673% g_inf +2.337 D +0.451 us D/g_inf 0.19 us t_s 1.66 us tau 0.341 us t_1% 45.1 us  q_wall: net +14.063% g_inf +7.031 D +3.369 us D/g_inf 0.48 us t_s 2.38 us tau 0.343 us t_1% 336.9 us
+anode   A15_J1e7     J-step T 15000 J 1e+07 t_end 300.0 us | J_i: net +0.761% g_inf +0.381 D +3.171 us D/g_inf 8.33 us t_s 31.65 us tau 8.839 us t_1% 317.1 us  q_wall: net +1.709% g_inf +0.855 D +0.340 us D/g_inf 0.40 us t_s 11.75 us tau 8.834 us t_1% 34.0 us
+anode   A15_J3e6     J-step T 15000 J 3e+06 t_end 300.0 us | J_i: net -0.539% g_inf -0.269 D -1.338 us D/g_inf 4.97 us t_s 23.94 us tau 8.831 us t_1% 133.8 us  q_wall: net +0.955% g_inf +0.477 D -0.344 us D/g_inf -0.72 us t_s 11.74 us tau 8.829 us t_1% 34.4 us
+anode   A15_J4e6     J-step T 15000 J 4e+06 t_end 300.0 us | J_i: net -0.477% g_inf -0.238 D -0.920 us D/g_inf 3.86 us t_s 20.52 us tau 8.880 us t_1% 92.0 us  q_wall: net +1.146% g_inf +0.573 D -0.194 us D/g_inf -0.34 us t_s 6.52 us tau 8.878 us t_1% 19.4 us
+anode   A15_J6e6     J-step T 15000 J 6e+06 t_end 300.0 us | J_i: net -0.176% g_inf -0.088 D +0.264 us D/g_inf -2.99 us t_s 10.67 us tau 9.035 us t_1% 26.4 us  q_wall: net +1.410% g_inf +0.705 D +0.041 us D/g_inf 0.06 us t_s 0.00 us tau nan us t_1% 4.1 us
+anode   A15_J8e6     J-step T 15000 J 8e+06 t_end 300.0 us | J_i: net +0.271% g_inf +0.135 D +1.688 us D/g_inf 12.48 us t_s 26.31 us tau 8.924 us t_1% 168.8 us  q_wall: net +1.585% g_inf +0.793 D +0.213 us D/g_inf 0.27 us t_s 7.81 us tau 8.920 us t_1% 21.3 us
+anode   A4e6_T13000  J-step T 13000 J 4e+06 t_end 300.0 us | J_i: net -0.242% g_inf -0.121 D +0.034 us D/g_inf -0.28 us t_s 1.02 us tau nan us t_1% 3.4 us  q_wall: net +1.447% g_inf +0.724 D +0.006 us D/g_inf 0.01 us t_s 0.00 us tau nan us t_1% 0.6 us
+anode   A4e6_T14000  J-step T 14000 J 4e+06 t_end 300.0 us | J_i: net -0.426% g_inf -0.213 D -0.649 us D/g_inf 3.05 us t_s 17.63 us tau 9.345 us t_1% 64.9 us  q_wall: net +1.291% g_inf +0.645 D -0.111 us D/g_inf -0.17 us t_s 2.23 us tau 9.319 us t_1% 11.1 us
+anode   A4e6_T16000  J-step T 16000 J 4e+06 t_end 300.0 us | J_i: net -0.470% g_inf -0.235 D -0.962 us D/g_inf 4.09 us t_s 20.34 us tau 8.431 us t_1% 96.2 us  q_wall: net +1.026% g_inf +0.513 D -0.239 us D/g_inf -0.47 us t_s 8.34 us tau 8.434 us t_1% 23.9 us
+anode   A4e6_T17000  J-step T 17000 J 4e+06 t_end 300.0 us | J_i: net -0.443% g_inf -0.222 D -0.899 us D/g_inf 4.06 us t_s 19.07 us tau 7.917 us t_1% 89.9 us  q_wall: net +0.931% g_inf +0.465 D -0.253 us D/g_inf -0.54 us t_s 8.77 us tau 7.920 us t_1% 25.3 us
+cathode C_J1e8       T-step T 21000 J 1e+08 t_end 6.0 us | J_i: net +0.026% g_inf +0.013 D +0.006 us D/g_inf 0.43 us t_s 0.21 us tau 0.399 us t_1% 0.6 us  q_wall: net +0.244% g_inf +0.122 D +0.045 us D/g_inf 0.37 us t_s 0.95 us tau 0.387 us t_1% 4.5 us
+anode   A15_J1e7     T-step T 15000 J 1e+07 t_end 300.0 us | J_i: net +11.350% g_inf +5.675 D +64.676 us D/g_inf 11.40 us t_s 58.63 us tau 9.046 us t_1% 6467.6 us  q_wall: net +1.279% g_inf +0.639 D +6.763 us D/g_inf 10.58 us t_s 38.73 us tau 8.992 us t_1% 676.3 us
+anode   A15_J3e6     T-step T 15000 J 3e+06 t_end 300.0 us | J_i: net +13.573% g_inf +6.786 D +78.757 us D/g_inf 11.61 us t_s 60.29 us tau 9.027 us t_1% 7875.7 us  q_wall: net +3.544% g_inf +1.772 D +19.349 us D/g_inf 10.92 us t_s 47.79 us tau 8.956 us t_1% 1934.9 us
+anode   A15_J4e6     T-step T 15000 J 4e+06 t_end 300.0 us | J_i: net +13.652% g_inf +6.826 D +78.915 us D/g_inf 11.56 us t_s 60.65 us tau 9.103 us t_1% 7891.5 us  q_wall: net +2.936% g_inf +1.468 D +15.974 us D/g_inf 10.88 us t_s 46.45 us tau 9.029 us t_1% 1597.4 us
+anode   A15_J6e6     T-step T 15000 J 6e+06 t_end 300.0 us | J_i: net +13.289% g_inf +6.644 D +76.217 us D/g_inf 11.47 us t_s 60.57 us tau 9.148 us t_1% 7621.7 us  q_wall: net +2.134% g_inf +1.067 D +11.505 us D/g_inf 10.78 us t_s 43.77 us tau 9.074 us t_1% 1150.5 us
+anode   A15_J8e6     T-step T 15000 J 8e+06 t_end 300.0 us | J_i: net +12.430% g_inf +6.215 D +70.968 us D/g_inf 11.42 us t_s 59.84 us tau 9.123 us t_1% 7096.8 us  q_wall: net +1.627% g_inf +0.813 D +8.690 us D/g_inf 10.68 us t_s 41.14 us tau 9.056 us t_1% 869.0 us
+anode   A4e6_T13000  T-step T 13000 J 4e+06 t_end 300.0 us | J_i: net +16.530% g_inf +8.265 D +109.284 us D/g_inf 13.22 us t_s 70.89 us tau 10.607 us t_1% 10928.4 us  q_wall: net +2.259% g_inf +1.129 D +14.055 us D/g_inf 12.44 us t_s 50.29 us tau 10.512 us t_1% 1405.5 us
+anode   A4e6_T14000  T-step T 14000 J 4e+06 t_end 300.0 us | J_i: net +16.010% g_inf +8.005 D +98.675 us D/g_inf 12.33 us t_s 65.73 us tau 9.724 us t_1% 9867.5 us  q_wall: net +2.782% g_inf +1.391 D +16.115 us D/g_inf 11.58 us t_s 48.63 us tau 9.627 us t_1% 1611.5 us
+anode   A4e6_T16000  T-step T 16000 J 4e+06 t_end 300.0 us | J_i: net +11.099% g_inf +5.550 D +59.552 us D/g_inf 10.73 us t_s 55.31 us tau 8.523 us t_1% 5955.2 us  q_wall: net +2.826% g_inf +1.413 D +14.283 us D/g_inf 10.11 us t_s 43.31 us tau 8.471 us t_1% 1428.3 us
+anode   A4e6_T17000  T-step T 17000 J 4e+06 t_end 300.0 us | J_i: net +9.396% g_inf +4.698 D +46.291 us D/g_inf 9.85 us t_s 50.13 us tau 7.903 us t_1% 4629.1 us  q_wall: net +2.724% g_inf +1.362 D +12.629 us D/g_inf 9.27 us t_s 39.93 us tau 7.868 us t_1% 1262.9 us
+cathode base J_i    J-step linearity: +2% g_inf +2.337 D +0.451 us | -2% g_inf +2.286 D +0.489 us | mean D +0.470 us, half-difference 4.1 %
+cathode base q_wall J-step linearity: +2% g_inf +7.031 D +3.369 us | -2% g_inf +6.972 D +3.594 us | mean D +3.481 us, half-difference 3.2 %
+anode   base J_i    J-step linearity: +2% g_inf -0.238 D -0.920 us | -2% g_inf -0.248 D -0.985 us | mean D -0.953 us, half-difference 3.4 %
+anode   base q_wall J-step linearity: +2% g_inf +0.573 D -0.194 us | -2% g_inf +0.571 D -0.207 us | mean D -0.201 us, half-difference 3.2 %
+cathode base J_i    T-step linearity: +2% g_inf +0.013 D +0.006 us | -2% g_inf +0.012 D +0.006 us | mean D +0.006 us, half-difference 0.6 %
+cathode base q_wall T-step linearity: +2% g_inf +0.122 D +0.045 us | -2% g_inf +0.115 D +0.045 us | mean D +0.045 us, half-difference 0.3 %
+anode   base J_i    T-step linearity: +2% g_inf +6.826 D +78.937 us | -2% g_inf +6.432 D +72.028 us | mean D +75.482 us, half-difference 4.6 %
+anode   base q_wall T-step linearity: +2% g_inf +1.468 D +15.979 us | -2% g_inf +1.452 D +15.626 us | mean D +15.802 us, half-difference 1.1 %
+cathode base J_i    (f/f0-1)/step 1e-11:+0.347 1e-10:+0.278 1e-09:+0.328 1e-08:+0.611 1e-07:+1.332 1e-06:+2.270 3e-06:+2.336 1e-05:+2.337 3e-05:+2.337 1e-04:+2.337
+cathode base q_wall (f/f0-1)/step 1e-11:-15.549 1e-10:-14.577 1e-09:-11.073 1e-08:-5.732 1e-07:-0.452 1e-06:+6.527 3e-06:+7.030 1e-05:+7.031 3e-05:+7.031 1e-04:+7.031
+anode   base J_i    (f/f0-1)/step 1e-11:-0.266 1e-10:-0.354 1e-09:-0.256 1e-08:-0.198 1e-07:-0.141 1e-06:-0.134 3e-06:-0.164 1e-05:-0.206 3e-05:-0.235 1e-04:-0.238
+anode   base q_wall (f/f0-1)/step 1e-11:+0.545 1e-10:+0.611 1e-09:+0.610 1e-08:+0.601 1e-07:+0.600 1e-06:+0.595 3e-06:+0.588 1e-05:+0.580 3e-05:+0.574 1e-04:+0.573
 wrote base_timescales (.pdf/.png) and base_timescales.csv in /home/vishnu/work/electrode_region-paper/figures/results_fig

@@ -1,58 +1,60 @@
 
-=== Cathode: plt02400  t = 2.1844e-03 s  j = 1.0000e+08 A/m^2
-  steady check: max|dE/dt residual| / max|source| = 9.81e-04;  rebuild vs EENRXN 2.0e-14;  j spread 6.23e-09
-  T_wall 3670 K   (balance 1)
-  wall cell: n_e 2.106e+21  n_i 6.549e+21  T_e 18185 K  T_h 3672 K  T_eff 39633 K  E 1.819e+07 V/m
-  phi: at L 12.53 V;  extreme 12.53 V at x = 5.00e-04 m
-  sheath edge (|n_i - n_e|/n_i = 1 %): x_s 5.816e-07 m  phi_s 3.595 V
-  ion mean energy at the sheath edge 1.33 eV;  max impact energy 4.93 eV;  x ion flux -> 26.5 MW/m^2
-  j_i/j at wall 0.0537;  min 0.0000  max 0.0537
-  q_wall.electron_kinetic            221.539 MW/m^2
-  q_wall.electron_work_function      185.902 MW/m^2
-  q_wall.emission_kinetic           -104.572 MW/m^2
-  q_wall.emission_work_function     -434.780 MW/m^2
-  q_wall.ion_recombination            70.503 MW/m^2
-  q_wall.gas_conduction               88.150 MW/m^2
-  q_wall.total                        26.744 MW/m^2
-  q_wall.e_flux_absorbed          4.4118e+26
-  q_wall.e_flux_emitted           1.0318e+27
-  q_wall.ion_flux                 3.3515e+25
-  q_wall.ion_flux_maxwell         2.2843e+24
-  q_wall.ion_flux_drift           3.1231e+25
-  q_wall.E_face                   1.8341e+07
-  NDIVH    peak -1.693e+15 W/m^3 at x = 5.72e-09 m
-  JOULE    peak +1.721e+15 W/m^3 at x = 1.91e-09 m
-  ELASTIC  peak -6.633e+11 W/m^3 at x = 2.01e-05 m
-  ION      peak -1.998e+12 W/m^3 at x = 5.98e-06 m
-  RAD      peak -1.080e+11 W/m^3 at x = 5.00e-04 m
-  RADL     peak -8.466e+11 W/m^3 at x = 5.00e-04 m
+=== Cathode: plt04400  t = 3.9402e-03 s  j = 1.0000e+08 A/m^2
+  steady check: max|dE/dt residual| / max|source| = 1.09e-03;  rebuild vs EENRXN 1.2e-14;  j spread 2.00e-09
+  T_wall 3714 K   (balance 1)
+  wall cell: n_e 2.564e+21  n_i 6.584e+21  T_e 17113 K  T_h 3716 K  T_eff 37770 K  E 1.552e+07 V/m
+  phi: at L 11.72 V;  extreme 11.72 V at x = 5.00e-04 m
+  sheath edge (|n_i - n_e|/n_i = 1 %): x_s 5.588e-07 m  phi_s 3.068 V
+  ion mean energy at the sheath edge 1.53 eV;  max impact energy 4.60 eV;  x ion flux -> 22.3 MW/m^2
+  ion drift at the surface v_d 4597 m/s = 2.208 u_B (u_B 2082 m/s);  1/2 M v_d^2 4.375 eV;  x ion flux -> 21.216 MW/m^2
+  j_i/j at wall 0.0485;  min -0.0002  max 0.0485
+  q_wall.electron_kinetic            246.147 MW/m^2
+  q_wall.electron_work_function      219.488 MW/m^2
+  q_wall.emission_kinetic           -114.330 MW/m^2
+  q_wall.emission_work_function     -469.734 MW/m^2
+  q_wall.ion_recombination            63.670 MW/m^2
+  q_wall.gas_conduction               81.941 MW/m^2
+  q_wall.total                        27.182 MW/m^2
+  q_wall.e_flux_absorbed          5.2089e+26
+  q_wall.e_flux_emitted           1.1148e+27
+  q_wall.ion_flux                 3.0267e+25
+  q_wall.ion_flux_maxwell         2.3100e+24
+  q_wall.ion_flux_drift           2.7957e+25
+  q_wall.E_face                   1.5655e+07
+  NDIVH    peak -1.451e+15 W/m^3 at x = 5.72e-09 m
+  JOULE    peak +1.476e+15 W/m^3 at x = 1.91e-09 m
+  ELASTIC  peak -6.247e+11 W/m^3 at x = 2.01e-05 m
+  ION      peak -1.389e+12 W/m^3 at x = 7.45e-06 m
+  RAD      peak -1.572e+11 W/m^3 at x = 3.63e-04 m
+  RADL     peak -4.126e+11 W/m^3 at x = 3.63e-04 m
 
-=== Anode: plt01900  t = 1.3482e-03 s  j = -4.0000e+06 A/m^2
-  steady check: max|dE/dt residual| / max|source| = 1.49e-03;  rebuild vs EENRXN 1.1e-13;  j spread 5.31e-12
+=== Anode: plt02800  t = 2.1632e-03 s  j = -4.0000e+06 A/m^2
+  steady check: max|dE/dt residual| / max|source| = 1.44e-03;  rebuild vs EENRXN 1.1e-13;  j spread 5.21e-12
   T_wall 1000 K   (balance 0)
-  wall cell: n_e 2.114e+20  n_i 6.170e+20  T_e 6094 K  T_h 1000 K  T_eff 2268 K  E 3.655e+06 V/m
-  phi: at L 5.21 V;  extreme 5.21 V at x = 5.00e-04 m
-  sheath edge (|n_i - n_e|/n_i = 1 %): x_s 1.008e-06 m  phi_s 1.368 V
-  ion mean energy at the sheath edge 0.17 eV;  max impact energy 1.54 eV;  x ion flux -> 0.2 MW/m^2
-  j_i/j at wall -0.0267;  min -0.1305  max -0.0267
-  q_wall.electron_kinetic              4.313 MW/m^2
-  q_wall.electron_work_function       19.096 MW/m^2
+  wall cell: n_e 2.110e+20  n_i 6.572e+20  T_e 6122 K  T_h 1000 K  T_eff 2696 K  E 3.765e+06 V/m
+  phi: at L 5.22 V;  extreme 5.22 V at x = 5.00e-04 m
+  sheath edge (|n_i - n_e|/n_i = 1 %): x_s 1.001e-06 m  phi_s 1.387 V
+  ion mean energy at the sheath edge 0.18 eV;  max impact energy 1.57 eV;  x ion flux -> 0.2 MW/m^2
+  ion drift at the surface v_d 1029 m/s = 0.845 u_B (u_B 1218 m/s);  1/2 M v_d^2 0.219 eV;  x ion flux -> 0.024 MW/m^2
+  j_i/j at wall 0.0271;  min 0.0271  max 0.1291
+  q_wall.electron_kinetic              4.335 MW/m^2
+  q_wall.electron_work_function       19.104 MW/m^2
   q_wall.emission_kinetic              0.000 MW/m^2
   q_wall.emission_work_function        0.000 MW/m^2
-  q_wall.ion_recombination             1.185 MW/m^2
-  q_wall.gas_conduction               10.960 MW/m^2
-  q_wall.total                        35.553 MW/m^2
-  q_wall.e_flux_absorbed          2.5632e+25
-  q_wall.e_flux_emitted           1.5987e+06
-  q_wall.ion_flux                 6.6548e+23
-  q_wall.ion_flux_maxwell         1.1233e+23
-  q_wall.ion_flux_drift           5.5315e+23
-  q_wall.E_face                   3.6689e+06
-  NDIVH    peak +1.504e+13 W/m^3 at x = 1.91e-09 m
-  JOULE    peak -1.501e+13 W/m^3 at x = 1.91e-09 m
-  ELASTIC  peak -3.615e+10 W/m^3 at x = 5.73e-05 m
-  ION      peak +2.018e+10 W/m^3 at x = 2.04e-04 m
+  q_wall.ion_recombination             1.204 MW/m^2
+  q_wall.gas_conduction               11.055 MW/m^2
+  q_wall.total                        35.698 MW/m^2
+  q_wall.e_flux_absorbed          2.5642e+25
+  q_wall.e_flux_emitted           1.6191e+06
+  q_wall.ion_flux                 6.7639e+23
+  q_wall.ion_flux_maxwell         1.1965e+23
+  q_wall.ion_flux_drift           5.5674e+23
+  q_wall.E_face                   3.7802e+06
+  NDIVH    peak +1.550e+13 W/m^3 at x = 1.91e-09 m
+  JOULE    peak -1.547e+13 W/m^3 at x = 1.91e-09 m
+  ELASTIC  peak -3.670e+10 W/m^3 at x = 5.65e-05 m
+  ION      peak +2.005e+10 W/m^3 at x = 1.99e-04 m
   RAD      peak -1.010e+10 W/m^3 at x = 5.00e-04 m
-  RADL     peak -9.828e+09 W/m^3 at x = 5.00e-04 m
+  RADL     peak -7.564e+09 W/m^3 at x = 5.00e-04 m
 
 wrote base_profiles, base_een_budget, base_qwall (.pdf/.png) in /home/vishnu/work/electrode_region-paper/figures/results_fig

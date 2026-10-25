@@ -7,8 +7,9 @@ from the Saha equation, quasi-neutrality n_e = n_i and Dalton's law, with intern
 summed over the low-lying levels below (NIST ASD energies, no lowering of the ionization potential).
   tau_rxn    = 1/(2 k_rec n_e^2 + 2 k_ion n_e)           linearised ionization-recombination, fixed p, T
   lambda_rxn = sqrt(D_a tau_rxn),  D_a = (1 + T_e/T_h) D_in = 2 D_in   (D_in: Almeida (45), n_h = n_n + n_i)
-  lambda_e   = 1/(n_n Qbar_en + n_i Qbar_ei)              Qbar_en: Almeida (46) on exe/ar_Q_en.dat; Qbar_ei: (47)
-  lambda_T   = lambda_e / sqrt(2 m_e/M)
+  lambda_eh  = 1/(n_n Qbar_en + n_i Qbar_ei)              Qbar_en: Almeida (46) on exe/ar_Q_en.dat; Qbar_ei: (47)
+  lambda_e   = 1/(n_n Qbar_en + n_i Qbar_ei + n_e Qbar_ee)  electron mean free path; Qbar_ee = Qbar_ei
+  lambda_T   = lambda_eh / sqrt(2 m_e/M)
   lambda_Th  = 1/[(n_i + n_n) Qbar_in]                    ion-neutral temperature equilibration;
                                                           Qbar_in: Benilov & Naidis resonant charge exchange
   lambda_i   = 1/(n_n Qbar_in + n_i Qbar_ii)              ion mean free path; Qbar_ii = (47) at T_h
@@ -85,18 +86,20 @@ def scales(T):
     Qen = A.qbar_ea(T)[0]
     Qei = A.qbar_ei(T, ne)
     Qin = A.qbar_ia(T)
-    lam_e = 1.0 / (nn * Qen + ni * Qei)
+    lam_eh = 1.0 / (nn * Qen + ni * Qei)
+    Qee = Qei                                  # (47) at T_e
     Qii = A.qbar_ei(T, ne)                     # (47) with T_h = T_e = T
     return dict(T=T, ne=ne, nn=nn, lnL=A.ln_lambda(T, ne),
                 bal=ki * nn / (kr * ne**2), tau=tau, Da=Da,
-                lDe=np.sqrt(EPS0 * KB * T / (ne * E**2)), le=lam_e, li=1.0 / (nn * Qin + ni * Qii),
+                lDe=np.sqrt(EPS0 * KB * T / (ne * E**2)), le=1.0 / (nn * Qen + ni * Qei + ne * Qee),
+                li=1.0 / (nn * Qin + ni * Qii), leh=lam_eh,
                 lTh=1.0 / ((ni + nn) * Qin),
-                lrxn=np.sqrt(Da * tau), lT=lam_e / np.sqrt(2 * ME / M))
+                lrxn=np.sqrt(Da * tau), lT=lam_eh / np.sqrt(2 * ME / M))
 
 
 if __name__ == "__main__":
     keys = ["T", "ne", "nn", "lnL", "bal", "Da",
-            "lDe", "le", "li", "lTh", "lrxn", "lT", "tau"]
+            "lDe", "le", "li", "leh", "lTh", "lrxn", "lT", "tau"]
     print(" ".join(f"{k:>9s}" for k in keys))
     for T in (11e3, 12e3, 14e3, 18e3, 20e3, 22e3, 23e3):
         s = scales(T)

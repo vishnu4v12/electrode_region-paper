@@ -41,6 +41,15 @@ def integ(s, term, lo=0.0, hi=np.inf):
     return float(np.sum(v[m] * dx[m]))
 
 
+def shares(v, step=1.0):
+    """Percentages of sum(v), rounded to `step` by largest remainder so that they sum to exactly 100."""
+    p = 100.0 * np.asarray(v) / np.sum(v) / step
+    f = np.floor(p)
+    k = int(round(100.0 / step - f.sum()))
+    f[np.argsort(f - p)[:k]] += 1
+    return f * step
+
+
 def report(tag, pf):
     s = bc.load(pf)
     d, ne, ni, nn, Te, Th, phi, E = (s[k] for k in ("d", "ne", "ni", "nn", "Te", "Th", "phi", "E"))
@@ -78,6 +87,26 @@ def report(tag, pf):
         k = int(np.argmin(np.abs(df - x)))
         print(f"  h_e at x={df[k]:.2e}: TOT {MW*P['TOT'][k]:+9.2f}  ENTH {MW*P['ENTH'][k]:+9.2f}"
               f"  COND {MW*P['COND'][k]:+9.2f}  TD {MW*P['TD'][k]:+9.2f}  MW/m^2 (towards electrode)")
+    # Shares of the domain energy budget quoted in sec:res-energy. Each side is normalised by its own
+    # total and rounded to 1 % by largest remainder, so the quoted percentages sum to exactly 100.
+    h_L, h_w = P["TOT"][-1], qw                  # towards the electrode, at x ~ L and at the wall face
+    I = {t: integ(s, t) for t in ("JOULE", "ELASTIC", "ION", "RAD", "RADL")}
+    if tag == "Cathode":
+        sides = {"Joule heat goes to": {"h_e into the column at L": -h_L, "h_e into the cathode": h_w,
+                                        "radial loss": -I["RADL"], "ionization": -I["ION"],
+                                        "radiation": -I["RAD"], "elastic": -I["ELASTIC"]}}
+        gain = I["JOULE"]
+    else:
+        sides = {"energy supplied by": {"-div h_e (h_L - h_w)": h_L - h_w, "recombination": I["ION"]},
+                 "energy taken by": {"Joule loss": -I["JOULE"], "elastic": -I["ELASTIC"],
+                                     "radial loss": -I["RADL"], "radiation": -I["RAD"]}}
+        gain = h_L - h_w + I["ION"]
+    for name, terms in sides.items():
+        tot = sum(terms.values())
+        pct = shares(list(terms.values()))
+        print(f"  {name} (total {MW*tot:.2f} MW/m^2, {100*(tot/gain - 1):+.3f} % vs the gains): "
+              + ", ".join(f"{k} {p:.0f} % ({100 * v / tot:.2f})" for (k, v), p in zip(terms.items(), pct)) + f"  [sum {sum(pct):.0f}]")
+    print(f"  h_e reaching the surface / h_e entering at L: {h_w / h_L:.3f}")
     # conduction sign change
     c = P["COND"]
     sc = np.nonzero(np.diff(np.sign(c)))[0]

@@ -9,15 +9,18 @@ One figure per plotfile, compareJ1.5e7_<plotfile>.{pdf,png}, three stacked panel
 distance from the anode:
     (a) n_e, n_i, n_sa                         Fig. 3(b)
     (b) T_e, T_h                               Fig. 3(b), Table 2
-    (c) j_i/j (left axis)  Fig. 4   and   E (right axis)  Fig. 5, one shared zero line
+    (c) j_i/j (left axis)  Fig. 4   and   -E (right axis)  Fig. 5, one shared zero line
 
 ORIENTATION AND SIGNS. The paper's x is the distance from the anode, anode on the LEFT, and
 j > 0. The PlasmeX anode is the x_hi face, so the simulation is plotted against d = x_hi - x.
 The distance axis is MIRRORED (d increasing to the left), so the anode sits on the RIGHT, as in
-the results figures (cathodes on the left, anodes on the right). Both quantities map without any further sign choice: E_paper = -EFLDX, and j_i/j =
-JIX / (JEX + JIX) (flipping x flips both currents, so the ratio is unchanged; ions flowing into
-the anode give j_i/j < 0 in both). Near the anode both are negative, so they are plotted with
-their own signs and share the zero line.
+the results figures (cathodes on the left, anodes on the right). The paper's E is along its x,
+E_paper = -EFLDX, negative near the anode (the field points to the anode); its j_i/j is the ratio of
+the currents along x, negative where the ions flow into the anode. Since 21 Oct 2026 (user) the
+manuscript defines j_i as the ion current density INTO the electrode and j = |J_app|, at both
+electrodes, so j_i/j = JIX / |JEX + JIX| here and the paper's Fig. 4 curve is plotted with its sign
+reversed. Panel (c) plots -E_paper = EFLDX, the field towards the anode, as the cathode comparison
+does; both are then positive near the anode and share one zero line.
 
 n_sa is "the charged particle number density calculated by means of the Saha equation and
 quasi-neutrality condition" (the paper's caption). For PlasmeX it is computed here from the
@@ -62,10 +65,10 @@ L_MIN = 2e-3                                 # uniform plasma from x ~ 1-2 mm (F
 
 N_YLIM = (1e19, 1e24)
 T_YLIM, T_MAJOR = (0, 19), 4                 # kK
-JI_YLIM, JI_MAJOR = (-0.025, 0.005), 0.005
-E_UNIT, E_BOTTOM, E_MAJOR = 1e6, -2.0, 0.5   # E axis; its zero is j_i/j's zero
+JI_YLIM, JI_MAJOR = (-0.005, 0.025), 0.005
+E_UNIT, E_TOP, E_MAJOR = 1e6, 2.0, 0.5       # -E axis; its zero is j_i/j's zero
 LABELS = dict(ne=(1.8e-8, 4.0e20), ni=(1.8e-8, 1.4e21), nsa=(1.6e-6, 1.3e20),
-              Te=(1.8e-8, 5.9), Th=(1.8e-8, 1.3), ji=(1.8e-8, -0.0047), E=(1.8e-8, -1.2))
+              Te=(1.8e-8, 5.9), Th=(1.8e-8, 1.3), ji=(1.8e-8, 0.0074), E=(1.8e-8, 0.95))
 SIM_LABEL, REF_LABEL = "Present model", "Semenov et al (2016)"
 
 KB, ME, HP, QE = 1.380649e-23, 9.1093837015e-31, 6.62607015e-34, 1.602176634e-19
@@ -106,7 +109,7 @@ def load_sim(plt_file):
     o = np.argsort(dist)
     j = d["JEX"] + d["JIX"]
     s = {"d": dist[o], "ne": d["NE"][o], "ni": d["ARP"][o], "Te": d["ETEMP"][o],
-         "Th": d["TGAS"][o], "ji_j": (d["JIX"] / j)[o], "j": j[o],
+         "Th": d["TGAS"][o], "ji_j": (d["JIX"] / np.abs(j))[o], "j": j[o],   # into the anode
          "E": -d["EFLDX"][o],                                   # paper orientation
          "L": d["hi"] - d["lo"], "t": float(d["ds"].current_time)}
     s["nsa"] = n_saha(s["Te"], s["Th"])
@@ -176,7 +179,7 @@ def figure(p, s, out_stem):
     ax.legend(handles, [SIM_LABEL, REF_LABEL], frameon=False, handlelength=2.6,
               borderaxespad=0.6, loc="lower left")
 
-    # ---- (c) j_i/j (left) and E (right), one zero line ----
+    # ---- (c) j_i/j (left) and -E (right), one zero line ----
     ax = axs[2]
     ax.tick_params(which="both", right=False)
     ax.axhline(0.0, color="#b0b0b0", lw=0.5)
@@ -191,17 +194,17 @@ def figure(p, s, out_stem):
     ax.text(*lab["ji"], r"$j_\mathrm{i}/j$", color=C_J, fontsize=9, va="bottom", ha="right")
 
     fx = ax.twinx()
-    fx.plot(p["E"][0], p["E"][1] / E_UNIT, color=C_F, **REF)
-    fx.plot(s["d"], s["E"] / E_UNIT, color=C_F, **SIM)
-    fx.set_ylim(E_BOTTOM, E_BOTTOM * ji_hi / ji_lo)
+    fx.plot(p["E"][0], -p["E"][1] / E_UNIT, color=C_F, **REF)
+    fx.plot(s["d"], -s["E"] / E_UNIT, color=C_F, **SIM)
+    fx.set_ylim(E_TOP * ji_lo / ji_hi, E_TOP)
     fx.yaxis.set_major_locator(MultipleLocator(E_MAJOR))
     fx.yaxis.set_minor_locator(MultipleLocator(E_MAJOR / 5))
     fx.tick_params(which="both", direction="in", colors=C_F)
     fx.tick_params(which="major", length=3.5, width=0.6)
     fx.tick_params(which="minor", length=2.0, width=0.5)
     fx.spines["right"].set_color(C_F)
-    fx.set_ylabel(rf"$E$ (10$^{{{int(round(np.log10(E_UNIT)))}}}$ V m$^{{-1}}$)", color=C_F)
-    fx.text(*lab["E"], r"$E$", color=C_F, fontsize=9, va="bottom", ha="right")
+    fx.set_ylabel(rf"$-E$ (10$^{{{int(round(np.log10(E_UNIT)))}}}$ V m$^{{-1}}$)", color=C_F)
+    fx.text(*lab["E"], r"$-E$", color=C_F, fontsize=9, va="bottom", ha="right")
 
     # the anode surface: hatched strip + thick frame line on the right of every panel
     for i, ax in enumerate(axs):
@@ -241,9 +244,9 @@ def report(p, s):
         e_p = at(*p["E"], xq) / u if xq <= p["E"][0].max() else np.nan
         print(f"{xq:9.1e} | {at(*p['ji_j'], xq):9.5f} {at(s['d'], s['ji_j'], xq):9.5f} | "
               f"{e_p:8.4f} {at(s['d'], s['E'], xq) / u:8.4f}")
-    i, k = np.argmin(p["ji_j"][1]), np.argmin(s["ji_j"])
+    i, k = np.argmax(p["ji_j"][1]), np.argmax(s["ji_j"])
     print(f"T_e at the anode: PlasmeX {s['Te'][0]:.0f} K, Table 2 {TE_WALL:.0f} K")
-    print(f"j_i/j minimum: paper {p['ji_j'][1][i]:.5f} at x = {p['ji_j'][0][i]:.2e} m;  "
+    print(f"j_i/j maximum (into the anode): paper {p['ji_j'][1][i]:.5f} at x = {p['ji_j'][0][i]:.2e} m;  "
           f"PlasmeX {s['ji_j'][k]:.5f} at x = {s['d'][k]:.2e} m")
 
 
@@ -277,6 +280,8 @@ def main(argv=None):
     a = ap.parse_args(argv)
 
     p = {**load_csv("fig3b_extracted.csv"), **load_csv("fig45_j1500_extracted.csv")}
+    x, v = p["ji_j"]
+    p["ji_j"] = (x, -v)            # Fig. 4 is along the paper's x; here j_i is INTO the anode
     os.makedirs(a.outdir, exist_ok=True)
 
     for pf in a.plotfiles:

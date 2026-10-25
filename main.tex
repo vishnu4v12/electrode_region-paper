@@ -2,13 +2,15 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
+% 23 Oct 2026: text modified for the 200 A column radius (R = sqrt(I/(pi J_app))) is highlighted with \rev{...}.
+% To remove the highlighting, redefine as \newcommand{\rev}[1]{#1}.
+\newcommand{\rev}[1]{\textcolor{blue}{#1}}
 
 \begin{document}
 
 \articletype{Paper}
 
-\title{A unified model for species fluxes, ion impact energy and heat transfer
-at the electrode of an atmospheric-pressure arc discharge}
+\title{Modelling near electrode regions of an atmospheric-pressure arc discharge}
 
 \author{Author Name$^1$}
 
@@ -16,11 +18,10 @@ at the electrode of an atmospheric-pressure arc discharge}
 
 \email{sk58349@eid.utexas.edu}
 
-\keywords{atmospheric-pressure arc discharge, electrode sheath, drift-diffusion--Poisson, non-equilibrium plasma, PlasmeX}
+\keywords{atmospheric-pressure arc discharge, electrode sheath, \rev{unified model,} drift-diffusion, non-equilibrium plasma}
 
 \begin{abstract}
-% write at the end
-
+A unified one-dimensional model of the near-electrode regions of an atmospheric-pressure argon arc is presented. A single set of equations, including species continuity, electron and heavy-particle energy equations and Poisson's equation, is solved from the electrode surface, through the space-charge sheath and the non-equilibrium layer, to the bulk plasma, whose state is supplied by measurements or by an LTE model of the arc. The cathode surface temperature follows from a heat balance with thermionic emission. For a high-intensity arc, the structure of the cathode and anode layers, the electron energy balance and the heat fluxes to the electrodes are presented. The collisionality of the sheaths is examined. The electrons cross both sheaths almost without collisions, and their density follows the Boltzmann relation, which the drift-diffusion description reproduces. The ions are collisional, more so at the anode, and do not reach the Bohm velocity at the sheath edge, so that a Bohm flux overestimates the ion flux. The dependence of the anode layer on the bulk temperature and the current is also presented. Finally, the responses of both layers to changes of the arc current and of the bulk temperature are computed, to determine how slowly these must change for the layers to be treated as quasi-steady.
 \end{abstract}
 
 \input{sections/intro}

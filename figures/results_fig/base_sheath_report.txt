@@ -1,140 +1,140 @@
 
-=== Cathode: plt02400   sheath edge x_s = 5.816e-07 m
-  ion: |sum of retained terms| / max|term|: median 5.6e-06, max within 1e-04 m 2.8e-03
+=== Cathode: plt04400   sheath edge x_s = 5.588e-07 m
+  ion: |sum of retained terms| / max|term|: median 6.8e-06, max 2.9e-03 (wall and arc cells excluded)
   ion mixture term max |Y_i F|/max|term| = 1.5e-04
-    x=5.72e-09: E +1.91e+10  p +1.45e+09  dr -2.05e+10  T -1.55e+07  in -4.58e+10   |in|/|dr| 2.23e+00  |T|/|dr| 7.57e-04
-    x=9.54e-09: E +1.90e+10  p +1.32e+09  dr -2.03e+10  T -1.54e+07  in -4.01e+10   |in|/|dr| 1.97e+00  |T|/|dr| 7.60e-04
-    x=1.01e-07: E +1.49e+10  p +1.10e+09  dr -1.60e+10  T -1.22e+07  in -2.05e+10   |in|/|dr| 1.28e+00  |T|/|dr| 7.60e-04
-    x=2.98e-07: E +8.75e+09  p +1.47e+09  dr -1.02e+10  T -1.04e+07  in -1.11e+10   |in|/|dr| 1.09e+00  |T|/|dr| 1.02e-03
-    x=5.87e-07: E +6.01e+09  p +1.39e+09  dr -7.39e+09  T -1.15e+07  in -4.13e+09   |in|/|dr| 5.59e-01  |T|/|dr| 1.56e-03
-    x=1.01e-06: E +4.83e+09  p +1.27e+09  dr -6.09e+09  T -1.28e+07  in -1.69e+09   |in|/|dr| 2.78e-01  |T|/|dr| 2.10e-03
-    x=3.05e-06: E +3.16e+09  p +1.15e+09  dr -4.29e+09  T -1.25e+07  in -2.64e+08   |in|/|dr| 6.17e-02  |T|/|dr| 2.92e-03
-    x=9.89e-06: E +1.51e+09  p +9.45e+08  dr -2.45e+09  T -1.11e+06  in -3.15e+07   |in|/|dr| 1.28e-02  |T|/|dr| 4.53e-04
-    x=2.99e-05: E +5.43e+08  p +5.57e+08  dr -1.10e+09  T +3.95e+05  in -3.15e+06   |in|/|dr| 2.86e-03  |T|/|dr| 3.59e-04
-    x=1.00e-04: E +3.66e+08  p +1.10e+08  dr -4.59e+08  T -1.62e+07  in -1.33e+05   |in|/|dr| 2.91e-04  |T|/|dr| 3.52e-02
-    |inertia|/|drag| > 1.0: within 3.28e-07 m; max 2.23 at 5.72e-09 m
-    |inertia|/|drag| > 0.1: within 2.08e-06 m; max 2.23 at 5.72e-09 m
-    |inertia|/|drag| > 0.01: within 1.18e-05 m; max 2.23 at 5.72e-09 m
-  electron: |sum of retained terms| / max|term|: median 4.1e-07, max within 1e-04 m 2.9e-03
-    x=5.72e-09: E -6.30e+09  p +6.34e+09  dr +3.71e+07  T -7.18e+07  in -1.64e+09   |in|/|dr| 4.41e+01  |T|/|dr| 1.93e+00
-    x=9.54e-09: E -6.47e+09  p +6.50e+09  dr +3.73e+07  T -7.04e+07  in -1.54e+09   |in|/|dr| 4.13e+01  |T|/|dr| 1.89e+00
-    x=1.01e-07: E -9.16e+09  p +9.17e+09  dr +4.01e+07  T -4.46e+07  in -4.24e+08   |in|/|dr| 1.06e+01  |T|/|dr| 1.11e+00
-    x=2.98e-07: E -8.13e+09  p +8.09e+09  dr +4.86e+07  T -2.18e+07  in -6.84e+07   |in|/|dr| 1.41e+00  |T|/|dr| 4.49e-01
-    x=5.87e-07: E -5.95e+09  p +5.90e+09  dr +6.17e+07  T -1.13e+07  in -1.85e+07   |in|/|dr| 3.01e-01  |T|/|dr| 1.83e-01
-    x=1.01e-06: E -4.82e+09  p +4.74e+09  dr +7.69e+07  T -4.33e+06  in -7.27e+06   |in|/|dr| 9.45e-02  |T|/|dr| 5.63e-02
-    x=3.05e-06: E -3.16e+09  p +3.02e+09  dr +1.27e+08  T +5.91e+06  in -1.12e+06   |in|/|dr| 8.81e-03  |T|/|dr| 4.67e-02
-    x=9.89e-06: E -1.51e+09  p +1.30e+09  dr +2.10e+08  T +9.38e+05  in -1.31e+05   |in|/|dr| 6.26e-04  |T|/|dr| 4.47e-03
-    x=2.99e-05: E -5.43e+08  p +2.61e+08  dr +2.83e+08  T -3.79e+05  in -1.25e+04   |in|/|dr| 4.42e-05  |T|/|dr| 1.34e-03
-    x=1.00e-04: E -3.66e+08  p +4.57e+07  dr +3.04e+08  T +1.61e+07  in -7.14e+02   |in|/|dr| 2.35e-06  |T|/|dr| 5.29e-02
-    |inertia|/|drag| > 1.0: within 3.43e-07 m; max 44.12 at 5.72e-09 m
-    |inertia|/|drag| > 0.1: within 9.46e-07 m; max 44.12 at 5.72e-09 m
-    |inertia|/|drag| > 0.01: within 2.81e-06 m; max 44.12 at 5.72e-09 m
-  lam_e   wall-adjacent 5.09e-06  at x_s 3.88e-06  at 10 um 1.48e-06  at 100 um 1.07e-06
-  lam_i   wall-adjacent 3.33e-07  at x_s 2.90e-07  at 10 um 2.96e-07  at 100 um 9.75e-07
-  lam_in  wall-adjacent 4.71e-07  at x_s 5.60e-07  at 10 um 1.76e-06  at 100 um 3.32e-05
-  lam_Th  wall-adjacent 4.69e-07  at x_s 5.53e-07  at 10 um 1.49e-06  at 100 um 5.83e-06
-  L_Th    wall-adjacent 4.84e-06  at x_s 7.33e-06  at 10 um 2.61e-05  at 100 um 5.11e-04
-  lam_D   wall-adjacent 1.98e-07  at x_s 6.71e-08  at 10 um 2.84e-08  at 100 um 2.26e-08
-  mean free paths across the sheath, lam_e: N = 0.13
-  mean free paths across the sheath, lam_i: N = 1.82
-  mean free paths across the sheath, lam_in: N = 1.11
-  mean free paths across the sheath, lam_Th: N = 1.11
-    x=5.72e-09: lam_Th 4.69e-07  L_Th 4.84e-06  Kn_Th 9.70e-02  T_h 3675  T_eff 39061  (T_eff-T_h)/T_h 9.630
-    x=9.54e-09: lam_Th 4.70e-07  L_Th 4.86e-06  Kn_Th 9.66e-02  T_h 3678  T_eff 38484  (T_eff-T_h)/T_h 9.465
-    x=1.01e-07: lam_Th 4.87e-07  L_Th 5.47e-06  Kn_Th 8.91e-02  T_h 3743  T_eff 25744  (T_eff-T_h)/T_h 5.878
-    x=5.87e-07: lam_Th 5.55e-07  L_Th 7.37e-06  Kn_Th 7.53e-02  T_h 4034  T_eff 7071  (T_eff-T_h)/T_h 0.753
-    x=1.01e-06: lam_Th 6.04e-07  L_Th 8.50e-06  Kn_Th 7.11e-02  T_h 4253  T_eff 5702  (T_eff-T_h)/T_h 0.341
-    x=9.89e-06: lam_Th 1.49e-06  L_Th 2.61e-05  Kn_Th 5.69e-02  T_h 7385  T_eff 7444  (T_eff-T_h)/T_h 0.008
-    x=1.00e-04: lam_Th 5.83e-06  L_Th 5.11e-04  Kn_Th 1.14e-02  T_h 18329  T_eff 18521  (T_eff-T_h)/T_h 0.010
-    x=3.00e-04: lam_Th 7.02e-06  L_Th 5.34e-03  Kn_Th 1.31e-03  T_h 20282  T_eff 28999  (T_eff-T_h)/T_h 0.430
-    lam_Th/L_Th > 1.0: within 0.00e+00 m; max 9.70e-02 at 5.72e-09 m
-    lam_Th/L_Th > 0.1: within 0.00e+00 m; max 9.70e-02 at 5.72e-09 m
-    lam_Th/L_Th > 0.01: within 1.05e-04 m; max 9.70e-02 at 5.72e-09 m
-    (T_eff - T_h)/T_h > 1.0: within 4.81e-07 m
-    (T_eff - T_h)/T_h > 0.1: within 5.00e-04 m
-  lam_e > x within 2.32e-06 m
-  lam_i > x within 2.98e-07 m
-  lam_in > x within 5.00e-04 m
+    x=5.72e-09: E +1.63e+10  p +1.35e+09  dr -1.76e+10  T -1.86e+07  in -3.41e+10   |in|/|dr| 1.93e+00  |T|/|dr| 1.05e-03
+    x=9.54e-09: E +1.62e+10  p +1.20e+09  dr -1.74e+10  T -1.85e+07  in -2.92e+10   |in|/|dr| 1.68e+00  |T|/|dr| 1.06e-03
+    x=1.01e-07: E +1.27e+10  p +1.17e+09  dr -1.39e+10  T -1.62e+07  in -1.76e+10   |in|/|dr| 1.27e+00  |T|/|dr| 1.17e-03
+    x=2.98e-07: E +7.88e+09  p +1.49e+09  dr -9.35e+09  T -1.69e+07  in -8.83e+09   |in|/|dr| 9.44e-01  |T|/|dr| 1.81e-03
+    x=5.57e-07: E +5.72e+09  p +1.39e+09  dr -7.09e+09  T -2.04e+07  in -3.55e+09   |in|/|dr| 5.01e-01  |T|/|dr| 2.88e-03
+    x=1.01e-06: E +4.49e+09  p +1.25e+09  dr -5.71e+09  T -2.49e+07  in -1.34e+09   |in|/|dr| 2.35e-01  |T|/|dr| 4.35e-03
+    x=3.05e-06: E +2.96e+09  p +1.11e+09  dr -4.03e+09  T -3.19e+07  in -2.15e+08   |in|/|dr| 5.33e-02  |T|/|dr| 7.92e-03
+    x=9.89e-06: E +1.52e+09  p +9.35e+08  dr -2.42e+09  T -2.86e+07  in -2.72e+07   |in|/|dr| 1.12e-02  |T|/|dr| 1.18e-02
+    x=2.99e-05: E +6.17e+08  p +5.69e+08  dr -1.16e+09  T -2.74e+07  in -3.19e+06   |in|/|dr| 2.76e-03  |T|/|dr| 2.36e-02
+    x=1.00e-04: E +3.68e+08  p +1.15e+08  dr -4.49e+08  T -3.44e+07  in -1.72e+05   |in|/|dr| 3.84e-04  |T|/|dr| 7.67e-02
+    |inertia|/|drag| > 1.0: within 2.73e-07 m; max 1.93 at 5.72e-09 m
+    |inertia|/|drag| > 0.1: within 1.86e-06 m; max 1.93 at 5.72e-09 m
+    |inertia|/|drag| > 0.01: within 1.06e-05 m; max 1.93 at 5.72e-09 m
+  electron: |sum of retained terms| / max|term|: median 1.2e-06, max 2.8e-03 (wall and arc cells excluded)
+    x=5.72e-09: E -6.51e+09  p +6.54e+09  dr +3.64e+07  T -6.93e+07  in -1.24e+09   |in|/|dr| 3.40e+01  |T|/|dr| 1.90e+00
+    x=9.54e-09: E -6.65e+09  p +6.68e+09  dr +3.66e+07  T -6.82e+07  in -1.17e+09   |in|/|dr| 3.19e+01  |T|/|dr| 1.86e+00
+    x=1.01e-07: E -8.61e+09  p +8.62e+09  dr +3.98e+07  T -4.72e+07  in -3.46e+08   |in|/|dr| 8.70e+00  |T|/|dr| 1.18e+00
+    x=2.98e-07: E -7.43e+09  p +7.40e+09  dr +4.97e+07  T -2.67e+07  in -6.29e+07   |in|/|dr| 1.27e+00  |T|/|dr| 5.38e-01
+    x=5.57e-07: E -5.66e+09  p +5.61e+09  dr +6.25e+07  T -1.50e+07  in -1.98e+07   |in|/|dr| 3.17e-01  |T|/|dr| 2.41e-01
+    x=1.01e-06: E -4.48e+09  p +4.40e+09  dr +7.99e+07  T -3.70e+06  in -7.16e+06   |in|/|dr| 8.96e-02  |T|/|dr| 4.63e-02
+    x=3.05e-06: E -2.96e+09  p +2.80e+09  dr +1.31e+08  T +1.68e+07  in -1.12e+06   |in|/|dr| 8.56e-03  |T|/|dr| 1.28e-01
+    x=9.89e-06: E -1.52e+09  p +1.28e+09  dr +2.15e+08  T +2.44e+07  in -1.37e+05   |in|/|dr| 6.37e-04  |T|/|dr| 1.13e-01
+    x=2.99e-05: E -6.17e+08  p +3.06e+08  dr +2.84e+08  T +2.63e+07  in -1.34e+04   |in|/|dr| 4.70e-05  |T|/|dr| 9.25e-02
+    x=1.00e-04: E -3.68e+08  p +5.03e+07  dr +2.84e+08  T +3.42e+07  in +2.33e+02   |in|/|dr| 8.22e-07  |T|/|dr| 1.20e-01
+    |inertia|/|drag| > 1.0: within 3.28e-07 m; max 33.96 at 5.72e-09 m
+    |inertia|/|drag| > 0.1: within 9.46e-07 m; max 33.96 at 5.72e-09 m
+    |inertia|/|drag| > 0.01: within 2.81e-06 m; max 33.96 at 5.72e-09 m
+  lam_e   wall-adjacent 4.61e-06  at x_s 2.42e-06  at 10 um 7.32e-07  at 100 um 5.84e-07
+  lam_i   wall-adjacent 3.41e-07  at x_s 2.92e-07  at 10 um 3.01e-07  at 100 um 1.07e-06
+  lam_in  wall-adjacent 4.79e-07  at x_s 5.61e-07  at 10 um 1.71e-06  at 100 um 3.98e-05
+  lam_Th  wall-adjacent 4.78e-07  at x_s 5.55e-07  at 10 um 1.46e-06  at 100 um 6.18e-06
+  L_Th    wall-adjacent 5.30e-06  at x_s 7.57e-06  at 10 um 2.59e-05  at 100 um 4.02e-04
+  lam_D   wall-adjacent 1.75e-07  at x_s 6.54e-08  at 10 um 2.81e-08  at 100 um 2.33e-08
+  mean free paths across the sheath, lam_e: N = 0.18
+  mean free paths across the sheath, lam_i: N = 1.75
+  mean free paths across the sheath, lam_in: N = 1.07
+  mean free paths across the sheath, lam_Th: N = 1.08
+    x=5.72e-09: lam_Th 4.78e-07  L_Th 5.30e-06  Kn_Th 9.01e-02  T_h 3718  T_eff 36741  (T_eff-T_h)/T_h 8.881
+    x=9.54e-09: lam_Th 4.78e-07  L_Th 5.33e-06  Kn_Th 8.98e-02  T_h 3721  T_eff 35890  (T_eff-T_h)/T_h 8.646
+    x=1.01e-07: lam_Th 4.94e-07  L_Th 5.88e-06  Kn_Th 8.40e-02  T_h 3782  T_eff 24202  (T_eff-T_h)/T_h 5.399
+    x=5.57e-07: lam_Th 5.55e-07  L_Th 7.57e-06  Kn_Th 7.32e-02  T_h 4045  T_eff 7942  (T_eff-T_h)/T_h 0.964
+    x=1.01e-06: lam_Th 6.05e-07  L_Th 8.73e-06  Kn_Th 6.93e-02  T_h 4274  T_eff 6122  (T_eff-T_h)/T_h 0.432
+    x=9.89e-06: lam_Th 1.46e-06  L_Th 2.59e-05  Kn_Th 5.63e-02  T_h 7408  T_eff 7532  (T_eff-T_h)/T_h 0.017
+    x=1.00e-04: lam_Th 6.18e-06  L_Th 4.02e-04  Kn_Th 1.54e-02  T_h 19099  T_eff 19157  (T_eff-T_h)/T_h 0.003
+    x=3.00e-04: lam_Th 7.91e-06  L_Th 4.27e-03  Kn_Th 1.86e-03  T_h 22325  T_eff 22333  (T_eff-T_h)/T_h 0.000
+    lam_Th/L_Th > 1.0: within 0.00e+00 m; max 9.01e-02 at 5.72e-09 m
+    lam_Th/L_Th > 0.1: within 0.00e+00 m; max 9.01e-02 at 5.72e-09 m
+    lam_Th/L_Th > 0.01: within 1.24e-04 m; max 9.01e-02 at 5.72e-09 m
+    (T_eff - T_h)/T_h > 1.0: within 5.26e-07 m
+    (T_eff - T_h)/T_h > 0.1: within 2.81e-06 m
+  lam_e > x within 1.56e-06 m
+  lam_i > x within 3.13e-07 m
+  lam_in > x within 4.99e-04 m
   lam_Th > x within 5.42e-07 m
-  Boltzmann n_e/n_B - 1 in the sheath: wall-adjacent +0.015, max |.| 0.015
-    x=1.01e-06: n_e/n_B - 1 = -0.007
-    x=3.05e-06: n_e/n_B - 1 = -0.032
-    x=9.89e-06: n_e/n_B - 1 = -0.088
-    x=2.99e-05: n_e/n_B - 1 = -0.207
-    x=1.00e-04: n_e/n_B - 1 = -0.525
-  |eE n_e + grad p_e|/|e n_e E|: wall-adjacent 0.005, at x_s 0.008, max in sheath 0.008, at 10 um 0.140
-  u_i: wall-adjacent 5033 m/s, at x_s 1693 m/s;  u_B at x_s 2163 (sqrt(kTe/M) 1960) m/s
-  Mach u_i/u_B: wall-adjacent 2.358, at x_s 0.783, max 2.358
-  u_i >= u_B within 3.89e-07 m
-  heavy-gas velocity max |u| 2.56e-04 m/s; max |u_n| 1.24e+02
+  Boltzmann n_e/n_B - 1 in the sheath: wall-adjacent +0.018, max |.| 0.018
+    x=1.01e-06: n_e/n_B - 1 = -0.009
+    x=3.05e-06: n_e/n_B - 1 = -0.043
+    x=9.89e-06: n_e/n_B - 1 = -0.120
+    x=2.99e-05: n_e/n_B - 1 = -0.270
+    x=1.00e-04: n_e/n_B - 1 = -0.594
+  |eE n_e + grad p_e|/|e n_e E|: wall-adjacent 0.005, at x_s 0.009, max in sheath 0.009, at 10 um 0.158
+  u_i: wall-adjacent 4527 m/s, at x_s 1543 m/s;  u_B at x_s 2113 (sqrt(kTe/M) 1903) m/s
+  Mach u_i/u_B: wall-adjacent 2.173, at x_s 0.730, max 2.173
+  u_i >= u_B within 3.28e-07 m
+  heavy-gas velocity max |u| 1.76e-04 m/s; max |u_n| 1.86e+02
 
-=== Anode: plt01900   sheath edge x_s = 1.008e-06 m
-  ion: |sum of retained terms| / max|term|: median 1.2e-06, max within 1e-04 m 2.2e-03
+=== Anode: plt02800   sheath edge x_s = 1.001e-06 m
+  ion: |sum of retained terms| / max|term|: median 1.2e-06, max 2.3e-03 (wall and arc cells excluded)
   ion mixture term max |Y_i F|/max|term| = 1.5e-04
-    x=5.72e-09: E +3.70e+08  p +6.69e+07  dr -4.36e+08  T -8.43e+04  in -3.42e+08   |in|/|dr| 7.83e-01  |T|/|dr| 1.93e-04
-    x=9.54e-09: E +3.76e+08  p +5.87e+07  dr -4.35e+08  T -8.89e+04  in -2.83e+08   |in|/|dr| 6.51e-01  |T|/|dr| 2.05e-04
-    x=1.01e-07: E +3.75e+08  p +2.12e+07  dr -3.96e+08  T -1.94e+05  in -5.70e+07   |in|/|dr| 1.44e-01  |T|/|dr| 4.90e-04
-    x=2.98e-07: E +3.00e+08  p +3.17e+07  dr -3.31e+08  T -4.06e+05  in -4.35e+07   |in|/|dr| 1.31e-01  |T|/|dr| 1.23e-03
-    x=1.01e-06: E +2.13e+08  p +4.81e+07  dr -2.60e+08  T -1.20e+06  in -8.95e+06   |in|/|dr| 3.44e-02  |T|/|dr| 4.60e-03
-    x=1.01e-06: E +2.13e+08  p +4.81e+07  dr -2.60e+08  T -1.20e+06  in -8.95e+06   |in|/|dr| 3.44e-02  |T|/|dr| 4.60e-03
-    x=3.05e-06: E +1.60e+08  p +5.50e+07  dr -2.12e+08  T -2.99e+06  in -1.07e+06   |in|/|dr| 5.03e-03  |T|/|dr| 1.41e-02
-    x=9.89e-06: E +9.93e+07  p +5.99e+07  dr -1.53e+08  T -6.33e+06  in -1.11e+05   |in|/|dr| 7.26e-04  |T|/|dr| 4.14e-02
-    x=2.99e-05: E +6.36e+07  p +5.89e+07  dr -1.13e+08  T -9.50e+06  in -1.23e+04   |in|/|dr| 1.09e-04  |T|/|dr| 8.41e-02
-    x=1.00e-04: E +5.95e+07  p +6.35e+07  dr -1.11e+08  T -1.18e+07  in -1.11e+02   |in|/|dr| 9.93e-07  |T|/|dr| 1.06e-01
-    |inertia|/|drag| > 1.0: within 0.00e+00 m; max 0.78 at 5.72e-09 m
-    |inertia|/|drag| > 0.1: within 4.65e-07 m; max 0.78 at 5.72e-09 m
-    |inertia|/|drag| > 0.01: within 1.92e-06 m; max 0.78 at 5.72e-09 m
-  electron: |sum of retained terms| / max|term|: median 2.5e-06, max within 1e-04 m 3.7e-03
-    x=5.72e-09: E -1.26e+08  p +1.28e+08  dr -8.83e+05  T -5.46e+05  in -1.92e+07   |in|/|dr| 2.17e+01  |T|/|dr| 6.18e-01
-    x=9.54e-09: E -1.28e+08  p +1.30e+08  dr -8.91e+05  T -5.60e+05  in -1.85e+07   |in|/|dr| 2.08e+01  |T|/|dr| 6.28e-01
-    x=1.01e-07: E -1.79e+08  p +1.81e+08  dr -9.48e+05  T -9.71e+05  in -8.31e+06   |in|/|dr| 8.77e+00  |T|/|dr| 1.02e+00
-    x=2.98e-07: E -2.35e+08  p +2.37e+08  dr -1.04e+06  T -1.44e+06  in -2.10e+06   |in|/|dr| 2.03e+00  |T|/|dr| 1.39e+00
-    x=1.01e-06: E -2.11e+08  p +2.14e+08  dr -1.58e+06  T -1.04e+06  in -1.91e+05   |in|/|dr| 1.21e-01  |T|/|dr| 6.59e-01
-    x=1.01e-06: E -2.11e+08  p +2.14e+08  dr -1.58e+06  T -1.04e+06  in -1.91e+05   |in|/|dr| 1.21e-01  |T|/|dr| 6.59e-01
-    x=3.05e-06: E -1.60e+08  p +1.61e+08  dr -2.83e+06  T +9.76e+05  in -2.18e+04   |in|/|dr| 7.70e-03  |T|/|dr| 3.45e-01
-    x=9.89e-06: E -9.93e+07  p +9.95e+07  dr -4.99e+06  T +4.83e+06  in -2.32e+03   |in|/|dr| 4.65e-04  |T|/|dr| 9.68e-01
-    x=2.99e-05: E -6.36e+07  p +6.23e+07  dr -7.19e+06  T +8.46e+06  in -3.38e+02   |in|/|dr| 4.71e-05  |T|/|dr| 1.18e+00
-    x=1.00e-04: E -5.95e+07  p +5.78e+07  dr -9.34e+06  T +1.10e+07  in -6.60e+01   |in|/|dr| 7.07e-06  |T|/|dr| 1.18e+00
-    |inertia|/|drag| > 1.0: within 4.04e-07 m; max 21.70 at 5.72e-09 m
-    |inertia|/|drag| > 0.1: within 1.07e-06 m; max 21.70 at 5.72e-09 m
-    |inertia|/|drag| > 0.01: within 2.56e-06 m; max 21.70 at 5.72e-09 m
-  lam_e   wall-adjacent 4.96e-06  at x_s 3.54e-06  at 10 um 1.46e-06  at 100 um 9.70e-07
-  lam_i   wall-adjacent 9.59e-08  at x_s 1.06e-07  at 10 um 1.69e-07  at 100 um 5.01e-07
-  lam_in  wall-adjacent 1.05e-07  at x_s 1.32e-07  at 10 um 3.14e-07  at 100 um 1.38e-06
-  lam_Th  wall-adjacent 1.05e-07  at x_s 1.32e-07  at 10 um 3.12e-07  at 100 um 1.30e-06
-  L_Th    wall-adjacent 4.25e-06  at x_s 6.03e-06  at 10 um 2.13e-05  at 100 um 2.10e-04
-  lam_D   wall-adjacent 3.66e-07  at x_s 1.03e-07  at 10 um 4.49e-08  at 100 um 2.93e-08
-  mean free paths across the sheath, lam_e: N = 0.24
-  mean free paths across the sheath, lam_i: N = 9.93
-  mean free paths across the sheath, lam_in: N = 8.51
-  mean free paths across the sheath, lam_Th: N = 8.51
-    x=5.72e-09: lam_Th 1.05e-07  L_Th 4.25e-06  Kn_Th 2.47e-02  T_h 1001  T_eff 2258  (T_eff-T_h)/T_h 1.255
-    x=9.54e-09: lam_Th 1.05e-07  L_Th 4.26e-06  Kn_Th 2.47e-02  T_h 1002  T_eff 2247  (T_eff-T_h)/T_h 1.242
-    x=1.01e-07: lam_Th 1.08e-07  L_Th 4.43e-06  Kn_Th 2.43e-02  T_h 1024  T_eff 1963  (T_eff-T_h)/T_h 0.918
-    x=1.01e-06: lam_Th 1.32e-07  L_Th 6.03e-06  Kn_Th 2.19e-02  T_h 1219  T_eff 1279  (T_eff-T_h)/T_h 0.049
-    x=1.01e-06: lam_Th 1.32e-07  L_Th 6.03e-06  Kn_Th 2.19e-02  T_h 1219  T_eff 1279  (T_eff-T_h)/T_h 0.049
-    x=9.89e-06: lam_Th 3.12e-07  L_Th 2.13e-05  Kn_Th 1.47e-02  T_h 2539  T_eff 2541  (T_eff-T_h)/T_h 0.000
-    x=1.00e-04: lam_Th 1.30e-06  L_Th 2.10e-04  Kn_Th 6.18e-03  T_h 8188  T_eff 8188  (T_eff-T_h)/T_h 0.000
-    x=3.00e-04: lam_Th 2.59e-06  L_Th 9.23e-04  Kn_Th 2.81e-03  T_h 12772  T_eff 12772  (T_eff-T_h)/T_h 0.000
-    lam_Th/L_Th > 1.0: within 0.00e+00 m; max 2.47e-02 at 5.72e-09 m
-    lam_Th/L_Th > 0.1: within 0.00e+00 m; max 2.47e-02 at 5.72e-09 m
-    lam_Th/L_Th > 0.01: within 3.48e-05 m; max 2.47e-02 at 5.72e-09 m
-    (T_eff - T_h)/T_h > 1.0: within 7.44e-08 m
-    (T_eff - T_h)/T_h > 0.1: within 6.94e-07 m
-  lam_e > x within 2.32e-06 m
+    x=5.72e-09: E +4.06e+08  p +7.05e+07  dr -4.75e+08  T -8.65e+04  in -3.28e+08   |in|/|dr| 6.91e-01  |T|/|dr| 1.82e-04
+    x=9.54e-09: E +4.12e+08  p +5.65e+07  dr -4.68e+08  T -9.12e+04  in -2.47e+08   |in|/|dr| 5.29e-01  |T|/|dr| 1.95e-04
+    x=1.01e-07: E +3.92e+08  p +2.12e+07  dr -4.13e+08  T -1.99e+05  in -5.64e+07   |in|/|dr| 1.37e-01  |T|/|dr| 4.81e-04
+    x=2.98e-07: E +3.14e+08  p +3.31e+07  dr -3.47e+08  T -4.18e+05  in -4.46e+07   |in|/|dr| 1.29e-01  |T|/|dr| 1.21e-03
+    x=1.01e-06: E +2.19e+08  p +4.93e+07  dr -2.67e+08  T -1.23e+06  in -8.92e+06   |in|/|dr| 3.34e-02  |T|/|dr| 4.61e-03
+    x=1.01e-06: E +2.19e+08  p +4.93e+07  dr -2.67e+08  T -1.23e+06  in -8.92e+06   |in|/|dr| 3.34e-02  |T|/|dr| 4.61e-03
+    x=3.05e-06: E +1.62e+08  p +5.60e+07  dr -2.15e+08  T -3.06e+06  in -1.07e+06   |in|/|dr| 4.97e-03  |T|/|dr| 1.42e-02
+    x=9.89e-06: E +1.01e+08  p +6.09e+07  dr -1.55e+08  T -6.42e+06  in -1.12e+05   |in|/|dr| 7.24e-04  |T|/|dr| 4.14e-02
+    x=2.99e-05: E +6.43e+07  p +5.97e+07  dr -1.14e+08  T -9.61e+06  in -1.25e+04   |in|/|dr| 1.10e-04  |T|/|dr| 8.41e-02
+    x=1.00e-04: E +6.01e+07  p +6.41e+07  dr -1.12e+08  T -1.19e+07  in -1.37e+02   |in|/|dr| 1.22e-06  |T|/|dr| 1.06e-01
+    |inertia|/|drag| > 1.0: within 0.00e+00 m; max 0.69 at 5.72e-09 m
+    |inertia|/|drag| > 0.1: within 4.50e-07 m; max 0.69 at 5.72e-09 m
+    |inertia|/|drag| > 0.01: within 1.92e-06 m; max 0.69 at 5.72e-09 m
+  electron: |sum of retained terms| / max|term|: median 2.5e-06, max 3.7e-03 (wall and arc cells excluded)
+    x=5.72e-09: E -1.30e+08  p +1.31e+08  dr -9.08e+05  T -5.28e+05  in -1.97e+07   |in|/|dr| 2.17e+01  |T|/|dr| 5.82e-01
+    x=9.54e-09: E -1.32e+08  p +1.34e+08  dr -9.15e+05  T -5.43e+05  in -1.90e+07   |in|/|dr| 2.07e+01  |T|/|dr| 5.93e-01
+    x=1.01e-07: E -1.85e+08  p +1.87e+08  dr -9.57e+05  T -9.88e+05  in -8.38e+06   |in|/|dr| 8.75e+00  |T|/|dr| 1.03e+00
+    x=2.98e-07: E -2.45e+08  p +2.48e+08  dr -1.05e+06  T -1.47e+06  in -2.08e+06   |in|/|dr| 1.98e+00  |T|/|dr| 1.40e+00
+    x=1.01e-06: E -2.17e+08  p +2.19e+08  dr -1.61e+06  T -1.04e+06  in -1.84e+05   |in|/|dr| 1.14e-01  |T|/|dr| 6.49e-01
+    x=1.01e-06: E -2.17e+08  p +2.19e+08  dr -1.61e+06  T -1.04e+06  in -1.84e+05   |in|/|dr| 1.14e-01  |T|/|dr| 6.49e-01
+    x=3.05e-06: E -1.62e+08  p +1.64e+08  dr -2.86e+06  T +1.01e+06  in -2.12e+04   |in|/|dr| 7.39e-03  |T|/|dr| 3.54e-01
+    x=9.89e-06: E -1.01e+08  p +1.01e+08  dr -5.03e+06  T +4.91e+06  in -2.28e+03   |in|/|dr| 4.53e-04  |T|/|dr| 9.75e-01
+    x=2.99e-05: E -6.43e+07  p +6.30e+07  dr -7.23e+06  T +8.57e+06  in -3.33e+02   |in|/|dr| 4.61e-05  |T|/|dr| 1.19e+00
+    x=1.00e-04: E -6.01e+07  p +5.83e+07  dr -9.37e+06  T +1.12e+07  in -6.52e+01   |in|/|dr| 6.96e-06  |T|/|dr| 1.19e+00
+    |inertia|/|drag| > 1.0: within 4.04e-07 m; max 21.68 at 5.72e-09 m
+    |inertia|/|drag| > 0.1: within 1.01e-06 m; max 21.68 at 5.72e-09 m
+    |inertia|/|drag| > 0.01: within 2.56e-06 m; max 21.68 at 5.72e-09 m
+  lam_e   wall-adjacent 4.54e-06  at x_s 2.35e-06  at 10 um 7.65e-07  at 100 um 4.90e-07
+  lam_i   wall-adjacent 9.54e-08  at x_s 1.05e-07  at 10 um 1.69e-07  at 100 um 5.02e-07
+  lam_in  wall-adjacent 1.05e-07  at x_s 1.31e-07  at 10 um 3.16e-07  at 100 um 1.39e-06
+  lam_Th  wall-adjacent 1.05e-07  at x_s 1.31e-07  at 10 um 3.14e-07  at 100 um 1.30e-06
+  L_Th    wall-adjacent 4.22e-06  at x_s 5.88e-06  at 10 um 2.13e-05  at 100 um 2.10e-04
+  lam_D   wall-adjacent 3.67e-07  at x_s 1.05e-07  at 10 um 4.47e-08  at 100 um 2.92e-08
+  mean free paths across the sheath, lam_e: N = 0.30
+  mean free paths across the sheath, lam_i: N = 9.37
+  mean free paths across the sheath, lam_in: N = 8.04
+  mean free paths across the sheath, lam_Th: N = 8.04
+    x=5.72e-09: lam_Th 1.05e-07  L_Th 4.22e-06  Kn_Th 2.49e-02  T_h 1001  T_eff 2593  (T_eff-T_h)/T_h 1.590
+    x=9.54e-09: lam_Th 1.05e-07  L_Th 4.23e-06  Kn_Th 2.49e-02  T_h 1002  T_eff 2519  (T_eff-T_h)/T_h 1.513
+    x=1.01e-07: lam_Th 1.08e-07  L_Th 4.39e-06  Kn_Th 2.45e-02  T_h 1024  T_eff 2065  (T_eff-T_h)/T_h 1.017
+    x=1.01e-06: lam_Th 1.32e-07  L_Th 5.99e-06  Kn_Th 2.21e-02  T_h 1220  T_eff 1308  (T_eff-T_h)/T_h 0.072
+    x=1.01e-06: lam_Th 1.32e-07  L_Th 5.99e-06  Kn_Th 2.21e-02  T_h 1220  T_eff 1308  (T_eff-T_h)/T_h 0.072
+    x=9.89e-06: lam_Th 3.14e-07  L_Th 2.13e-05  Kn_Th 1.48e-02  T_h 2549  T_eff 2552  (T_eff-T_h)/T_h 0.001
+    x=1.00e-04: lam_Th 1.30e-06  L_Th 2.10e-04  Kn_Th 6.20e-03  T_h 8220  T_eff 8221  (T_eff-T_h)/T_h 0.000
+    x=3.00e-04: lam_Th 2.60e-06  L_Th 9.31e-04  Kn_Th 2.80e-03  T_h 12800  T_eff 12802  (T_eff-T_h)/T_h 0.000
+    lam_Th/L_Th > 1.0: within 0.00e+00 m; max 2.49e-02 at 5.72e-09 m
+    lam_Th/L_Th > 0.1: within 0.00e+00 m; max 2.49e-02 at 5.72e-09 m
+    lam_Th/L_Th > 0.01: within 3.55e-05 m; max 2.49e-02 at 5.72e-09 m
+    (T_eff - T_h)/T_h > 1.0: within 1.05e-07 m
+    (T_eff - T_h)/T_h > 0.1: within 8.24e-07 m
+  lam_e > x within 1.74e-06 m
   lam_i > x within 9.35e-08 m
   lam_in > x within 1.05e-07 m
   lam_Th > x within 1.05e-07 m
   Boltzmann n_e/n_B - 1 in the sheath: wall-adjacent -0.006, max |.| 0.006
-    x=1.01e-06: n_e/n_B - 1 = +0.000
+    x=1.01e-06: n_e/n_B - 1 = -0.000
     x=3.05e-06: n_e/n_B - 1 = -0.012
-    x=9.89e-06: n_e/n_B - 1 = -0.057
+    x=9.89e-06: n_e/n_B - 1 = -0.058
     x=2.99e-05: n_e/n_B - 1 = -0.164
     x=1.00e-04: n_e/n_B - 1 = -0.355
-  |eE n_e + grad p_e|/|e n_e E|: wall-adjacent 0.011, at x_s 0.011, max in sheath 0.013, at 10 um 0.001
-  u_i: wall-adjacent 1046 m/s, at x_s 237 m/s;  u_B at x_s 1245 (sqrt(kTe/M) 1138) m/s
-  Mach u_i/u_B: wall-adjacent 0.861, at x_s 0.191, max 0.861
+  |eE n_e + grad p_e|/|e n_e E|: wall-adjacent 0.011, at x_s 0.011, max in sheath 0.012, at 10 um 0.001
+  u_i: wall-adjacent 997 m/s, at x_s 247 m/s;  u_B at x_s 1246 (sqrt(kTe/M) 1140) m/s
+  Mach u_i/u_B: wall-adjacent 0.819, at x_s 0.198, max 0.819
   u_i >= u_B within 0.00e+00 m
-  heavy-gas velocity max |u| 9.59e-06 m/s; max |u_n| 2.63e+01
+  heavy-gas velocity max |u| 1.02e-05 m/s; max |u_n| 2.58e+01
 
 wrote base_momentum, base_sheath (.pdf/.png) in /home/vishnu/work/electrode_region-paper/figures/results_fig

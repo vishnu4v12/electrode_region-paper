@@ -8,7 +8,7 @@ Schematic of the arc discharge and of the two near-electrode domains (figure fig
     axis, from the electrode surface (x = 0) to the bulk-plasma boundary (x = L).
 (b) the cathode domain and (c) the anode domain, not to scale: the space-charge sheath, the
     quasi-neutral non-equilibrium layer and the near-LTE plasma, the data imposed at each end, the
-    particle fluxes at the surface, the radial loss (cathode only), and qualitative T_e and T_h.
+    particle fluxes at the surface, the radial loss, and qualitative T_e and T_h.
 Figure conventions as in the results figures: the cathode on the left of its panel, the anode on the
 right of its panel (mirrored axis).
 """
@@ -121,19 +121,18 @@ def panel_layer(ax, el):
         ax.text(mid, lab_y, "quasi-neutral anode layer", ha="center", va="top", fontsize=7.5)
         ax.text(mid, lab_y - 0.1, r"$T_e\neq T_h$, $n_e>n_{\rm eq}$", ha="center", va="top", fontsize=6.5)
     ax.text(0.5 * (ul + 1), lab_y, "near-LTE plasma", ha="center", va="top", fontsize=7.5)
-    if el == "cathode":
-        ax.text(0.5 * (ul + 1), lab_y - 0.1, "radial loss $Q_e$, $Q_h$", ha="center", va="top", fontsize=6.5,
-                color="#e34948")
-        for u in (0.73, 0.89):
-            arrow(ax, (u, 0.60), (u, 0.74), "#e34948", lw=0.8, ms=5)
+    ax.text(0.5 * (ul + 1), lab_y - 0.1, "radial loss $Q_e$, $Q_h$", ha="center", va="top", fontsize=6.5,
+            color="#e34948")
+    for u in (0.73, 0.89):
+        arrow(ax, (u, 0.60), (u, 0.74), "#e34948", lw=0.8, ms=5)
     # qualitative temperatures (lower half of the strip)
     u = np.linspace(0.0, 1.0, 400)
     if el == "cathode":
         Te = profile(u, 0.53, 0.56, 0.08, 0.6) - 0.012 * np.exp(-((u - 0.3) / 0.06) ** 2)
         Th = 0.30 + (0.56 - 0.30) * (1 - np.exp(-u / 0.17))
     else:
-        Te = 0.47 + (0.68 - 0.47) * (1 - np.exp(-(u + 0.02) / 0.4)) / (1 - np.exp(-1.02 / 0.4))
-        Th = 0.32 + (0.68 - 0.32) * (1 - np.exp(-u / 0.28)) / (1 - np.exp(-1 / 0.28))
+        Te = 0.40 + (0.56 - 0.40) * (1 - np.exp(-(u + 0.02) / 0.4)) / (1 - np.exp(-1.02 / 0.4))
+        Th = 0.24 + (0.56 - 0.24) * (1 - np.exp(-u / 0.28)) / (1 - np.exp(-1 / 0.28))
     ax.plot(u, Te, color=C_E, lw=1.2)
     ax.plot(u, Th, color=C_I, lw=1.2)
     k = 140 if el == "cathode" else 230

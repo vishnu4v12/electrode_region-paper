@@ -50,6 +50,11 @@ K.~C. Hsu, K.~Etemadi, and E.~Pfender.
 \newblock Study of the free-burning high-intensity argon arc.
 \newblock {\em Journal of Applied Physics}, 54(3):1293--1301, 1983.
 
+\bibitem{korsipati2026fast}
+Sai~Vishnu Korsipati, Hariswaran Sitaraman, and Laxminarayan Raja.
+\newblock A fast and accurate reduced-order model for high-intensity transferred arc discharges.
+\newblock {\em Journal of Applied Physics}, 140(2), 2026.
+
 \bibitem{Almeida2008}
 N.~A. Almeida, M.~S. Benilov, and G.~V. Naidis.
 \newblock Unified modelling of near-cathode plasma layers in high-pressure arc discharges.
@@ -125,11 +130,6 @@ Li~Sun, Xian-Pin Sun, Bi-Ying Guo, Wen Zhou, and Zeng-Yao Li.
 \newblock Unified modeling and kinetic analysis of the near-cathode region and hot cathode in atmospheric-pressure arc discharges.
 \newblock {\em Physics of Fluids}, 34(6):067120, 2022.
 
-\bibitem{Benilov2016}
-M.~S. Benilov, N.~A. Almeida, M.~Baeva, M.~D. Cunha, L.~G. Benilova, and D.~Uhrlandt.
-\newblock Account of near-cathode sheath in numerical models of high-pressure arc discharges.
-\newblock {\em Journal of Physics D: Applied Physics}, 49:215201, 2016.
-
 \bibitem{sitaraman2026elucidating}
 Hariswaran Sitaraman, Vishnu~Korsipati Sai, Ram~Krushna Mohanta, Noemi Leick, Yuri Korobeinikov, Anjana Kannan, Laxminarayan Raja, and Seetharaman Sridhar.
 \newblock Elucidating key reducing species beyond ions in hydrogen plasma smelting reduction of iron ore.
@@ -155,10 +155,10 @@ IV~Krivtsun, AI~Momot, IB~Denysenko, U~Reisgen, O~Mokrov, and R~Sharma.
 \newblock Model of the anode boundary layer in welding arcs.
 \newblock {\em The Paton Welding Journal 08}, page~44, 2025.
 
-\bibitem{korsipati2026fast}
-Sai~Vishnu Korsipati, Hariswaran Sitaraman, and Laxminarayan Raja.
-\newblock A fast and accurate reduced-order model for high-intensity transferred arc discharges.
-\newblock {\em Journal of Applied Physics}, 140(2), 2026.
+\bibitem{elenbaas1935ahnlichkeitsgesetze}
+W~Elenbaas.
+\newblock {\"A}hnlichkeitsgesetze der hochdruckentladung.
+\newblock {\em Physica}, 2(1-12):169--182, 1935.
 
 \bibitem{haddad1984temperature}
 GN~Haddad and AJD Farmer.
@@ -196,11 +196,6 @@ Viktor~Mikha{\u\i}lovich Zhdanov.
 \newblock Transport processes in multicomponent plasma.
 \newblock {\em Plasma Physics and Controlled Fusion}, 44(10):2283--2283, 2002.
 
-\bibitem{elenbaas1935ahnlichkeitsgesetze}
-W~Elenbaas.
-\newblock {\"A}hnlichkeitsgesetze der hochdruckentladung.
-\newblock {\em Physica}, 2(1-12):169--182, 1935.
-
 \bibitem{amrex2019}
 W.~Zhang, A.~Almgren, V.~Beckner, J.~Bell, J.~Blaschke, C.~Chan, M.~Day, B.~Friesen, K.~Gott, D.~Graves, M.~P. Katz, A.~Myers, T.~Nguyen, A.~Nonaka, M.~Rosso, S.~Williams, and M.~Zingale.
 \newblock {AMReX}: a framework for block-structured adaptive mesh refinement.
@@ -215,6 +210,11 @@ D.~L. Scharfetter and H.~K. Gummel.
 P.~L. Roe.
 \newblock Approximate {Riemann} solvers, parameter vectors, and difference schemes.
 \newblock {\em Journal of Computational Physics}, 43(2):357--372, 1981.
+
+\bibitem{Benilov2016}
+M.~S. Benilov, N.~A. Almeida, M.~Baeva, M.~D. Cunha, L.~G. Benilova, and D.~Uhrlandt.
+\newblock Account of near-cathode sheath in numerical models of high-pressure arc discharges.
+\newblock {\em Journal of Physics D: Applied Physics}, 49:215201, 2016.
 
 \bibitem{lxcat}
 {LXCat}.

@@ -1,9 +1,9 @@
 \subsection{Boundary conditions}
 \label{sec:model-bc}
 
-The system is closed by conditions at the two ends of the domain: the electrode surface, \(x=0\), and the edge of the near-electrode layer, \(x=L\), where the solution is matched to the adjacent LTE bulk plasma. The potential is referenced to zero at the electrode, \(\phi(0)=0\).
+The system is closed by conditions at the two ends of the domain, at the electrode surface, \(x=0\), and at the bulk-plasma boundary \(x=L\).
 
-\emph{Electrode surface, \(x=0\).} Electrons reaching the surface are absorbed; they are assumed to have a Maxwellian distribution at their local temperature \(T_e\). At the cathode, thermionic emission of electrons, \(\Gamma_{\rm em}\), with a Maxwellian distribution at the wall temperature \(T_{\rm wall}\), is also included. The electron flux into the surface is
+\emph{Electrode surface, \(x=0\).} Electrons reaching the surface are absorbed, and they are assumed to have a Maxwellian distribution at their local temperature \(T_e\). At the cathode, additionally the thermionic emission flux \(\Gamma_{\rm em}\) of electrons with a Maxwellian distribution at the wall temperature \(T_{\rm wall}\) is included. With \(\hat{\mathbf{n}}\) the unit vector normal to the surface and pointing into the electrode, the electron flux into the surface is therefore given by,
 \begin{equation}
 \boldsymbol{\Gamma}_e\cdot\hat{\mathbf{n}}=\tfrac14n_e\bar c_e-\Gamma_{\rm em},
 \qquad
@@ -25,7 +25,7 @@ where \(A_R\) is the Richardson constant and \(W\) the work function. Each absor
 \label{eq:bc-electron-energy}
 \end{equation}
 
-Ions reaching the surface are assumed to recombine there and to return to the plasma as atoms. The ion flux into the surface is taken as the sum of a thermal-effusion flux and a directed flux. Let \(\boldsymbol{\Gamma}_i^{d}\) denote the ion flux~(\ref{eq:flux-i}) without its density-diffusion term, \(\boldsymbol{\Gamma}_i^{d}=\boldsymbol{\Gamma}_i+[k_BT_h/(M\bar\nu^M_i)]\nabla n_i\). Ions are absorbed at their thermal-effusion flux plus this directed flux where it points into the wall,
+Ions reaching the surface are assumed to recombine there and to return to the plasma as atoms. The ion flux into the surface is the sum of a thermal-effusion flux and of the directed part of the ion flux when it points into the wall. With \(\boldsymbol{\Gamma}_i^{d}=\boldsymbol{\Gamma}_i+[k_BT_h/(M\bar\nu^M_i)]\nabla n_i\), the ion flux~(\ref{eq:flux-i}) without its density-diffusion term,
 \begin{equation}
 \boldsymbol{\Gamma}_i\cdot\hat{\mathbf{n}}=
 \tfrac14n_i\bar c_i+\max\!\left(\boldsymbol{\Gamma}_i^{d}\cdot\hat{\mathbf{n}},0\right),
@@ -33,23 +33,23 @@ Ions reaching the surface are assumed to recombine there and to return to the pl
 \bar c_i=\sqrt{\frac{8k_BT_{\rm wall}}{\pi M}} .
 \label{eq:bc-ion}
 \end{equation}
-Where the sheath field drives the ions into the electrode, the directed term dominates. Elsewhere, the thermal-effusion flux ensures that ions reaching the wall are absorbed even where transport alone does not carry them into it.
+Where the sheath field drives the ions into the electrode, the directed term dominates. Elsewhere, the thermal-effusion flux ensures that ions reaching the wall are absorbed even where transport alone does not carry them into it. The ion current density into the electrode is \(j_i=e\boldsymbol{\Gamma}_i\cdot\hat{\mathbf{n}}\). Within the layer, \(j_i\) is defined in the same way, with \(\hat{\mathbf{n}}\) the unit vector towards the electrode, so that \(j_i>0\) wherever the ions flow towards the electrode, at the cathode and at the anode alike.
 
-The wall is impermeable to the heavy gas, \(\mathbf{u}\cdot\hat{\mathbf{n}}=0\); this is the boundary condition for the heavy-gas momentum equation~(\ref{eq:heavy-momentum}). Equation~(\ref{eq:flux-n}) then gives
+The wall is impermeable to the heavy gas, \(\mathbf{u}\cdot\hat{\mathbf{n}}=0\), which is the boundary condition for the heavy-gas momentum equation~(\ref{eq:heavy-momentum}). Equation~(\ref{eq:flux-n}) then gives
 \begin{equation}
-\boldsymbol{\Gamma}_n\cdot\hat{\mathbf{n}}=-\boldsymbol{\Gamma}_i\cdot\hat{\mathbf{n}} :
+\boldsymbol{\Gamma}_n\cdot\hat{\mathbf{n}}=-\boldsymbol{\Gamma}_i\cdot\hat{\mathbf{n}} ,
 \label{eq:bc-neutral}
 \end{equation}
-every ion neutralized at the surface re-enters the plasma as an atom. Secondary electron emission by ion impact is not included.
+so that every ion neutralized at the surface re-enters the plasma as an atom. Secondary electron emission by ion impact is not included.
 
 The heavy-particle temperature at the surface equals the electrode temperature, \(T_h(0)=T_{\rm wall}\). At the cathode, \(T_{\rm wall}\) is obtained by balancing the heat flux \(q_w\) delivered by the plasma against steady conduction through the cathode body,
 \begin{equation}
 q_w=\frac{k_w}{L_w}\left(T_{\rm wall}-T_0\right),
 \label{eq:bc-heat-balance}
 \end{equation}
-where \(k_w\) is the thermal conductivity of the cathode, \(L_w\) its length, and \(T_0\) the temperature of its base. This crude heat balance is intended only to capture the trend of the cathode temperature with the current. The anode is usually water-cooled, so its surface temperature is assumed to be constant.
+where \(k_w\) is the thermal conductivity of the cathode, \(L_w\) its length, and \(T_0\) the temperature of its base. This simple heat balance is intended to capture the trend of the cathode temperature with the current. The anode is usually water-cooled, and its surface temperature is prescribed.
 
-The heat flux into the surface is
+The heat flux delivered at the electrode surface can be calculated as,
 \begin{equation}
 q_w=\left(2k_BT_e+W\right)\tfrac14n_e\bar c_e
 -\left(2k_BT_{\rm wall}+W\right)\Gamma_{\rm em}
@@ -57,17 +57,16 @@ q_w=\left(2k_BT_e+W\right)\tfrac14n_e\bar c_e
 -\kappa_h\nabla T_h\cdot\hat{\mathbf{n}} .
 \label{eq:bc-qwall}
 \end{equation}
-The first term is the energy delivered by the absorbed electrons: their kinetic energy plus the work function released on entering the metal.
- The second is emission cooling: each emitted electron removes the work function and its kinetic energy. The third is the energy released when an ion recombines at the surface, \(\varepsilon_{\rm ion}\), less the work function spent to extract the neutralizing electron. The last is heat conduction from the heavy gas. At the anode, \(\Gamma_{\rm em}=0\) and the emission term vanishes.
+The first term is the energy delivered by the absorbed electrons, which is their kinetic energy plus the work function released on entering the metal. The second is emission cooling, since each emitted electron removes the work function and its kinetic energy. The third is the energy released when an ion recombines at the surface, \(\varepsilon_{\rm ion}\), less the work function spent to extract the neutralizing electron. The last is heat conduction from the heavy gas. At the anode, \(\Gamma_{\rm em}=0\) and the emission term vanishes. The electrodes are given a zero reference potential.
 
-\emph{Bulk-plasma edge, \(x=L\).} The electron and ion densities and both temperatures are set to Dirichlet values from the adjacent LTE bulk plasma: \(n_e=n_e^{\rm bulk}\), \(n_i=n_i^{\rm bulk}\), and \(T_e=T_h=T_{\rm bulk}\); the last of these is the boundary condition for both energy equations. The neutral density follows from Dalton's law at the background pressure \(p_0\),
+\emph{Bulk-plasma edge, \(x=L\).} The electron and ion densities and both temperatures are set to Dirichlet values from the adjacent LTE bulk plasma, \(n_e=n_e^{\rm bulk}\), \(n_i=n_i^{\rm bulk}\) and \(T_e=T_h=T_{\rm bulk}\), the last of which is the boundary condition for both energy equations. The neutral density follows from Dalton's law at the background pressure \(p_0\),
 \begin{equation}
 n_n=\frac{p_0-n_ek_BT_e}{k_BT_h}-n_i .
 \label{eq:bc-neutral-density}
 \end{equation}
-This edge is open to the heavy gas: the heavy-gas momentum equation~(\ref{eq:heavy-momentum}) sees the bulk state, and hence the pressure \(p_0\), outside the boundary, and the heavy-gas velocity is given a zero normal gradient. The arc current is imposed through the electric field in Poisson's equation~(\ref{eq:poisson}): the total current density at the boundary, conduction plus displacement, is held equal to the applied current density \(J_{\rm app}\),
+This edge is open to the heavy gas. In the heavy-gas momentum equation~(\ref{eq:heavy-momentum}), the state outside the boundary is the bulk state at the pressure \(p_0\), and the heavy-gas velocity has a zero normal gradient. The arc current is imposed through the electric field in Poisson's equation~(\ref{eq:poisson}). The total current density at the boundary, conduction plus displacement, is held equal to the applied current density \(J_{\rm app}\),
 \begin{equation}
 e\left(\boldsymbol{\Gamma}_i-\boldsymbol{\Gamma}_e\right)+\varepsilon_0\frac{\partial E}{\partial t}=J_{\rm app},
 \label{eq:bc-current}
 \end{equation}
-which is integrated in time as an evolution equation for the boundary field. 
+which is integrated in time as an evolution equation for the boundary field. The ion fraction of the current is given as \(j_i/j\), with \(j=|J_{\rm app}|\). 
